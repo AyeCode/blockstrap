@@ -57,20 +57,20 @@
     },
     {
         "name": "ayecode/wp-ayecode-ui",
-        "version": "0.1.72",
-        "version_normalized": "0.1.72.0",
+        "version": "0.1.76",
+        "version_normalized": "0.1.76.0",
         "source": {
             "type": "git",
             "url": "https://github.com/AyeCode/wp-ayecode-ui.git",
-            "reference": "378f45a8a6a7f507c2cc241bdc52584b52e8cb89"
+            "reference": "5a09a8f856a000e35664924d4c6123f0b1659d8f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/AyeCode/wp-ayecode-ui/zipball/378f45a8a6a7f507c2cc241bdc52584b52e8cb89",
-            "reference": "378f45a8a6a7f507c2cc241bdc52584b52e8cb89",
+            "url": "https://api.github.com/repos/AyeCode/wp-ayecode-ui/zipball/5a09a8f856a000e35664924d4c6123f0b1659d8f",
+            "reference": "5a09a8f856a000e35664924d4c6123f0b1659d8f",
             "shasum": ""
         },
-        "time": "2022-05-24T10:41:58+00:00",
+        "time": "2022-10-03T09:53:01+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -198,29 +198,24 @@
     },
     {
         "name": "ayecode/wp-super-duper",
-        "version": "1.0.29",
-        "version_normalized": "1.0.29.0",
+        "version": "1.1.2",
+        "version_normalized": "1.1.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/AyeCode/wp-super-duper.git",
-            "reference": "18f3da558aec750cfeaa582f72619fbf8867677a"
+            "reference": "a9ee592d7e1fde6d6f6f2b96247d669062ef4494"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/AyeCode/wp-super-duper/zipball/18f3da558aec750cfeaa582f72619fbf8867677a",
-            "reference": "18f3da558aec750cfeaa582f72619fbf8867677a",
+            "url": "https://api.github.com/repos/AyeCode/wp-super-duper/zipball/a9ee592d7e1fde6d6f6f2b96247d669062ef4494",
+            "reference": "a9ee592d7e1fde6d6f6f2b96247d669062ef4494",
             "shasum": ""
         },
         "require": {
             "composer/installers": "~1.0",
             "php": ">=5.3.0"
         },
-        "require-dev": {
-            "dealerdirect/phpcodesniffer-composer-installer": "*",
-            "squizlabs/php_codesniffer": "^3.2",
-            "wp-coding-standards/wpcs": "*"
-        },
-        "time": "2022-02-21T16:43:19+00:00",
+        "time": "2022-10-03T09:43:07+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
