@@ -414,7 +414,7 @@ class BlockStrap_Widget_Nav_Item extends WP_Super_Duper {
 			$link = get_permalink(geodir_location_page_id());
 			$link_text = __('Location','blockstrap');
 		}elseif ( substr( $args['type'], 0, 3 ) === "gd_" ) {
-			$post_types = geodir_get_posttypes('options-plural');
+			$post_types = defined( 'GEODIRECTORY_VERSION' ) ? geodir_get_posttypes('options-plural') : '';
 			if ( ! empty( $post_types ) ) {
 				foreach ( $post_types as $cpt => $cpt_name ) {
 					if ( $args['type'] == $cpt ) {
@@ -424,7 +424,7 @@ class BlockStrap_Widget_Nav_Item extends WP_Super_Duper {
 				}
 			}
 		}elseif ( substr( $args['type'], 0, 7 ) === "add_gd_" ) {
-			$post_types = geodir_get_posttypes('options');
+			$post_types = defined( 'GEODIRECTORY_VERSION' ) ? geodir_get_posttypes('options') : '';
 			if ( ! empty( $post_types ) ) {
 				foreach ( $post_types as $cpt => $cpt_name ) {
 					if ( $args['type'] == "add_" . $cpt ) {
