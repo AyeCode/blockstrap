@@ -11,17 +11,17 @@ class BlockStrap_Widget_Tabs extends WP_Super_Duper {
 	public function __construct() {
 
 		$options = array(
-			'textdomain'     => 'blockstrap',
-			'output_types'   => array( 'block', 'shortcode' ),
-			'nested-block'   => true,
-			'block-icon'     => 'far fa-folder',
-			'block-category' => 'layout',
-			'block-keywords' => "['tabs','tab','content']",
-			'block-supports' => array(
+			'textdomain'         => 'blockstrap',
+			'output_types'       => array( 'block', 'shortcode' ),
+			'nested-block'       => true,
+			'block-icon'         => 'far fa-folder',
+			'block-category'     => 'layout',
+			'block-keywords'     => "['tabs','tab','content']",
+			'block-supports'     => array(
 				//'anchor' => 'true',
 				'customClassName' => false,
 			),
-			'block-outputx'  => array(
+			'block-outputx'      => array(
 				array(
 					'element'    => 'innerBlocksProps',
 					'blockProps' => array(
@@ -37,7 +37,7 @@ class BlockStrap_Widget_Tabs extends WP_Super_Duper {
 				),
 			),
 
-			'block-edit-return' => "el('div', wp.blockEditor.useBlockProps({
+			'block-edit-return'  => "el('div', wp.blockEditor.useBlockProps({
 									//dangerouslySetInnerHTML: {__html: onChangeContent()},
 									style: sd_build_aui_styles(props.attributes),
 									className: sd_build_aui_class(props.attributes),
@@ -121,16 +121,6 @@ class BlockStrap_Widget_Tabs extends WP_Super_Duper {
 			),
 			'no_wrap'            => true,
 			'block_group_tabs'   => array(
-//				'content'  => array(
-//					'groups' => array( __( 'Tab Settings', 'geodirectory' ) ),
-//					'tab'    => array(
-//						'title'     => __( 'Content', 'geodirectory' ),
-//						'key'       => 'bs_tab_content',
-//						'tabs_open' => true,
-//						'open'      => true,
-//						'class'     => 'text-center flex-fill d-flex justify-content-center',
-//					),
-//				),
 				'styles'   => array(
 					'groups' => array( __( 'Tabs Head', 'geodirectory' ), __( 'Tab Body Typography', 'geodirectory' ) ),
 					'tab'    => array(
@@ -157,7 +147,6 @@ class BlockStrap_Widget_Tabs extends WP_Super_Duper {
 				),
 			),
 		);
-
 
 		parent::__construct( $options );
 	}
@@ -206,9 +195,11 @@ class BlockStrap_Widget_Tabs extends WP_Super_Duper {
 			'group'    => __( 'Tabs Head', 'geodirectory' ),
 		);
 
-		$arguments['tabs_head_mb'] = sd_get_margin_input( 'mb', array(
-			'group'   => __( 'Tabs Head', 'geodirectory' ),
-			'default' => 3,
+		$arguments['tabs_head_mb'] = sd_get_margin_input(
+			'mb',
+			array(
+				'group'   => __( 'Tabs Head', 'geodirectory' ),
+				'default' => 3,
 			)
 		);
 
@@ -227,29 +218,32 @@ class BlockStrap_Widget_Tabs extends WP_Super_Duper {
 		$arguments['text_justify'] = sd_get_text_justify_input( 'text_justify', array( 'group' => __( 'Tab Body Typography', 'geodirectory' ) ) );
 
 		// text align
-		$arguments['text_align']    = sd_get_text_align_input( 'text_align', array(
-			'device_type'     => 'Mobile',
-			'element_require' => '[%text_justify%]==""',
-			'group' => __( 'Tab Body Typography', 'geodirectory' ),
-		) );
-		$arguments['text_align_md'] = sd_get_text_align_input( 'text_align', array(
-			'device_type'     => 'Tablet',
-			'element_require' => '[%text_justify%]==""',
-			'group' => __( 'Tab Body Typography', 'geodirectory' ),
-		) );
-		$arguments['text_align_lg'] = sd_get_text_align_input( 'text_align', array(
-			'device_type'     => 'Desktop',
-			'element_require' => '[%text_justify%]==""',
-			'group' => __( 'Tab Body Typography', 'geodirectory' ),
-		) );
+		$arguments['text_align']    = sd_get_text_align_input(
+			'text_align',
+			array(
+				'device_type'     => 'Mobile',
+				'element_require' => '[%text_justify%]==""',
+				'group'           => __( 'Tab Body Typography', 'geodirectory' ),
+			)
+		);
+		$arguments['text_align_md'] = sd_get_text_align_input(
+			'text_align',
+			array(
+				'device_type'     => 'Tablet',
+				'element_require' => '[%text_justify%]==""',
+				'group'           => __( 'Tab Body Typography', 'geodirectory' ),
+			)
+		);
+		$arguments['text_align_lg'] = sd_get_text_align_input(
+			'text_align',
+			array(
+				'device_type'     => 'Desktop',
+				'element_require' => '[%text_justify%]==""',
+				'group'           => __( 'Tab Body Typography', 'geodirectory' ),
+			)
+		);
 
 		$arguments = $arguments + sd_get_background_inputs( 'bg' );
-
-		// margins
-		$arguments['mt'] = sd_get_margin_input( 'mt' );
-		$arguments['mr'] = sd_get_margin_input( 'mr' );
-		$arguments['mb'] = sd_get_margin_input( 'mb', array( 'default' => 3 ) );
-		$arguments['ml'] = sd_get_margin_input( 'ml' );
 
 		// margins mobile
 		$arguments['mt'] = sd_get_margin_input( 'mt', array( 'device_type' => 'Mobile' ) );
@@ -266,7 +260,13 @@ class BlockStrap_Widget_Tabs extends WP_Super_Duper {
 		// margins desktop
 		$arguments['mt_lg'] = sd_get_margin_input( 'mt', array( 'device_type' => 'Desktop' ) );
 		$arguments['mr_lg'] = sd_get_margin_input( 'mr', array( 'device_type' => 'Desktop' ) );
-		$arguments['mb_lg'] = sd_get_margin_input( 'mb', array( 'device_type' => 'Desktop', 'default' => 3 ) );
+		$arguments['mb_lg'] = sd_get_margin_input(
+			'mb',
+			array(
+				'device_type' => 'Desktop',
+				'default'     => 3,
+			)
+		);
 		$arguments['ml_lg'] = sd_get_margin_input( 'ml', array( 'device_type' => 'Desktop' ) );
 
 		// padding
@@ -298,8 +298,8 @@ class BlockStrap_Widget_Tabs extends WP_Super_Duper {
 		// position
 		$arguments['position'] = sd_get_position_class_input( 'position' );
 
-		$arguments['sticky_offset_top']    = sd_get_sticky_offset_input( $type = 'top' );
-		$arguments['sticky_offset_bottom'] = sd_get_sticky_offset_input( $type = 'bottom' );
+		$arguments['sticky_offset_top']    = sd_get_sticky_offset_input( 'top' );
+		$arguments['sticky_offset_bottom'] = sd_get_sticky_offset_input( 'bottom' );
 
 		$arguments['display']    = sd_get_display_input( 'd', array( 'device_type' => 'Mobile' ) );
 		$arguments['display_md'] = sd_get_display_input( 'd', array( 'device_type' => 'Tablet' ) );
@@ -335,7 +335,7 @@ class BlockStrap_Widget_Tabs extends WP_Super_Duper {
 					$active       = 0 === $key ? 'active' : '';
 					$first_tab_id = $active ? esc_attr( $tab['id'] ) : $first_tab_id;
 					$aria_active  = $active ? 'true' : 'false';
-					$tabs         .= '<li class="nav-item"><button class="nav-link ' . $active . '" id="' . esc_attr( $tab['id'] ) . '-tab" data-toggle="tab" data-target="#' . esc_attr( $tab['id'] ) . '" type="button" role="tab" aria-controls="nav-home" aria-selected="' . $aria_active . '">' . esc_attr( $tab['name'] ) . '</button></li>';
+					$tabs        .= '<li class="nav-item"><button class="nav-link ' . $active . '" id="' . esc_attr( $tab['id'] ) . '-tab" data-toggle="tab" data-target="#' . esc_attr( $tab['id'] ) . '" type="button" role="tab" aria-controls="nav-home" aria-selected="' . $aria_active . '">' . esc_attr( $tab['name'] ) . '</button></li>';
 				}
 			}
 
@@ -344,11 +344,11 @@ class BlockStrap_Widget_Tabs extends WP_Super_Duper {
 				$content = str_replace( 'id="' . $first_tab_id . '" class="tab-pane', 'id="' . $first_tab_id . '" class="active show tab-pane', $content );
 			}
 
-			$greedy     = ! empty( $args['tabs_greedy'] ) ? 'greedy' : '';
-			$tabs_style = ! empty( $args['tabs_style'] ) ? sanitize_html_class( $args['tabs_style'] ) : 'nav-tabs';
+			$greedy      = ! empty( $args['tabs_greedy'] ) ? 'greedy' : '';
+			$tabs_style  = ! empty( $args['tabs_style'] ) ? sanitize_html_class( $args['tabs_style'] ) : 'nav-tabs';
 			$tabs_style .= ! empty( $args['tab_size'] ) ? ' ' . sanitize_html_class( $args['tab_size'] ) : '';
 			$tabs_style .= ! empty( $args['tabs_head_mb'] ) ? ' mb-' . sanitize_html_class( $args['tabs_head_mb'] ) : '';
-			$tabs_head = sprintf(
+			$tabs_head   = sprintf(
 				'<nav class="%1$s"><ul class="nav %2$s" role="tablist">%3$s</ul></nav>',
 				$greedy,
 				$tabs_style,
@@ -369,7 +369,10 @@ class BlockStrap_Widget_Tabs extends WP_Super_Duper {
 }
 
 // register it.
-add_action( 'widgets_init', function () {
-	register_widget( 'BlockStrap_Widget_Tabs' );
-} );
+add_action(
+	'widgets_init',
+	function () {
+		register_widget( 'BlockStrap_Widget_Tabs' );
+	}
+);
 

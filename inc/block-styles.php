@@ -235,29 +235,29 @@ function blockstrap_register_block_styles() {
 		)
 	);
 
-	register_block_style( // phpcs:ignore WPThemeReview.PluginTerritory.ForbiddenFunctions.editor_blocks_register_block_style
-		'core/post-title',
-		array(
-			'name'  => 'blockstrap-skewed',
-			'label' => __( 'Skewed', 'blockstrap' ),
-		)
-	);
+//	register_block_style( // phpcs:ignore WPThemeReview.PluginTerritory.ForbiddenFunctions.editor_blocks_register_block_style
+//		'core/post-title',
+//		array(
+//			'name'  => 'blockstrap-skewed',
+//			'label' => __( 'Skewed', 'blockstrap' ),
+//		)
+//	);
 
-	register_block_style( // phpcs:ignore WPThemeReview.PluginTerritory.ForbiddenFunctions.editor_blocks_register_block_style
-		'core/heading',
-		array(
-			'name'  => 'blockstrap-skewed',
-			'label' => __( 'Skewed', 'blockstrap' ),
-		)
-	);
+//	register_block_style( // phpcs:ignore WPThemeReview.PluginTerritory.ForbiddenFunctions.editor_blocks_register_block_style
+//		'core/heading',
+//		array(
+//			'name'  => 'blockstrap-skewed',
+//			'label' => __( 'Skewed', 'blockstrap' ),
+//		)
+//	);
 
-	register_block_style( // phpcs:ignore WPThemeReview.PluginTerritory.ForbiddenFunctions.editor_blocks_register_block_style
-		'core/template-part',
-		array(
-			'name'  => 'blockstrap-sticky-header',
-			'label' => __( 'Sticky header', 'blockstrap' ),
-		)
-	);
+//	register_block_style( // phpcs:ignore WPThemeReview.PluginTerritory.ForbiddenFunctions.editor_blocks_register_block_style
+//		'core/template-part',
+//		array(
+//			'name'  => 'blockstrap-sticky-header',
+//			'label' => __( 'Sticky header', 'blockstrap' ),
+//		)
+//	);
 
 //	register_block_style( // phpcs:ignore WPThemeReview.PluginTerritory.ForbiddenFunctions.editor_blocks_register_block_style
 //		'geodirectory/geodir-widget-search',

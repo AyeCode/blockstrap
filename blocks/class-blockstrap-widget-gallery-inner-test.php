@@ -11,93 +11,96 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 	public function __construct() {
 
 		$options = array(
-			'textdomain'     => 'blockstrap',
-			'output_types'   => array( 'block', 'shortcode' ),
-			'nested-block'   => true,
-			'block-icon'     => 'fas fa-th',
-			'block-category' => 'layout',
-			'block-keywords' => "['gallery','images','photo']",
-			'block-supports'=> array(
-				'customClassName'   => false
+			'textdomain'         => 'blockstrap',
+			'output_types'       => array( 'block', 'shortcode' ),
+			'nested-block'       => true,
+			'block-icon'         => 'fas fa-th',
+			'block-category'     => 'layout',
+			'block-keywords'     => "['gallery','images','photo']",
+			'block-supports'     => array(
+				'customClassName' => false,
 			),
-            'block-edit-returnx' => "el('div', wp.blockEditor.useBlockProps({
+			'block-edit-returnx' => "el('div', wp.blockEditor.useBlockProps({
 									dangerouslySetInnerHTML: {__html: onChangeContent()},
 									style: {'minHeight': '30px'}
 								}))",
-			'block-output'   => array(
+			'block-output'       => array(
 				array(
 					'element'          => 'innerBlocksProps',
 					'blockProps'       => array(
-//						'if_className' => 'props.attributes.styleid + " " [%WrapClass%]',
-						'if_className' => 'props.attributes.styleid + " row " [%WrapClass%]',
-						'style'     => '{[%WrapStyle%]}',
-						'if_id'        => 'props.attributes.id ? props.attributes.id : props.clientId',
-//						'\'data-styleid\'' => "block-" . wp_rand(15),
-//						'if_\'data-styleid\'' => 'props.attributes.anchor ? props.attributes.anchor : props.attributes.styleid',
-//						'if_id'        => 'props.attributes.anchor ? props.attributes.anchor : "vvvv"',
-//						'if_id'        => 'props.attributes.bg',
-//						'ID'        => 'cccccccccccccc',
+						//                      'if_className' => 'props.attributes.styleid + " " [%WrapClass%]',
+																'if_className' => 'props.attributes.styleid + " row " [%WrapClass%]',
+						'style' => '{[%WrapStyle%]}',
+						'if_id' => 'props.attributes.id ? props.attributes.id : props.clientId',
+					//                      '\'data-styleid\'' => "block-" . wp_rand(15),
+					//                      'if_\'data-styleid\'' => 'props.attributes.anchor ? props.attributes.anchor : props.attributes.styleid',
+					//                      'if_id'        => 'props.attributes.anchor ? props.attributes.anchor : "vvvv"',
+					//                      'if_id'        => 'props.attributes.bg',
+					//                      'ID'        => 'cccccccccccccc',
 					),
 					'innerBlocksProps' => array(
 						'orientation' => 'vertical',
-//						'template'    => "
-//						[
-//							[ 'blockstrap/blockstrap-widget-row', {}, [[ 'core/paragraph', { placeholder: 'Summaryx' } ],] ],
-//
-//                        ]
-//    "
+				//                      'template'    => "
+				//                      [
+				//                          [ 'blockstrap/blockstrap-widget-row', {}, [[ 'core/paragraph', { placeholder: 'Summaryx' } ],] ],
+				//
+				//                        ]
+				//    "
 					),
 
 				),
 			),
-			'block-wrap'    => '',
-			'class_name'     => __CLASS__,
-			'base_id'        => 'bs_gallery',
-			'name'           => __( 'BS > Gallery', 'blockstrap' ),
-			'widget_ops'     => array(
+			'block-wrap'         => '',
+			'class_name'         => __CLASS__,
+			'base_id'            => 'bs_gallery',
+			'name'               => __( 'BS > Gallery', 'blockstrap' ),
+			'widget_ops'         => array(
 				'classname'   => 'bs-image',
 				'description' => esc_html__( 'An image gallery.', 'blockstrap' ),
 			),
-			'example'        => array(
+			'example'            => array(
 				'attributes' => array(
-					'after_text' => "Earth",
-				)
+					'after_text' => 'Earth',
+				),
 			),
-			'no_wrap'        => true,
-			'block_group_tabs' => array(
+			'no_wrap'            => true,
+			'block_group_tabs'   => array(
 				'content'  => array(
-					'groups' => array(__( "Image", "geodirectory" ), __( "Captions", "geodirectory" ) ),
+					'groups' => array( __( 'Image', 'geodirectory' ), __( 'Captions', 'geodirectory' ) ),
 					'tab'    => array(
 						'title'     => __( 'Content', 'geodirectory' ),
 						'key'       => 'bs_tab_content',
 						'tabs_open' => true,
 						'open'      => true,
 						'class'     => 'text-center flex-fill d-flex justify-content-center',
-					)
+					),
 				),
 				'styles'   => array(
-					'groups' => array( __( "Gallery Styles", "geodirectory" ),__( "Image Styles", "geodirectory" ),__( "Typography", "geodirectory" ) ),
+					'groups' => array(
+						__( 'Gallery Styles', 'geodirectory' ),
+						__( 'Image Styles', 'geodirectory' ),
+						__( 'Typography', 'geodirectory' ),
+					),
 					'tab'    => array(
 						'title'     => __( 'Styles', 'geodirectory' ),
 						'key'       => 'bs_tab_styles',
 						'tabs_open' => true,
 						'open'      => true,
 						'class'     => 'text-center flex-fill d-flex justify-content-center',
-					)
+					),
 				),
 				'advanced' => array(
-					'groups' => array( __( "Wrapper Styles", "geodirectory" ) ,__( "Advanced", "geodirectory" ) ),
+					'groups' => array( __( 'Wrapper Styles', 'geodirectory' ), __( 'Advanced', 'geodirectory' ) ),
 					'tab'    => array(
 						'title'     => __( 'Advanced', 'geodirectory' ),
 						'key'       => 'bs_tab_advanced',
 						'tabs_open' => true,
 						'open'      => true,
 						'class'     => 'text-center flex-fill d-flex justify-content-center',
-					)
-				)
-			)
+					),
+				),
+			),
 		);
-
 
 		parent::__construct( $options );
 	}
@@ -111,107 +114,123 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 
 		$arguments = array();
 
-
-		$arguments[ 'images' ] = array(
-			'type'            => 'images',
-			'title'           => __( 'Custom image', 'geodirectory' ),
-			'placeholder'     => '',
-			'default'         => '',
-			'desc_tip'        => true,
-			'group'           => __( "Image", "geodirectory" ),
-//			'element_require' => '[%img_src%]=="upload"'
+		$arguments['images'] = array(
+			'type'        => 'images',
+			'title'       => __( 'Custom image', 'geodirectory' ),
+			'placeholder' => '',
+			'default'     => '',
+			'desc_tip'    => true,
+			'group'       => __( 'Image', 'geodirectory' ),
+		//          'element_require' => '[%img_src%]=="upload"'
 		);
 
-        $image_sizes = get_intermediate_image_sizes();
+		$image_sizes = get_intermediate_image_sizes();
 
 		$arguments['img_size'] = array(
-			'type' => 'select',
-			'title' => __('Image size', 'geodirectory'),
-			'options' =>  array(''=>'Select image size') + array_combine($image_sizes,$image_sizes) + array('full'=>'full'),
-			'default' => '',
+			'type'     => 'select',
+			'title'    => __( 'Image size', 'geodirectory' ),
+			'options'  => array( '' => 'Select image size' ) + array_combine( $image_sizes, $image_sizes ) + array( 'full' => 'full' ),
+			'default'  => '',
 			'desc_tip' => true,
-			'group'     => __("Image","geodirectory"),
+			'group'    => __( 'Image', 'geodirectory' ),
 		);
 
-
 		$arguments['lightbox_size'] = array(
-			'type' => 'select',
-			'title' => __('Lightbox', 'geodirectory'),
-			'options' =>  array(''=>'No') + array_combine($image_sizes,$image_sizes) + array('full'=>'full'),
-			'default' => '',
+			'type'     => 'select',
+			'title'    => __( 'Lightbox', 'geodirectory' ),
+			'options'  => array( '' => 'No' ) + array_combine( $image_sizes, $image_sizes ) + array( 'full' => 'full' ),
+			'default'  => '',
 			'desc_tip' => true,
-			'group'     => __("Image","geodirectory"),
+			'group'    => __( 'Image', 'geodirectory' ),
 		);
 
 		$arguments['caption_show'] = array(
-			'type' => 'select',
-			'title' => __('Caption', 'geodirectory'),
-			'options' =>  array(
-				''  => __('Hide', 'geodirectory'),
-				'show'  => __('Show always', 'geodirectory'),
-				'hover_show'  => __('Show on hover', 'geodirectory'),
-            ),
-			'default' => '',
+			'type'     => 'select',
+			'title'    => __( 'Caption', 'geodirectory' ),
+			'options'  => array(
+				''           => __( 'Hide', 'geodirectory' ),
+				'show'       => __( 'Show always', 'geodirectory' ),
+				'hover_show' => __( 'Show on hover', 'geodirectory' ),
+			),
+			'default'  => '',
 			'desc_tip' => true,
-			'group'     => __("Captions","geodirectory"),
+			'group'    => __( 'Captions', 'geodirectory' ),
 		);
-
-
-
 
 		//$arguments = $arguments + sd_get_background_inputs('bg');
 
 		// row-cols
-		$arguments['row_cols']    = sd_get_row_cols_input( 'row_cols', array( 'device_type' => 'Mobile', 'group' => __("Gallery Styles","geodirectory"), 'element_require' => '','title' => __('Images per row', 'geodirectory')  ) );
-		$arguments['row_cols_md'] = sd_get_row_cols_input( 'row_cols', array( 'device_type' => 'Tablet', 'group' => __("Gallery Styles","geodirectory"), 'element_require' => '','title' => __('Images per row', 'geodirectory') ) );
-		$arguments['row_cols_lg'] = sd_get_row_cols_input( 'row_cols', array( 'device_type' => 'Desktop', 'group' => __("Gallery Styles","geodirectory"), 'element_require' => '','title' => __('Images per row', 'geodirectory') ) );
+		$arguments['row_cols']    = sd_get_row_cols_input(
+			'row_cols',
+			array(
+				'device_type'     => 'Mobile',
+				'group'           => __( 'Gallery Styles', 'geodirectory' ),
+				'element_require' => '',
+				'title'           => __( 'Images per row', 'geodirectory' ),
+			)
+		);
+		$arguments['row_cols_md'] = sd_get_row_cols_input(
+			'row_cols',
+			array(
+				'device_type'     => 'Tablet',
+				'group'           => __( 'Gallery Styles', 'geodirectory' ),
+				'element_require' => '',
+				'title'           => __( 'Images per row', 'geodirectory' ),
+			)
+		);
+		$arguments['row_cols_lg'] = sd_get_row_cols_input(
+			'row_cols',
+			array(
+				'device_type'     => 'Desktop',
+				'group'           => __( 'Gallery Styles', 'geodirectory' ),
+				'element_require' => '',
+				'title'           => __( 'Images per row', 'geodirectory' ),
+			)
+		);
 
 		$arguments['aspect'] = array(
-			'title' => __('Aspect ratio', 'geodirectory')." ".__('(bootstrap only)', 'geodirectory'),
-			'desc' => __('For a more consistent image view you can set the aspect ratio of the image view port.', 'geodirectory'),
-			'type' => 'select',
-			'options' => array(
-				'' => __("Default (16by9)","geodirectory"),
-				'21x9' => __("21by9","geodirectory"),
-				'4x3' => __("4by3","geodirectory"),
-				'1x1' => __("1by1 (square)","geodirectory"),
-				'n' => __("No ratio (natural)","geodirectory"),
+			'title'    => __( 'Aspect ratio', 'geodirectory' ) . ' ' . __( '(bootstrap only)', 'geodirectory' ),
+			'desc'     => __( 'For a more consistent image view you can set the aspect ratio of the image view port.', 'geodirectory' ),
+			'type'     => 'select',
+			'options'  => array(
+				''     => __( 'Default (16by9)', 'geodirectory' ),
+				'21x9' => __( '21by9', 'geodirectory' ),
+				'4x3'  => __( '4by3', 'geodirectory' ),
+				'1x1'  => __( '1by1 (square)', 'geodirectory' ),
+				'n'    => __( 'No ratio (natural)', 'geodirectory' ),
 			),
 			'desc_tip' => true,
-			'value'  => '',
+			'value'    => '',
 			'default'  => '',
 			'advanced' => true,
-			'group'     => __("Design","geodirectory"),
+			'group'    => __( 'Design', 'geodirectory' ),
 		);
 		$arguments['cover']  = array(
-			'title' => __('Image cover type:', 'geodirectory'),
-			'desc' => __('This is how the image should cover the image viewport.', 'geodirectory'),
-			'type' => 'select',
-			'options' => array(
-				'' => __("Default (cover both)","geodirectory"),
-				'x' => __("Width cover","geodirectory"),
-				'y' => __("height cover","geodirectory"),
-				'n' => __("No cover (contain)","geodirectory"),
+			'title'    => __( 'Image cover type:', 'geodirectory' ),
+			'desc'     => __( 'This is how the image should cover the image viewport.', 'geodirectory' ),
+			'type'     => 'select',
+			'options'  => array(
+				''  => __( 'Default (cover both)', 'geodirectory' ),
+				'x' => __( 'Width cover', 'geodirectory' ),
+				'y' => __( 'height cover', 'geodirectory' ),
+				'n' => __( 'No cover (contain)', 'geodirectory' ),
 			),
 			'desc_tip' => true,
-			'value'  => '',
+			'value'    => '',
 			'default'  => '',
 			'advanced' => true,
-			'group'     => __("Design","geodirectory"),
+			'group'    => __( 'Design', 'geodirectory' ),
 		);
 
-
-
 		// border
-		$arguments['img_border']       = sd_get_border_input( 'border', array( 'group' => __("Image Styles","geodirectory")) );
-		$arguments['img_rounded']      = sd_get_border_input( 'rounded', array( 'group' => __("Image Styles","geodirectory")) );
-		$arguments['img_rounded_size'] = sd_get_border_input( 'rounded_size', array( 'group' => __("Image Styles","geodirectory")) );
+		$arguments['img_border']       = sd_get_border_input( 'border', array( 'group' => __( 'Image Styles', 'geodirectory' ) ) );
+		$arguments['img_rounded']      = sd_get_border_input( 'rounded', array( 'group' => __( 'Image Styles', 'geodirectory' ) ) );
+		$arguments['img_rounded_size'] = sd_get_border_input( 'rounded_size', array( 'group' => __( 'Image Styles', 'geodirectory' ) ) );
 
 		// shadow
-		$arguments['img_shadow'] = sd_get_shadow_input( 'shadow', array( 'group' => __("Image Styles","geodirectory"))  );
+		$arguments['img_shadow'] = sd_get_shadow_input( 'shadow', array( 'group' => __( 'Image Styles', 'geodirectory' ) ) );
 
-
-        // Typography
+		// Typography
 		// text color
 		$arguments['text_color'] = sd_get_text_color_input();
 
@@ -225,22 +244,39 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 		$arguments['text_justify'] = sd_get_text_justify_input();
 
 		// text align
-		$arguments['text_align'] = sd_get_text_align_input('text_align',array('device_type' => 'Mobile','element_require' => '[%text_justify%]==""'));
-		$arguments['text_align_md'] = sd_get_text_align_input('text_align',array('device_type' => 'Tablet','element_require' => '[%text_justify%]==""'));
-		$arguments['text_align_lg'] = sd_get_text_align_input('text_align',array('device_type' => 'Desktop','element_require' => '[%text_justify%]==""'));
-
+		$arguments['text_align']    = sd_get_text_align_input(
+			'text_align',
+			array(
+				'device_type'     => 'Mobile',
+				'element_require' => '[%text_justify%]==""',
+			)
+		);
+		$arguments['text_align_md'] = sd_get_text_align_input(
+			'text_align',
+			array(
+				'device_type'     => 'Tablet',
+				'element_require' => '[%text_justify%]==""',
+			)
+		);
+		$arguments['text_align_lg'] = sd_get_text_align_input(
+			'text_align',
+			array(
+				'device_type'     => 'Desktop',
+				'element_require' => '[%text_justify%]==""',
+			)
+		);
 
 		// background
-//		$arguments = $arguments + sd_get_background_inputs('bg', array('group' => __("Wrapper Styles","geodirectory")),array('group' => __("Wrapper Styles","geodirectory")),array('group' => __("Wrapper Styles","geodirectory")),array('group' => __("Wrapper Styles","geodirectory")) );
+		//      $arguments = $arguments + sd_get_background_inputs('bg', array('group' => __("Wrapper Styles","geodirectory")),array('group' => __("Wrapper Styles","geodirectory")),array('group' => __("Wrapper Styles","geodirectory")),array('group' => __("Wrapper Styles","geodirectory")) );
 
 		$arguments['bg_on_text'] = array(
-			'type' => 'checkbox',
-			'title' => __('Background on text', 'geodirectory'),
-			'default' => '',
-			'value'  => '1',
-			'desc_tip' => false,
-			'desc' => __('This will show the background on the text.','geodirectory'),
-			'group'     => __("Wrapper Styles","geodirectory"),
+			'type'            => 'checkbox',
+			'title'           => __( 'Background on text', 'geodirectory' ),
+			'default'         => '',
+			'value'           => '1',
+			'desc_tip'        => false,
+			'desc'            => __( 'This will show the background on the text.', 'geodirectory' ),
+			'group'           => __( 'Wrapper Styles', 'geodirectory' ),
 			'element_require' => '[%bg%]=="custom-gradient"',
 		);
 
@@ -251,40 +287,46 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 		$arguments['ml'] = sd_get_margin_input( 'ml' );
 
 		// margins mobile
-		$arguments['mt']  = sd_get_margin_input('mt', array('device_type' => 'Mobile'));
-		$arguments['mr']  = sd_get_margin_input('mr', array('device_type' => 'Mobile'));
-		$arguments['mb']  = sd_get_margin_input('mb', array('device_type' => 'Mobile'));
-		$arguments['ml']  = sd_get_margin_input('ml', array('device_type' => 'Mobile'));
+		$arguments['mt'] = sd_get_margin_input( 'mt', array( 'device_type' => 'Mobile' ) );
+		$arguments['mr'] = sd_get_margin_input( 'mr', array( 'device_type' => 'Mobile' ) );
+		$arguments['mb'] = sd_get_margin_input( 'mb', array( 'device_type' => 'Mobile' ) );
+		$arguments['ml'] = sd_get_margin_input( 'ml', array( 'device_type' => 'Mobile' ) );
 
 		// margins tablet
-		$arguments['mt_md']  = sd_get_margin_input('mt', array('device_type' => 'Tablet'));
-		$arguments['mr_md']  = sd_get_margin_input('mr', array('device_type' => 'Tablet'));
-		$arguments['mb_md']  = sd_get_margin_input('mb', array('device_type' => 'Tablet'));
-		$arguments['ml_md']  = sd_get_margin_input('ml', array('device_type' => 'Tablet'));
+		$arguments['mt_md'] = sd_get_margin_input( 'mt', array( 'device_type' => 'Tablet' ) );
+		$arguments['mr_md'] = sd_get_margin_input( 'mr', array( 'device_type' => 'Tablet' ) );
+		$arguments['mb_md'] = sd_get_margin_input( 'mb', array( 'device_type' => 'Tablet' ) );
+		$arguments['ml_md'] = sd_get_margin_input( 'ml', array( 'device_type' => 'Tablet' ) );
 
 		// margins desktop
-		$arguments['mt_lg']  = sd_get_margin_input('mt', array('device_type' => 'Desktop'));
-		$arguments['mr_lg']  = sd_get_margin_input('mr', array('device_type' => 'Desktop'));
-		$arguments['mb_lg']  = sd_get_margin_input('mb',array('device_type' => 'Desktop','default'=>3));
-		$arguments['ml_lg']  = sd_get_margin_input('ml', array('device_type' => 'Desktop'));
+		$arguments['mt_lg'] = sd_get_margin_input( 'mt', array( 'device_type' => 'Desktop' ) );
+		$arguments['mr_lg'] = sd_get_margin_input( 'mr', array( 'device_type' => 'Desktop' ) );
+		$arguments['mb_lg'] = sd_get_margin_input(
+			'mb',
+			array(
+				'device_type' => 'Desktop',
+				'default'     => 3,
+			)
+		);
+		$arguments['ml_lg'] = sd_get_margin_input( 'ml', array( 'device_type' => 'Desktop' ) );
 
 		// padding
-		$arguments['pt'] = sd_get_padding_input( 'pt', array('device_type' => 'Mobile') );
-		$arguments['pr'] = sd_get_padding_input( 'pr', array('device_type' => 'Mobile') );
-		$arguments['pb'] = sd_get_padding_input( 'pb', array('device_type' => 'Mobile') );
-		$arguments['pl'] = sd_get_padding_input( 'pl', array('device_type' => 'Mobile') );
+		$arguments['pt'] = sd_get_padding_input( 'pt', array( 'device_type' => 'Mobile' ) );
+		$arguments['pr'] = sd_get_padding_input( 'pr', array( 'device_type' => 'Mobile' ) );
+		$arguments['pb'] = sd_get_padding_input( 'pb', array( 'device_type' => 'Mobile' ) );
+		$arguments['pl'] = sd_get_padding_input( 'pl', array( 'device_type' => 'Mobile' ) );
 
 		// padding tablet
-		$arguments['pt_md'] = sd_get_padding_input( 'pt', array('device_type' => 'Tablet') );
-		$arguments['pr_md'] = sd_get_padding_input( 'pr', array('device_type' => 'Tablet') );
-		$arguments['pb_md'] = sd_get_padding_input( 'pb', array('device_type' => 'Tablet') );
-		$arguments['pl_md'] = sd_get_padding_input( 'pl', array('device_type' => 'Tablet') );
+		$arguments['pt_md'] = sd_get_padding_input( 'pt', array( 'device_type' => 'Tablet' ) );
+		$arguments['pr_md'] = sd_get_padding_input( 'pr', array( 'device_type' => 'Tablet' ) );
+		$arguments['pb_md'] = sd_get_padding_input( 'pb', array( 'device_type' => 'Tablet' ) );
+		$arguments['pl_md'] = sd_get_padding_input( 'pl', array( 'device_type' => 'Tablet' ) );
 
 		// padding desktop
-		$arguments['pt_lg'] = sd_get_padding_input( 'pt', array('device_type' => 'Desktop') );
-		$arguments['pr_lg'] = sd_get_padding_input( 'pr', array('device_type' => 'Desktop') );
-		$arguments['pb_lg'] = sd_get_padding_input( 'pb', array('device_type' => 'Desktop') );
-		$arguments['pl_lg'] = sd_get_padding_input( 'pl', array('device_type' => 'Desktop') );
+		$arguments['pt_lg'] = sd_get_padding_input( 'pt', array( 'device_type' => 'Desktop' ) );
+		$arguments['pr_lg'] = sd_get_padding_input( 'pr', array( 'device_type' => 'Desktop' ) );
+		$arguments['pb_lg'] = sd_get_padding_input( 'pb', array( 'device_type' => 'Desktop' ) );
+		$arguments['pl_lg'] = sd_get_padding_input( 'pl', array( 'device_type' => 'Desktop' ) );
 
 		// border
 		$arguments['border']       = sd_get_border_input( 'border' );
@@ -295,24 +337,21 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 		$arguments['shadow'] = sd_get_shadow_input( 'shadow' );
 
 		// position
-		$arguments['position'] = sd_get_position_class_input('position');
+		$arguments['position'] = sd_get_position_class_input( 'position' );
 
-		$arguments['sticky_offset_top'] = sd_get_sticky_offset_input($type = 'top');
-		$arguments['sticky_offset_bottom'] = sd_get_sticky_offset_input($type = 'bottom');
+		$arguments['sticky_offset_top']    = sd_get_sticky_offset_input( 'top' );
+		$arguments['sticky_offset_bottom'] = sd_get_sticky_offset_input( 'bottom' );
 
-
-		$arguments['display'] = sd_get_display_input('d', array('device_type' => 'Mobile'));
-		$arguments['display_md'] = sd_get_display_input('d', array('device_type' => 'Tablet') );
-		$arguments['display_lg'] = sd_get_display_input('d', array('device_type' => 'Desktop'));
-
-
+		$arguments['display']    = sd_get_display_input( 'd', array( 'device_type' => 'Mobile' ) );
+		$arguments['display_md'] = sd_get_display_input( 'd', array( 'device_type' => 'Tablet' ) );
+		$arguments['display_lg'] = sd_get_display_input( 'd', array( 'device_type' => 'Desktop' ) );
 
 		$arguments['css_class'] = array(
-			'type'            => 'text',
-			'title'           => __( 'Additional CSS class(es)', 'geodirectory' ),
-			'desc'            => __( 'Separate multiple classes with spaces.', 'geodirectory' ),
-			'default'         => '',
-			'group'           => __( "Advanced", "geodirectory" ),
+			'type'    => 'text',
+			'title'   => __( 'Additional CSS class(es)', 'geodirectory' ),
+			'desc'    => __( 'Separate multiple classes with spaces.', 'geodirectory' ),
+			'default' => '',
+			'group'   => __( 'Advanced', 'geodirectory' ),
 		);
 
 		return $arguments;
@@ -329,143 +368,17 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 	 * @return string
 	 */
 	public function output( $args = array(), $widget_args = array(), $content = '' ) {
-            global $post;
 
-
-			return $content;
-
-            $output = '';
-
-//            print_r($args);//exit;
-
-        if($this->is_block_content_call()){
-	        $args['images'] = str_replace('&quot;','"',$args['images']);
-	        $images = json_decode('['.$args['images'].']', true);
-        }else{
-	        $images = json_decode('['.$args['images'].']', true);
-        }
-
-
-
-
-        //print_r($images);//exit;
-
-
-		$lightbox_size = $args['lightbox_size'] ? esc_attr($args['lightbox_size'] ) : 'full';
-        $image_src = '';
-		$image_size = !empty($args['img_size']) ? esc_attr($args['img_size']) : 'full';
-		$image = '';
-		$image_class = 'mw-100 w-100';
-		$image_class .= !empty($args['img_border']) ? ' border border-'.esc_attr($args['img_border']) : '';
-		$image_class .= !empty($args['img_rounded']) ? ' ' . esc_attr($args['img_rounded']) : '';
-		$image_class .= !empty($args['img_rounded_size']) ? ' rounded-'.esc_attr($args['img_rounded_size']) : '';
-		$image_class .= !empty($args['img_shadow']) ? ' '.esc_attr($args['img_shadow']) : '';
-
-
-		if(!$image && $this->is_block_content_call()){
-//		if(!$image && $image_src){
-			$image = '<img src="'.esc_url_raw($image_src).'" class="'.sd_sanitize_html_classes($image_class).'" />';
-		}elseif(!$image){
-			$image = '<img src="'.get_template_directory_uri().'/assets/images/block-image-placeholder.jpg" class="'.sd_sanitize_html_classes($image_class).'" />';
-		}
-
-
-        $cols = '';
-		if ( ! empty( $images ) ) {
-
-            foreach($images as $image ){
-
-                $img_src = !empty($image['sizes'][$image_size]['url']) ? esc_url_raw($image['sizes'][$image_size]['url']) : '';
-
-	            if ( $img_src ) {
-		            $img = sprintf(
-			            '<img src="%1$s" class="%2$s" />',
-			            $img_src,
-			            $image_class
-		            );
-
-		            if($lightbox_size){
-			            $lightbox_src = !empty($image['sizes'][$lightbox_size]['url']) ? esc_url_raw($image['sizes'][$lightbox_size]['url']) : '';
-			            $img = sprintf(
-				            '<a href="%1$s" class="aui-lightbox-image">%2$s</a>',
-				            $lightbox_src,
-				            $img
-			            );
-		            }
-
-                    $cols .= sprintf(
-	                    '<div class="col mb-4 %1$s">%2$s</div>',
-                        '',
-                        $img
-                    );
-
-
-	            }
-
-            }
-
-		}
-
-//        echo '###'.$cols;exit;
-
-        // class
-		$wrap_class = sd_build_aui_class( $args );
-        $wrap_class = 'row aui-gallery ' . $wrap_class;
-		$figure_attributes = $wrap_class ? 'class="overflow-hidden '.sd_sanitize_html_classes($wrap_class).'"' : '';
-
-        // styles
-		$wrap_styles = sd_build_aui_styles( $args );
-//		$figure_attributes .= $wrap_class ? ' style="'.sd_sanitize_html_classes($wrap_styles).'"' : '';
-
-//        print_r($args);
-
-//        $figcaption_class = $args['text_color'] ? 'text-'.sd_sanitize_html_classes($args['text_color']) : '';
-//		$figcaption = $args['text'] ? '<figcaption  class="figure-caption '.$figcaption_class.'">'.wp_kses_post($args['text']).'</figcaption>' :  '';
-//		$figcaption = $args['text'] ? '<figcaption  class="figure-caption '.$figcaption_class.'">'.$args['text'].'</figcaption>' :  '';
-
-
-        // maybe link
-
-
-
-
-		$output .=  sprintf(
-			'<div class="%1$s" %2$s>%3$s</div>',
-			$wrap_class,
-			$wrap_styles,
-			$cols
-		);
-
-        return $output;
-
-
-	}
-
-	public function block_global_js(){
-		ob_start();
-	if(false){?><script><?php }
-			?>
-
-            function bs_build_heading_html( $args ){
-
-                let $html = '';
-
-                $html += $args.text;
-
-
-                return $html;
-            }
-
-
-		<?php
-//		return str_replace("\n"," ",ob_get_clean()) ;
-		return ob_get_clean();
+		return $content;
 	}
 
 }
 
 // register it.
-add_action( 'widgets_init', function () {
-	register_widget( 'BlockStrap_Widget_Gallery' );
-} );
+add_action(
+	'widgets_init',
+	function () {
+		register_widget( 'BlockStrap_Widget_Gallery' );
+	}
+);
 

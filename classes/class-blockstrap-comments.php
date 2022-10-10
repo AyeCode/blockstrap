@@ -1,25 +1,31 @@
 <?php
+/**
+ * Filter the output of the comments form.
+ *
+ * @package BlockStrap
+ * @since 1.0.0
+ */
 
 /**
- * Created by PhpStorm.
- * User: stiofan
- * Date: 01/02/19
- * Time: 19:52
+ * Filter the comments form output.
  */
 class BlockStrap_Comments {
 
 	public function __construct() {
 
-//		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
 		add_action( 'comment_form_default_fields', array( $this, 'comment_args' ) );
-		add_action( 'comment_form_defaults', array( $this, 'comment_form_defaults' ) );
-
+		add_action( 'comment_form_defaults', array( $this, 'comment_form_defaults' ), 100 );
 
 	}
 
+	/**
+	 * Change the default output of the comments form.
+	 *
+	 * @param $defaults
+	 *
+	 * @return mixed
+	 */
 	public function comment_form_defaults( $defaults ) {
-
-//		print_r( $defaults );
 
 		$defaults['comment_field'] = '
 <div class="comment-form-comment form-group">
@@ -36,13 +42,13 @@ class BlockStrap_Comments {
 
 		$defaults['fields']['email'] = '
 <div class="comment-form-email form-group">
-<label for="email" class="sr-only sr-only-focusable">' . __( "Email", 'blockstrap' ) . '<span class="required">*</span></label>
+<label for="email" class="sr-only sr-only-focusable">' . __( 'Email', 'blockstrap' ) . '<span class="required">*</span></label>
 <input class="required form-control border-gray"" id="email" name="email" type="email" value="" placeholder="' . __( 'Email (required)', 'blockstrap' ) . '" maxlength="100" aria-describedby="email-notes" required=\'required\' />
 </div>';
 
 		$defaults['fields']['url'] = '
 <div class="comment-form-url form-group">
-<label for="url" class="sr-only sr-only-focusable">' . __( "Website", 'blockstrap' ) . '</label>
+<label for="url" class="sr-only sr-only-focusable">' . __( 'Website', 'blockstrap' ) . '</label>
 <input class="required form-control border-gray"" id="url" name="url" type="url" placeholder="' . __( 'Website', 'blockstrap' ) . '" value=""  maxlength="200" />
 </div>';
 
@@ -56,13 +62,15 @@ class BlockStrap_Comments {
 
 		$defaults['submit_field'] = '<div class="form-submit form-group">%1$s %2$s</div>';
 
+		$defaults['submit_button'] = '<input name="%1$s" type="submit" id="%2$s" class="%3$s btn btn-primary btn-lg form-control" value="%4$s" />';
+
+		$defaults['comment_notes_before'] = str_replace('comment-notes','comment-notes text-muted',$defaults['comment_notes_before']);
+
 		return $defaults;
 	}
 
 
 	public function comment_args( $fields ) {
-
-//		print_r( $fields );
 
 		return $fields;
 	}

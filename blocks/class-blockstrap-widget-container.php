@@ -26,33 +26,32 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 				array(
 					'element'          => 'innerBlocksProps',
 					'blockProps'       => array(
-//						'if_className' => 'props.attributes.styleid + " " [%WrapClass%]',
+						//                      'if_className' => 'props.attributes.styleid + " " [%WrapClass%]',
 						'if_className' => 'props.attributes.styleid + " " [%WrapClass%]',
 						'style'        => '{[%WrapStyle%]}',
-						'if_id'        => 'props.attributes.id ? props.attributes.id : props.clientId',
-//						'\'data-styleid\'' => "block-" . wp_rand(15),
-//						'if_\'data-styleid\'' => 'props.attributes.anchor ? props.attributes.anchor : props.attributes.styleid',
-//						'if_id'        => 'props.attributes.anchor ? props.attributes.anchor : "vvvv"',
-//						'if_id'        => 'props.attributes.bg',
-//						'ID'        => 'cccccccccccccc',
+						'if_id'        => 'props.attributes.anchor ? props.attributes.anchor : props.clientId',
+						//                      '\'data-styleid\'' => "block-" . wp_rand(15),
+						//                      'if_\'data-styleid\'' => 'props.attributes.anchor ? props.attributes.anchor : props.attributes.styleid',
+						//                      'if_id'        => 'props.attributes.anchor ? props.attributes.anchor : "vvvv"',
+						//                      'if_id'        => 'props.attributes.bg',
+						//                      'ID'        => 'cccccccccccccc',
 					),
 					'innerBlocksProps' => array(
 						'orientation' => 'vertical',
-//						'template'    => "
-//						[
-//							[ 'blockstrap/blockstrap-widget-row', {}, [[ 'core/paragraph', { placeholder: 'Summaryx' } ],] ],
-//
-//                        ]
-//    "
+						//                      'template'    => "
+						//                      [
+						//                          [ 'blockstrap/blockstrap-widget-row', {}, [[ 'core/paragraph', { placeholder: 'Summaryx' } ],] ],
+						//
+						//                        ]
+						//    "
 					),
 
 				),
-//				array(
-//					'element'   => 'style',
-//					//'className' => 'blockstrap-shape',
-//					'if_content'   => "build_shape_divider_css( props.attributes )",
-//				)
-
+				//              array(
+				//                  'element'   => 'style',
+				//                  //'className' => 'blockstrap-shape',
+				//                  'if_content'   => "build_shape_divider_css( props.attributes )",
+				//              )
 
 			),
 			'block-wrap'       => '',
@@ -65,7 +64,7 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 			),
 			'example'          => array(
 				'attributes' => array(
-					'after_text' => "Earth",
+					'after_text' => 'Earth',
 				),
 			),
 			'no_wrap'          => true,
@@ -92,8 +91,8 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 				),
 				'advanced' => array(
 					'groups' => array(
-						__( "Wrapper Styles", "geodirectory" ),
-						__( "Advanced", "geodirectory" )
+						__( 'Wrapper Styles', 'geodirectory' ),
+						__( 'Advanced', 'geodirectory' ),
 					),
 					'tab'    => array(
 						'title'     => __( 'Advanced', 'geodirectory' ),
@@ -102,10 +101,9 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 						'open'      => true,
 						'class'     => 'text-center flex-fill d-flex justify-content-center',
 					),
-				)
-			)
+				),
+			),
 		);
-
 
 		parent::__construct( $options );
 	}
@@ -118,7 +116,6 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 	public function set_arguments() {
 
 		$arguments = array();
-
 
 		// container class
 		$arguments['container'] = sd_get_container_class_input( 'container', array( 'default' => 'container' ) );
@@ -142,10 +139,9 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 			'value'           => '1',
 			'desc_tip'        => false,
 			'desc'            => __( 'This will show the background on the text.', 'geodirectory' ),
-			'group'           => __( "Background", "geodirectory" ),
+			'group'           => __( 'Background', 'geodirectory' ),
 			'element_require' => '[%bg%]=="custom-gradient"',
 		);
-
 
 		// text color
 		$arguments['text_color'] = sd_get_text_color_input();
@@ -154,30 +150,38 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 		$arguments['text_justify'] = sd_get_text_justify_input();
 
 		// text align
-		$arguments['text_align']    = sd_get_text_align_input( 'text_align', array(
-			'device_type'     => 'Mobile',
-			'element_require' => '[%text_justify%]==""'
-		) );
-		$arguments['text_align_md'] = sd_get_text_align_input( 'text_align', array(
-			'device_type'     => 'Tablet',
-			'element_require' => '[%text_justify%]==""'
-		) );
-		$arguments['text_align_lg'] = sd_get_text_align_input( 'text_align', array(
-			'device_type'     => 'Desktop',
-			'element_require' => '[%text_justify%]==""'
-		) );
-
-
-		// margins
-		$arguments['mt'] = sd_get_margin_input( 'mt' );
-		$arguments['mr'] = sd_get_margin_input( 'mr' );
-		$arguments['mb'] = sd_get_margin_input( 'mb', array( 'default' => 3 ) );
-		$arguments['ml'] = sd_get_margin_input( 'ml' );
+		$arguments['text_align']    = sd_get_text_align_input(
+			'text_align',
+			array(
+				'device_type'     => 'Mobile',
+				'element_require' => '[%text_justify%]==""',
+			)
+		);
+		$arguments['text_align_md'] = sd_get_text_align_input(
+			'text_align',
+			array(
+				'device_type'     => 'Tablet',
+				'element_require' => '[%text_justify%]==""',
+			)
+		);
+		$arguments['text_align_lg'] = sd_get_text_align_input(
+			'text_align',
+			array(
+				'device_type'     => 'Desktop',
+				'element_require' => '[%text_justify%]==""',
+			)
+		);
 
 		// margins mobile
 		$arguments['mt'] = sd_get_margin_input( 'mt', array( 'device_type' => 'Mobile' ) );
 		$arguments['mr'] = sd_get_margin_input( 'mr', array( 'device_type' => 'Mobile' ) );
-		$arguments['mb'] = sd_get_margin_input( 'mb', array( 'device_type' => 'Mobile' ) );
+		$arguments['mb'] = sd_get_margin_input(
+			'mb',
+			array(
+				'device_type' => 'Mobile',
+				'default'     => 3,
+			)
+		);
 		$arguments['ml'] = sd_get_margin_input( 'ml', array( 'device_type' => 'Mobile' ) );
 
 		// margins tablet
@@ -189,7 +193,13 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 		// margins desktop
 		$arguments['mt_lg'] = sd_get_margin_input( 'mt', array( 'device_type' => 'Desktop' ) );
 		$arguments['mr_lg'] = sd_get_margin_input( 'mr', array( 'device_type' => 'Desktop' ) );
-		$arguments['mb_lg'] = sd_get_margin_input( 'mb', array( 'device_type' => 'Desktop', 'default' => 3 ) );
+		$arguments['mb_lg'] = sd_get_margin_input(
+			'mb',
+			array(
+				'device_type' => 'Desktop',
+				'default'     => 3,
+			)
+		);
 		$arguments['ml_lg'] = sd_get_margin_input( 'ml', array( 'device_type' => 'Desktop' ) );
 
 		// padding
@@ -221,8 +231,8 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 		// position
 		$arguments['position'] = sd_get_position_class_input( 'position' );
 
-		$arguments['sticky_offset_top']    = sd_get_sticky_offset_input( $type = 'top' );
-		$arguments['sticky_offset_bottom'] = sd_get_sticky_offset_input( $type = 'bottom' );
+		$arguments['sticky_offset_top']    = sd_get_sticky_offset_input( 'top' );
+		$arguments['sticky_offset_bottom'] = sd_get_sticky_offset_input( 'bottom' );
 
 		$arguments['display']    = sd_get_display_input( 'd', array( 'device_type' => 'Mobile' ) );
 		$arguments['display_md'] = sd_get_display_input( 'd', array( 'device_type' => 'Tablet' ) );
@@ -248,22 +258,18 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 	 */
 	public function output( $args = array(), $widget_args = array(), $content = '' ) {
 
-//		echo '###';exit;
-
-		if(!empty($args['bg_image_use_featured'])){
+		if ( ! empty( $args['bg_image_use_featured'] ) ) {
 			global $post;
 			$featured_image = get_the_post_thumbnail_url( $post, 'full' );
-			if(!$featured_image && !empty($args['bg_image'])){
-				$featured_image = esc_url($args['bg_image']);
-			}elseif(!$featured_image){
-				!$featured_image = '';
+			if ( ! $featured_image && ! empty( $args['bg_image'] ) ) {
+				$featured_image = esc_url( $args['bg_image'] );
+			} elseif ( ! $featured_image ) {
+				$featured_image = '';
 			}
-			preg_replace('/:url\(\w+:\/\/\S*placeholder.png/', $featured_image, $content);
-//			$content = str_replace($this->get_url().'icons/placeholder.png',$featured_image,$content);
+			$content = preg_replace( '/:url\(\w+:\/\/\S*\/icons\/placeholder.png/', ':url(' . $featured_image, $content );
 		}
 
-
-		$content = str_replace( "&lt;", "<", $content );
+		$content = str_replace( '&lt;', '<', $content );
 
 		if ( empty( $content ) ) {
 			return '';
@@ -281,7 +287,10 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 }
 
 // register it.
-add_action( 'widgets_init', function () {
-	register_widget( 'BlockStrap_Widget_Container' );
-} );
+add_action(
+	'widgets_init',
+	function () {
+		register_widget( 'BlockStrap_Widget_Container' );
+	}
+);
 

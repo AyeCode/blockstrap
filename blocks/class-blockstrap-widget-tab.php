@@ -11,30 +11,27 @@ class BlockStrap_Widget_Tab extends WP_Super_Duper {
 	public function __construct() {
 
 		$options = array(
-			'textdomain'     => 'blockstrap',
-			'output_types'   => array( 'block', 'shortcode' ),
-			'nested-block'   => true,
-			'block-icon'     => 'far fa-plus-square',
-			'block-category' => 'layout',
-			'block-keywords' => "['tabs','tab','content']",
-			'block-supports' => array(
+			'textdomain'         => 'blockstrap',
+			'output_types'       => array( 'block', 'shortcode' ),
+			'nested-block'       => true,
+			'block-icon'         => 'far fa-plus-square',
+			'block-category'     => 'layout',
+			'block-keywords'     => "['tabs','tab','content']",
+			'block-supports'     => array(
 				'anchor' => 'true',
 			),
-			'block-outputx'  => array(
+			'block-outputx'      => array(
 				array(
 					'element'    => 'innerBlocksProps',
 					'blockProps' => array(
-//						'if_className' => 'props.isSelected || props.hasChildSelected ? props.attributes.styleid + " tab-pane fade show active zzz " [%WrapClass%] : props.attributes.styleid + " tab-pane fade xxx " [%WrapClass%]',
-						'if_className' => 'props.attributes.styleid + " tab-pane fade " [%WrapClass%]',
-						'style'        => '{[%WrapStyle%]}',
-						'if_id'        => 'props.attributes.id ? props.attributes.id : props.clientId',
-//						'id'        => 'zzzzzz',
-						'role'         => 'tabpanel',
-						'if_tab_name'  => 'props.attributes.text',
+						'if_className'     => 'props.attributes.styleid + " tab-pane fade " [%WrapClass%]',
+						'style'            => '{[%WrapStyle%]}',
+						'if_id'            => 'props.attributes.id ? props.attributes.id : props.clientId',
+						'role'             => 'tabpanel',
+						'if_tab_name'      => 'props.attributes.text',
 
 						'innerBlocksProps' => array(
 							'orientation' => 'vertical',
-
 
 						),
 
@@ -56,7 +53,6 @@ class BlockStrap_Widget_Tab extends WP_Super_Duper {
 										 el( 'div', wp.blockEditor.useInnerBlocksProps( {className: 'tab-content'},  {orientation: 'horizontal',inner_element: 'div' }))
 
 										), ",
-//			'block-edit-return' => "el( 'div', wp.blockEditor.useInnerBlocksProps.save( wp.blockEditor.useBlockProps.save( {className: 'tab-pane fade',} ), {inner_element: 'div',},)), ",
 			'block-wrap'         => '',
 			'class_name'         => __CLASS__,
 			'base_id'            => 'bs_tab',
@@ -67,7 +63,6 @@ class BlockStrap_Widget_Tab extends WP_Super_Duper {
 			),
 			'no_wrap'            => true,
 		);
-
 
 		parent::__construct( $options );
 	}
@@ -81,37 +76,21 @@ class BlockStrap_Widget_Tab extends WP_Super_Duper {
 
 		$arguments = array();
 
-
 		$arguments['text'] = array(
 			'type'        => 'text',
 			'title'       => __( 'Name', 'geodirectory' ),
-//			'desc' => __('Add custom link text or leave blank for dynamic', 'geodirectory'),
 			'placeholder' => __( 'Tab1', 'geodirectory' ),
 			'default'     => '',
 			'desc_tip'    => true,
-			'group'       => __( "Tab Name", "geodirectory" ),
+			'group'       => __( 'Tab Name', 'geodirectory' ),
 		);
 
 		$arguments['anchor'] = array(
 			'type'    => 'text',
 			'title'   => __( 'HTML anchor (required)', 'geodirectory' ),
-//			'desc'            => __( 'Separate multiple classes with spaces.', 'geodirectory' ),
 			'default' => '',
-			'group'   => __( "Tab Name", "geodirectory" ),
+			'group'   => __( 'Tab Name', 'geodirectory' ),
 		);
-
-		// container class
-//		$arguments['container'] = sd_get_container_class_input('container',array( 'default' => 'container' ) );
-
-//		// row-cols
-//		$arguments['row_cols']    = sd_get_row_cols_input( 'row_cols', array( 'device_type' => 'Mobile' ) );
-//		$arguments['row_cols_md'] = sd_get_row_cols_input( 'row_cols', array( 'device_type' => 'Tablet' ) );
-//		$arguments['row_cols_lg'] = sd_get_row_cols_input( 'row_cols', array( 'device_type' => 'Desktop' ) );
-//
-//		// columns
-//		$arguments['col']    = sd_get_col_input( 'col', array( 'device_type' => 'Mobile' ) );
-//		$arguments['col_md'] = sd_get_col_input( 'col', array( 'device_type' => 'Tablet' ) );
-//		$arguments['col_lg'] = sd_get_col_input( 'col', array( 'device_type' => 'Desktop' ) );
 
 		$arguments = $arguments + sd_get_background_inputs( 'bg' );
 
@@ -122,16 +101,9 @@ class BlockStrap_Widget_Tab extends WP_Super_Duper {
 			'value'           => '1',
 			'desc_tip'        => false,
 			'desc'            => __( 'This will show the background on the text.', 'geodirectory' ),
-			'group'           => __( "Background", "geodirectory" ),
+			'group'           => __( 'Background', 'geodirectory' ),
 			'element_require' => '[%bg%]=="custom-gradient"',
 		);
-
-
-		// margins
-		$arguments['mt'] = sd_get_margin_input( 'mt' );
-		$arguments['mr'] = sd_get_margin_input( 'mr' );
-		$arguments['mb'] = sd_get_margin_input( 'mb', array( 'default' => 3 ) );
-		$arguments['ml'] = sd_get_margin_input( 'ml' );
 
 		// margins mobile
 		$arguments['mt'] = sd_get_margin_input( 'mt', array( 'device_type' => 'Mobile' ) );
@@ -148,7 +120,13 @@ class BlockStrap_Widget_Tab extends WP_Super_Duper {
 		// margins desktop
 		$arguments['mt_lg'] = sd_get_margin_input( 'mt', array( 'device_type' => 'Desktop' ) );
 		$arguments['mr_lg'] = sd_get_margin_input( 'mr', array( 'device_type' => 'Desktop' ) );
-		$arguments['mb_lg'] = sd_get_margin_input( 'mb', array( 'device_type' => 'Desktop', 'default' => 3 ) );
+		$arguments['mb_lg'] = sd_get_margin_input(
+			'mb',
+			array(
+				'device_type' => 'Desktop',
+				'default'     => 3,
+			)
+		);
 		$arguments['ml_lg'] = sd_get_margin_input( 'ml', array( 'device_type' => 'Desktop' ) );
 
 		// padding
@@ -180,9 +158,8 @@ class BlockStrap_Widget_Tab extends WP_Super_Duper {
 		// position
 		$arguments['position'] = sd_get_position_class_input( 'position' );
 
-		$arguments['sticky_offset_top']    = sd_get_sticky_offset_input( $type = 'top' );
-		$arguments['sticky_offset_bottom'] = sd_get_sticky_offset_input( $type = 'bottom' );
-
+		$arguments['sticky_offset_top']    = sd_get_sticky_offset_input( 'top' );
+		$arguments['sticky_offset_bottom'] = sd_get_sticky_offset_input( 'bottom' );
 
 		$arguments['display']    = sd_get_display_input( 'd', array( 'device_type' => 'Mobile' ) );
 		$arguments['display_md'] = sd_get_display_input( 'd', array( 'device_type' => 'Tablet' ) );
@@ -195,17 +172,27 @@ class BlockStrap_Widget_Tab extends WP_Super_Duper {
 		$arguments['text_justify'] = sd_get_text_justify_input();
 
 		// text align
-		$arguments['text_align']    = sd_get_text_align_input( 'text_align', array(
-			'device_type'     => 'Mobile',
-			'element_require' => '[%text_justify%]==""'
-		) );
-		$arguments['text_align_md'] = sd_get_text_align_input( 'text_align', array( 'device_type'     => 'Tablet',
-		                                                                            'element_require' => '[%text_justify%]==""'
-		) );
-		$arguments['text_align_lg'] = sd_get_text_align_input( 'text_align', array( 'device_type'     => 'Desktop',
-		                                                                            'element_require' => '[%text_justify%]==""'
-		) );
-
+		$arguments['text_align']    = sd_get_text_align_input(
+			'text_align',
+			array(
+				'device_type'     => 'Mobile',
+				'element_require' => '[%text_justify%]==""',
+			)
+		);
+		$arguments['text_align_md'] = sd_get_text_align_input(
+			'text_align',
+			array(
+				'device_type'     => 'Tablet',
+				'element_require' => '[%text_justify%]==""',
+			)
+		);
+		$arguments['text_align_lg'] = sd_get_text_align_input(
+			'text_align',
+			array(
+				'device_type'     => 'Desktop',
+				'element_require' => '[%text_justify%]==""',
+			)
+		);
 
 		return $arguments;
 	}
@@ -242,7 +229,10 @@ class BlockStrap_Widget_Tab extends WP_Super_Duper {
 }
 
 // register it.
-add_action( 'widgets_init', function () {
-	register_widget( 'BlockStrap_Widget_Tab' );
-} );
+add_action(
+	'widgets_init',
+	function () {
+		register_widget( 'BlockStrap_Widget_Tab' );
+	}
+);
 

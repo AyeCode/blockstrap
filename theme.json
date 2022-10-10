@@ -394,16 +394,22 @@
 	],
 	"customTemplates": [
 		{
-			"name": "post-sidebar-right",
-			"title": "Two columns, right sidebar",
+			"name": "gd-archive",
+			"title": "GD Archives",
 			"postTypes": [
-				"post",
 				"gd_place"
 			]
 		},
 		{
-			"name": "archive-gd_place",
-			"title": "Place Archive",
+			"name": "gd-search",
+			"title": "GD Search Archive",
+			"postTypes": [
+				"gd_place"
+			]
+		},
+		{
+			"name": "gd-single",
+			"title": "GD Single",
 			"postTypes": [
 				"gd_place"
 			]

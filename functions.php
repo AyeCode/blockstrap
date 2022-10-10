@@ -26,16 +26,13 @@ if ( version_compare( $GLOBALS['wp_version'], '5.5', '<' ) || version_compare( P
 require_once( 'vendor/autoload.php' );
 
 // Theme support.
-require_once 'classes/class-theme-support.php';
+require_once 'classes/class-blockstrap-theme-support.php';
 
 // Filter Comments.
 require_once 'classes/class-blockstrap-comments.php';
 
-// About page.
-require_once 'classes/class-aboutpage.php';
-
 // Block Filters.
-require_once 'classes/class-block-filters.php';
+require_once 'classes/class-blockstrap-block-filters.php';
 
 // Block styles.
 require_once 'inc/block-styles.php';
@@ -48,6 +45,9 @@ require_once 'inc/header-block-patterns.php';
 
 // Footer block patterns.
 require_once 'inc/footer-block-patterns.php';
+
+// Hero block patterns.
+require_once 'inc/hero-block-patterns.php';
 
 // Page layout block patterns.
 require_once 'inc/page-layout-block-patterns.php';
@@ -76,7 +76,6 @@ require_once 'blocks/class-blockstrap-widget-counter.php';
 require_once 'blocks/class-blockstrap-widget-gallery.php';
 require_once 'blocks/class-blockstrap-widget-tabs.php';
 require_once 'blocks/class-blockstrap-widget-tab.php';
-//require_once 'blocks/post-template/index.php';
 
 //add_filter( 'register_block_type_args', 'core_image_block_type_args', 10, 3 );
 //function core_image_block_type_args( $args, $name ) {

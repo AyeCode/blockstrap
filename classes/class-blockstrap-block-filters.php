@@ -1,12 +1,10 @@
 <?php
 /**
- * Theme support
+ * Block filters to change the appearance of some core blocks.
  *
  * @package BlockStrap
  * @since 1.0.0
  */
-
-namespace BlockStrap;
 
 /**
  * Add theme support
@@ -22,12 +20,12 @@ class BlockStrap_Block_Filters {
 	 * @access public
 	 */
 	public function __construct() {
-		add_filter( 'render_block', array($this,'post_template'), 10, 2 );
+		add_filter( 'render_block', array( $this, 'post_template' ), 10, 2 );
 	}
 
-	public function post_template( $block_content, $block ){
+	public function post_template( $block_content, $block ) {
 
-		if ( $block['blockName'] === 'core/post-template' ) {
+		if ( 'core/post-template' === $block['blockName'] ) {
 			$block_content = str_replace(
 				array(
 					'wp-block-post-template',
@@ -37,7 +35,8 @@ class BlockStrap_Block_Filters {
 					'row list-unstyled row-cols-1 row-cols-sm-2  row-cols-md-3',
 					'wp-block-post col mb-4 ',
 				),
-				$block_content);
+				$block_content
+			);
 		}
 
 		return $block_content;

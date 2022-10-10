@@ -54,9 +54,9 @@ function blockstrap_customize() {
 			esc_html( PHP_VERSION )
 		),
 		'',
-		[
+		array(
 			'back_link' => true,
-		]
+		)
 	);
 }
 add_action( 'load-customize.php', 'blockstrap_customize' );
@@ -70,7 +70,7 @@ add_action( 'load-customize.php', 'blockstrap_customize' );
  * @return void
  */
 function blockstrap_preview() {
-	if ( isset( $_GET['preview'] ) ) {
+	if ( isset( $_GET['preview'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		wp_die(
 			sprintf(
 				/* translators: %1$s: WordPress version. %2$s PHP version.*/
