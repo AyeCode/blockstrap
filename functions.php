@@ -76,6 +76,7 @@ require_once 'blocks/class-blockstrap-widget-counter.php';
 require_once 'blocks/class-blockstrap-widget-gallery.php';
 require_once 'blocks/class-blockstrap-widget-tabs.php';
 require_once 'blocks/class-blockstrap-widget-tab.php';
+require_once 'blocks/class-blockstrap-widget-icon-box.php';
 
 //add_filter( 'register_block_type_args', 'core_image_block_type_args', 10, 3 );
 //function core_image_block_type_args( $args, $name ) {
