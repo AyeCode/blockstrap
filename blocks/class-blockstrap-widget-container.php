@@ -125,6 +125,7 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 		$arguments['row_cols_md'] = sd_get_row_cols_input( 'row_cols', array( 'device_type' => 'Tablet' ) );
 		$arguments['row_cols_lg'] = sd_get_row_cols_input( 'row_cols', array( 'device_type' => 'Desktop' ) );
 
+
 		// columns
 		$arguments['col']    = sd_get_col_input( 'col', array( 'device_type' => 'Mobile' ) );
 		$arguments['col_md'] = sd_get_col_input( 'col', array( 'device_type' => 'Tablet' ) );
@@ -237,6 +238,13 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 		$arguments['display']    = sd_get_display_input( 'd', array( 'device_type' => 'Mobile' ) );
 		$arguments['display_md'] = sd_get_display_input( 'd', array( 'device_type' => 'Tablet' ) );
 		$arguments['display_lg'] = sd_get_display_input( 'd', array( 'device_type' => 'Desktop' ) );
+
+		// flex align items
+		$arguments = $arguments + sd_get_flex_align_items_input_group( 'flex_align_items' );
+		$arguments = $arguments + sd_get_flex_justify_content_input_group( 'flex_justify_content' );
+		$arguments = $arguments + sd_get_flex_align_self_input_group( 'flex_align_self' );
+		$arguments = $arguments + sd_get_flex_order_input_group( 'flex_order' );
+
 
 		// advanced
 		$arguments['anchor'] = sd_get_anchor_input();

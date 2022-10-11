@@ -168,19 +168,6 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 			'element_require' => '[%type%]=="custom"',
 		);
 
-		$arguments['icon_position'] = array(
-			'type'            => 'select',
-			'title'           => __( 'Icon position', 'geodirectory' ),
-			'options'         => array(
-				'left'  => __( 'Left', 'geodirectory' ),
-				'right' => __( 'right', 'geodirectory' ),
-			),
-			'default'         => '',
-			'desc_tip'        => true,
-			'group'           => __( 'Link', 'geodirectory' ),
-			'element_require' => '[%icon_class%]!=""',
-		);
-
 		// icon styles
 		$arguments['icon_type'] = array(
 			'type'     => 'select',
@@ -252,26 +239,23 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 		$arguments['icon_text_align']    = sd_get_text_align_input(
 			'text_align',
 			array(
-				'device_type'     => 'Mobile',
-				'element_require' => '[%text_justify%]==""',
-				'group'           => __( 'Icon Style', 'geodirectory' ),
+				'device_type' => 'Mobile',
+				'group'       => __( 'Icon Style', 'geodirectory' ),
 			)
 		);
 		$arguments['icon_text_align_md'] = sd_get_text_align_input(
 			'text_align',
 			array(
-				'device_type'     => 'Tablet',
-				'element_require' => '[%text_justify%]==""',
-				'group'           => __( 'Icon Style', 'geodirectory' ),
+				'device_type' => 'Tablet',
+				'group'       => __( 'Icon Style', 'geodirectory' ),
 			)
 		);
 		$arguments['icon_text_align_lg'] = sd_get_text_align_input(
 			'text_align',
 			array(
-				'device_type'     => 'Desktop',
-				'element_require' => '[%text_justify%]==""',
-				'default'         => 'text-lg-center',
-				'group'           => __( 'Icon Style', 'geodirectory' ),
+				'device_type' => 'Desktop',
+				'default'     => 'text-lg-center',
+				'group'       => __( 'Icon Style', 'geodirectory' ),
 			)
 		);
 
@@ -498,6 +482,10 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 		// shadow
 		$arguments['shadow'] = sd_get_shadow_input( 'shadow' );
 
+		// Hover animations
+		$arguments['hover_animations'] = sd_get_hover_animations_input( 'hover_animations' );
+
+
 		$arguments['css_class'] = sd_get_class_input();
 
 		return $arguments;
@@ -564,7 +552,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 		$style  = $styles ? ' style="' . $styles . '"' : '';
 
 		return $icon_html || $title_html || $description_html ? sprintf(
-			'<%1$s class="blockstrap-iconbox %2$s" %3$s >%4$s%5$s%6$s</%1$s>',
+			'<%1$s class="blockstrap-iconbox position-relative h-100 %2$s" %3$s >%4$s%5$s%6$s</%1$s>',
 			$tag,
 			sd_sanitize_html_classes( $wrap_class ),
 			$style,
@@ -682,6 +670,56 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 				$style,
 				esc_attr( $args['title'] )
 			);
+
+			$link = '';
+			if ( 'home' === $args['type'] ) {
+				$link = get_home_url();
+			} elseif ( 'page' === $args['type'] || 'post-id' === $args['type'] ) {
+				$page_id = ! empty( $args['page_id'] ) ? absint( $args['page_id'] ) : 0;
+				$post_id = ! empty( $args['post_id'] ) ? absint( $args['post_id'] ) : 0;
+				$id      = 'page' === $args['type'] ? $page_id : $post_id;
+				if ( $id ) {
+					$page = get_post( $id );
+					if ( ! empty( $page->post_title ) ) {
+						$link = get_permalink( $id );
+					}
+				}
+			} elseif ( 'custom' === $args['type'] ) {
+				$link = ! empty( $args['custom_url'] ) ? esc_url_raw( $args['custom_url'] ) : '#';
+			} elseif ( 'gd_search' === $args['type'] ) {
+				$link = function_exists( 'geodir_search_page_base_url' ) ? geodir_search_page_base_url() : '#';
+			} elseif ( 'gd_location' === $args['type'] ) {
+				$link = function_exists( 'geodir_location_page_id' ) ? get_permalink( geodir_location_page_id() ) : '#';
+			} elseif ( substr( $args['type'], 0, 3 ) === 'gd_' ) {
+				$post_types = function_exists( 'geodir_get_posttypes' ) ? geodir_get_posttypes( 'options-plural' ) : '';
+				if ( ! empty( $post_types ) ) {
+					foreach ( $post_types as $cpt => $cpt_name ) {
+						if ( $cpt === $args['type'] ) {
+							$link = get_post_type_archive_link( $cpt );
+						}
+					}
+				}
+			} elseif ( substr( $args['type'], 0, 7 ) === 'add_gd_' ) {
+				$post_types = function_exists( 'geodir_get_posttypes' ) ? geodir_get_posttypes( 'options' ) : '';
+				if ( ! empty( $post_types ) ) {
+					foreach ( $post_types as $cpt => $cpt_name ) {
+						if ( 'add_' . $cpt === $args['type'] ) {
+							$link = function_exists( 'geodir_add_listing_page_url' ) ? geodir_add_listing_page_url( $cpt ) : '';
+						}
+					}
+				}
+			}
+
+			if ( $link ) {
+				$html = $this->is_preview() ? sprintf(
+					'<a class="blockstrap-iconbox-title-link stretched-link" >%1$s</a>',
+					$html
+				) : sprintf(
+					'<a href="%1$s" class="blockstrap-iconbox-title-link stretched-link" >%2$s</a>',
+					esc_url_raw( $link ),
+					$html
+				);
+			}
 		}
 
 		return $html;
