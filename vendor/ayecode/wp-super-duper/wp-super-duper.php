@@ -1752,11 +1752,14 @@ function sd_set_view_type($device){
  * Try to auto-recover blocks.
  */
 function sd_auto_recover_blocks() {
+	console.log('recover blocks');
 	var recursivelyRecoverInvalidBlockList = blocks => {
 		const _blocks = [...blocks]
+		// const _blocks = wp.data.select('core/block-editor').getBlocks();
 		let recoveryCalled = false
 		const recursivelyRecoverBlocks = willRecoverBlocks => {
 			willRecoverBlocks.forEach(_block => {
+				consol.log(_block);
 				if (isInvalid(_block)) {
 					recoveryCalled = true
 					const newBlock = recoverBlock(_block)
@@ -1783,6 +1786,10 @@ function sd_auto_recover_blocks() {
 	var recoverBlocks = blocks => {
 		return blocks.map(_block => {
 			const block = _block
+//
+// if ( _block.name === 'core/template-part') {
+// 	const template = wp.data.select('core/block-editor').getTemplate(_block);console.log(template )
+// }
 
 			// If the block is a reusable block, recover the Stackable blocks inside it.
 			if (_block.name === 'core/block') {
@@ -1857,7 +1864,8 @@ window.onload = function() {
 	// fire a second time incase of load delays.
 	setTimeout(function(){
 		sd_auto_recover_blocks();
-	}, 2000);
+		console.log('arb');
+	}, 5000);
 };
 
 // fire when URL changes also.
@@ -1955,6 +1963,11 @@ new MutationObserver(() => {
 				// font color
 				if( $args['text_color_custom'] !== undefined && $args['text_color_custom'] !== '' ){
 					$styles['color'] =  $args['text_color_custom'];
+				}
+
+				// font line height
+				if( $args['font_line_height'] !== undefined && $args['font_line_height'] !== '' ){
+					$styles['lineHeight'] =  $args['font_line_height'];
 				}
 
                 return $styles;

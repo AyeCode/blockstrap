@@ -271,14 +271,16 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 		$arguments = $arguments + sd_get_font_size_input_group(
 			'title_size',
 			array(
-				'group'           => __( 'Title Style', 'geodirectory' ),
-				'element_require' => '[%icon_type%]==""',
-				'default'         => 'h3',
+				'group'   => __( 'Title Style', 'geodirectory' ),
+				'default' => 'h3',
 			),
 			array(
 				'group' => __( 'Title Style', 'geodirectory' ),
 			)
 		);
+
+		// line height
+		$arguments['title_font_line_height'] = sd_get_font_line_height_input( 'font_line_height', array( 'group' => __( 'Title Style', 'geodirectory' ) ) );
 
 		// text color
 		$arguments = $arguments + sd_get_text_color_input_group(
@@ -364,6 +366,9 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 				'group' => __( 'Description Style', 'geodirectory' ),
 			)
 		);
+
+		// line height
+		$arguments['desc_font_line_height'] = sd_get_font_line_height_input( 'font_line_height', array( 'group' => __( 'Description Style', 'geodirectory' ) ) );
 
 		// text color
 		$arguments = $arguments + sd_get_text_color_input_group(
@@ -485,7 +490,6 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 		// Hover animations
 		$arguments['hover_animations'] = sd_get_hover_animations_input( 'hover_animations' );
 
-
 		$arguments['css_class'] = sd_get_class_input();
 
 		return $arguments;
@@ -558,7 +562,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 			$style,
 			$icon_html,
 			$title_html,
-			$description_html,
+			$description_html
 		) : '';
 
 	}
@@ -659,6 +663,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 				array(
 					'font_size_custom'  => 'custom' === $args['title_size'] ? $args['title_size_custom'] : '',
 					'text_color_custom' => $args['title_color_custom'],
+					'font_line_height'  => $args['title_font_line_height'],
 				)
 			);
 			$style  = $styles ? ' style="' . $styles . '"' : '';
@@ -749,6 +754,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 				array(
 					'font_size_custom'  => 'custom' === $args['desc_size'] ? $args['desc_size_custom'] : '',
 					'text_color_custom' => $args['desc_color_custom'],
+					'font_line_height'  => $args['desc_font_line_height'],
 				)
 			);
 			$style  = $styles ? ' style="' . $styles . '"' : '';
