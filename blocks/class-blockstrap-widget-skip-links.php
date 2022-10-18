@@ -1,6 +1,6 @@
 <?php
 
-class BlockStrap_Widget_Archive_Title extends WP_Super_Duper {
+class BlockStrap_Widget_Skip_Links extends WP_Super_Duper {
 
 
 	public $arguments;
@@ -13,24 +13,23 @@ class BlockStrap_Widget_Archive_Title extends WP_Super_Duper {
 		$options = array(
 			'textdomain'        => 'blockstrap',
 			'output_types'      => array( 'block', 'shortcode' ),
-			'block-icon'        => 'fas fa-heading',
+			'block-icon'        => 'fab fa-accessible-icon',
 			'block-category'    => 'layout',
-			'block-keywords'    => "['heading','title','archive']",
+			'block-keywords'    => "['skip','nav','accessibility']",
 			'block-supports'    => array(
 				'customClassName' => false,
 			),
-			'block-edit-return' => "el(props.attributes.html_tag ? props.attributes.html_tag : 'h1', wp.blockEditor.useBlockProps({
-									dangerouslySetInnerHTML: {__html: 'Archive Title' },
-									style: sd_build_aui_styles(props.attributes),
-									className: sd_build_aui_class(props.attributes),
+			'block-edit-return' => "el('div', wp.blockEditor.useBlockProps({
+									dangerouslySetInnerHTML: {__html: onChangeContent()},
+									className: 'bs-skip-links position-absolute shadow',
 								}))",
 			'block-wrap'        => '',
 			'class_name'        => __CLASS__,
-			'base_id'           => 'bs_archive_title',
-			'name'              => __( 'BS > Archive Title', 'blockstrap' ),
+			'base_id'           => 'bs_skip_links',
+			'name'              => __( 'BS > Skip Links', 'blockstrap' ),
 			'widget_ops'        => array(
-				'classname'   => 'bs-archive-title',
-				'description' => esc_html__( 'Display the archive title based on the queried object.', 'blockstrap' ),
+				'classname'   => 'bd-skip-links',
+				'description' => esc_html__( 'Skip links for accessibility users. This should be the first thing in your header and link to places such as your main content.', 'blockstrap' ),
 			),
 			'example'           => array(
 				'attributes' => array(
@@ -40,7 +39,7 @@ class BlockStrap_Widget_Archive_Title extends WP_Super_Duper {
 			'no_wrap'           => true,
 			'block_group_tabs'  => array(
 				'content'  => array(
-					'groups' => array( __( 'Title', 'blockstrap' ) ),
+					'groups' => array( __( 'Link One', 'blockstrap' ), __( 'Link Two', 'blockstrap' ), __( 'Link Three', 'blockstrap' ) ),
 					'tab'    => array(
 						'title'     => __( 'Content', 'blockstrap' ),
 						'key'       => 'bs_tab_content',
@@ -60,7 +59,10 @@ class BlockStrap_Widget_Archive_Title extends WP_Super_Duper {
 					),
 				),
 				'advanced' => array(
-					'groups' => array( __( 'Wrapper Styles', 'blockstrap' ), __( 'Advanced', 'blockstrap' ) ),
+					'groups' => array(
+						__( 'Wrapper Styles', 'blockstrap' ),
+						__( 'Advanced', 'blockstrap' ),
+					),
 					'tab'    => array(
 						'title'     => __( 'Advanced', 'blockstrap' ),
 						'key'       => 'bs_tab_advanced',
@@ -84,33 +86,65 @@ class BlockStrap_Widget_Archive_Title extends WP_Super_Duper {
 
 		$arguments = array();
 
-		$arguments['html_tag'] = array(
-			'type'     => 'select',
-			'title'    => __( 'HTML tag', 'blockstrap' ),
-			'options'  => array(
-				'h1'   => 'h1',
-				'h2'   => 'h2',
-				'h3'   => 'h3',
-				'h4'   => 'h4',
-				'h5'   => 'h5',
-				'h6'   => 'h6',
-				'span' => 'span',
-				'div'  => 'div',
-				'p'    => 'p',
-			),
-			'default'  => 'h1',
-			'desc_tip' => true,
-			'group'    => __( 'Title', 'blockstrap' ),
+		$arguments['text1'] = array(
+			'type'        => 'text',
+			'title'       => __( 'Text', 'blockstrap' ),
+			'placeholder' => __( 'Skip to main content', 'blockstrap' ),
+			'default'     => __( 'Skip to main content', 'blockstrap' ),
+			'desc_tip'    => true,
+			'group'       => __( 'Link One', 'blockstrap' ),
+		);
+
+		$arguments['hash1'] = array(
+			'type'        => 'text',
+			'title'       => __( 'Content ID', 'blockstrap' ),
+			'desc'        => __( 'Enter the ID of the content.', 'blockstrap' ),
+			'placeholder' => __( 'main', 'blockstrap' ),
+			'default'     => __( 'main', 'blockstrap' ),
+			'desc_tip'    => true,
+			'group'       => __( 'Link One', 'blockstrap' ),
+		);
+
+		$arguments['text2'] = array(
+			'type'        => 'text',
+			'title'       => __( 'Text', 'blockstrap' ),
+			'placeholder' => __( 'Skip to footer', 'blockstrap' ),
+			'default'     => '',
+			'desc_tip'    => true,
+			'group'       => __( 'Link Two', 'blockstrap' ),
+		);
+
+		$arguments['hash2'] = array(
+			'type'        => 'text',
+			'title'       => __( 'Content ID', 'blockstrap' ),
+			'desc'        => __( 'Enter the ID of the content.', 'blockstrap' ),
+			'placeholder' => __( 'footer', 'blockstrap' ),
+			'default'     => '',
+			'desc_tip'    => true,
+			'group'       => __( 'Link Two', 'blockstrap' ),
+		);
+
+		$arguments['text3'] = array(
+			'type'        => 'text',
+			'title'       => __( 'Text', 'blockstrap' ),
+			'placeholder' => __( 'Skip to', 'blockstrap' ),
+			'default'     => '',
+			'desc_tip'    => true,
+			'group'       => __( 'Link Three', 'blockstrap' ),
+		);
+
+		$arguments['hash3'] = array(
+			'type'        => 'text',
+			'title'       => __( 'Content ID', 'blockstrap' ),
+			'desc'        => __( 'Enter the ID of the content.', 'blockstrap' ),
+			'placeholder' => __( 'footer', 'blockstrap' ),
+			'default'     => '',
+			'desc_tip'    => true,
+			'group'       => __( 'Link Three', 'blockstrap' ),
 		);
 
 		// text color
-		$arguments = $arguments + sd_get_text_color_input_group();
-
-		// font size
-		$arguments = $arguments + sd_get_font_size_input_group();
-
-		// font size
-		$arguments['font_weight'] = sd_get_font_weight_input();
+		$arguments['text_color'] = sd_get_text_color_input();
 
 		// Text justify
 		$arguments['text_justify'] = sd_get_text_justify_input();
@@ -138,20 +172,6 @@ class BlockStrap_Widget_Archive_Title extends WP_Super_Duper {
 			)
 		);
 
-		// background
-		$arguments = $arguments + sd_get_background_inputs( 'bg', array( 'group' => __( 'Wrapper Styles', 'blockstrap' ) ), array( 'group' => __( 'Wrapper Styles', 'blockstrap' ) ), array( 'group' => __( 'Wrapper Styles', 'blockstrap' ) ), false );
-
-		$arguments['bg_on_text'] = array(
-			'type'            => 'checkbox',
-			'title'           => __( 'Background on text', 'blockstrap' ),
-			'default'         => '',
-			'value'           => '1',
-			'desc_tip'        => false,
-			'desc'            => __( 'This will show the background on the text.', 'blockstrap' ),
-			'group'           => __( 'Wrapper Styles', 'blockstrap' ),
-			'element_require' => '[%bg%]=="custom-gradient"',
-		);
-
 		// margins mobile
 		$arguments['mt'] = sd_get_margin_input( 'mt', array( 'device_type' => 'Mobile' ) );
 		$arguments['mr'] = sd_get_margin_input( 'mr', array( 'device_type' => 'Mobile' ) );
@@ -167,13 +187,7 @@ class BlockStrap_Widget_Archive_Title extends WP_Super_Duper {
 		// margins desktop
 		$arguments['mt_lg'] = sd_get_margin_input( 'mt', array( 'device_type' => 'Desktop' ) );
 		$arguments['mr_lg'] = sd_get_margin_input( 'mr', array( 'device_type' => 'Desktop' ) );
-		$arguments['mb_lg'] = sd_get_margin_input(
-			'mb',
-			array(
-				'device_type' => 'Desktop',
-				'default'     => 3,
-			)
-		);
+		$arguments['mb_lg'] = sd_get_margin_input( 'mb', array( 'device_type' => 'Desktop' ) );
 		$arguments['ml_lg'] = sd_get_margin_input( 'ml', array( 'device_type' => 'Desktop' ) );
 
 		// padding
@@ -202,26 +216,10 @@ class BlockStrap_Widget_Archive_Title extends WP_Super_Duper {
 		// shadow
 		$arguments['shadow'] = sd_get_shadow_input( 'shadow' );
 
-		// position
-		$arguments['position']             = sd_get_position_class_input( 'position' );
-		$arguments['sticky_offset_top']    = sd_get_sticky_offset_input( 'top' );
-		$arguments['sticky_offset_bottom'] = sd_get_sticky_offset_input( 'bottom' );
-
-		$arguments['display']    = sd_get_display_input( 'd', array( 'device_type' => 'Mobile' ) );
-		$arguments['display_md'] = sd_get_display_input( 'd', array( 'device_type' => 'Tablet' ) );
-		$arguments['display_lg'] = sd_get_display_input( 'd', array( 'device_type' => 'Desktop' ) );
-
-		$arguments['css_class'] = array(
-			'type'    => 'text',
-			'title'   => __( 'Additional CSS class(es)', 'blockstrap' ),
-			'desc'    => __( 'Separate multiple classes with spaces.', 'blockstrap' ),
-			'default' => '',
-			'group'   => __( 'Advanced', 'blockstrap' ),
-		);
+		$arguments['css_class'] = sd_get_class_input();
 
 		return $arguments;
 	}
-
 
 	/**
 	 * This is the output function for the widget, shortcode and block (front end).
@@ -234,24 +232,20 @@ class BlockStrap_Widget_Archive_Title extends WP_Super_Duper {
 	 */
 	public function output( $args = array(), $widget_args = array(), $content = '' ) {
 
-		$title = get_the_archive_title();
+		// link one
+		$link_one   = ! empty( $args['text1'] ) ? '<a href="#' . esc_attr( $args['hash1'] ) . '" class="btn btn-primary">' . esc_attr( $args['text1'] ) . '</a>' : '';
+		$link_two   = ! empty( $args['text2'] ) ? ' <a href="#' . esc_attr( $args['hash2'] ) . '" class="btn btn-primary">' . esc_attr( $args['text2'] ) . '</a>' : '';
+		$link_three = ! empty( $args['text3'] ) ? ' <a href="#' . esc_attr( $args['hash3'] ) . '" class="btn btn-primary">' . esc_attr( $args['text3'] ) . '</a>' : '';
 
-		if ( $title ) {
-			$tag     = ! empty( $args['html_tag'] ) ? esc_attr( $args['html_tag'] ) : 'h1';
-			$classes = sd_build_aui_class( $args );
-			$class   = $classes ? 'class="' . $classes . '"' : '';
-			$styles  = sd_build_aui_styles( $args );
-			$style   = $styles ? ' style="' . $styles . '"' : '';
-
-			$wrapper_attributes = $class . $style;
-
+		if ( $this->is_block_content_call() ) {
+			return $link_one . $link_two . $link_three;
 		}
 
-		return $title ? sprintf(
-			'<%1$s %2$s>%3$s</%1$s>',
-			$tag,
-			$wrapper_attributes,
-			$title
+		return $link_one || $link_two || $link_three ? sprintf(
+			'<div class="bs-skip-links position-absolute shadow" style="z-index: 10000">%1$s%2$s%3$s</div>',
+			$link_one,
+			$link_two,
+			$link_three,
 		) : '';
 
 	}
@@ -262,7 +256,7 @@ class BlockStrap_Widget_Archive_Title extends WP_Super_Duper {
 add_action(
 	'widgets_init',
 	function () {
-		register_widget( 'BlockStrap_Widget_Archive_Title' );
+		register_widget( 'BlockStrap_Widget_Skip_Links' );
 	}
 );
 

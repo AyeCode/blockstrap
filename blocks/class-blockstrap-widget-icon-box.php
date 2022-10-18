@@ -40,9 +40,9 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 			'no_wrap'           => true,
 			'block_group_tabs'  => array(
 				'content'  => array(
-					'groups' => array( __( 'Icon Box', 'geodirectory' ), __( 'Link', 'geodirectory' ) ),
+					'groups' => array( __( 'Icon Box', 'blockstrap' ), __( 'Link', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Content', 'geodirectory' ),
+						'title'     => __( 'Content', 'blockstrap' ),
 						'key'       => 'bs_tab_content',
 						'tabs_open' => true,
 						'open'      => true,
@@ -50,9 +50,9 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 					),
 				),
 				'styles'   => array(
-					'groups' => array( __( 'Icon Style', 'geodirectory' ), __( 'Title Style', 'geodirectory' ), __( 'Description Style', 'geodirectory' ) ),
+					'groups' => array( __( 'Icon Style', 'blockstrap' ), __( 'Title Style', 'blockstrap' ), __( 'Description Style', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Styles', 'geodirectory' ),
+						'title'     => __( 'Styles', 'blockstrap' ),
 						'key'       => 'bs_tab_styles',
 						'tabs_open' => true,
 						'open'      => true,
@@ -60,9 +60,9 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 					),
 				),
 				'advanced' => array(
-					'groups' => array( __( 'Wrapper Styles', 'geodirectory' ), __( 'Advanced', 'geodirectory' ) ),
+					'groups' => array( __( 'Wrapper Styles', 'blockstrap' ), __( 'Advanced', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Advanced', 'geodirectory' ),
+						'title'     => __( 'Advanced', 'blockstrap' ),
 						'key'       => 'bs_tab_advanced',
 						'tabs_open' => true,
 						'open'      => true,
@@ -86,26 +86,26 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 
 		$arguments['icon_class'] = array(
 			'type'        => 'text',
-			'title'       => __( 'Icon class', 'geodirectory' ),
-			'desc'        => __( 'Enter a font awesome icon class.', 'geodirectory' ),
-			'placeholder' => __( 'fas fa-ship', 'geodirectory' ),
+			'title'       => __( 'Icon class', 'blockstrap' ),
+			'desc'        => __( 'Enter a font awesome icon class.', 'blockstrap' ),
+			'placeholder' => __( 'fas fa-ship', 'blockstrap' ),
 			'default'     => '',
 			'desc_tip'    => true,
-			'group'       => __( 'Icon Box', 'geodirectory' ),
+			'group'       => __( 'Icon Box', 'blockstrap' ),
 		);
 
 		$arguments['title'] = array(
 			'type'        => 'text',
-			'title'       => __( 'Title', 'geodirectory' ),
-			'placeholder' => __( 'fas fa-ship', 'geodirectory' ),
-			'default'     => __( 'Title of the iconbox', 'geodirectory' ),
+			'title'       => __( 'Title', 'blockstrap' ),
+			'placeholder' => __( 'fas fa-ship', 'blockstrap' ),
+			'default'     => __( 'Title of the iconbox', 'blockstrap' ),
 			'desc_tip'    => true,
-			'group'       => __( 'Icon Box', 'geodirectory' ),
+			'group'       => __( 'Icon Box', 'blockstrap' ),
 		);
 
 		$arguments['title_tag'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Title Tag', 'geodirectory' ),
+			'title'    => __( 'Title Tag', 'blockstrap' ),
 			'options'  => array(
 				'h1'  => 'h1',
 				'h2'  => 'h2',
@@ -116,96 +116,96 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 			),
 			'default'  => 'h3',
 			'desc_tip' => true,
-			'group'    => __( 'Icon Box', 'geodirectory' ),
+			'group'    => __( 'Icon Box', 'blockstrap' ),
 		);
 
 		$arguments['description'] = array(
 			'type'     => 'textarea',
-			'title'    => __( 'Description', 'geodirectory' ),
+			'title'    => __( 'Description', 'blockstrap' ),
 			'default'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris risus magna, dignissim sit amet aliquam consequat, dignissim non ex.',
 			'desc_tip' => true,
-			'group'    => __( 'Icon Box', 'geodirectory' ),
+			'group'    => __( 'Icon Box', 'blockstrap' ),
 		);
 
 		$arguments['type'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Link Type', 'geodirectory' ),
+			'title'    => __( 'Link Type', 'blockstrap' ),
 			'options'  => $this->link_types(),
 			'default'  => 'home',
 			'desc_tip' => true,
-			'group'    => __( 'Link', 'geodirectory' ),
+			'group'    => __( 'Link', 'blockstrap' ),
 		);
 
 		$arguments['page_id'] = array(
 			'type'            => 'select',
-			'title'           => __( 'Page', 'geodirectory' ),
+			'title'           => __( 'Page', 'blockstrap' ),
 			'options'         => $this->get_pages_array(),
-			'placeholder'     => __( 'Select Page', 'geodirectory' ),
+			'placeholder'     => __( 'Select Page', 'blockstrap' ),
 			'default'         => '',
 			'desc_tip'        => true,
-			'group'           => __( 'Link', 'geodirectory' ),
+			'group'           => __( 'Link', 'blockstrap' ),
 			'element_require' => '[%type%]=="page"',
 		);
 
 		$arguments['post_id'] = array(
 			'type'            => 'number',
-			'title'           => __( 'Post ID', 'geodirectory' ),
+			'title'           => __( 'Post ID', 'blockstrap' ),
 			'placeholder'     => 123,
 			'default'         => '',
 			'desc_tip'        => true,
-			'group'           => __( 'Link', 'geodirectory' ),
+			'group'           => __( 'Link', 'blockstrap' ),
 			'element_require' => '[%type%]=="post-id"',
 		);
 
 		$arguments['custom_url'] = array(
 			'type'            => 'text',
-			'title'           => __( 'Custom URL', 'geodirectory' ),
-			'desc'            => __( 'Add custom link URL', 'geodirectory' ),
-			'placeholder'     => __( 'https://example.com', 'geodirectory' ),
+			'title'           => __( 'Custom URL', 'blockstrap' ),
+			'desc'            => __( 'Add custom link URL', 'blockstrap' ),
+			'placeholder'     => __( 'https://example.com', 'blockstrap' ),
 			'default'         => '',
 			'desc_tip'        => true,
-			'group'           => __( 'Link', 'geodirectory' ),
+			'group'           => __( 'Link', 'blockstrap' ),
 			'element_require' => '[%type%]=="custom"',
 		);
 
 		// icon styles
 		$arguments['icon_type'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Icon style', 'geodirectory' ),
+			'title'    => __( 'Icon style', 'blockstrap' ),
 			'options'  => array(
-				''             => __( 'Icon', 'geodirectory' ),
-				'iconbox'      => __( 'Iconbox bordered', 'geodirectory' ),
-				'iconbox-fill' => __( 'Iconbox filled', 'geodirectory' ),
+				''             => __( 'Icon', 'blockstrap' ),
+				'iconbox'      => __( 'Iconbox bordered', 'blockstrap' ),
+				'iconbox-fill' => __( 'Iconbox filled', 'blockstrap' ),
 			),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Icon Style', 'geodirectory' ),
+			'group'    => __( 'Icon Style', 'blockstrap' ),
 		);
 
 		$arguments['iconbox_size'] = array(
 			'type'            => 'select',
-			'title'           => __( 'Size', 'geodirectory' ),
+			'title'           => __( 'Size', 'blockstrap' ),
 			'options'         => array(
-				''       => __( 'Default', 'geodirectory' ),
-				'small'  => __( 'Small', 'geodirectory' ),
-				'medium' => __( 'Medium', 'geodirectory' ),
-				'large'  => __( 'Large', 'geodirectory' ),
+				''       => __( 'Default', 'blockstrap' ),
+				'small'  => __( 'Small', 'blockstrap' ),
+				'medium' => __( 'Medium', 'blockstrap' ),
+				'large'  => __( 'Large', 'blockstrap' ),
 			),
 			'default'         => '',
 			'desc_tip'        => true,
-			'group'           => __( 'Icon Style', 'geodirectory' ),
+			'group'           => __( 'Icon Style', 'blockstrap' ),
 			'element_require' => '[%icon_type%]!=""',
 		);
 
 		$arguments = $arguments + sd_get_font_size_input_group(
 			'icon_size',
 			array(
-				'group'           => __( 'Icon Style', 'geodirectory' ),
+				'group'           => __( 'Icon Style', 'blockstrap' ),
 				'element_require' => '[%icon_type%]==""',
 				'default'         => 'h3',
 			),
 			array(
-				'group' => __( 'Icon Style', 'geodirectory' ),
+				'group' => __( 'Icon Style', 'blockstrap' ),
 			)
 		);
 
@@ -213,25 +213,23 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 		$arguments = $arguments + sd_get_text_color_input_group(
 			'icon_color',
 			array(
-				'group' => __( 'Icon Style', 'geodirectory' ),
-			//                  'element_require' => '[%icon_type%]==""',
-			//                  'default'         => 'h3',
+				'group' => __( 'Icon Style', 'blockstrap' ),
 			),
 			array(
-				'group' => __( 'Icon Style', 'geodirectory' ),
+				'group' => __( 'Icon Style', 'blockstrap' ),
 			)
 		);
 
 		$arguments['icon_bg'] = array(
-			'title'           => __( 'Background Color', 'geodirectory' ),
+			'title'           => __( 'Background Color', 'blockstrap' ),
 			'type'            => 'select',
 			'options'         => array(
-				'' => __( 'Default (primary)', 'geodirectory' ),
+				'' => __( 'Default (primary)', 'blockstrap' ),
 			) + sd_aui_colors( true, true, true ),
 			'default'         => 'primary',
 			'desc_tip'        => true,
 			'advanced'        => false,
-			'group'           => __( 'Icon Style', 'geodirectory' ),
+			'group'           => __( 'Icon Style', 'blockstrap' ),
 			'element_require' => '[%icon_type%]=="iconbox-fill"',
 		);
 
@@ -240,14 +238,14 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 			'text_align',
 			array(
 				'device_type' => 'Mobile',
-				'group'       => __( 'Icon Style', 'geodirectory' ),
+				'group'       => __( 'Icon Style', 'blockstrap' ),
 			)
 		);
 		$arguments['icon_text_align_md'] = sd_get_text_align_input(
 			'text_align',
 			array(
 				'device_type' => 'Tablet',
-				'group'       => __( 'Icon Style', 'geodirectory' ),
+				'group'       => __( 'Icon Style', 'blockstrap' ),
 			)
 		);
 		$arguments['icon_text_align_lg'] = sd_get_text_align_input(
@@ -255,7 +253,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 			array(
 				'device_type' => 'Desktop',
 				'default'     => 'text-lg-center',
-				'group'       => __( 'Icon Style', 'geodirectory' ),
+				'group'       => __( 'Icon Style', 'blockstrap' ),
 			)
 		);
 
@@ -263,7 +261,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 		$arguments['icon_pb'] = sd_get_padding_input(
 			'pb',
 			array(
-				'group' => __( 'Icon Style', 'geodirectory' ),
+				'group' => __( 'Icon Style', 'blockstrap' ),
 			)
 		);
 
@@ -271,27 +269,25 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 		$arguments = $arguments + sd_get_font_size_input_group(
 			'title_size',
 			array(
-				'group'   => __( 'Title Style', 'geodirectory' ),
+				'group'   => __( 'Title Style', 'blockstrap' ),
 				'default' => 'h3',
 			),
 			array(
-				'group' => __( 'Title Style', 'geodirectory' ),
+				'group' => __( 'Title Style', 'blockstrap' ),
 			)
 		);
 
 		// line height
-		$arguments['title_font_line_height'] = sd_get_font_line_height_input( 'font_line_height', array( 'group' => __( 'Title Style', 'geodirectory' ) ) );
+		$arguments['title_font_line_height'] = sd_get_font_line_height_input( 'font_line_height', array( 'group' => __( 'Title Style', 'blockstrap' ) ) );
 
 		// text color
 		$arguments = $arguments + sd_get_text_color_input_group(
 			'title_color',
 			array(
-				'group' => __( 'Title Style', 'geodirectory' ),
-					//                  'element_require' => '[%icon_type%]==""',
-					//                  'default'         => 'h3',
+				'group' => __( 'Title Style', 'blockstrap' ),
 			),
 			array(
-				'group' => __( 'Title Style', 'geodirectory' ),
+				'group' => __( 'Title Style', 'blockstrap' ),
 			)
 		);
 
@@ -299,7 +295,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 		$arguments['title_font_weight'] = sd_get_font_weight_input(
 			'title_font_weight',
 			array(
-				'group' => __( 'Title Style', 'geodirectory' ),
+				'group' => __( 'Title Style', 'blockstrap' ),
 			)
 		);
 
@@ -307,7 +303,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 		$arguments['title_font_case'] = sd_get_font_case_input(
 			'title_font_case',
 			array(
-				'group' => __( 'Title Style', 'geodirectory' ),
+				'group' => __( 'Title Style', 'blockstrap' ),
 			)
 		);
 
@@ -315,7 +311,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 		$arguments['title_text_justify'] = sd_get_text_justify_input(
 			'title_jext_justify',
 			array(
-				'group' => __( 'Title Style', 'geodirectory' ),
+				'group' => __( 'Title Style', 'blockstrap' ),
 			)
 		);
 
@@ -325,7 +321,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 			array(
 				'device_type'     => 'Mobile',
 				'element_require' => '[%title_text_justify%]==""',
-				'group'           => __( 'Title Style', 'geodirectory' ),
+				'group'           => __( 'Title Style', 'blockstrap' ),
 			)
 		);
 		$arguments['title_text_align_md'] = sd_get_text_align_input(
@@ -333,7 +329,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 			array(
 				'device_type'     => 'Tablet',
 				'element_require' => '[%title_text_justify%]==""',
-				'group'           => __( 'Title Style', 'geodirectory' ),
+				'group'           => __( 'Title Style', 'blockstrap' ),
 			)
 		);
 		$arguments['title_text_align_lg'] = sd_get_text_align_input(
@@ -342,7 +338,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 				'device_type'     => 'Desktop',
 				'element_require' => '[%title_text_justify%]==""',
 				'default'         => 'text-lg-center',
-				'group'           => __( 'Title Style', 'geodirectory' ),
+				'group'           => __( 'Title Style', 'blockstrap' ),
 			)
 		);
 
@@ -350,7 +346,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 		$arguments['title_pb'] = sd_get_padding_input(
 			'pb',
 			array(
-				'group' => __( 'Title Style', 'geodirectory' ),
+				'group' => __( 'Title Style', 'blockstrap' ),
 			)
 		);
 
@@ -360,24 +356,24 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 		$arguments = $arguments + sd_get_font_size_input_group(
 			'desc_size',
 			array(
-				'group' => __( 'Description Style', 'geodirectory' ),
+				'group' => __( 'Description Style', 'blockstrap' ),
 			),
 			array(
-				'group' => __( 'Description Style', 'geodirectory' ),
+				'group' => __( 'Description Style', 'blockstrap' ),
 			)
 		);
 
 		// line height
-		$arguments['desc_font_line_height'] = sd_get_font_line_height_input( 'font_line_height', array( 'group' => __( 'Description Style', 'geodirectory' ) ) );
+		$arguments['desc_font_line_height'] = sd_get_font_line_height_input( 'font_line_height', array( 'group' => __( 'Description Style', 'blockstrap' ) ) );
 
 		// text color
 		$arguments = $arguments + sd_get_text_color_input_group(
 			'desc_color',
 			array(
-				'group' => __( 'Description Style', 'geodirectory' ),
+				'group' => __( 'Description Style', 'blockstrap' ),
 			),
 			array(
-				'group' => __( 'Description Style', 'geodirectory' ),
+				'group' => __( 'Description Style', 'blockstrap' ),
 			)
 		);
 
@@ -385,7 +381,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 		$arguments['desc_font_weight'] = sd_get_font_weight_input(
 			'desc_font_weight',
 			array(
-				'group' => __( 'Description Style', 'geodirectory' ),
+				'group' => __( 'Description Style', 'blockstrap' ),
 			)
 		);
 
@@ -393,7 +389,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 		$arguments['desc_font_case'] = sd_get_font_case_input(
 			'desc_font_case',
 			array(
-				'group' => __( 'Description Style', 'geodirectory' ),
+				'group' => __( 'Description Style', 'blockstrap' ),
 			)
 		);
 
@@ -401,7 +397,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 		$arguments['desc_text_justify'] = sd_get_text_justify_input(
 			'desc_jext_justify',
 			array(
-				'group' => __( 'Description Style', 'geodirectory' ),
+				'group' => __( 'Description Style', 'blockstrap' ),
 			)
 		);
 
@@ -411,7 +407,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 			array(
 				'device_type'     => 'Mobile',
 				'element_require' => '[%desc_text_justify%]==""',
-				'group'           => __( 'Description Style', 'geodirectory' ),
+				'group'           => __( 'Description Style', 'blockstrap' ),
 			)
 		);
 		$arguments['desc_text_align_md'] = sd_get_text_align_input(
@@ -419,7 +415,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 			array(
 				'device_type'     => 'Tablet',
 				'element_require' => '[%desc_text_justify%]==""',
-				'group'           => __( 'Description Style', 'geodirectory' ),
+				'group'           => __( 'Description Style', 'blockstrap' ),
 			)
 		);
 		$arguments['desc_text_align_lg'] = sd_get_text_align_input(
@@ -428,7 +424,7 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 				'device_type'     => 'Desktop',
 				'element_require' => '[%desc_text_justify%]==""',
 				'default'         => 'text-lg-center',
-				'group'           => __( 'Description Style', 'geodirectory' ),
+				'group'           => __( 'Description Style', 'blockstrap' ),
 			)
 		);
 
@@ -436,12 +432,12 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 		$arguments['desc_pb'] = sd_get_padding_input(
 			'pb',
 			array(
-				'group' => __( 'Description Style', 'geodirectory' ),
+				'group' => __( 'Description Style', 'blockstrap' ),
 			)
 		);
 
 		// background
-		$arguments = $arguments + sd_get_background_inputs( 'bg', array( 'group' => __( 'Wrapper Styles', 'geodirectory' ) ), array( 'group' => __( 'Wrapper Styles', 'geodirectory' ) ), array( 'group' => __( 'Wrapper Styles', 'geodirectory' ) ), array( 'group' => __( 'Wrapper Styles', 'geodirectory' ) ) );
+		$arguments = $arguments + sd_get_background_inputs( 'bg', array( 'group' => __( 'Wrapper Styles', 'blockstrap' ) ), array( 'group' => __( 'Wrapper Styles', 'blockstrap' ) ), array( 'group' => __( 'Wrapper Styles', 'blockstrap' ) ), array( 'group' => __( 'Wrapper Styles', 'blockstrap' ) ) );
 
 		// margins mobile
 		$arguments['mt'] = sd_get_margin_input( 'mt', array( 'device_type' => 'Mobile' ) );
@@ -497,15 +493,15 @@ class BlockStrap_Widget_Icon_Box extends WP_Super_Duper {
 
 	public function link_types() {
 		$links = array(
-			'home'    => __( 'Home', 'geodirectory' ),
-			'none'    => __( 'None (non link)', 'geodirectory' ),
-			'page'    => __( 'Page', 'geodirectory' ),
-			'post-id' => __( 'Post ID', 'geodirectory' ),
-			'custom'  => __( 'Custom URL', 'geodirectory' ),
+			'home'    => __( 'Home', 'blockstrap' ),
+			'none'    => __( 'None (non link)', 'blockstrap' ),
+			'page'    => __( 'Page', 'blockstrap' ),
+			'post-id' => __( 'Post ID', 'blockstrap' ),
+			'custom'  => __( 'Custom URL', 'blockstrap' ),
 		);
 
 		if ( defined( 'GEODIRECTORY_VERSION' ) ) {
-			$post_types           = geodir_get_posttypes( 'options-plural' );
+			$post_types           = function_exists( 'geodir_get_posttypes' ) ? geodir_get_posttypes( 'options-plural' ) : '';
 			$links['gd_search']   = __( 'GD Search', 'blockstrap' );
 			$links['gd_location'] = __( 'GD Location', 'blockstrap' );
 			foreach ( $post_types as $cpt => $cpt_name ) {

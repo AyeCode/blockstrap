@@ -60,9 +60,9 @@ class BlockStrap_Widget_Shape_Divider extends WP_Super_Duper {
 
 		$arguments['styleid'] = array(
 			'type'     => 'hidden',
-			'title'    => __( 'Style ID', 'geodirectory' ),
+			'title'    => __( 'Style ID', 'blockstrap' ),
 			'desc_tip' => true,
-			'group'    => __( 'Shape Divider', 'geodirectory' ),
+			'group'    => __( 'Shape Divider', 'blockstrap' ),
 		);
 
 		return $arguments;
@@ -220,7 +220,6 @@ class BlockStrap_Widget_Shape_Divider extends WP_Super_Duper {
 				return $svg;
 			}
 		<?php
-		//      return str_replace("\n"," ",ob_get_clean()) ;
 		return ob_get_clean();
 	}
 

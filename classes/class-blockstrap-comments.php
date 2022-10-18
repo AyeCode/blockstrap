@@ -64,7 +64,7 @@ class BlockStrap_Comments {
 
 		$defaults['submit_button'] = '<input name="%1$s" type="submit" id="%2$s" class="%3$s btn btn-primary btn-lg form-control" value="%4$s" />';
 
-		$defaults['comment_notes_before'] = str_replace('comment-notes','comment-notes text-muted',$defaults['comment_notes_before']);
+		$defaults['comment_notes_before'] = str_replace( 'comment-notes', 'comment-notes text-muted', $defaults['comment_notes_before'] );
 
 		return $defaults;
 	}

@@ -18,13 +18,12 @@ class BlockStrap_Widget_Nav extends WP_Super_Duper {
 			'textdomain'     => 'blockstrap',
 			'output_types'   => array( 'block', 'shortcode' ),
 			'nested-block'   => true,
-			'block-icon'     => 'far fa-square',
+			'block-icon'     => 'fas fa-ellipsis-h',
 			'block-category' => 'layout',
 			'block-keywords' => "['menu','navigation','nav']",
 			'block-output'   => array(
 				array(
 					'element'         => 'button',
-					//'content' => '[%text%]',
 					'className'       => 'navbar-toggler',
 					'type'            => 'button',
 					'"data-toggle"'   => 'collapse',
@@ -47,7 +46,6 @@ class BlockStrap_Widget_Nav extends WP_Super_Duper {
 						'element'          => 'innerBlocksProps',
 						'inner_element'    => 'ul',
 						'blockProps'       => array(
-							//'className' => 'navbar-nav [%WrapClass%]',
 							'if_className' => '[%inside_navbar%]=="1" ? "navbar-nav [%WrapClass%]" : "nav [%WrapClass%]"',
 						),
 						'innerBlocksProps' => array(
@@ -63,7 +61,7 @@ class BlockStrap_Widget_Nav extends WP_Super_Duper {
 			'name'           => __( 'BS > Nav', 'blockstrap' ),
 			'widget_ops'     => array(
 				'classname'   => 'bd-nav',
-				'description' => esc_html__( 'A container for content', 'blockstrap' ),
+				'description' => esc_html__( 'Navigation items container.', 'blockstrap' ),
 			),
 			'example'        => array(
 				'attributes' => array(
@@ -88,55 +86,55 @@ class BlockStrap_Widget_Nav extends WP_Super_Duper {
 		//
 		$arguments['inside_navbar'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Usage', 'geodirectory' ),
+			'title'    => __( 'Usage', 'blockstrap' ),
 			'options'  => array(
-				'1' => __( 'Inside Navbar (collapse on mobile)', 'geodirectory' ),
-				'0' => __( 'Standalone (never collapse)', 'geodirectory' ),
+				'1' => __( 'Inside Navbar (collapse on mobile)', 'blockstrap' ),
+				'0' => __( 'Standalone (never collapse)', 'blockstrap' ),
 			),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Nav Styles', 'geodirectory' ),
+			'group'    => __( 'Nav Styles', 'blockstrap' ),
 		);
 
 		// flex direction
 		$arguments['flex_direction'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Horizontal / Vertical', 'geodirectory' ),
+			'title'    => __( 'Horizontal / Vertical', 'blockstrap' ),
 			'options'  => array(
-				''            => __( 'Horizontal', 'geodirectory' ),
-				'flex-column' => __( 'Vertical', 'geodirectory' ),
+				''            => __( 'Horizontal', 'blockstrap' ),
+				'flex-column' => __( 'Vertical', 'blockstrap' ),
 			),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Nav Styles', 'geodirectory' ),
+			'group'    => __( 'Nav Styles', 'blockstrap' ),
 		);
 
 		// Nav style
 		$arguments['nav_style'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Nav style', 'geodirectory' ),
+			'title'    => __( 'Nav style', 'blockstrap' ),
 			'options'  => array(
-				''          => __( 'Default', 'geodirectory' ),
-				'nav-tabs'  => __( 'Tabs', 'geodirectory' ),
-				'nav-pills' => __( 'Pills', 'geodirectory' ),
+				''          => __( 'Default', 'blockstrap' ),
+				'nav-tabs'  => __( 'Tabs', 'blockstrap' ),
+				'nav-pills' => __( 'Pills', 'blockstrap' ),
 			),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Nav Styles', 'geodirectory' ),
+			'group'    => __( 'Nav Styles', 'blockstrap' ),
 		);
 
 		// fill / justify
 		$arguments['nav_fill'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Fill / Justify', 'geodirectory' ),
+			'title'    => __( 'Fill / Justify', 'blockstrap' ),
 			'options'  => array(
-				''              => __( 'No', 'geodirectory' ),
-				'nav-fill'      => __( 'Justify', 'geodirectory' ),
-				'nav-justified' => __( 'Justify equal width', 'geodirectory' ),
+				''              => __( 'No', 'blockstrap' ),
+				'nav-fill'      => __( 'Justify', 'blockstrap' ),
+				'nav-justified' => __( 'Justify equal width', 'blockstrap' ),
 			),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Nav Styles', 'geodirectory' ),
+			'group'    => __( 'Nav Styles', 'blockstrap' ),
 		);
 
 		// background
@@ -212,10 +210,10 @@ class BlockStrap_Widget_Nav extends WP_Super_Duper {
 
 		$arguments['width'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Width', 'geodirectory' ),
+			'title'    => __( 'Width', 'blockstrap' ),
 			'options'  => array(
-				''       => __( 'Default', 'geodirectory' ),
-				'w-auto' => __( 'Auto', 'geodirectory' ),
+				''       => __( 'Default', 'blockstrap' ),
+				'w-auto' => __( 'Auto', 'blockstrap' ),
 				'w-25'   => '25%',
 				'w-50'   => '50%',
 				'w-75'   => '75%',
@@ -223,11 +221,8 @@ class BlockStrap_Widget_Nav extends WP_Super_Duper {
 			),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Wrapper Styles', 'geodirectory' ),
+			'group'    => __( 'Wrapper Styles', 'blockstrap' ),
 		);
-
-		// text color
-		//      $arguments['text_color'] = sd_get_text_color_input();
 
 		// Text justify
 		$arguments['text_justify'] = sd_get_text_justify_input();

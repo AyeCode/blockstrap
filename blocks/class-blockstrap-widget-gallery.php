@@ -40,9 +40,9 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 			'no_wrap'                    => true,
 			'block_group_tabs'           => array(
 				'content'  => array(
-					'groups' => array( __( 'Image', 'geodirectory' ), __( 'Captions', 'geodirectory' ) ),
+					'groups' => array( __( 'Image', 'blockstrap' ), __( 'Captions', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Content', 'geodirectory' ),
+						'title'     => __( 'Content', 'blockstrap' ),
 						'key'       => 'bs_tab_content',
 						'tabs_open' => true,
 						'open'      => true,
@@ -51,12 +51,12 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 				),
 				'styles'   => array(
 					'groups' => array(
-						__( 'Gallery Styles', 'geodirectory' ),
-						__( 'Image Styles', 'geodirectory' ),
-						__( 'Typography', 'geodirectory' ),
+						__( 'Gallery Styles', 'blockstrap' ),
+						__( 'Image Styles', 'blockstrap' ),
+						__( 'Typography', 'blockstrap' ),
 					),
 					'tab'    => array(
-						'title'     => __( 'Styles', 'geodirectory' ),
+						'title'     => __( 'Styles', 'blockstrap' ),
 						'key'       => 'bs_tab_styles',
 						'tabs_open' => true,
 						'open'      => true,
@@ -64,9 +64,9 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 					),
 				),
 				'advanced' => array(
-					'groups' => array( __( 'Wrapper Styles', 'geodirectory' ), __( 'Advanced', 'geodirectory' ) ),
+					'groups' => array( __( 'Wrapper Styles', 'blockstrap' ), __( 'Advanced', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Advanced', 'geodirectory' ),
+						'title'     => __( 'Advanced', 'blockstrap' ),
 						'key'       => 'bs_tab_advanced',
 						'tabs_open' => true,
 						'open'      => true,
@@ -90,11 +90,11 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 
 		$arguments['images'] = array(
 			'type'        => 'images',
-			'title'       => __( 'Custom image', 'geodirectory' ),
+			'title'       => __( 'Custom image', 'blockstrap' ),
 			'placeholder' => '',
 			'default'     => '',
 			'desc_tip'    => true,
-			'group'       => __( 'Image', 'geodirectory' ),
+			'group'       => __( 'Image', 'blockstrap' ),
 		//          'element_require' => '[%img_src%]=="upload"'
 		);
 
@@ -102,51 +102,51 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 
 		$arguments['img_size'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Image size', 'geodirectory' ),
+			'title'    => __( 'Image size', 'blockstrap' ),
 			'options'  => array( '' => 'Select image size' ) + array_combine( $image_sizes, $image_sizes ) + array( 'full' => 'full' ),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Image', 'geodirectory' ),
+			'group'    => __( 'Image', 'blockstrap' ),
 		);
 
 		$arguments['lightbox_size'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Lightbox', 'geodirectory' ),
+			'title'    => __( 'Lightbox', 'blockstrap' ),
 			'options'  => array( '' => 'No' ) + array_combine( $image_sizes, $image_sizes ) + array( 'full' => 'full' ),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Image', 'geodirectory' ),
+			'group'    => __( 'Image', 'blockstrap' ),
 		);
 
 		$arguments['caption_show'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Caption', 'geodirectory' ),
+			'title'    => __( 'Caption', 'blockstrap' ),
 			'options'  => array(
-				''           => __( 'Hide', 'geodirectory' ),
-				'show'       => __( 'Show always', 'geodirectory' ),
-				'hover_show' => __( 'Show on hover', 'geodirectory' ),
+				''           => __( 'Hide', 'blockstrap' ),
+				'show'       => __( 'Show always', 'blockstrap' ),
+				'hover_show' => __( 'Show on hover', 'blockstrap' ),
 			),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Captions', 'geodirectory' ),
+			'group'    => __( 'Captions', 'blockstrap' ),
 		);
 
 		//$arguments = $arguments + sd_get_background_inputs('bg');
 
 		$arguments['gallery_style'] = array(
-			'title'                 => __( 'Gallery style', 'geodirectory' ),
-			//          'desc' => __('For a more consistent image view you can set the aspect ratio of the image view port.', 'geodirectory'),
+			'title'                 => __( 'Gallery style', 'blockstrap' ),
+			//          'desc' => __('For a more consistent image view you can set the aspect ratio of the image view port.', 'blockstrap'),
 							'type'  => 'select',
 			'options'               => array(
-				'grid'  => __( 'Grid (defaut)', 'geodirectory' ),
-				'1-2-5' => __( '1-2-5 Grid', 'geodirectory' ),
-				'1-2-2' => __( '1-2-2 Grid', 'geodirectory' ),
+				'grid'  => __( 'Grid (defaut)', 'blockstrap' ),
+				'1-2-5' => __( '1-2-5 Grid', 'blockstrap' ),
+				'1-2-2' => __( '1-2-2 Grid', 'blockstrap' ),
 			),
 			'desc_tip'              => true,
 			'value'                 => '',
 			'default'               => 'grid',
 			//          'advanced' => true,
-							'group' => __( 'Gallery Styles', 'geodirectory' ),
+							'group' => __( 'Gallery Styles', 'blockstrap' ),
 		);
 
 		// row-cols
@@ -154,70 +154,70 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 			'row_cols',
 			array(
 				'device_type'     => 'Mobile',
-				'group'           => __( 'Gallery Styles', 'geodirectory' ),
+				'group'           => __( 'Gallery Styles', 'blockstrap' ),
 				'element_require' => '',
-				'title'           => __( 'Images per row', 'geodirectory' ),
+				'title'           => __( 'Images per row', 'blockstrap' ),
 			)
 		);
 		$arguments['row_cols_md'] = sd_get_row_cols_input(
 			'row_cols',
 			array(
 				'device_type'     => 'Tablet',
-				'group'           => __( 'Gallery Styles', 'geodirectory' ),
+				'group'           => __( 'Gallery Styles', 'blockstrap' ),
 				'element_require' => '',
-				'title'           => __( 'Images per row', 'geodirectory' ),
+				'title'           => __( 'Images per row', 'blockstrap' ),
 			)
 		);
 		$arguments['row_cols_lg'] = sd_get_row_cols_input(
 			'row_cols',
 			array(
 				'device_type'     => 'Desktop',
-				'group'           => __( 'Gallery Styles', 'geodirectory' ),
+				'group'           => __( 'Gallery Styles', 'blockstrap' ),
 				'element_require' => '',
-				'title'           => __( 'Images per row', 'geodirectory' ),
+				'title'           => __( 'Images per row', 'blockstrap' ),
 			)
 		);
 
 		$arguments['img_aspect'] = array(
-			'title'                 => __( 'Aspect ratio', 'geodirectory' ),
-			'desc'                  => __( 'For a more consistent image view you can set the aspect ratio of the image view port.', 'geodirectory' ),
+			'title'                 => __( 'Aspect ratio', 'blockstrap' ),
+			'desc'                  => __( 'For a more consistent image view you can set the aspect ratio of the image view port.', 'blockstrap' ),
 			'type'                  => 'select',
 			'options'               => array(
-				'16by9' => __( 'Default (16by9)', 'geodirectory' ),
-				'21by9' => __( '21by9', 'geodirectory' ),
-				'4by3'  => __( '4by3', 'geodirectory' ),
-				'1by1'  => __( '1by1 (square)', 'geodirectory' ),
-				''      => __( 'No ratio (natural)', 'geodirectory' ),
+				'16by9' => __( 'Default (16by9)', 'blockstrap' ),
+				'21by9' => __( '21by9', 'blockstrap' ),
+				'4by3'  => __( '4by3', 'blockstrap' ),
+				'1by1'  => __( '1by1 (square)', 'blockstrap' ),
+				''      => __( 'No ratio (natural)', 'blockstrap' ),
 			),
 			'desc_tip'              => true,
 			'value'                 => '',
 			'default'               => '16by9',
 			//          'advanced' => true,
-							'group' => __( 'Gallery Styles', 'geodirectory' ),
+							'group' => __( 'Gallery Styles', 'blockstrap' ),
 		);
 
 		$arguments['img_cover'] = array(
-			'title'                 => __( 'Image cover type', 'geodirectory' ),
-			'desc'                  => __( 'This is how the image should cover the image viewport.', 'geodirectory' ),
+			'title'                 => __( 'Image cover type', 'blockstrap' ),
+			'desc'                  => __( 'This is how the image should cover the image viewport.', 'blockstrap' ),
 			'type'                  => 'select',
 			'options'               => array(
-				''  => __( 'Default (cover both)', 'geodirectory' ),
-				'x' => __( 'Width cover', 'geodirectory' ),
-				'y' => __( 'height cover', 'geodirectory' ),
-				'n' => __( 'No cover (contain)', 'geodirectory' ),
+				''  => __( 'Default (cover both)', 'blockstrap' ),
+				'x' => __( 'Width cover', 'blockstrap' ),
+				'y' => __( 'height cover', 'blockstrap' ),
+				'n' => __( 'No cover (contain)', 'blockstrap' ),
 			),
 			'desc_tip'              => true,
 			'value'                 => '',
 			'default'               => '',
 			//          'advanced' => true,
-							'group' => __( 'Gallery Styles', 'geodirectory' ),
+							'group' => __( 'Gallery Styles', 'blockstrap' ),
 		);
 
 		$arguments['row_gap_x'] = array(
-			'title'    => __( 'Row gap X', 'geodirectory' ),
+			'title'    => __( 'Row gap X', 'blockstrap' ),
 			'type'     => 'select',
 			'options'  => array(
-				''  => __( 'Default', 'geodirectory' ),
+				''  => __( 'Default', 'blockstrap' ),
 				'1' => '1',
 				'2' => '2',
 				'3' => '3',
@@ -227,13 +227,13 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 			'desc_tip' => true,
 			'value'    => '',
 			'default'  => '',
-			'group'    => __( 'Gallery Styles', 'geodirectory' ),
+			'group'    => __( 'Gallery Styles', 'blockstrap' ),
 		);
 		$arguments['row_gap_y'] = array(
-			'title'    => __( 'Row gap Y', 'geodirectory' ),
+			'title'    => __( 'Row gap Y', 'blockstrap' ),
 			'type'     => 'select',
 			'options'  => array(
-				''  => __( 'Default', 'geodirectory' ),
+				''  => __( 'Default', 'blockstrap' ),
 				'1' => '1',
 				'2' => '2',
 				'3' => '3',
@@ -243,16 +243,16 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 			'desc_tip' => true,
 			'value'    => '',
 			'default'  => '',
-			'group'    => __( 'Gallery Styles', 'geodirectory' ),
+			'group'    => __( 'Gallery Styles', 'blockstrap' ),
 		);
 
 		// border
-		$arguments['img_border']       = sd_get_border_input( 'border', array( 'group' => __( 'Image Styles', 'geodirectory' ) ) );
-		$arguments['img_rounded']      = sd_get_border_input( 'rounded', array( 'group' => __( 'Image Styles', 'geodirectory' ) ) );
-		$arguments['img_rounded_size'] = sd_get_border_input( 'rounded_size', array( 'group' => __( 'Image Styles', 'geodirectory' ) ) );
+		$arguments['img_border']       = sd_get_border_input( 'border', array( 'group' => __( 'Image Styles', 'blockstrap' ) ) );
+		$arguments['img_rounded']      = sd_get_border_input( 'rounded', array( 'group' => __( 'Image Styles', 'blockstrap' ) ) );
+		$arguments['img_rounded_size'] = sd_get_border_input( 'rounded_size', array( 'group' => __( 'Image Styles', 'blockstrap' ) ) );
 
 		// shadow
-		$arguments['img_shadow'] = sd_get_shadow_input( 'shadow', array( 'group' => __( 'Image Styles', 'geodirectory' ) ) );
+		$arguments['img_shadow'] = sd_get_shadow_input( 'shadow', array( 'group' => __( 'Image Styles', 'blockstrap' ) ) );
 
 		// Typography
 		// text color
@@ -290,17 +290,14 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 			)
 		);
 
-		// background
-		//      $arguments = $arguments + sd_get_background_inputs('bg', array('group' => __("Wrapper Styles","geodirectory")),array('group' => __("Wrapper Styles","geodirectory")),array('group' => __("Wrapper Styles","geodirectory")),array('group' => __("Wrapper Styles","geodirectory")) );
-
 		$arguments['bg_on_text'] = array(
 			'type'            => 'checkbox',
-			'title'           => __( 'Background on text', 'geodirectory' ),
+			'title'           => __( 'Background on text', 'blockstrap' ),
 			'default'         => '',
 			'value'           => '1',
 			'desc_tip'        => false,
-			'desc'            => __( 'This will show the background on the text.', 'geodirectory' ),
-			'group'           => __( 'Wrapper Styles', 'geodirectory' ),
+			'desc'            => __( 'This will show the background on the text.', 'blockstrap' ),
+			'group'           => __( 'Wrapper Styles', 'blockstrap' ),
 			'element_require' => '[%bg%]=="custom-gradient"',
 		);
 
@@ -372,10 +369,10 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 
 		$arguments['css_class'] = array(
 			'type'    => 'text',
-			'title'   => __( 'Additional CSS class(es)', 'geodirectory' ),
-			'desc'    => __( 'Separate multiple classes with spaces.', 'geodirectory' ),
+			'title'   => __( 'Additional CSS class(es)', 'blockstrap' ),
+			'desc'    => __( 'Separate multiple classes with spaces.', 'blockstrap' ),
 			'default' => '',
-			'group'   => __( 'Advanced', 'geodirectory' ),
+			'group'   => __( 'Advanced', 'blockstrap' ),
 		);
 
 		return $arguments;
@@ -410,12 +407,12 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 		$lightbox_size = $args['lightbox_size'] ? esc_attr( $args['lightbox_size'] ) : 'full';
 		$image_src     = '';
 		$image_size    = ! empty( $args['img_size'] ) ? esc_attr( $args['img_size'] ) : 'full';
-		$image       = '';
-		$image_class = 'mw-100 w-100 embed-responsive-item';
-		$image_class .= ! empty( $args['img_border'] ) ? ' border border-' . esc_attr( $args['img_border'] ) : '';
-		$image_class .= ! empty( $args['img_rounded'] ) ? ' ' . esc_attr( $args['img_rounded'] ) : '';
-		$image_class .= ! empty( $args['img_rounded_size'] ) ? ' rounded-' . esc_attr( $args['img_rounded_size'] ) : '';
-		$image_class .= ! empty( $args['img_shadow'] ) ? ' ' . esc_attr( $args['img_shadow'] ) : '';
+		$image         = '';
+		$image_class   = 'mw-100 w-100 embed-responsive-item';
+		$image_class  .= ! empty( $args['img_border'] ) ? ' border border-' . esc_attr( $args['img_border'] ) : '';
+		$image_class  .= ! empty( $args['img_rounded'] ) ? ' ' . esc_attr( $args['img_rounded'] ) : '';
+		$image_class  .= ! empty( $args['img_rounded_size'] ) ? ' rounded-' . esc_attr( $args['img_rounded_size'] ) : '';
+		$image_class  .= ! empty( $args['img_shadow'] ) ? ' ' . esc_attr( $args['img_shadow'] ) : '';
 
 		// img_cover.
 		if ( ! empty( $args['img_cover'] ) ) {
@@ -487,50 +484,52 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 		}
 
 		// maybe wrap
-		if ( ! empty( $cols ) && ! empty( $args['gallery_style'] ) && $args['gallery_style'] != 'grid' ) {
+		if ( ! empty( $cols ) && ! empty( $args['gallery_style'] ) && 'grid' !== $args['gallery_style'] ) {
 			$i       = 0;
 			$i_count = count( $cols );
 			foreach ( $cols as $key => $col ) {
 				$i ++;
 
-				if ( $args['gallery_style'] == '1-2-2' ) {
+				if ( '1-2-2' === $args['gallery_style'] ) {
 
 					// grid
-					if ( $i === 1 ) {
+					if ( 1 === $i ) {
 						$col          = str_replace( '<figure ', '<figure style="height: 100.6%" ', $col );
 						$cols[ $key ] = sprintf(
 							'<div class="col-12 col-md-6 p-0 m-0"><div class="row row-cols-1 p-0 m-0">%1$s</div></div>',
 							$col
 						);
-					} elseif ( $i === 2 ) {
+					} elseif ( 2 === $i ) {
 						$cols[ $key ] = '<div class="col-12 col-md-6 p-0 m-0"><div class="row row-cols-2 p-0 m-0">' . $col;
-					} elseif ( $i === 5 ) {
-						$more         = absint( $i_count - 5 );
+					} elseif ( 5 === $i ) {
+						$more = absint( $i_count - 5 );
+						/* translators: number of photos */
 						$more_text    = sprintf( _n( '+%s photo', '+%s photos', $more, 'blockstrap' ), $more );
 						$col          = $more ? str_replace( '</a>', '<button class="btn btn-sm btn-white position-absolute shadow border-dark" style="bottom: 15px; right: 20px;">' . esc_attr( $more_text ) . '</button></a>', $col ) . '</div></div>' : $col . '</div></div>';
 						$cols[ $key ] = $col;
 					} elseif ( $i >= 6 ) {
 						$cols[ $key ] = str_replace( 'class="', 'class="d-none ', $col );
 					}
-				} elseif ( $args['gallery_style'] == '1-2-5' ) {
+				} elseif ( '1-2-5' === $args['gallery_style'] ) {
 
 					// grid
-					if ( $i === 1 ) {
+					if ( 1 === $i ) {
 						$col          = str_replace( '<figure ', '<figure style="height: 100.3%" ', $col );
 						$cols[ $key ] = sprintf(
 							'<div class="col-12 col-md-8 p-0 m-0"><div class="row row-cols-1 p-0 m-0">%1$s</div></div>',
 							$col
 						);
-					} elseif ( $i === 2 ) {
+					} elseif ( 2 === $i ) {
 						$cols[ $key ] = '<div class="col-12 col-md-4 p-0 m-0"><div class="row row-cols-1 p-0 m-0">' . $col;
-					} elseif ( $i === 3 ) {
+					} elseif ( 3 === $i ) {
 						$cols[ $key ] .= '</div></div>';
-					} elseif ( $i == 4 ) {
+					} elseif ( 4 === $i ) {
 						$cols[ $key ] = '<div class="col-12 p-0 m-0"><div class="row row-cols-5 p-0 m-0">' . $col;
 					} elseif ( $i === $i_count ) {
 						$cols[ $key ] = '</div></div>';
-					} elseif ( $i == 8 ) {
-						$more         = absint( $i_count - 9 );
+					} elseif ( 8 === $i ) {
+						$more = absint( $i_count - 9 );
+						/* translators: number of photos */
 						$more_text    = sprintf( _n( '+%s photo', '+%s photos', $more, 'blockstrap' ), $more );
 						$col          = $more ? str_replace( '</a>', '<button class="btn btn-sm btn-white position-absolute shadow border-dark" style="bottom: 15px; right: 20px;">' . esc_attr( $more_text ) . '</button></a>', $col ) : $col . '</div></div>';
 						$cols[ $key ] = $col;

@@ -13,7 +13,7 @@ class BlockStrap_Widget_Nav_Item extends WP_Super_Duper {
 		$options = array(
 			'textdomain'        => 'blockstrap',
 			'output_types'      => array( 'block', 'shortcode' ),
-			'block-icon'        => 'far fa-square',
+			'block-icon'        => 'fas fa-link',
 			'block-category'    => 'layout',
 			'block-keywords'    => "['menu','nav','item']",
 			'block-label'       => "attributes.text ? '" . __( 'BS > Nav', 'blockstrap' ) . " ('+ attributes.text+')' : ''",
@@ -30,7 +30,7 @@ class BlockStrap_Widget_Nav_Item extends WP_Super_Duper {
 			'name'              => __( 'BS > Nav Item', 'blockstrap' ),
 			'widget_ops'        => array(
 				'classname'   => 'bd-nav-item',
-				'description' => esc_html__( 'A container for content', 'blockstrap' ),
+				'description' => esc_html__( 'A navigation item for the navbar.', 'blockstrap' ),
 			),
 			'example'           => array(
 				'attributes' => array(
@@ -40,9 +40,9 @@ class BlockStrap_Widget_Nav_Item extends WP_Super_Duper {
 			'no_wrap'           => true,
 			'block_group_tabs'  => array(
 				'content'  => array(
-					'groups' => array( __( 'Link', 'geodirectory' ) ),
+					'groups' => array( __( 'Link', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Content', 'geodirectory' ),
+						'title'     => __( 'Content', 'blockstrap' ),
 						'key'       => 'bs_tab_content',
 						'tabs_open' => true,
 						'open'      => true,
@@ -50,9 +50,9 @@ class BlockStrap_Widget_Nav_Item extends WP_Super_Duper {
 					),
 				),
 				'styles'   => array(
-					'groups' => array( __( 'Link styles', 'geodirectory' ), __( 'Typography', 'geodirectory' ) ),
+					'groups' => array( __( 'Link styles', 'blockstrap' ), __( 'Typography', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Styles', 'geodirectory' ),
+						'title'     => __( 'Styles', 'blockstrap' ),
 						'key'       => 'bs_tab_styles',
 						'tabs_open' => true,
 						'open'      => true,
@@ -61,11 +61,11 @@ class BlockStrap_Widget_Nav_Item extends WP_Super_Duper {
 				),
 				'advanced' => array(
 					'groups' => array(
-						__( 'Wrapper Styles', 'geodirectory' ),
-						__( 'Advanced', 'geodirectory' ),
+						__( 'Wrapper Styles', 'blockstrap' ),
+						__( 'Advanced', 'blockstrap' ),
 					),
 					'tab'    => array(
-						'title'     => __( 'Advanced', 'geodirectory' ),
+						'title'     => __( 'Advanced', 'blockstrap' ),
 						'key'       => 'bs_tab_advanced',
 						'tabs_open' => true,
 						'open'      => true,
@@ -80,10 +80,10 @@ class BlockStrap_Widget_Nav_Item extends WP_Super_Duper {
 
 	public function link_types() {
 		$links = array(
-			'home'    => __( 'Home', 'geodirectory' ),
-			'page'    => __( 'Page', 'geodirectory' ),
-			'post-id' => __( 'Post ID', 'geodirectory' ),
-			'custom'  => __( 'Custom URL', 'geodirectory' ),
+			'home'    => __( 'Home', 'blockstrap' ),
+			'page'    => __( 'Page', 'blockstrap' ),
+			'post-id' => __( 'Post ID', 'blockstrap' ),
+			'custom'  => __( 'Custom URL', 'blockstrap' ),
 		);
 
 		if ( defined( 'GEODIRECTORY_VERSION' ) ) {
@@ -128,106 +128,106 @@ class BlockStrap_Widget_Nav_Item extends WP_Super_Duper {
 
 		$arguments['type'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Link Type', 'geodirectory' ),
+			'title'    => __( 'Link Type', 'blockstrap' ),
 			'options'  => $this->link_types(),
 			'default'  => 'home',
 			'desc_tip' => true,
-			'group'    => __( 'Link', 'geodirectory' ),
+			'group'    => __( 'Link', 'blockstrap' ),
 		);
 
 		$arguments['page_id'] = array(
 			'type'            => 'select',
-			'title'           => __( 'Page', 'geodirectory' ),
+			'title'           => __( 'Page', 'blockstrap' ),
 			'options'         => $this->get_pages_array(),
-			'placeholder'     => __( 'Select Page', 'geodirectory' ),
+			'placeholder'     => __( 'Select Page', 'blockstrap' ),
 			'default'         => '',
 			'desc_tip'        => true,
-			'group'           => __( 'Link', 'geodirectory' ),
+			'group'           => __( 'Link', 'blockstrap' ),
 			'element_require' => '[%type%]=="page"',
 		);
 
 		$arguments['post_id'] = array(
 			'type'            => 'number',
-			'title'           => __( 'Post ID', 'geodirectory' ),
+			'title'           => __( 'Post ID', 'blockstrap' ),
 			'placeholder'     => 123,
 			'default'         => '',
 			'desc_tip'        => true,
-			'group'           => __( 'Link', 'geodirectory' ),
+			'group'           => __( 'Link', 'blockstrap' ),
 			'element_require' => '[%type%]=="post-id"',
 		);
 
 		$arguments['custom_url'] = array(
 			'type'            => 'text',
-			'title'           => __( 'Custom URL', 'geodirectory' ),
-			'desc'            => __( 'Add custom link URL', 'geodirectory' ),
-			'placeholder'     => __( 'https://example.com', 'geodirectory' ),
+			'title'           => __( 'Custom URL', 'blockstrap' ),
+			'desc'            => __( 'Add custom link URL', 'blockstrap' ),
+			'placeholder'     => __( 'https://example.com', 'blockstrap' ),
 			'default'         => '',
 			'desc_tip'        => true,
-			'group'           => __( 'Link', 'geodirectory' ),
+			'group'           => __( 'Link', 'blockstrap' ),
 			'element_require' => '[%type%]=="custom"',
 		);
 
 		$arguments['text'] = array(
 			'type'        => 'text',
-			'title'       => __( 'Link Text', 'geodirectory' ),
-			'desc'        => __( 'Add custom link text or leave blank for dynamic', 'geodirectory' ),
-			'placeholder' => __( 'Home', 'geodirectory' ),
+			'title'       => __( 'Link Text', 'blockstrap' ),
+			'desc'        => __( 'Add custom link text or leave blank for dynamic', 'blockstrap' ),
+			'placeholder' => __( 'Home', 'blockstrap' ),
 			'default'     => '',
 			'desc_tip'    => true,
-			'group'       => __( 'Link', 'geodirectory' ),
+			'group'       => __( 'Link', 'blockstrap' ),
 		);
 
 		$arguments['icon_class'] = array(
 			'type'        => 'text',
-			'title'       => __( 'Icon class', 'geodirectory' ),
-			'desc'        => __( 'Enter a font awesome icon class.', 'geodirectory' ),
-			'placeholder' => __( 'fas fa-ship', 'geodirectory' ),
+			'title'       => __( 'Icon class', 'blockstrap' ),
+			'desc'        => __( 'Enter a font awesome icon class.', 'blockstrap' ),
+			'placeholder' => __( 'fas fa-ship', 'blockstrap' ),
 			'default'     => '',
 			'desc_tip'    => true,
-			'group'       => __( 'Link', 'geodirectory' ),
+			'group'       => __( 'Link', 'blockstrap' ),
 		);
 
 		// link styles
 		$arguments['link_type'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Link style', 'geodirectory' ),
+			'title'    => __( 'Link style', 'blockstrap' ),
 			'options'  => array(
-				''             => __( 'None', 'geodirectory' ),
-				'btn'          => __( 'Button', 'geodirectory' ),
-				'btn-round'    => __( 'Button rounded', 'geodirectory' ),
-				'iconbox'      => __( 'Iconbox bordered', 'geodirectory' ),
-				'iconbox-fill' => __( 'Iconbox filled', 'geodirectory' ),
+				''             => __( 'None', 'blockstrap' ),
+				'btn'          => __( 'Button', 'blockstrap' ),
+				'btn-round'    => __( 'Button rounded', 'blockstrap' ),
+				'iconbox'      => __( 'Iconbox bordered', 'blockstrap' ),
+				'iconbox-fill' => __( 'Iconbox filled', 'blockstrap' ),
 			),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Link styles', 'geodirectory' ),
+			'group'    => __( 'Link styles', 'blockstrap' ),
 		);
 
 		$arguments['link_size'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Size', 'geodirectory' ),
+			'title'    => __( 'Size', 'blockstrap' ),
 			'options'  => array(
-				''       => __( 'Default', 'geodirectory' ),
-				'small'  => __( 'Small', 'geodirectory' ),
-				'medium' => __( 'Medium', 'geodirectory' ),
-				'large'  => __( 'Large', 'geodirectory' ),
+				''       => __( 'Default', 'blockstrap' ),
+				'small'  => __( 'Small', 'blockstrap' ),
+				'medium' => __( 'Medium', 'blockstrap' ),
+				'large'  => __( 'Large', 'blockstrap' ),
 			),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Link styles', 'geodirectory' ),
+			'group'    => __( 'Link styles', 'blockstrap' ),
 		);
 
 		$arguments['link_bg'] = array(
-			'title'           => __( 'Color', 'geodirectory' ),
-			'desc'            => __( 'Select the color.', 'geodirectory' ),
+			'title'           => __( 'Color', 'blockstrap' ),
+			'desc'            => __( 'Select the color.', 'blockstrap' ),
 			'type'            => 'select',
 			'options'         => array(
-				'' => __( 'Custom colors', 'geodirectory' ),
+				'' => __( 'Custom colors', 'blockstrap' ),
 			) + sd_aui_colors( true, true, true ),
 			'default'         => '',
 			'desc_tip'        => true,
 			'advanced'        => false,
-			'group'           => __( 'Link styles', 'geodirectory' ),
+			'group'           => __( 'Link styles', 'blockstrap' ),
 			'element_require' => '[%link_type%]!="iconbox" && [%link_type%]!=""',
 		);
 

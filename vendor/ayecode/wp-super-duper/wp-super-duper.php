@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'WP_Super_Duper' ) ) {
 
-	define( 'SUPER_DUPER_VER', '1.1.4' );
+	define( 'SUPER_DUPER_VER', '1.1.5' );
 
 	/**
 	 * A Class to be able to create a Widget, Shortcode or Block to be able to output content for WordPress.
@@ -1160,11 +1160,11 @@ if ( ! class_exists( 'WP_Super_Duper' ) ) {
 				/**
 				 * Initialise a individual widget.
 				 */
-				function sd_init_widget($this, $selector) {
+				function sd_init_widget($this, $selector, $form) {
 					if (!$selector) {
 						$selector = 'form';
 					}
-					// only run once.
+					// Only run once.
 					if (jQuery($this).data('sd-widget-enabled')) {
 						return;
 					} else {
@@ -1172,28 +1172,25 @@ if ( ! class_exists( 'WP_Super_Duper' ) ) {
 					}
 
 					var $button = '<button title="<?php _e( 'Advanced Settings' );?>" style="line-height: 28px;" class="button button-primary right sd-advanced-button" onclick="sd_toggle_advanced(this);return false;"><span class="dashicons dashicons-admin-settings" style="width: 28px;font-size: 28px;"></span></button>';
-					var form = jQuery($this).parents('' + $selector + '');
+					var form = $form ? $form : jQuery($this).parents('' + $selector + '');
 
 					if (jQuery($this).val() == '1' && jQuery(form).find('.sd-advanced-button').length == 0) {
 						console.log('add advanced button');
-						if(jQuery(form).find('.widget-control-save').length > 0){
+						if (jQuery(form).find('.widget-control-save').length > 0) {
 							jQuery(form).find('.widget-control-save').after($button);
-						}else{
+						} else {
 							jQuery(form).find('.sd-show-advanced').after($button);
 						}
 					} else {
-						console.log('no advanced button');
-						console.log(jQuery($this).val());
-						console.log(jQuery(form).find('.sd-advanced-button').length);
-
+						console.log('no advanced button, ' + jQuery($this).val() + ', ' + jQuery(form).find('.sd-advanced-button').length);
 					}
 
-					// show hide on form change
-					jQuery(form).on("change", function () {
+					/* Show hide on form change */
+					jQuery(form).on("change", function() {
 						sd_show_hide(form);
 					});
 
-					// show hide on load
+					/* Show hide on load */
 					sd_show_hide(form);
 				}
 
@@ -1223,29 +1220,28 @@ if ( ! class_exists( 'WP_Super_Duper' ) ) {
 						sd_init_widgets("form");
 					}
 
-					// init on widget added
+					/* Init on widget added */
 					jQuery(document).on('widget-added', function (e, widget) {
-						console.log('widget added');
-						// is it a SD widget?
+						/* Is it a SD widget? */
 						if (jQuery(widget).find('.sd-show-advanced').length) {
-							// init the widget
-							sd_init_widget(jQuery(widget).find('.sd-show-advanced'), "form");
+							var widgetId = jQuery(widget).find('[name="widget-id"]').length ? ': ' + jQuery(widget).find('[name="widget-id"]').val() : '';
+							console.log('widget added' + widgetId);
+							/* Init the widget */
+							sd_init_widget(jQuery(widget).find('.sd-show-advanced'), "form", jQuery(widget).find('.sd-show-advanced').closest('form'));
 						}
 					});
 
-					// init on widget updated
+					/* Init on widget updated */
 					jQuery(document).on('widget-updated', function (e, widget) {
-						console.log('widget updated');
-
-						// is it a SD widget?
+						/* Is it a SD widget? */
 						if (jQuery(widget).find('.sd-show-advanced').length) {
-							// init the widget
-							sd_init_widget(jQuery(widget).find('.sd-show-advanced'), "form");
+							var widgetId = jQuery(widget).find('[name="widget-id"]').length ? ': ' + jQuery(widget).find('[name="widget-id"]').val() : '';
+							console.log('widget updated' + widgetId);
+							/* Init the widget */
+							sd_init_widget(jQuery(widget).find('.sd-show-advanced'), "form", jQuery(widget).find('.sd-show-advanced').closest('form'));
 						}
 					});
-
 				});
-
 
 				/**
 				 * We need to run this before jQuery is ready
@@ -2154,7 +2150,7 @@ jQuery(function() {
 					 *                             registered; otherwise `undefined`.
 					 */
 					registerBlockType('<?php echo str_replace( "_", "-", sanitize_title_with_dashes( $this->options['textdomain'] ) . '/' . sanitize_title_with_dashes( $this->options['class_name'] ) );  ?>', { // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-						apiVersion: 2,
+						apiVersion: <?php echo isset($this->options['block-api-version']) ? absint($this->options['block-api-version']) : 2 ; ?>,
                         title: '<?php echo addslashes( $this->options['name'] ); ?>', // Block title.
 						description: '<?php echo addslashes( $this->options['widget_ops']['description'] )?>', // Block title.
 						icon: <?php echo $this->get_block_icon( $this->options['block-icon'] );?>,//'<?php echo isset( $this->options['block-icon'] ) ? esc_attr( $this->options['block-icon'] ) : 'shield-alt';?>', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.

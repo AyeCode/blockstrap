@@ -415,29 +415,16 @@
 			]
 		},
 		{
-			"name": "post-sidebar-left",
-			"title": "Two columns, left sidebar",
-			"postTypes": [
-				"post"
-			]
-		},
-		{
 			"name": "page-sidebar-right",
 			"title": "Two columns, right sidebar",
 			"postTypes": [
-				"page"
+				"page",
+				"post"
 			]
 		},
 		{
 			"name": "page-sidebar-left",
 			"title": "Two columns, left sidebar",
-			"postTypes": [
-				"page"
-			]
-		},
-		{
-			"name": "page-template-patterns",
-			"title": "Template for block pattern layouts",
 			"postTypes": [
 				"page",
 				"post"

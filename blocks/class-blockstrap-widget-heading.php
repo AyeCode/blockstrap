@@ -11,43 +11,16 @@ class BlockStrap_Widget_Heading extends WP_Super_Duper {
 	public function __construct() {
 
 		$options = array(
-			'textdomain'                 => 'blockstrap',
-			'output_types'               => array( 'block', 'shortcode' ),
-			//          'nested-block'   => true,
-							'block-icon' => 'fas fa-heading',
-			'block-category'             => 'layout',
-			'block-keywords'             => "['heading','title','text']",
-			'block-supports'             => array(
+			'textdomain'        => 'blockstrap',
+			'output_types'      => array( 'block', 'shortcode' ),
+			'block-icon'        => 'fas fa-heading',
+			'block-category'    => 'layout',
+			'block-keywords'    => "['heading','title','text']",
+			'block-supports'    => array(
 				'customClassName' => false,
 			),
-			//          'block-output'   => array(
-			//              array(
-			//                  'element'          => 'BlocksProps',
-			//                  'if_inner_element' => 'props.attributes.html_tag ? props.attributes.html_tag : \'h1\'',
-			//                  'className' => '[%WrapClass%]',
-			//                  'style'     => '{[%WrapStyle%]}',
-			//                  'if_dangerouslySetInnerHTML' => "{__html: bs_build_heading_html(props.attributes) }",
-			//              )
-			//          ),
 
-			//          'block-output'   => array(
-			//              array(
-			//                  'element'          => 'BlocksProps',
-			////                    'content' => '[%text%]',
-			//                  'if_inner_element' => 'wp.blockEditor.RichText',
-			//                    'BlocksProps' => array(
-			//                      'className' => 'xxx [%WrapClass%]',
-			//                      'style'     => '{[%WrapStyle%]}',
-			//                        'tagName'   => 'h2',
-			//                    ),
-			//
-			////                    'style'     => "{WebkitBackgroundClip:'text', color:'#fff'}",
-			//
-			//                  //'if_dangerouslySetInnerHTML' => "{__html: bs_build_heading_html(props.attributes) }",
-			//              )
-			//          ),
-
-				'block-edit-return'      => "wp.element.createElement(wp.blockEditor.RichText, Object.assign(wp.blockEditor.useBlockProps({className: sd_build_aui_class(props.attributes)}), {
+			'block-edit-return' => "wp.element.createElement(wp.blockEditor.RichText, Object.assign(wp.blockEditor.useBlockProps({className: sd_build_aui_class(props.attributes)}), {
                 tagName: props.attributes.html_tag ? props.attributes.html_tag : 'h1',
                 value: props.attributes.text,
                 style: sd_build_aui_styles(props.attributes),
@@ -57,31 +30,31 @@ class BlockStrap_Widget_Heading extends WP_Super_Duper {
                 },
                 placeholder: __('Heading...'),
             }))",
-			'block-save-return'          => "wp.element.createElement( wp.blockEditor.RichText.Content, Object.assign( wp.blockEditor.useBlockProps.save({className: sd_build_aui_class(props.attributes)}), {
+			'block-save-return' => "wp.element.createElement( wp.blockEditor.RichText.Content, Object.assign( wp.blockEditor.useBlockProps.save({className: sd_build_aui_class(props.attributes)}), {
              tagName: props.attributes.html_tag ? props.attributes.html_tag : 'h1',
                 value: props.attributes.text,
                 style: sd_build_aui_styles(props.attributes),
             value: props.attributes.text
         } ) )",
-			'block-wrap'                 => '',
-			'class_name'                 => __CLASS__,
-			'base_id'                    => 'bs_heading',
-			'name'                       => __( 'BS > Heading', 'blockstrap' ),
-			'widget_ops'                 => array(
+			'block-wrap'        => '',
+			'class_name'        => __CLASS__,
+			'base_id'           => 'bs_heading',
+			'name'              => __( 'BS > Heading', 'blockstrap' ),
+			'widget_ops'        => array(
 				'classname'   => 'bs-heading',
 				'description' => esc_html__( 'A heading element', 'blockstrap' ),
 			),
-			'example'                    => array(
+			'example'           => array(
 				'attributes' => array(
 					'after_text' => 'Earth',
 				),
 			),
-			'no_wrap'                    => true,
-			'block_group_tabs'           => array(
+			'no_wrap'           => true,
+			'block_group_tabs'  => array(
 				'content'  => array(
-					'groups' => array( __( 'Title', 'geodirectory' ) ),
+					'groups' => array( __( 'Title', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Content', 'geodirectory' ),
+						'title'     => __( 'Content', 'blockstrap' ),
 						'key'       => 'bs_tab_content',
 						'tabs_open' => true,
 						'open'      => true,
@@ -89,9 +62,9 @@ class BlockStrap_Widget_Heading extends WP_Super_Duper {
 					),
 				),
 				'styles'   => array(
-					'groups' => array( __( 'Typography', 'geodirectory' ) ),
+					'groups' => array( __( 'Typography', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Styles', 'geodirectory' ),
+						'title'     => __( 'Styles', 'blockstrap' ),
 						'key'       => 'bs_tab_styles',
 						'tabs_open' => true,
 						'open'      => true,
@@ -99,9 +72,9 @@ class BlockStrap_Widget_Heading extends WP_Super_Duper {
 					),
 				),
 				'advanced' => array(
-					'groups' => array( __( 'Wrapper Styles', 'geodirectory' ), __( 'Advanced', 'geodirectory' ) ),
+					'groups' => array( __( 'Wrapper Styles', 'blockstrap' ), __( 'Advanced', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Advanced', 'geodirectory' ),
+						'title'     => __( 'Advanced', 'blockstrap' ),
 						'key'       => 'bs_tab_advanced',
 						'tabs_open' => true,
 						'open'      => true,
@@ -124,21 +97,17 @@ class BlockStrap_Widget_Heading extends WP_Super_Duper {
 		$arguments = array();
 
 		$arguments['text'] = array(
-			'type'                        => 'textarea',
-			'title'                       => __( 'Title', 'geodirectory' ),
-			//          'desc' => __('Brand text', 'geodirectory'),
-							'placeholder' => __( 'Enter you title!', 'geodirectory' ),
-			'default'                     => __( 'Add Your Heading Text', 'geodirectory' ),
-			'desc_tip'                    => true,
-			'group'                       => __( 'Title', 'geodirectory' ),
+			'type'        => 'textarea',
+			'title'       => __( 'Title', 'blockstrap' ),
+			'placeholder' => __( 'Enter you title!', 'blockstrap' ),
+			'default'     => __( 'Add Your Heading Text', 'blockstrap' ),
+			'desc_tip'    => true,
+			'group'       => __( 'Title', 'blockstrap' ),
 		);
-
-		// font size
-		//      $arguments['font_size'] = sd_get_font_size_input('',array('group'     => __("Title","geodirectory")));
 
 		$arguments['html_tag'] = array(
 			'type'     => 'select',
-			'title'    => __( 'HTML tag', 'geodirectory' ),
+			'title'    => __( 'HTML tag', 'blockstrap' ),
 			'options'  => array(
 				'h1'   => 'h1',
 				'h2'   => 'h2',
@@ -152,10 +121,8 @@ class BlockStrap_Widget_Heading extends WP_Super_Duper {
 			),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Title', 'geodirectory' ),
+			'group'    => __( 'Title', 'blockstrap' ),
 		);
-
-		//$arguments = $arguments + sd_get_background_inputs('bg');
 
 		// text color
 		$arguments = $arguments + sd_get_text_color_input_group();
@@ -193,24 +160,18 @@ class BlockStrap_Widget_Heading extends WP_Super_Duper {
 		);
 
 		// background
-		$arguments = $arguments + sd_get_background_inputs( 'bg', array( 'group' => __( 'Wrapper Styles', 'geodirectory' ) ), array( 'group' => __( 'Wrapper Styles', 'geodirectory' ) ), array( 'group' => __( 'Wrapper Styles', 'geodirectory' ) ), false );
+		$arguments = $arguments + sd_get_background_inputs( 'bg', array( 'group' => __( 'Wrapper Styles', 'blockstrap' ) ), array( 'group' => __( 'Wrapper Styles', 'blockstrap' ) ), array( 'group' => __( 'Wrapper Styles', 'blockstrap' ) ), false );
 
 		$arguments['bg_on_text'] = array(
 			'type'            => 'checkbox',
-			'title'           => __( 'Background on text', 'geodirectory' ),
+			'title'           => __( 'Background on text', 'blockstrap' ),
 			'default'         => '',
 			'value'           => '1',
 			'desc_tip'        => false,
-			'desc'            => __( 'This will show the background on the text.', 'geodirectory' ),
-			'group'           => __( 'Wrapper Styles', 'geodirectory' ),
+			'desc'            => __( 'This will show the background on the text.', 'blockstrap' ),
+			'group'           => __( 'Wrapper Styles', 'blockstrap' ),
 			'element_require' => '[%bg%]=="custom-gradient"',
 		);
-
-		// margins
-		$arguments['mt'] = sd_get_margin_input( 'mt' );
-		$arguments['mr'] = sd_get_margin_input( 'mr' );
-		$arguments['mb'] = sd_get_margin_input( 'mb', array( 'default' => 3 ) );
-		$arguments['ml'] = sd_get_margin_input( 'ml' );
 
 		// margins mobile
 		$arguments['mt'] = sd_get_margin_input( 'mt', array( 'device_type' => 'Mobile' ) );
@@ -274,10 +235,10 @@ class BlockStrap_Widget_Heading extends WP_Super_Duper {
 
 		$arguments['className'] = array(
 			'type'    => 'text',
-			'title'   => __( 'Additional CSS class(es)', 'geodirectory' ),
-			'desc'    => __( 'Separate multiple classes with spaces.', 'geodirectory' ),
+			'title'   => __( 'Additional CSS class(es)', 'blockstrap' ),
+			'desc'    => __( 'Separate multiple classes with spaces.', 'blockstrap' ),
 			'default' => '',
-			'group'   => __( 'Advanced', 'geodirectory' ),
+			'group'   => __( 'Advanced', 'blockstrap' ),
 		);
 
 		return $arguments;
@@ -320,7 +281,6 @@ class BlockStrap_Widget_Heading extends WP_Super_Duper {
 
 
 		<?php
-		//      return str_replace("\n"," ",ob_get_clean()) ;
 		return ob_get_clean();
 	}
 

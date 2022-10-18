@@ -193,3 +193,14 @@ p:empty:before {
     padding: 8px;
   }
 }
+
+/* skip links */
+.bs-skip-links {
+	z-index: 10000;
+	left: 50%;
+	transform: translate(-50%, -150%);
+	transition: transform 0.3s;
+}
+.bs-skip-links:focus-within,.bs-skip-links.is-selected {
+	transform: translate(-50%, 0%);
+}

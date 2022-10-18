@@ -14,13 +14,12 @@ class BlockStrap_Widget_Navbar extends WP_Super_Duper {
 			'textdomain'     => 'blockstrap',
 			'output_types'   => array( 'block', 'shortcode' ),
 			'nested-block'   => true,
-			'block-icon'     => 'far fa-square',
+			'block-icon'     => 'fas fa-bars',
 			'block-category' => 'layout',
 			'block-keywords' => "['nav','navbar']",
 			'block-output'   => array(
 				array(
 					'element'   => 'nav',
-					//'class'     => 'container',
 					'className' => 'navbar navbar-expand-lg [%WrapClass%]',
 					'style'     => '{[%WrapStyle%]}',
 					array(
@@ -42,7 +41,7 @@ class BlockStrap_Widget_Navbar extends WP_Super_Duper {
 			'name'           => __( 'BS > Navbar', 'blockstrap' ),
 			'widget_ops'     => array(
 				'classname'   => 'bd-navbar',
-				'description' => esc_html__( 'A container for content', 'blockstrap' ),
+				'description' => esc_html__( 'Navbar container, this holds the nav and navbar brand.', 'blockstrap' ),
 			),
 			'example'        => array(
 				'attributes' => array(
@@ -69,39 +68,40 @@ class BlockStrap_Widget_Navbar extends WP_Super_Duper {
 		// transparent until scroll
 		$arguments['bgtus'] = array(
 			'type'     => 'checkbox',
-			'title'    => __( 'Transparent until scroll', 'geodirectory' ),
+			'title'    => __( 'Transparent until scroll', 'blockstrap' ),
 			'default'  => '',
 			'value'    => '1',
 			'desc_tip' => false,
-			'desc'     => __( 'This may not show in block preview.', 'geodirectory' ),
-			'group'    => __( 'Background', 'geodirectory' ),
+			'desc'     => __( 'This may not show in block preview.', 'blockstrap' ),
+			'group'    => __( 'Background', 'blockstrap' ),
+			'element_require' => '[%bg_color%]!="" || [%bg_image%]!=""',
 		);
 
 		// container class
 		$arguments['container'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Color scheme', 'geodirectory' ),
+			'title'    => __( 'Color scheme', 'blockstrap' ),
 			'options'  => array(
-				''             => __( 'None', 'geodirectory' ),
-				'navbar-dark'  => __( 'Dark', 'geodirectory' ),
-				'navbar-light' => __( 'Light', 'geodirectory' ),
+				''             => __( 'None', 'blockstrap' ),
+				'navbar-dark'  => __( 'Dark', 'blockstrap' ),
+				'navbar-light' => __( 'Light', 'blockstrap' ),
 			),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Color scheme', 'geodirectory' ),
+			'group'    => __( 'Color scheme', 'blockstrap' ),
 		);
 
 		// container class
 		$arguments['inner_container'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Content Container', 'geodirectory' ),
+			'title'    => __( 'Content Container', 'blockstrap' ),
 			'options'  => array(
-				'd-flex w-100' => __( 'Full width', 'geodirectory' ),
-				'container'    => __( 'Contain', 'geodirectory' ),
+				'd-flex w-100' => __( 'Full width', 'blockstrap' ),
+				'container'    => __( 'Contain', 'blockstrap' ),
 			),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Content Container', 'geodirectory' ),
+			'group'    => __( 'Content Container', 'blockstrap' ),
 		);
 
 		// margins mobile
@@ -159,10 +159,10 @@ class BlockStrap_Widget_Navbar extends WP_Super_Duper {
 			'position',
 			array(
 				'options' => array(
-					''             => __( 'Default', 'geodirectory' ),
-					'fixed-top'    => __( 'Fixed top', 'geodirectory' ),
-					'fixed-bottom' => __( 'Fixed bottom', 'geodirectory' ),
-					'sticky-top'   => __( 'Sticky top', 'geodirectory' ),
+					''             => __( 'Default', 'blockstrap' ),
+					'fixed-top'    => __( 'Fixed top', 'blockstrap' ),
+					'fixed-bottom' => __( 'Fixed bottom', 'blockstrap' ),
+					'sticky-top'   => __( 'Sticky top', 'blockstrap' ),
 				),
 			)
 		);

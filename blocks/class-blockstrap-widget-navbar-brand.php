@@ -13,7 +13,7 @@ class BlockStrap_Widget_Navbar_Brand extends WP_Super_Duper {
 		$options = array(
 			'textdomain'       => 'blockstrap',
 			'output_types'     => array( 'block' ),
-			'block-icon'       => 'far fa-square',
+			'block-icon'       => 'fas fa-home',
 			'block-category'   => 'layout',
 			'block-keywords'   => "['brand','navbar','nav']",
 			'block-supports'   => array(
@@ -29,7 +29,7 @@ class BlockStrap_Widget_Navbar_Brand extends WP_Super_Duper {
 						'element'         => 'img',
 						'class'           => '',
 						'element_require' => '[%icon_image%]!=""',
-						'src'             => '[%icon_image%]',
+						'if_src'          => '[%icon_image%]==="Blockstrap-white.png" ? "' . get_template_directory_uri() . '/assets/images/Blockstrap-white.png" : [%icon_image%]',
 						'style'           => '{maxWidth:\'[%img_max_width%]px\'}',
 
 					),
@@ -69,7 +69,7 @@ class BlockStrap_Widget_Navbar_Brand extends WP_Super_Duper {
 			'name'             => __( 'BS > Navbar Brand', 'blockstrap' ),
 			'widget_ops'       => array(
 				'classname'   => 'bd-navbar-brand',
-				'description' => esc_html__( 'A container for content', 'blockstrap' ),
+				'description' => esc_html__( 'Your navbar site name or logo.', 'blockstrap' ),
 			),
 			'example'          => array(
 				'attributes' => array(
@@ -80,12 +80,12 @@ class BlockStrap_Widget_Navbar_Brand extends WP_Super_Duper {
 			'block_group_tabs' => array(
 				'content'  => array(
 					'groups' => array(
-						__( 'Text', 'geodirectory' ),
-						__( 'Icon', 'geodirectory' ),
-						__( 'Link', 'geodirectory' ),
+						__( 'Text', 'blockstrap' ),
+						__( 'Icon', 'blockstrap' ),
+						__( 'Link', 'blockstrap' ),
 					),
 					'tab'    => array(
-						'title'     => __( 'Content', 'geodirectory' ),
+						'title'     => __( 'Content', 'blockstrap' ),
 						'key'       => 'bs_tab_content',
 						'tabs_open' => true,
 						'open'      => true,
@@ -93,9 +93,9 @@ class BlockStrap_Widget_Navbar_Brand extends WP_Super_Duper {
 					),
 				),
 				'styles'   => array(
-					'groups' => array( __( 'Typography', 'geodirectory' ) ),
+					'groups' => array( __( 'Typography', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Styles', 'geodirectory' ),
+						'title'     => __( 'Styles', 'blockstrap' ),
 						'key'       => 'bs_tab_styles',
 						'tabs_open' => true,
 						'open'      => true,
@@ -104,11 +104,11 @@ class BlockStrap_Widget_Navbar_Brand extends WP_Super_Duper {
 				),
 				'advanced' => array(
 					'groups' => array(
-						__( 'Wrapper Styles', 'geodirectory' ),
-						__( 'Advanced', 'geodirectory' ),
+						__( 'Wrapper Styles', 'blockstrap' ),
+						__( 'Advanced', 'blockstrap' ),
 					),
 					'tab'    => array(
-						'title'     => __( 'Advanced', 'geodirectory' ),
+						'title'     => __( 'Advanced', 'blockstrap' ),
 						'key'       => 'bs_tab_advanced',
 						'tabs_open' => true,
 						'open'      => true,
@@ -132,54 +132,54 @@ class BlockStrap_Widget_Navbar_Brand extends WP_Super_Duper {
 
 		$arguments['text']       = array(
 			'type'        => 'text',
-			'title'       => __( 'Text', 'geodirectory' ),
-			'desc'        => __( 'Brand text', 'geodirectory' ),
-			'placeholder' => __( 'My Awesome Site!', 'geodirectory' ),
+			'title'       => __( 'Text', 'blockstrap' ),
+			'desc'        => __( 'Brand text', 'blockstrap' ),
+			'placeholder' => __( 'My Awesome Site!', 'blockstrap' ),
 			'default'     => get_bloginfo( 'name' ),
 			'desc_tip'    => true,
-			'group'       => __( 'Text', 'geodirectory' ),
+			'group'       => __( 'Text', 'blockstrap' ),
 		);
 		$arguments['icon_image'] = array(
 			'type'        => 'image',
-			'title'       => __( 'Image', 'geodirectory' ),
+			'title'       => __( 'Image', 'blockstrap' ),
 			'placeholder' => '',
 			'focalpoint'  => 0,
 			'default'     => '',
 			'desc_tip'    => true,
-			'group'       => __( 'Icon', 'geodirectory' ),
+			'group'       => __( 'Icon', 'blockstrap' ),
 		);
 
 		$arguments['img_max_width'] = array(
 			'type'        => 'number',
-			'title'       => __( 'Max width', 'geodirectory' ),
-			'desc'        => __( 'Set the image max width.', 'geodirectory' ),
-			'placeholder' => __( '150', 'geodirectory' ),
+			'title'       => __( 'Max width', 'blockstrap' ),
+			'desc'        => __( 'Set the image max width.', 'blockstrap' ),
+			'placeholder' => __( '150', 'blockstrap' ),
 			'default'     => '150',
 			'desc_tip'    => true,
-			'group'       => __( 'Icon', 'geodirectory' ),
+			'group'       => __( 'Icon', 'blockstrap' ),
 		);
 
 		$arguments['type'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Link Type', 'geodirectory' ),
+			'title'    => __( 'Link Type', 'blockstrap' ),
 			'options'  => array(
-				'home'   => __( 'Home', 'geodirectory' ),
-				'custom' => __( 'Custom', 'geodirectory' ),
-				'none'   => __( 'None', 'geodirectory' ),
+				'home'   => __( 'Home', 'blockstrap' ),
+				'custom' => __( 'Custom', 'blockstrap' ),
+				'none'   => __( 'None', 'blockstrap' ),
 			),
 			'default'  => 'home',
 			'desc_tip' => true,
-			'group'    => __( 'Link', 'geodirectory' ),
+			'group'    => __( 'Link', 'blockstrap' ),
 		);
 
 		$arguments['custom_url'] = array(
 			'type'            => 'text',
-			'title'           => __( 'Custom URL', 'geodirectory' ),
-			'desc'            => __( 'Add custom link URL', 'geodirectory' ),
-			'placeholder'     => __( 'https://example.com', 'geodirectory' ),
+			'title'           => __( 'Custom URL', 'blockstrap' ),
+			'desc'            => __( 'Add custom link URL', 'blockstrap' ),
+			'placeholder'     => __( 'https://example.com', 'blockstrap' ),
 			'default'         => '',
 			'desc_tip'        => true,
-			'group'           => __( 'Link', 'geodirectory' ),
+			'group'           => __( 'Link', 'blockstrap' ),
 			'element_require' => '[%type%]=="custom"',
 		);
 
@@ -221,16 +221,16 @@ class BlockStrap_Widget_Navbar_Brand extends WP_Super_Duper {
 		);
 
 		// background
-		$arguments = $arguments + sd_get_background_inputs( 'bg', array( 'group' => __( 'Wrapper Styles', 'geodirectory' ) ), array( 'group' => __( 'Wrapper Styles', 'geodirectory' ) ), array( 'group' => __( 'Wrapper Styles', 'geodirectory' ) ), false );
+		$arguments = $arguments + sd_get_background_inputs( 'bg', array( 'group' => __( 'Wrapper Styles', 'blockstrap' ) ), array( 'group' => __( 'Wrapper Styles', 'blockstrap' ) ), array( 'group' => __( 'Wrapper Styles', 'blockstrap' ) ), false );
 
 		$arguments['bg_on_text'] = array(
 			'type'            => 'checkbox',
-			'title'           => __( 'Background on text', 'geodirectory' ),
+			'title'           => __( 'Background on text', 'blockstrap' ),
 			'default'         => '',
 			'value'           => '1',
 			'desc_tip'        => false,
-			'desc'            => __( 'This will show the background on the text.', 'geodirectory' ),
-			'group'           => __( 'Wrapper Styles', 'geodirectory' ),
+			'desc'            => __( 'This will show the background on the text.', 'blockstrap' ),
+			'group'           => __( 'Wrapper Styles', 'blockstrap' ),
 			'element_require' => '[%bg%]=="custom-gradient"',
 		);
 

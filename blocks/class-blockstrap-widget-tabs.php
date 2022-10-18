@@ -18,7 +18,6 @@ class BlockStrap_Widget_Tabs extends WP_Super_Duper {
 			'block-category'     => 'layout',
 			'block-keywords'     => "['tabs','tab','content']",
 			'block-supports'     => array(
-				//'anchor' => 'true',
 				'customClassName' => false,
 			),
 			'block-outputx'      => array(
@@ -122,9 +121,9 @@ class BlockStrap_Widget_Tabs extends WP_Super_Duper {
 			'no_wrap'            => true,
 			'block_group_tabs'   => array(
 				'styles'   => array(
-					'groups' => array( __( 'Tabs Head', 'geodirectory' ), __( 'Tab Body Typography', 'geodirectory' ) ),
+					'groups' => array( __( 'Tabs Head', 'blockstrap' ), __( 'Tab Body Typography', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Styles', 'geodirectory' ),
+						'title'     => __( 'Styles', 'blockstrap' ),
 						'key'       => 'bs_tab_styles',
 						'tabs_open' => true,
 						'open'      => true,
@@ -133,12 +132,12 @@ class BlockStrap_Widget_Tabs extends WP_Super_Duper {
 				),
 				'advanced' => array(
 					'groups' => array(
-						__( 'Background', 'geodirectory' ),
-						__( 'Wrapper Styles', 'geodirectory' ),
-						__( 'Advanced', 'geodirectory' ),
+						__( 'Background', 'blockstrap' ),
+						__( 'Wrapper Styles', 'blockstrap' ),
+						__( 'Advanced', 'blockstrap' ),
 					),
 					'tab'    => array(
-						'title'     => __( 'Advanced', 'geodirectory' ),
+						'title'     => __( 'Advanced', 'blockstrap' ),
 						'key'       => 'bs_tab_advanced',
 						'tabs_open' => true,
 						'open'      => true,
@@ -162,60 +161,60 @@ class BlockStrap_Widget_Tabs extends WP_Super_Duper {
 
 		$arguments['tabs_style'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Style', 'geodirectory' ),
+			'title'    => __( 'Style', 'blockstrap' ),
 			'options'  => array(
-				'nav-tabs'  => __( 'Tabs', 'geodirectory' ),
-				'nav-pills' => __( 'Pills', 'geodirectory' ),
+				'nav-tabs'  => __( 'Tabs', 'blockstrap' ),
+				'nav-pills' => __( 'Pills', 'blockstrap' ),
 			),
 			'default'  => 'nav-tabs',
 			'desc_tip' => true,
-			'group'    => __( 'Tabs Head', 'geodirectory' ),
+			'group'    => __( 'Tabs Head', 'blockstrap' ),
 		);
 
 		$arguments['tab_size'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Tab button size', 'geodirectory' ),
+			'title'    => __( 'Tab button size', 'blockstrap' ),
 			'options'  => array(
-				''              => __( 'Auto', 'geodirectory' ),
-				'nav-fill'      => __( 'Fill', 'geodirectory' ),
-				'nav-justified' => __( 'Justified', 'geodirectory' ),
+				''              => __( 'Auto', 'blockstrap' ),
+				'nav-fill'      => __( 'Fill', 'blockstrap' ),
+				'nav-justified' => __( 'Justified', 'blockstrap' ),
 			),
 			'default'  => 'nav-tabs',
 			'desc_tip' => true,
-			'group'    => __( 'Tabs Head', 'geodirectory' ),
+			'group'    => __( 'Tabs Head', 'blockstrap' ),
 		);
 
 		$arguments['tabs_greedy'] = array(
 			'type'     => 'checkbox',
-			'title'    => __( 'Greedy tabs', 'geodirectory' ),
+			'title'    => __( 'Greedy tabs', 'blockstrap' ),
 			'default'  => '',
 			'value'    => '1',
 			'desc_tip' => false,
-			'desc'     => __( 'This will add overflowing tabs to a dropdown instead of a new line.', 'geodirectory' ),
-			'group'    => __( 'Tabs Head', 'geodirectory' ),
+			'desc'     => __( 'This will add overflowing tabs to a dropdown instead of a new line.', 'blockstrap' ),
+			'group'    => __( 'Tabs Head', 'blockstrap' ),
 		);
 
 		$arguments['tabs_head_mb'] = sd_get_margin_input(
 			'mb',
 			array(
-				'group'   => __( 'Tabs Head', 'geodirectory' ),
+				'group'   => __( 'Tabs Head', 'blockstrap' ),
 				'default' => 3,
 			)
 		);
 
 		$arguments['tabs_head_array'] = array(
 			'type'     => 'hidden',
-			'title'    => __( 'Tabs head array', 'geodirectory' ),
+			'title'    => __( 'Tabs head array', 'blockstrap' ),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Tabs Head', 'geodirectory' ),
+			'group'    => __( 'Tabs Head', 'blockstrap' ),
 		);
 
 		// text color
-		$arguments['text_color'] = sd_get_text_color_input( 'text_color', array( 'group' => __( 'Tab Body Typography', 'geodirectory' ) ) );
+		$arguments['text_color'] = sd_get_text_color_input( 'text_color', array( 'group' => __( 'Tab Body Typography', 'blockstrap' ) ) );
 
 		// Text justify
-		$arguments['text_justify'] = sd_get_text_justify_input( 'text_justify', array( 'group' => __( 'Tab Body Typography', 'geodirectory' ) ) );
+		$arguments['text_justify'] = sd_get_text_justify_input( 'text_justify', array( 'group' => __( 'Tab Body Typography', 'blockstrap' ) ) );
 
 		// text align
 		$arguments['text_align']    = sd_get_text_align_input(
@@ -223,7 +222,7 @@ class BlockStrap_Widget_Tabs extends WP_Super_Duper {
 			array(
 				'device_type'     => 'Mobile',
 				'element_require' => '[%text_justify%]==""',
-				'group'           => __( 'Tab Body Typography', 'geodirectory' ),
+				'group'           => __( 'Tab Body Typography', 'blockstrap' ),
 			)
 		);
 		$arguments['text_align_md'] = sd_get_text_align_input(
@@ -231,7 +230,7 @@ class BlockStrap_Widget_Tabs extends WP_Super_Duper {
 			array(
 				'device_type'     => 'Tablet',
 				'element_require' => '[%text_justify%]==""',
-				'group'           => __( 'Tab Body Typography', 'geodirectory' ),
+				'group'           => __( 'Tab Body Typography', 'blockstrap' ),
 			)
 		);
 		$arguments['text_align_lg'] = sd_get_text_align_input(
@@ -239,7 +238,7 @@ class BlockStrap_Widget_Tabs extends WP_Super_Duper {
 			array(
 				'device_type'     => 'Desktop',
 				'element_require' => '[%text_justify%]==""',
-				'group'           => __( 'Tab Body Typography', 'geodirectory' ),
+				'group'           => __( 'Tab Body Typography', 'blockstrap' ),
 			)
 		);
 

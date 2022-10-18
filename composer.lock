@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "43327a6310bd3193c20bf4fc2f15710f",
+    "content-hash": "ae960b34b88d4d3e914a17856da98d42",
     "packages": [
         {
             "name": "ayecode/ayecode-connect-helper",
@@ -62,16 +62,16 @@
         },
         {
             "name": "ayecode/wp-ayecode-ui",
-            "version": "0.1.79",
+            "version": "0.1.80",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AyeCode/wp-ayecode-ui.git",
-                "reference": "4967424bda0ec07266ea14a0b6a1c8844288f11c"
+                "reference": "6d4c325a17850c000f77dd8852dac0acd0eb5970"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AyeCode/wp-ayecode-ui/zipball/4967424bda0ec07266ea14a0b6a1c8844288f11c",
-                "reference": "4967424bda0ec07266ea14a0b6a1c8844288f11c",
+                "url": "https://api.github.com/repos/AyeCode/wp-ayecode-ui/zipball/6d4c325a17850c000f77dd8852dac0acd0eb5970",
+                "reference": "6d4c325a17850c000f77dd8852dac0acd0eb5970",
                 "shasum": ""
             },
             "type": "library",
@@ -99,7 +99,7 @@
                 "boot",
                 "bootstrap"
             ],
-            "time": "2022-10-11T15:42:56+00:00"
+            "time": "2022-10-13T13:13:37+00:00"
         },
         {
             "name": "ayecode/wp-deactivation-survey",
@@ -153,16 +153,16 @@
         },
         {
             "name": "ayecode/wp-font-awesome-settings",
-            "version": "1.0.15",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AyeCode/wp-font-awesome-settings.git",
-                "reference": "9692a09d7c385d26d157529cf34a03f2987c21a3"
+                "reference": "e092fe18fba4f9078b81e73152b4ea8ca483f49a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AyeCode/wp-font-awesome-settings/zipball/9692a09d7c385d26d157529cf34a03f2987c21a3",
-                "reference": "9692a09d7c385d26d157529cf34a03f2987c21a3",
+                "url": "https://api.github.com/repos/AyeCode/wp-font-awesome-settings/zipball/e092fe18fba4f9078b81e73152b4ea8ca483f49a",
+                "reference": "e092fe18fba4f9078b81e73152b4ea8ca483f49a",
                 "shasum": ""
             },
             "require": {
@@ -193,20 +193,20 @@
                 "FontAwesome",
                 "font-awesome"
             ],
-            "time": "2022-08-04T13:29:55+00:00"
+            "time": "2022-10-13T14:08:18+00:00"
         },
         {
             "name": "ayecode/wp-super-duper",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AyeCode/wp-super-duper.git",
-                "reference": "7d0962c067313ab58c002c840962a127e4abd2f5"
+                "reference": "6c807bfc74e74d95b85b425bffd79d5aa1da6978"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AyeCode/wp-super-duper/zipball/7d0962c067313ab58c002c840962a127e4abd2f5",
-                "reference": "7d0962c067313ab58c002c840962a127e4abd2f5",
+                "url": "https://api.github.com/repos/AyeCode/wp-super-duper/zipball/6c807bfc74e74d95b85b425bffd79d5aa1da6978",
+                "reference": "6c807bfc74e74d95b85b425bffd79d5aa1da6978",
                 "shasum": ""
             },
             "require": {
@@ -241,7 +241,7 @@
                 "wordpress",
                 "wp"
             ],
-            "time": "2022-10-11T14:25:31+00:00"
+            "time": "2022-10-13T13:06:15+00:00"
         },
         {
             "name": "composer/installers",
@@ -387,5 +387,6 @@
     "platform": {
         "php": ">=5.4.0"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }

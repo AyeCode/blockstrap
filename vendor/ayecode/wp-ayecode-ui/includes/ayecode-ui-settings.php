@@ -35,7 +35,7 @@ if ( ! class_exists( 'AyeCode_UI_Settings' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '0.1.79';
+		public $version = '0.1.80';
 
 		/**
 		 * Class textdomain.
@@ -1450,7 +1450,9 @@ if ( ! class_exists( 'AyeCode_UI_Settings' ) ) {
                 // FSE tweaks.
                 if(!empty($_REQUEST['postType']) && $_REQUEST['postType']=='wp_template'){ ?>
                 function aui_fse_set_data_scroll() {
+                    console.log('init scroll');
                     let Iframe = document.getElementsByClassName("edit-site-visual-editor__editor-canvas");
+                    if( Iframe[0] === undefined ){ return; }
                     let iframe_doc = Iframe[0].contentWindow ? Iframe[0].contentWindow.document : Iframe[0].contentDocument;
                     Iframe[0].contentWindow.onscroll = function () {
                         iframe_doc.documentElement.dataset.scroll = Iframe[0].contentWindow.scrollY;
@@ -1462,11 +1464,11 @@ if ( ! class_exists( 'AyeCode_UI_Settings' ) ) {
                 }, 3000);
 
                 // fire when URL changes also.
-                let lastUrl = location.href;
+                let FSElastUrl = location.href;
                 new MutationObserver(() => {
                     const url = location.href;
-                    if (url !== lastUrl) {
-                        lastUrl = url;
+                    if (url !== FSElastUrl) {
+                        FSElastUrl = url;
                         aui_fse_set_data_scroll();
                         // fire a second time incase of load delays.
                         setTimeout(function(){
@@ -1737,7 +1739,7 @@ if ( ! class_exists( 'AyeCode_UI_Settings' ) ) {
 		 */
 		public function settings_page() {
 			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_die( __( 'You do not have sufficient permissions to access this page.', 'aui' ) );
+				wp_die( __( 'You do not have sufficient permissions to access this page.', 'blockstrap' ) );
 			}
 			?>
 			<div class="wrap">
@@ -1749,36 +1751,36 @@ if ( ! class_exists( 'AyeCode_UI_Settings' ) ) {
 					do_settings_sections( 'ayecode-ui-settings' );
 					?>
 
-					<h2><?php _e( 'Frontend', 'aui' ); ?></h2>
+					<h2><?php _e( 'Frontend', 'blockstrap' ); ?></h2>
 					<table class="form-table wpbs-table-settings">
 						<tr valign="top">
 							<th scope="row"><label
-									for="wpbs-css"><?php _e( 'Load CSS', 'aui' ); ?></label></th>
+									for="wpbs-css"><?php _e( 'Load CSS', 'blockstrap' ); ?></label></th>
 							<td>
 								<select name="ayecode-ui-settings[css]" id="wpbs-css">
-									<option	value="compatibility" <?php selected( $this->settings['css'], 'compatibility' ); ?>><?php _e( 'Compatibility Mode (default)', 'aui' ); ?></option>
-									<option value="core" <?php selected( $this->settings['css'], 'core' ); ?>><?php _e( 'Full Mode', 'aui' ); ?></option>
-									<option	value="" <?php selected( $this->settings['css'], '' ); ?>><?php _e( 'Disabled', 'aui' ); ?></option>
+									<option	value="compatibility" <?php selected( $this->settings['css'], 'compatibility' ); ?>><?php _e( 'Compatibility Mode (default)', 'blockstrap' ); ?></option>
+									<option value="core" <?php selected( $this->settings['css'], 'core' ); ?>><?php _e( 'Full Mode', 'blockstrap' ); ?></option>
+									<option	value="" <?php selected( $this->settings['css'], '' ); ?>><?php _e( 'Disabled', 'blockstrap' ); ?></option>
 								</select>
 							</td>
 						</tr>
 
 						<tr valign="top">
 							<th scope="row"><label
-									for="wpbs-js"><?php _e( 'Load JS', 'aui' ); ?></label></th>
+									for="wpbs-js"><?php _e( 'Load JS', 'blockstrap' ); ?></label></th>
 							<td>
 								<select name="ayecode-ui-settings[js]" id="wpbs-js">
-									<option	value="core-popper" <?php selected( $this->settings['js'], 'core-popper' ); ?>><?php _e( 'Core + Popper (default)', 'aui' ); ?></option>
-									<option value="popper" <?php selected( $this->settings['js'], 'popper' ); ?>><?php _e( 'Popper', 'aui' ); ?></option>
-									<option value="required" <?php selected( $this->settings['js'], 'required' ); ?>><?php _e( 'Required functions only', 'aui' ); ?></option>
-									<option	value="" <?php selected( $this->settings['js'], '' ); ?>><?php _e( 'Disabled (not recommended)', 'aui' ); ?></option>
+									<option	value="core-popper" <?php selected( $this->settings['js'], 'core-popper' ); ?>><?php _e( 'Core + Popper (default)', 'blockstrap' ); ?></option>
+									<option value="popper" <?php selected( $this->settings['js'], 'popper' ); ?>><?php _e( 'Popper', 'blockstrap' ); ?></option>
+									<option value="required" <?php selected( $this->settings['js'], 'required' ); ?>><?php _e( 'Required functions only', 'blockstrap' ); ?></option>
+									<option	value="" <?php selected( $this->settings['js'], '' ); ?>><?php _e( 'Disabled (not recommended)', 'blockstrap' ); ?></option>
 								</select>
 							</td>
 						</tr>
 
 						<tr valign="top">
 							<th scope="row"><label
-									for="wpbs-font_size"><?php _e( 'HTML Font Size (px)', 'aui' ); ?></label></th>
+									for="wpbs-font_size"><?php _e( 'HTML Font Size (px)', 'blockstrap' ); ?></label></th>
 							<td>
 								<input type="number" name="ayecode-ui-settings[html_font_size]" id="wpbs-font_size" value="<?php echo absint( $this->settings['html_font_size']); ?>" placeholder="16" />
 								<p class="description" ><?php _e("Our font sizing is rem (responsive based) here you can set the html font size in-case your theme is setting it too low.",'aui');?></p>
@@ -1787,38 +1789,38 @@ if ( ! class_exists( 'AyeCode_UI_Settings' ) ) {
 
 					</table>
 
-					<h2><?php _e( 'Backend', 'aui' ); ?> (wp-admin)</h2>
+					<h2><?php _e( 'Backend', 'blockstrap' ); ?> (wp-admin)</h2>
 					<table class="form-table wpbs-table-settings">
 						<tr valign="top">
 							<th scope="row"><label
-									for="wpbs-css-admin"><?php _e( 'Load CSS', 'aui' ); ?></label></th>
+									for="wpbs-css-admin"><?php _e( 'Load CSS', 'blockstrap' ); ?></label></th>
 							<td>
 								<select name="ayecode-ui-settings[css_backend]" id="wpbs-css-admin">
-									<option	value="compatibility" <?php selected( $this->settings['css_backend'], 'compatibility' ); ?>><?php _e( 'Compatibility Mode (default)', 'aui' ); ?></option>
-									<option value="core" <?php selected( $this->settings['css_backend'], 'core' ); ?>><?php _e( 'Full Mode (will cause style issues)', 'aui' ); ?></option>
-									<option	value="" <?php selected( $this->settings['css_backend'], '' ); ?>><?php _e( 'Disabled', 'aui' ); ?></option>
+									<option	value="compatibility" <?php selected( $this->settings['css_backend'], 'compatibility' ); ?>><?php _e( 'Compatibility Mode (default)', 'blockstrap' ); ?></option>
+									<option value="core" <?php selected( $this->settings['css_backend'], 'core' ); ?>><?php _e( 'Full Mode (will cause style issues)', 'blockstrap' ); ?></option>
+									<option	value="" <?php selected( $this->settings['css_backend'], '' ); ?>><?php _e( 'Disabled', 'blockstrap' ); ?></option>
 								</select>
 							</td>
 						</tr>
 
 						<tr valign="top">
 							<th scope="row"><label
-									for="wpbs-js-admin"><?php _e( 'Load JS', 'aui' ); ?></label></th>
+									for="wpbs-js-admin"><?php _e( 'Load JS', 'blockstrap' ); ?></label></th>
 							<td>
 								<select name="ayecode-ui-settings[js_backend]" id="wpbs-js-admin">
-									<option	value="core-popper" <?php selected( $this->settings['js_backend'], 'core-popper' ); ?>><?php _e( 'Core + Popper (default)', 'aui' ); ?></option>
-									<option value="popper" <?php selected( $this->settings['js_backend'], 'popper' ); ?>><?php _e( 'Popper', 'aui' ); ?></option>
-									<option value="required" <?php selected( $this->settings['js_backend'], 'required' ); ?>><?php _e( 'Required functions only', 'aui' ); ?></option>
-									<option	value="" <?php selected( $this->settings['js_backend'], '' ); ?>><?php _e( 'Disabled (not recommended)', 'aui' ); ?></option>
+									<option	value="core-popper" <?php selected( $this->settings['js_backend'], 'core-popper' ); ?>><?php _e( 'Core + Popper (default)', 'blockstrap' ); ?></option>
+									<option value="popper" <?php selected( $this->settings['js_backend'], 'popper' ); ?>><?php _e( 'Popper', 'blockstrap' ); ?></option>
+									<option value="required" <?php selected( $this->settings['js_backend'], 'required' ); ?>><?php _e( 'Required functions only', 'blockstrap' ); ?></option>
+									<option	value="" <?php selected( $this->settings['js_backend'], '' ); ?>><?php _e( 'Disabled (not recommended)', 'blockstrap' ); ?></option>
 								</select>
 							</td>
 						</tr>
 
 						<tr valign="top">
 							<th scope="row"><label
-									for="wpbs-disable-admin"><?php _e( 'Disable load on URL', 'aui' ); ?></label></th>
+									for="wpbs-disable-admin"><?php _e( 'Disable load on URL', 'blockstrap' ); ?></label></th>
 							<td>
-								<p><?php _e( 'If you have backend conflict you can enter a partial URL argument that will disable the loading of AUI on those pages. Add each argument on a new line.', 'aui' ); ?></p>
+								<p><?php _e( 'If you have backend conflict you can enter a partial URL argument that will disable the loading of AUI on those pages. Add each argument on a new line.', 'blockstrap' ); ?></p>
 								<textarea name="ayecode-ui-settings[disable_admin]" rows="10" cols="50" id="wpbs-disable-admin" class="large-text code" spellcheck="false" placeholder="myplugin.php &#10;action=go"><?php echo $this->settings['disable_admin'];?></textarea>
 
 							</td>
@@ -2618,71 +2620,71 @@ if ( ! class_exists( 'AyeCode_UI_Settings' ) ) {
 		 */
 		public static function calendar_params() {
 			$params = array(
-				'month_long_1' => __( 'January', 'aui' ),
-				'month_long_2' => __( 'February', 'aui' ),
-				'month_long_3' => __( 'March', 'aui' ),
-				'month_long_4' => __( 'April', 'aui' ),
-				'month_long_5' => __( 'May', 'aui' ),
-				'month_long_6' => __( 'June', 'aui' ),
-				'month_long_7' => __( 'July', 'aui' ),
-				'month_long_8' => __( 'August', 'aui' ),
-				'month_long_9' => __( 'September', 'aui' ),
-				'month_long_10' => __( 'October', 'aui' ),
-				'month_long_11' => __( 'November', 'aui' ),
-				'month_long_12' => __( 'December', 'aui' ),
-				'month_s_1' => _x( 'Jan', 'January abbreviation', 'aui' ),
-				'month_s_2' => _x( 'Feb', 'February abbreviation', 'aui' ),
-				'month_s_3' => _x( 'Mar', 'March abbreviation', 'aui' ),
-				'month_s_4' => _x( 'Apr', 'April abbreviation', 'aui' ),
-				'month_s_5' => _x( 'May', 'May abbreviation', 'aui' ),
-				'month_s_6' => _x( 'Jun', 'June abbreviation', 'aui' ),
-				'month_s_7' => _x( 'Jul', 'July abbreviation', 'aui' ),
-				'month_s_8' => _x( 'Aug', 'August abbreviation', 'aui' ),
-				'month_s_9' => _x( 'Sep', 'September abbreviation', 'aui' ),
-				'month_s_10' => _x( 'Oct', 'October abbreviation', 'aui' ),
-				'month_s_11' => _x( 'Nov', 'November abbreviation', 'aui' ),
-				'month_s_12' => _x( 'Dec', 'December abbreviation', 'aui' ),
-				'day_s1_1' => _x( 'S', 'Sunday initial', 'aui' ),
-				'day_s1_2' => _x( 'M', 'Monday initial', 'aui' ),
-				'day_s1_3' => _x( 'T', 'Tuesday initial', 'aui' ),
-				'day_s1_4' => _x( 'W', 'Wednesday initial', 'aui' ),
-				'day_s1_5' => _x( 'T', 'Friday initial', 'aui' ),
-				'day_s1_6' => _x( 'F', 'Thursday initial', 'aui' ),
-				'day_s1_7' => _x( 'S', 'Saturday initial', 'aui' ),
-				'day_s2_1' => __( 'Su', 'aui' ),
-				'day_s2_2' => __( 'Mo', 'aui' ),
-				'day_s2_3' => __( 'Tu', 'aui' ),
-				'day_s2_4' => __( 'We', 'aui' ),
-				'day_s2_5' => __( 'Th', 'aui' ),
-				'day_s2_6' => __( 'Fr', 'aui' ),
-				'day_s2_7' => __( 'Sa', 'aui' ),
-				'day_s3_1' => __( 'Sun', 'aui' ),
-				'day_s3_2' => __( 'Mon', 'aui' ),
-				'day_s3_3' => __( 'Tue', 'aui' ),
-				'day_s3_4' => __( 'Wed', 'aui' ),
-				'day_s3_5' => __( 'Thu', 'aui' ),
-				'day_s3_6' => __( 'Fri', 'aui' ),
-				'day_s3_7' => __( 'Sat', 'aui' ),
-				'day_s5_1' => __( 'Sunday', 'aui' ),
-				'day_s5_2' => __( 'Monday', 'aui' ),
-				'day_s5_3' => __( 'Tuesday', 'aui' ),
-				'day_s5_4' => __( 'Wednesday', 'aui' ),
-				'day_s5_5' => __( 'Thursday', 'aui' ),
-				'day_s5_6' => __( 'Friday', 'aui' ),
-				'day_s5_7' => __( 'Saturday', 'aui' ),
-				'am_lower' => __( 'am', 'aui' ),
-				'pm_lower' => __( 'pm', 'aui' ),
-				'am_upper' => __( 'AM', 'aui' ),
-				'pm_upper' => __( 'PM', 'aui' ),
+				'month_long_1' => __( 'January', 'blockstrap' ),
+				'month_long_2' => __( 'February', 'blockstrap' ),
+				'month_long_3' => __( 'March', 'blockstrap' ),
+				'month_long_4' => __( 'April', 'blockstrap' ),
+				'month_long_5' => __( 'May', 'blockstrap' ),
+				'month_long_6' => __( 'June', 'blockstrap' ),
+				'month_long_7' => __( 'July', 'blockstrap' ),
+				'month_long_8' => __( 'August', 'blockstrap' ),
+				'month_long_9' => __( 'September', 'blockstrap' ),
+				'month_long_10' => __( 'October', 'blockstrap' ),
+				'month_long_11' => __( 'November', 'blockstrap' ),
+				'month_long_12' => __( 'December', 'blockstrap' ),
+				'month_s_1' => _x( 'Jan', 'January abbreviation', 'blockstrap' ),
+				'month_s_2' => _x( 'Feb', 'February abbreviation', 'blockstrap' ),
+				'month_s_3' => _x( 'Mar', 'March abbreviation', 'blockstrap' ),
+				'month_s_4' => _x( 'Apr', 'April abbreviation', 'blockstrap' ),
+				'month_s_5' => _x( 'May', 'May abbreviation', 'blockstrap' ),
+				'month_s_6' => _x( 'Jun', 'June abbreviation', 'blockstrap' ),
+				'month_s_7' => _x( 'Jul', 'July abbreviation', 'blockstrap' ),
+				'month_s_8' => _x( 'Aug', 'August abbreviation', 'blockstrap' ),
+				'month_s_9' => _x( 'Sep', 'September abbreviation', 'blockstrap' ),
+				'month_s_10' => _x( 'Oct', 'October abbreviation', 'blockstrap' ),
+				'month_s_11' => _x( 'Nov', 'November abbreviation', 'blockstrap' ),
+				'month_s_12' => _x( 'Dec', 'December abbreviation', 'blockstrap' ),
+				'day_s1_1' => _x( 'S', 'Sunday initial', 'blockstrap' ),
+				'day_s1_2' => _x( 'M', 'Monday initial', 'blockstrap' ),
+				'day_s1_3' => _x( 'T', 'Tuesday initial', 'blockstrap' ),
+				'day_s1_4' => _x( 'W', 'Wednesday initial', 'blockstrap' ),
+				'day_s1_5' => _x( 'T', 'Friday initial', 'blockstrap' ),
+				'day_s1_6' => _x( 'F', 'Thursday initial', 'blockstrap' ),
+				'day_s1_7' => _x( 'S', 'Saturday initial', 'blockstrap' ),
+				'day_s2_1' => __( 'Su', 'blockstrap' ),
+				'day_s2_2' => __( 'Mo', 'blockstrap' ),
+				'day_s2_3' => __( 'Tu', 'blockstrap' ),
+				'day_s2_4' => __( 'We', 'blockstrap' ),
+				'day_s2_5' => __( 'Th', 'blockstrap' ),
+				'day_s2_6' => __( 'Fr', 'blockstrap' ),
+				'day_s2_7' => __( 'Sa', 'blockstrap' ),
+				'day_s3_1' => __( 'Sun', 'blockstrap' ),
+				'day_s3_2' => __( 'Mon', 'blockstrap' ),
+				'day_s3_3' => __( 'Tue', 'blockstrap' ),
+				'day_s3_4' => __( 'Wed', 'blockstrap' ),
+				'day_s3_5' => __( 'Thu', 'blockstrap' ),
+				'day_s3_6' => __( 'Fri', 'blockstrap' ),
+				'day_s3_7' => __( 'Sat', 'blockstrap' ),
+				'day_s5_1' => __( 'Sunday', 'blockstrap' ),
+				'day_s5_2' => __( 'Monday', 'blockstrap' ),
+				'day_s5_3' => __( 'Tuesday', 'blockstrap' ),
+				'day_s5_4' => __( 'Wednesday', 'blockstrap' ),
+				'day_s5_5' => __( 'Thursday', 'blockstrap' ),
+				'day_s5_6' => __( 'Friday', 'blockstrap' ),
+				'day_s5_7' => __( 'Saturday', 'blockstrap' ),
+				'am_lower' => __( 'am', 'blockstrap' ),
+				'pm_lower' => __( 'pm', 'blockstrap' ),
+				'am_upper' => __( 'AM', 'blockstrap' ),
+				'pm_upper' => __( 'PM', 'blockstrap' ),
 				'firstDayOfWeek' => (int) get_option( 'start_of_week' ),
 				'time_24hr' => false,
-				'year' => __( 'Year', 'aui' ),
-				'hour' => __( 'Hour', 'aui' ),
-				'minute' => __( 'Minute', 'aui' ),
-				'weekAbbreviation' => __( 'Wk', 'aui' ),
-				'rangeSeparator' => __( ' to ', 'aui' ),
-				'scrollTitle' => __( 'Scroll to increment', 'aui' ),
-				'toggleTitle' => __( 'Click to toggle', 'aui' )
+				'year' => __( 'Year', 'blockstrap' ),
+				'hour' => __( 'Hour', 'blockstrap' ),
+				'minute' => __( 'Minute', 'blockstrap' ),
+				'weekAbbreviation' => __( 'Wk', 'blockstrap' ),
+				'rangeSeparator' => __( ' to ', 'blockstrap' ),
+				'scrollTitle' => __( 'Scroll to increment', 'blockstrap' ),
+				'toggleTitle' => __( 'Click to toggle', 'blockstrap' )
 			);
 
 			return apply_filters( 'ayecode_ui_calendar_params', $params );
@@ -2780,17 +2782,17 @@ if ( 0 ) { ?><script><?php } ?>
 		 */
 		public static function select2_params() {
 			$params = array(
-				'i18n_select_state_text'    => esc_attr__( 'Select an option&hellip;', 'aui' ),
-				'i18n_no_matches'           => _x( 'No matches found', 'enhanced select', 'aui' ),
-				'i18n_ajax_error'           => _x( 'Loading failed', 'enhanced select', 'aui' ),
-				'i18n_input_too_short_1'    => _x( 'Please enter 1 or more characters', 'enhanced select', 'aui' ),
-				'i18n_input_too_short_n'    => _x( 'Please enter %item% or more characters', 'enhanced select', 'aui' ),
-				'i18n_input_too_long_1'     => _x( 'Please delete 1 character', 'enhanced select', 'aui' ),
-				'i18n_input_too_long_n'     => _x( 'Please delete %item% characters', 'enhanced select', 'aui' ),
-				'i18n_selection_too_long_1' => _x( 'You can only select 1 item', 'enhanced select', 'aui' ),
-				'i18n_selection_too_long_n' => _x( 'You can only select %item% items', 'enhanced select', 'aui' ),
-				'i18n_load_more'            => _x( 'Loading more results&hellip;', 'enhanced select', 'aui' ),
-				'i18n_searching'            => _x( 'Searching&hellip;', 'enhanced select', 'aui' )
+				'i18n_select_state_text'    => esc_attr__( 'Select an option&hellip;', 'blockstrap' ),
+				'i18n_no_matches'           => _x( 'No matches found', 'enhanced select', 'blockstrap' ),
+				'i18n_ajax_error'           => _x( 'Loading failed', 'enhanced select', 'blockstrap' ),
+				'i18n_input_too_short_1'    => _x( 'Please enter 1 or more characters', 'enhanced select', 'blockstrap' ),
+				'i18n_input_too_short_n'    => _x( 'Please enter %item% or more characters', 'enhanced select', 'blockstrap' ),
+				'i18n_input_too_long_1'     => _x( 'Please delete 1 character', 'enhanced select', 'blockstrap' ),
+				'i18n_input_too_long_n'     => _x( 'Please delete %item% characters', 'enhanced select', 'blockstrap' ),
+				'i18n_selection_too_long_1' => _x( 'You can only select 1 item', 'enhanced select', 'blockstrap' ),
+				'i18n_selection_too_long_n' => _x( 'You can only select %item% items', 'enhanced select', 'blockstrap' ),
+				'i18n_load_more'            => _x( 'Loading more results&hellip;', 'enhanced select', 'blockstrap' ),
+				'i18n_searching'            => _x( 'Searching&hellip;', 'enhanced select', 'blockstrap' )
 			);
 
 			return apply_filters( 'ayecode_ui_select2_params', $params );
@@ -2829,20 +2831,20 @@ if ( 0 ) { ?><script><?php } ?>
 		public static function timeago_locale() {
 			$params = array(
 				'prefix_ago' => '',
-				'suffix_ago' => ' ' . _x( 'ago', 'time ago', 'aui' ),
-				'prefix_after' => _x( 'after', 'time ago', 'aui' ) . ' ',
+				'suffix_ago' => ' ' . _x( 'ago', 'time ago', 'blockstrap' ),
+				'prefix_after' => _x( 'after', 'time ago', 'blockstrap' ) . ' ',
 				'suffix_after' => '',
-				'seconds' => _x( 'less than a minute', 'time ago', 'aui' ),
-				'minute' => _x( 'about a minute', 'time ago', 'aui' ),
-				'minutes' => _x( '%d minutes', 'time ago', 'aui' ),
-				'hour' => _x( 'about an hour', 'time ago', 'aui' ),
-				'hours' => _x( 'about %d hours', 'time ago', 'aui' ),
-				'day' => _x( 'a day', 'time ago', 'aui' ),
-				'days' => _x( '%d days', 'time ago', 'aui' ),
-				'month' => _x( 'about a month', 'time ago', 'aui' ),
-				'months' => _x( '%d months', 'time ago', 'aui' ),
-				'year' => _x( 'about a year', 'time ago', 'aui' ),
-				'years' => _x( '%d years', 'time ago', 'aui' ),
+				'seconds' => _x( 'less than a minute', 'time ago', 'blockstrap' ),
+				'minute' => _x( 'about a minute', 'time ago', 'blockstrap' ),
+				'minutes' => _x( '%d minutes', 'time ago', 'blockstrap' ),
+				'hour' => _x( 'about an hour', 'time ago', 'blockstrap' ),
+				'hours' => _x( 'about %d hours', 'time ago', 'blockstrap' ),
+				'day' => _x( 'a day', 'time ago', 'blockstrap' ),
+				'days' => _x( '%d days', 'time ago', 'blockstrap' ),
+				'month' => _x( 'about a month', 'time ago', 'blockstrap' ),
+				'months' => _x( '%d months', 'time ago', 'blockstrap' ),
+				'year' => _x( 'about a year', 'time ago', 'blockstrap' ),
+				'years' => _x( '%d years', 'time ago', 'blockstrap' ),
 			);
 
 			$params = apply_filters( 'ayecode_ui_timeago_params', $params );

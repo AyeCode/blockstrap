@@ -30,11 +30,12 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 						'if_className' => 'props.attributes.styleid + " " [%WrapClass%]',
 						'style'        => '{[%WrapStyle%]}',
 						'if_id'        => 'props.attributes.anchor ? props.attributes.anchor : props.clientId',
+//						'if_id'        => 'props.attributes.anchor ? props.attributes.anchor : "bbb"',
 						//                      '\'data-styleid\'' => "block-" . wp_rand(15),
 						//                      'if_\'data-styleid\'' => 'props.attributes.anchor ? props.attributes.anchor : props.attributes.styleid',
 						//                      'if_id'        => 'props.attributes.anchor ? props.attributes.anchor : "vvvv"',
 						//                      'if_id'        => 'props.attributes.bg',
-						//                      'ID'        => 'cccccccccccccc',
+//						                      'if_id'        => '"zzzzz"',
 					),
 					'innerBlocksProps' => array(
 						'orientation' => 'vertical',
@@ -70,9 +71,9 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 			'no_wrap'          => true,
 			'block_group_tabs' => array(
 				'content'  => array(
-					'groups' => array( __( 'Container', 'geodirectory' ) ),
+					'groups' => array( __( 'Container', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Content', 'geodirectory' ),
+						'title'     => __( 'Content', 'blockstrap' ),
 						'key'       => 'bs_tab_content',
 						'tabs_open' => true,
 						'open'      => true,
@@ -80,9 +81,9 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 					),
 				),
 				'styles'   => array(
-					'groups' => array( __( 'Background', 'geodirectory' ), __( 'Typography', 'geodirectory' ) ),
+					'groups' => array( __( 'Background', 'blockstrap' ), __( 'Typography', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Styles', 'geodirectory' ),
+						'title'     => __( 'Styles', 'blockstrap' ),
 						'key'       => 'bs_tab_styles',
 						'tabs_open' => true,
 						'open'      => true,
@@ -91,11 +92,11 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 				),
 				'advanced' => array(
 					'groups' => array(
-						__( 'Wrapper Styles', 'geodirectory' ),
-						__( 'Advanced', 'geodirectory' ),
+						__( 'Wrapper Styles', 'blockstrap' ),
+						__( 'Advanced', 'blockstrap' ),
 					),
 					'tab'    => array(
-						'title'     => __( 'Advanced', 'geodirectory' ),
+						'title'     => __( 'Advanced', 'blockstrap' ),
 						'key'       => 'bs_tab_advanced',
 						'tabs_open' => true,
 						'open'      => true,
@@ -125,7 +126,6 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 		$arguments['row_cols_md'] = sd_get_row_cols_input( 'row_cols', array( 'device_type' => 'Tablet' ) );
 		$arguments['row_cols_lg'] = sd_get_row_cols_input( 'row_cols', array( 'device_type' => 'Desktop' ) );
 
-
 		// columns
 		$arguments['col']    = sd_get_col_input( 'col', array( 'device_type' => 'Mobile' ) );
 		$arguments['col_md'] = sd_get_col_input( 'col', array( 'device_type' => 'Tablet' ) );
@@ -135,12 +135,12 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 
 		$arguments['bg_on_text'] = array(
 			'type'            => 'checkbox',
-			'title'           => __( 'Background on text', 'geodirectory' ),
+			'title'           => __( 'Background on text', 'blockstrap' ),
 			'default'         => '',
 			'value'           => '1',
 			'desc_tip'        => false,
-			'desc'            => __( 'This will show the background on the text.', 'geodirectory' ),
-			'group'           => __( 'Background', 'geodirectory' ),
+			'desc'            => __( 'This will show the background on the text.', 'blockstrap' ),
+			'group'           => __( 'Background', 'blockstrap' ),
 			'element_require' => '[%bg%]=="custom-gradient"',
 		);
 
@@ -245,9 +245,11 @@ class BlockStrap_Widget_Container extends WP_Super_Duper {
 		$arguments = $arguments + sd_get_flex_align_self_input_group( 'flex_align_self' );
 		$arguments = $arguments + sd_get_flex_order_input_group( 'flex_order' );
 
-
 		// advanced
 		$arguments['anchor'] = sd_get_anchor_input();
+
+		// Hover animations
+		//$arguments['hover_animations'] = sd_get_hover_animations_input( 'hover_animations' );
 
 		$arguments['css_class'] = sd_get_class_input();
 

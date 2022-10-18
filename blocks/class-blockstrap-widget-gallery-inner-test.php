@@ -28,24 +28,13 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 				array(
 					'element'          => 'innerBlocksProps',
 					'blockProps'       => array(
-						//                      'if_className' => 'props.attributes.styleid + " " [%WrapClass%]',
-																'if_className' => 'props.attributes.styleid + " row " [%WrapClass%]',
-						'style' => '{[%WrapStyle%]}',
-						'if_id' => 'props.attributes.id ? props.attributes.id : props.clientId',
-					//                      '\'data-styleid\'' => "block-" . wp_rand(15),
-					//                      'if_\'data-styleid\'' => 'props.attributes.anchor ? props.attributes.anchor : props.attributes.styleid',
-					//                      'if_id'        => 'props.attributes.anchor ? props.attributes.anchor : "vvvv"',
-					//                      'if_id'        => 'props.attributes.bg',
-					//                      'ID'        => 'cccccccccccccc',
+						'if_className' => 'props.attributes.styleid + " row " [%WrapClass%]',
+						'style'        => '{[%WrapStyle%]}',
+						'if_id'        => 'props.attributes.id ? props.attributes.id : props.clientId',
 					),
 					'innerBlocksProps' => array(
 						'orientation' => 'vertical',
-				//                      'template'    => "
-				//                      [
-				//                          [ 'blockstrap/blockstrap-widget-row', {}, [[ 'core/paragraph', { placeholder: 'Summaryx' } ],] ],
-				//
-				//                        ]
-				//    "
+
 					),
 
 				),
@@ -66,9 +55,9 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 			'no_wrap'            => true,
 			'block_group_tabs'   => array(
 				'content'  => array(
-					'groups' => array( __( 'Image', 'geodirectory' ), __( 'Captions', 'geodirectory' ) ),
+					'groups' => array( __( 'Image', 'blockstrap' ), __( 'Captions', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Content', 'geodirectory' ),
+						'title'     => __( 'Content', 'blockstrap' ),
 						'key'       => 'bs_tab_content',
 						'tabs_open' => true,
 						'open'      => true,
@@ -77,12 +66,12 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 				),
 				'styles'   => array(
 					'groups' => array(
-						__( 'Gallery Styles', 'geodirectory' ),
-						__( 'Image Styles', 'geodirectory' ),
-						__( 'Typography', 'geodirectory' ),
+						__( 'Gallery Styles', 'blockstrap' ),
+						__( 'Image Styles', 'blockstrap' ),
+						__( 'Typography', 'blockstrap' ),
 					),
 					'tab'    => array(
-						'title'     => __( 'Styles', 'geodirectory' ),
+						'title'     => __( 'Styles', 'blockstrap' ),
 						'key'       => 'bs_tab_styles',
 						'tabs_open' => true,
 						'open'      => true,
@@ -90,9 +79,9 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 					),
 				),
 				'advanced' => array(
-					'groups' => array( __( 'Wrapper Styles', 'geodirectory' ), __( 'Advanced', 'geodirectory' ) ),
+					'groups' => array( __( 'Wrapper Styles', 'blockstrap' ), __( 'Advanced', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Advanced', 'geodirectory' ),
+						'title'     => __( 'Advanced', 'blockstrap' ),
 						'key'       => 'bs_tab_advanced',
 						'tabs_open' => true,
 						'open'      => true,
@@ -116,11 +105,11 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 
 		$arguments['images'] = array(
 			'type'        => 'images',
-			'title'       => __( 'Custom image', 'geodirectory' ),
+			'title'       => __( 'Custom image', 'blockstrap' ),
 			'placeholder' => '',
 			'default'     => '',
 			'desc_tip'    => true,
-			'group'       => __( 'Image', 'geodirectory' ),
+			'group'       => __( 'Image', 'blockstrap' ),
 		//          'element_require' => '[%img_src%]=="upload"'
 		);
 
@@ -128,33 +117,33 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 
 		$arguments['img_size'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Image size', 'geodirectory' ),
+			'title'    => __( 'Image size', 'blockstrap' ),
 			'options'  => array( '' => 'Select image size' ) + array_combine( $image_sizes, $image_sizes ) + array( 'full' => 'full' ),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Image', 'geodirectory' ),
+			'group'    => __( 'Image', 'blockstrap' ),
 		);
 
 		$arguments['lightbox_size'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Lightbox', 'geodirectory' ),
+			'title'    => __( 'Lightbox', 'blockstrap' ),
 			'options'  => array( '' => 'No' ) + array_combine( $image_sizes, $image_sizes ) + array( 'full' => 'full' ),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Image', 'geodirectory' ),
+			'group'    => __( 'Image', 'blockstrap' ),
 		);
 
 		$arguments['caption_show'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Caption', 'geodirectory' ),
+			'title'    => __( 'Caption', 'blockstrap' ),
 			'options'  => array(
-				''           => __( 'Hide', 'geodirectory' ),
-				'show'       => __( 'Show always', 'geodirectory' ),
-				'hover_show' => __( 'Show on hover', 'geodirectory' ),
+				''           => __( 'Hide', 'blockstrap' ),
+				'show'       => __( 'Show always', 'blockstrap' ),
+				'hover_show' => __( 'Show on hover', 'blockstrap' ),
 			),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Captions', 'geodirectory' ),
+			'group'    => __( 'Captions', 'blockstrap' ),
 		);
 
 		//$arguments = $arguments + sd_get_background_inputs('bg');
@@ -164,71 +153,71 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 			'row_cols',
 			array(
 				'device_type'     => 'Mobile',
-				'group'           => __( 'Gallery Styles', 'geodirectory' ),
+				'group'           => __( 'Gallery Styles', 'blockstrap' ),
 				'element_require' => '',
-				'title'           => __( 'Images per row', 'geodirectory' ),
+				'title'           => __( 'Images per row', 'blockstrap' ),
 			)
 		);
 		$arguments['row_cols_md'] = sd_get_row_cols_input(
 			'row_cols',
 			array(
 				'device_type'     => 'Tablet',
-				'group'           => __( 'Gallery Styles', 'geodirectory' ),
+				'group'           => __( 'Gallery Styles', 'blockstrap' ),
 				'element_require' => '',
-				'title'           => __( 'Images per row', 'geodirectory' ),
+				'title'           => __( 'Images per row', 'blockstrap' ),
 			)
 		);
 		$arguments['row_cols_lg'] = sd_get_row_cols_input(
 			'row_cols',
 			array(
 				'device_type'     => 'Desktop',
-				'group'           => __( 'Gallery Styles', 'geodirectory' ),
+				'group'           => __( 'Gallery Styles', 'blockstrap' ),
 				'element_require' => '',
-				'title'           => __( 'Images per row', 'geodirectory' ),
+				'title'           => __( 'Images per row', 'blockstrap' ),
 			)
 		);
 
 		$arguments['aspect'] = array(
-			'title'    => __( 'Aspect ratio', 'geodirectory' ) . ' ' . __( '(bootstrap only)', 'geodirectory' ),
-			'desc'     => __( 'For a more consistent image view you can set the aspect ratio of the image view port.', 'geodirectory' ),
+			'title'    => __( 'Aspect ratio', 'blockstrap' ) . ' ' . __( '(bootstrap only)', 'blockstrap' ),
+			'desc'     => __( 'For a more consistent image view you can set the aspect ratio of the image view port.', 'blockstrap' ),
 			'type'     => 'select',
 			'options'  => array(
-				''     => __( 'Default (16by9)', 'geodirectory' ),
-				'21x9' => __( '21by9', 'geodirectory' ),
-				'4x3'  => __( '4by3', 'geodirectory' ),
-				'1x1'  => __( '1by1 (square)', 'geodirectory' ),
-				'n'    => __( 'No ratio (natural)', 'geodirectory' ),
+				''     => __( 'Default (16by9)', 'blockstrap' ),
+				'21x9' => __( '21by9', 'blockstrap' ),
+				'4x3'  => __( '4by3', 'blockstrap' ),
+				'1x1'  => __( '1by1 (square)', 'blockstrap' ),
+				'n'    => __( 'No ratio (natural)', 'blockstrap' ),
 			),
 			'desc_tip' => true,
 			'value'    => '',
 			'default'  => '',
 			'advanced' => true,
-			'group'    => __( 'Design', 'geodirectory' ),
+			'group'    => __( 'Design', 'blockstrap' ),
 		);
 		$arguments['cover']  = array(
-			'title'    => __( 'Image cover type:', 'geodirectory' ),
-			'desc'     => __( 'This is how the image should cover the image viewport.', 'geodirectory' ),
+			'title'    => __( 'Image cover type:', 'blockstrap' ),
+			'desc'     => __( 'This is how the image should cover the image viewport.', 'blockstrap' ),
 			'type'     => 'select',
 			'options'  => array(
-				''  => __( 'Default (cover both)', 'geodirectory' ),
-				'x' => __( 'Width cover', 'geodirectory' ),
-				'y' => __( 'height cover', 'geodirectory' ),
-				'n' => __( 'No cover (contain)', 'geodirectory' ),
+				''  => __( 'Default (cover both)', 'blockstrap' ),
+				'x' => __( 'Width cover', 'blockstrap' ),
+				'y' => __( 'height cover', 'blockstrap' ),
+				'n' => __( 'No cover (contain)', 'blockstrap' ),
 			),
 			'desc_tip' => true,
 			'value'    => '',
 			'default'  => '',
 			'advanced' => true,
-			'group'    => __( 'Design', 'geodirectory' ),
+			'group'    => __( 'Design', 'blockstrap' ),
 		);
 
 		// border
-		$arguments['img_border']       = sd_get_border_input( 'border', array( 'group' => __( 'Image Styles', 'geodirectory' ) ) );
-		$arguments['img_rounded']      = sd_get_border_input( 'rounded', array( 'group' => __( 'Image Styles', 'geodirectory' ) ) );
-		$arguments['img_rounded_size'] = sd_get_border_input( 'rounded_size', array( 'group' => __( 'Image Styles', 'geodirectory' ) ) );
+		$arguments['img_border']       = sd_get_border_input( 'border', array( 'group' => __( 'Image Styles', 'blockstrap' ) ) );
+		$arguments['img_rounded']      = sd_get_border_input( 'rounded', array( 'group' => __( 'Image Styles', 'blockstrap' ) ) );
+		$arguments['img_rounded_size'] = sd_get_border_input( 'rounded_size', array( 'group' => __( 'Image Styles', 'blockstrap' ) ) );
 
 		// shadow
-		$arguments['img_shadow'] = sd_get_shadow_input( 'shadow', array( 'group' => __( 'Image Styles', 'geodirectory' ) ) );
+		$arguments['img_shadow'] = sd_get_shadow_input( 'shadow', array( 'group' => __( 'Image Styles', 'blockstrap' ) ) );
 
 		// Typography
 		// text color
@@ -266,17 +255,14 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 			)
 		);
 
-		// background
-		//      $arguments = $arguments + sd_get_background_inputs('bg', array('group' => __("Wrapper Styles","geodirectory")),array('group' => __("Wrapper Styles","geodirectory")),array('group' => __("Wrapper Styles","geodirectory")),array('group' => __("Wrapper Styles","geodirectory")) );
-
 		$arguments['bg_on_text'] = array(
 			'type'            => 'checkbox',
-			'title'           => __( 'Background on text', 'geodirectory' ),
+			'title'           => __( 'Background on text', 'blockstrap' ),
 			'default'         => '',
 			'value'           => '1',
 			'desc_tip'        => false,
-			'desc'            => __( 'This will show the background on the text.', 'geodirectory' ),
-			'group'           => __( 'Wrapper Styles', 'geodirectory' ),
+			'desc'            => __( 'This will show the background on the text.', 'blockstrap' ),
+			'group'           => __( 'Wrapper Styles', 'blockstrap' ),
 			'element_require' => '[%bg%]=="custom-gradient"',
 		);
 
@@ -348,10 +334,10 @@ class BlockStrap_Widget_Gallery extends WP_Super_Duper {
 
 		$arguments['css_class'] = array(
 			'type'    => 'text',
-			'title'   => __( 'Additional CSS class(es)', 'geodirectory' ),
-			'desc'    => __( 'Separate multiple classes with spaces.', 'geodirectory' ),
+			'title'   => __( 'Additional CSS class(es)', 'blockstrap' ),
+			'desc'    => __( 'Separate multiple classes with spaces.', 'blockstrap' ),
 			'default' => '',
-			'group'   => __( 'Advanced', 'geodirectory' ),
+			'group'   => __( 'Advanced', 'blockstrap' ),
 		);
 
 		return $arguments;

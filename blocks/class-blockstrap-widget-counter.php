@@ -46,9 +46,9 @@ class BlockStrap_Widget_Counter extends WP_Super_Duper {
 			'no_wrap'           => true,
 			'block_group_tabs'  => array(
 				'content'  => array(
-					'groups' => array( __( 'Text', 'geodirectory' ) ),
+					'groups' => array( __( 'Text', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Content', 'geodirectory' ),
+						'title'     => __( 'Content', 'blockstrap' ),
 						'key'       => 'bs_tab_content',
 						'tabs_open' => true,
 						'open'      => true,
@@ -57,11 +57,11 @@ class BlockStrap_Widget_Counter extends WP_Super_Duper {
 				),
 				'styles'   => array(
 					'groups' => array(
-						__( 'Number Typography', 'geodirectory' ),
-						__( 'Title Typography', 'geodirectory' ),
+						__( 'Number Typography', 'blockstrap' ),
+						__( 'Title Typography', 'blockstrap' ),
 					),
 					'tab'    => array(
-						'title'     => __( 'Styles', 'geodirectory' ),
+						'title'     => __( 'Styles', 'blockstrap' ),
 						'key'       => 'bs_tab_styles',
 						'tabs_open' => true,
 						'open'      => true,
@@ -69,9 +69,9 @@ class BlockStrap_Widget_Counter extends WP_Super_Duper {
 					),
 				),
 				'advanced' => array(
-					'groups' => array( __( 'Wrapper Styles', 'geodirectory' ), __( 'Advanced', 'geodirectory' ) ),
+					'groups' => array( __( 'Wrapper Styles', 'blockstrap' ), __( 'Advanced', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Advanced', 'geodirectory' ),
+						'title'     => __( 'Advanced', 'blockstrap' ),
 						'key'       => 'bs_tab_advanced',
 						'tabs_open' => true,
 						'open'      => true,
@@ -95,84 +95,84 @@ class BlockStrap_Widget_Counter extends WP_Super_Duper {
 
 		$arguments['num_start'] = array(
 			'type'     => 'number',
-			'title'    => __( 'Start number', 'geodirectory' ),
+			'title'    => __( 'Start number', 'blockstrap' ),
 			'default'  => '0',
 			'desc_tip' => true,
-			'group'    => __( 'Text', 'geodirectory' ),
+			'group'    => __( 'Text', 'blockstrap' ),
 		);
 
 		$arguments['num_end'] = array(
 			'type'     => 'number',
-			'title'    => __( 'End number', 'geodirectory' ),
+			'title'    => __( 'End number', 'blockstrap' ),
 			'default'  => '123',
 			'desc_tip' => true,
-			'group'    => __( 'Text', 'geodirectory' ),
+			'group'    => __( 'Text', 'blockstrap' ),
 		);
 
 		$arguments['num_prefix'] = array(
 			'type'     => 'text',
-			'title'    => __( 'Prefix', 'geodirectory' ),
+			'title'    => __( 'Prefix', 'blockstrap' ),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Text', 'geodirectory' ),
+			'group'    => __( 'Text', 'blockstrap' ),
 		);
 
 		$arguments['num_suffix'] = array(
 			'type'     => 'text',
-			'title'    => __( 'Suffix', 'geodirectory' ),
+			'title'    => __( 'Suffix', 'blockstrap' ),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Text', 'geodirectory' ),
+			'group'    => __( 'Text', 'blockstrap' ),
 		);
 
 		$arguments['duration'] = array(
 			'type'     => 'number',
-			'title'    => __( 'Animation duration', 'geodirectory' ),
+			'title'    => __( 'Animation duration', 'blockstrap' ),
 			'default'  => '2000',
 			'desc_tip' => true,
-			'group'    => __( 'Text', 'geodirectory' ),
+			'group'    => __( 'Text', 'blockstrap' ),
 		);
 
 		$arguments['num_sep'] = array(
 			'type'     => 'checkbox',
-			'title'    => __( 'Thousand Separator', 'geodirectory' ),
+			'title'    => __( 'Thousand Separator', 'blockstrap' ),
 			'default'  => '',
 			'value'    => '1',
 			'desc_tip' => false,
-			'group'    => __( 'Text', 'geodirectory' ),
+			'group'    => __( 'Text', 'blockstrap' ),
 			//          'element_require' => '[%bg%]=="custom-gradient"',
 		);
 
 		$arguments['num_sep_type'] = array(
 			'type'            => 'select',
-			'title'           => __( 'Separator', 'geodirectory' ),
+			'title'           => __( 'Separator', 'blockstrap' ),
 			'options'         => array(
-				',' => __( 'Default', 'geodirectory' ),
-				'.' => __( 'Dot', 'geodirectory' ),
-				' ' => __( 'Space', 'geodirectory' ),
-				'_' => __( 'Underline', 'geodirectory' ),
-				"'" => __( 'Apostrophe', 'geodirectory' ),
+				',' => __( 'Default', 'blockstrap' ),
+				'.' => __( 'Dot', 'blockstrap' ),
+				' ' => __( 'Space', 'blockstrap' ),
+				'_' => __( 'Underline', 'blockstrap' ),
+				"'" => __( 'Apostrophe', 'blockstrap' ),
 			),
 			'default'         => ',',
 			'desc_tip'        => true,
-			'group'           => __( 'Text', 'geodirectory' ),
+			'group'           => __( 'Text', 'blockstrap' ),
 			'element_require' => '[%num_sep%]',
 		);
 
 		$arguments['text'] = array(
 			'type'        => 'textarea',
-			'title'       => __( 'Title', 'geodirectory' ),
-			//          'desc' => __('Brand text', 'geodirectory'),
-			'placeholder' => __( 'Enter you title!', 'geodirectory' ),
+			'title'       => __( 'Title', 'blockstrap' ),
+			//          'desc' => __('Brand text', 'blockstrap'),
+			'placeholder' => __( 'Enter you title!', 'blockstrap' ),
 			'desc_tip'    => true,
-			'group'       => __( 'Text', 'geodirectory' ),
+			'group'       => __( 'Text', 'blockstrap' ),
 		);
 
 		// text color
 		$arguments['num_text_color'] = sd_get_text_color_input(
 			'',
 			array(
-				'group'   => __( 'Number Typography', 'geodirectory' ),
+				'group'   => __( 'Number Typography', 'blockstrap' ),
 				'default' => 'primary',
 			)
 		);
@@ -181,23 +181,23 @@ class BlockStrap_Widget_Counter extends WP_Super_Duper {
 		$arguments = $arguments + sd_get_font_size_input_group(
 			'num_font_size',
 			array(
-				'group'   => __( 'Number Typography', 'geodirectory' ),
+				'group'   => __( 'Number Typography', 'blockstrap' ),
 				'default' => 'h2',
 			),
-			array( 'group' => __( 'Number Typography', 'geodirectory' ) )
+			array( 'group' => __( 'Number Typography', 'blockstrap' ) )
 		);
 
 		// font weight
-		$arguments['num_font_weight'] = sd_get_font_weight_input( '', array( 'group' => __( 'Number Typography', 'geodirectory' ) ) );
+		$arguments['num_font_weight'] = sd_get_font_weight_input( '', array( 'group' => __( 'Number Typography', 'blockstrap' ) ) );
 
 		// Text justify
-		$arguments['num_text_justify'] = sd_get_text_justify_input( '', array( 'group' => __( 'Number Typography', 'geodirectory' ) ) );
+		$arguments['num_text_justify'] = sd_get_text_justify_input( '', array( 'group' => __( 'Number Typography', 'blockstrap' ) ) );
 
 		// text align
 		$arguments['num_text_align']    = sd_get_text_align_input(
 			'text_align',
 			array(
-				'group'           => __( 'Number Typography', 'geodirectory' ),
+				'group'           => __( 'Number Typography', 'blockstrap' ),
 				'device_type'     => 'Mobile',
 				'element_require' => '[%num_text_justify%]==""',
 				'default'         => 'text-center',
@@ -206,7 +206,7 @@ class BlockStrap_Widget_Counter extends WP_Super_Duper {
 		$arguments['num_text_align_md'] = sd_get_text_align_input(
 			'text_align',
 			array(
-				'group'           => __( 'Number Typography', 'geodirectory' ),
+				'group'           => __( 'Number Typography', 'blockstrap' ),
 				'device_type'     => 'Tablet',
 				'element_require' => '[%num_text_justify%]==""',
 			)
@@ -214,7 +214,7 @@ class BlockStrap_Widget_Counter extends WP_Super_Duper {
 		$arguments['num_text_align_lg'] = sd_get_text_align_input(
 			'text_align',
 			array(
-				'group'           => __( 'Number Typography', 'geodirectory' ),
+				'group'           => __( 'Number Typography', 'blockstrap' ),
 				'device_type'     => 'Desktop',
 				'element_require' => '[%num_text_justify%]==""',
 			)
@@ -222,22 +222,22 @@ class BlockStrap_Widget_Counter extends WP_Super_Duper {
 
 		// Title typography
 		// text color
-		$arguments['title_text_color'] = sd_get_text_color_input( '', array( 'group' => __( 'Title Typography', 'geodirectory' ) ) );
+		$arguments['title_text_color'] = sd_get_text_color_input( '', array( 'group' => __( 'Title Typography', 'blockstrap' ) ) );
 
 		// font size
-		$arguments = $arguments + sd_get_font_size_input_group( 'title_font_size', array( 'group' => __( 'Title Typography', 'geodirectory' ) ), array( 'group' => __( 'Title Typography', 'geodirectory' ) ) );
+		$arguments = $arguments + sd_get_font_size_input_group( 'title_font_size', array( 'group' => __( 'Title Typography', 'blockstrap' ) ), array( 'group' => __( 'Title Typography', 'blockstrap' ) ) );
 
 		// font weight
-		$arguments['title_font_weight'] = sd_get_font_weight_input( '', array( 'group' => __( 'Title Typography', 'geodirectory' ) ) );
+		$arguments['title_font_weight'] = sd_get_font_weight_input( '', array( 'group' => __( 'Title Typography', 'blockstrap' ) ) );
 
 		// Text justify
-		$arguments['title_text_justify'] = sd_get_text_justify_input( '', array( 'group' => __( 'Title Typography', 'geodirectory' ) ) );
+		$arguments['title_text_justify'] = sd_get_text_justify_input( '', array( 'group' => __( 'Title Typography', 'blockstrap' ) ) );
 
 		// text align
 		$arguments['title_text_align']    = sd_get_text_align_input(
 			'text_align',
 			array(
-				'group'           => __( 'Title Typography', 'geodirectory' ),
+				'group'           => __( 'Title Typography', 'blockstrap' ),
 				'device_type'     => 'Mobile',
 				'element_require' => '[%title_text_justify%]==""',
 				'default'         => 'text-center',
@@ -246,7 +246,7 @@ class BlockStrap_Widget_Counter extends WP_Super_Duper {
 		$arguments['title_text_align_md'] = sd_get_text_align_input(
 			'text_align',
 			array(
-				'group'           => __( 'Title Typography', 'geodirectory' ),
+				'group'           => __( 'Title Typography', 'blockstrap' ),
 				'device_type'     => 'Tablet',
 				'element_require' => '[%title_text_justify%]==""',
 			)
@@ -254,7 +254,7 @@ class BlockStrap_Widget_Counter extends WP_Super_Duper {
 		$arguments['title_text_align_lg'] = sd_get_text_align_input(
 			'text_align',
 			array(
-				'group'           => __( 'Title Typography', 'geodirectory' ),
+				'group'           => __( 'Title Typography', 'blockstrap' ),
 				'device_type'     => 'Desktop',
 				'element_require' => '[%title_text_justify%]==""',
 			)
@@ -263,16 +263,16 @@ class BlockStrap_Widget_Counter extends WP_Super_Duper {
 		//      print_r($arguments);exit;
 
 		// background
-		$arguments = $arguments + sd_get_background_inputs( 'bg', array( 'group' => __( 'Wrapper Styles', 'geodirectory' ) ), array( 'group' => __( 'Wrapper Styles', 'geodirectory' ) ), array( 'group' => __( 'Wrapper Styles', 'geodirectory' ) ), false );
+		$arguments = $arguments + sd_get_background_inputs( 'bg', array( 'group' => __( 'Wrapper Styles', 'blockstrap' ) ), array( 'group' => __( 'Wrapper Styles', 'blockstrap' ) ), array( 'group' => __( 'Wrapper Styles', 'blockstrap' ) ), false );
 
 		$arguments['bg_on_text'] = array(
 			'type'            => 'checkbox',
-			'title'           => __( 'Background on text', 'geodirectory' ),
+			'title'           => __( 'Background on text', 'blockstrap' ),
 			'default'         => '',
 			'value'           => '1',
 			'desc_tip'        => false,
-			'desc'            => __( 'This will show the background on the text.', 'geodirectory' ),
-			'group'           => __( 'Wrapper Styles', 'geodirectory' ),
+			'desc'            => __( 'This will show the background on the text.', 'blockstrap' ),
+			'group'           => __( 'Wrapper Styles', 'blockstrap' ),
 			'element_require' => '[%bg%]=="custom-gradient"',
 		);
 
@@ -338,10 +338,10 @@ class BlockStrap_Widget_Counter extends WP_Super_Duper {
 
 		$arguments['css_class'] = array(
 			'type'    => 'text',
-			'title'   => __( 'Additional CSS class(es)', 'geodirectory' ),
-			'desc'    => __( 'Separate multiple classes with spaces.', 'geodirectory' ),
+			'title'   => __( 'Additional CSS class(es)', 'blockstrap' ),
+			'desc'    => __( 'Separate multiple classes with spaces.', 'blockstrap' ),
 			'default' => '',
-			'group'   => __( 'Advanced', 'geodirectory' ),
+			'group'   => __( 'Advanced', 'blockstrap' ),
 		);
 
 		return $arguments;

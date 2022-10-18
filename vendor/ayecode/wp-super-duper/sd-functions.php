@@ -51,8 +51,8 @@ function sd_widget_exclude() {
  */
 function sd_get_margin_input( $type = 'mt', $overwrite = array(), $include_negatives = true ) {
 	$options = array(
-		''     => __( 'None', 'super-duper' ),
-		'auto' => __( 'auto', 'super-duper' ),
+		''     => __( 'None', 'blockstrap' ),
+		'auto' => __( 'auto', 'blockstrap' ),
 		'0'    => '0',
 		'1'    => '1',
 		'2'    => '2',
@@ -71,37 +71,37 @@ function sd_get_margin_input( $type = 'mt', $overwrite = array(), $include_negat
 
 	$defaults = array(
 		'type'     => 'select',
-		'title'    => __( 'Margin top', 'super-duper' ),
+		'title'    => __( 'Margin top', 'blockstrap' ),
 		'options'  => $options,
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Wrapper Styles', 'super-duper' ),
+		'group'    => __( 'Wrapper Styles', 'blockstrap' ),
 	);
 
 	// title
 	if ( $type == 'mt' ) {
-		$defaults['title'] = __( 'Margin top', 'super-duper' );
+		$defaults['title'] = __( 'Margin top', 'blockstrap' );
 		$defaults['icon']  = 'box-top';
 		$defaults['row']   = array(
-			'title' => __( 'Margins', 'super-duper' ),
+			'title' => __( 'Margins', 'blockstrap' ),
 			'key'   => 'wrapper-margins',
 			'open'  => true,
 			'class' => 'text-center',
 		);
 	} elseif ( $type == 'mr' ) {
-		$defaults['title'] = __( 'Margin right', 'super-duper' );
+		$defaults['title'] = __( 'Margin right', 'blockstrap' );
 		$defaults['icon']  = 'box-right';
 		$defaults['row']   = array(
 			'key' => 'wrapper-margins',
 		);
 	} elseif ( $type == 'mb' ) {
-		$defaults['title'] = __( 'Margin bottom', 'super-duper' );
+		$defaults['title'] = __( 'Margin bottom', 'blockstrap' );
 		$defaults['icon']  = 'box-bottom';
 		$defaults['row']   = array(
 			'key' => 'wrapper-margins',
 		);
 	} elseif ( $type == 'ml' ) {
-		$defaults['title'] = __( 'Margin left', 'super-duper' );
+		$defaults['title'] = __( 'Margin left', 'blockstrap' );
 		$defaults['icon']  = 'box-left';
 		$defaults['row']   = array(
 			'key'   => 'wrapper-margins',
@@ -124,7 +124,7 @@ function sd_get_margin_input( $type = 'mt', $overwrite = array(), $include_negat
  */
 function sd_get_padding_input( $type = 'pt', $overwrite = array() ) {
 	$options = array(
-		''  => __( 'None', 'super-duper' ),
+		''  => __( 'None', 'blockstrap' ),
 		'0' => '0',
 		'1' => '1',
 		'2' => '2',
@@ -135,37 +135,37 @@ function sd_get_padding_input( $type = 'pt', $overwrite = array() ) {
 
 	$defaults = array(
 		'type'     => 'select',
-		'title'    => __( 'Padding top', 'super-duper' ),
+		'title'    => __( 'Padding top', 'blockstrap' ),
 		'options'  => $options,
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Wrapper Styles', 'super-duper' ),
+		'group'    => __( 'Wrapper Styles', 'blockstrap' ),
 	);
 
 	// title
 	if ( $type == 'pt' ) {
-		$defaults['title'] = __( 'Padding top', 'super-duper' );
+		$defaults['title'] = __( 'Padding top', 'blockstrap' );
 		$defaults['icon']  = 'box-top';
 		$defaults['row']   = array(
-			'title' => __( 'Padding', 'super-duper' ),
+			'title' => __( 'Padding', 'blockstrap' ),
 			'key'   => 'wrapper-padding',
 			'open'  => true,
 			'class' => 'text-center',
 		);
 	} elseif ( $type == 'pr' ) {
-		$defaults['title'] = __( 'Padding right', 'super-duper' );
+		$defaults['title'] = __( 'Padding right', 'blockstrap' );
 		$defaults['icon']  = 'box-right';
 		$defaults['row']   = array(
 			'key' => 'wrapper-padding',
 		);
 	} elseif ( $type == 'pb' ) {
-		$defaults['title'] = __( 'Padding bottom', 'super-duper' );
+		$defaults['title'] = __( 'Padding bottom', 'blockstrap' );
 		$defaults['icon']  = 'box-bottom';
 		$defaults['row']   = array(
 			'key' => 'wrapper-padding',
 		);
 	} elseif ( $type == 'pl' ) {
-		$defaults['title'] = __( 'Padding left', 'super-duper' );
+		$defaults['title'] = __( 'Padding left', 'blockstrap' );
 		$defaults['icon']  = 'box-left';
 		$defaults['row']   = array(
 			'key'   => 'wrapper-padding',
@@ -200,9 +200,9 @@ function sd_get_border_input( $type = 'border', $overwrite = array() ) {
 
 	// title
 	if ( $type == 'rounded' ) {
-		$defaults['title']   = __( 'Border radius type', 'super-duper' );
+		$defaults['title']   = __( 'Border radius type', 'blockstrap' );
 		$defaults['options'] = array(
-			''               => __( 'Default', 'super-duper' ),
+			''               => __( 'Default', 'blockstrap' ),
 			'rounded'        => 'rounded',
 			'rounded-top'    => 'rounded-top',
 			'rounded-right'  => 'rounded-right',
@@ -213,27 +213,27 @@ function sd_get_border_input( $type = 'border', $overwrite = array() ) {
 			'rounded-0'      => 'rounded-0',
 		);
 	} elseif ( $type == 'rounded_size' ) {
-		$defaults['title']   = __( 'Border radius size', 'super-duper' );
+		$defaults['title']   = __( 'Border radius size', 'blockstrap' );
 		$defaults['options'] = array(
-			''   => __( 'Default', 'super-duper' ),
-			'sm' => __( 'Small', 'super-duper' ),
-			'lg' => __( 'Large', 'super-duper' ),
+			''   => __( 'Default', 'blockstrap' ),
+			'sm' => __( 'Small', 'blockstrap' ),
+			'lg' => __( 'Large', 'blockstrap' ),
 		);
 	} elseif ( $type == 'type' ) {
-		$defaults['title']   = __( 'Border type', 'super-duper' );
+		$defaults['title']   = __( 'Border type', 'blockstrap' );
 		$defaults['options'] = array(
-			''              => __( 'None', 'super-duper' ),
-			'border'        => __( 'Full', 'super-duper' ),
-			'border-top'    => __( 'Top', 'super-duper' ),
-			'border-bottom' => __( 'Bottom', 'super-duper' ),
-			'border-left'   => __( 'Left', 'super-duper' ),
-			'border-right'  => __( 'Right', 'super-duper' ),
+			''              => __( 'None', 'blockstrap' ),
+			'border'        => __( 'Full', 'blockstrap' ),
+			'border-top'    => __( 'Top', 'blockstrap' ),
+			'border-bottom' => __( 'Bottom', 'blockstrap' ),
+			'border-left'   => __( 'Left', 'blockstrap' ),
+			'border-right'  => __( 'Right', 'blockstrap' ),
 		);
 	} else {
 		$defaults['title']   = __( 'Border color' );
 		$defaults['options'] = array(
-			                       ''  => __( 'Default', 'super-duper' ),
-			                       '0' => __( 'None', 'super-duper' ),
+			                       ''  => __( 'Default', 'blockstrap' ),
+			                       '0' => __( 'None', 'blockstrap' ),
 		                       ) + sd_aui_colors();
 	}
 
@@ -252,19 +252,19 @@ function sd_get_border_input( $type = 'border', $overwrite = array() ) {
  */
 function sd_get_shadow_input( $type = 'shadow', $overwrite = array() ) {
 	$options = array(
-		''          => __( 'None', 'super-duper' ),
-		'shadow-sm' => __( 'Small', 'super-duper' ),
-		'shadow'    => __( 'Regular', 'super-duper' ),
-		'shadow-lg' => __( 'Large', 'super-duper' ),
+		''          => __( 'None', 'blockstrap' ),
+		'shadow-sm' => __( 'Small', 'blockstrap' ),
+		'shadow'    => __( 'Regular', 'blockstrap' ),
+		'shadow-lg' => __( 'Large', 'blockstrap' ),
 	);
 
 	$defaults = array(
 		'type'     => 'select',
-		'title'    => __( 'Shadow', 'super-duper' ),
+		'title'    => __( 'Shadow', 'blockstrap' ),
 		'options'  => $options,
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Wrapper Styles', 'super-duper' ),
+		'group'    => __( 'Wrapper Styles', 'blockstrap' ),
 	);
 
 	$input = wp_parse_args( $overwrite, $defaults );
@@ -282,17 +282,17 @@ function sd_get_shadow_input( $type = 'shadow', $overwrite = array() ) {
  */
 function sd_get_background_input( $type = 'bg', $overwrite = array() ) {
 	$options = array(
-		           ''            => __( 'None', 'super-duper' ),
-		           'transparent' => __( 'Transparent', 'super-duper' ),
+		           ''            => __( 'None', 'blockstrap' ),
+		           'transparent' => __( 'Transparent', 'blockstrap' ),
 	           ) + sd_aui_colors();
 
 	$defaults = array(
 		'type'     => 'select',
-		'title'    => __( 'Background color', 'super-duper' ),
+		'title'    => __( 'Background color', 'blockstrap' ),
 		'options'  => $options,
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Wrapper Styles', 'super-duper' ),
+		'group'    => __( 'Wrapper Styles', 'blockstrap' ),
 	);
 
 	$input = wp_parse_args( $overwrite, $defaults );
@@ -310,21 +310,21 @@ function sd_get_background_input( $type = 'bg', $overwrite = array() ) {
  */
 function sd_get_background_inputs( $type = 'bg', $overwrite = array(), $overwrite_color = array(), $overwrite_gradient = array(), $overwrite_image = array() ) {
 	$options = array(
-		           ''            => __( 'None', 'super-duper' ),
-		           'transparent' => __( 'Transparent', 'super-duper' ),
+		           ''            => __( 'None', 'blockstrap' ),
+		           'transparent' => __( 'Transparent', 'blockstrap' ),
 	           ) + sd_aui_colors()
 	           + array(
-		           'custom-color'    => __( 'Custom Color', 'super-duper' ),
-		           'custom-gradient' => __( 'Custom Gradient', 'super-duper' ),
+		           'custom-color'    => __( 'Custom Color', 'blockstrap' ),
+		           'custom-gradient' => __( 'Custom Gradient', 'blockstrap' ),
 	           );
 
 	$defaults = array(
 		'type'     => 'select',
-		'title'    => __( 'Background Color', 'super-duper' ),
+		'title'    => __( 'Background Color', 'blockstrap' ),
 		'options'  => $options,
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Background', 'super-duper' ),
+		'group'    => __( 'Background', 'blockstrap' ),
 	);
 
 	if ( $overwrite !== false ) {
@@ -336,11 +336,11 @@ function sd_get_background_inputs( $type = 'bg', $overwrite = array(), $overwrit
 			$overwrite_color,
 			array(
 				'type'            => 'color',
-				'title'           => __( 'Custom color', 'super-duper' ),
+				'title'           => __( 'Custom color', 'blockstrap' ),
 				'placeholder'     => '',
 				'default'         => '#0073aa',
 				'desc_tip'        => true,
-				'group'           => __( 'Background', 'super-duper' ),
+				'group'           => __( 'Background', 'blockstrap' ),
 				'element_require' => '[%' . $type . '%]=="custom-color"',
 			)
 		);
@@ -351,11 +351,11 @@ function sd_get_background_inputs( $type = 'bg', $overwrite = array(), $overwrit
 			$overwrite_gradient,
 			array(
 				'type'            => 'gradient',
-				'title'           => __( 'Custom gradient', 'super-duper' ),
+				'title'           => __( 'Custom gradient', 'blockstrap' ),
 				'placeholder'     => '',
 				'default'         => 'linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)',
 				'desc_tip'        => true,
-				'group'           => __( 'Background', 'super-duper' ),
+				'group'           => __( 'Background', 'blockstrap' ),
 				'element_require' => '[%' . $type . '%]=="custom-gradient"',
 			)
 		);
@@ -365,7 +365,7 @@ function sd_get_background_inputs( $type = 'bg', $overwrite = array(), $overwrit
 
 		$input[ $type . '_image_fixed' ] = array(
 			'type'            => 'checkbox',
-			'title'           => __( 'Fixed background', 'super-duper' ),
+			'title'           => __( 'Fixed background', 'blockstrap' ),
 			'default'         => '',
 			'desc_tip'        => true,
 			'group'           => ! empty( $overwrite_image['group'] ) ? $overwrite_image['group'] : __( 'Background' ),
@@ -375,10 +375,10 @@ function sd_get_background_inputs( $type = 'bg', $overwrite = array(), $overwrit
 
 		$input[ $type . '_image_use_featured' ] = array(
 			'type'            => 'checkbox',
-			'title'           => __( 'Use featured image', 'super-duper' ),
+			'title'           => __( 'Use featured image', 'blockstrap' ),
 			'default'         => '',
 			'desc_tip'        => true,
-			'group'           => ! empty( $overwrite_image['group'] ) ? $overwrite_image['group'] : __( 'Background', 'super-duper' ),
+			'group'           => ! empty( $overwrite_image['group'] ) ? $overwrite_image['group'] : __( 'Background', 'blockstrap' ),
 			'element_require' => '( [%' . $type . '%]=="" || [%' . $type . '%]=="custom-color" || [%' . $type . '%]=="custom-gradient" || [%' . $type . '%]=="transparent" )',
 
 		);
@@ -387,11 +387,11 @@ function sd_get_background_inputs( $type = 'bg', $overwrite = array(), $overwrit
 			$overwrite_image,
 			array(
 				'type'        => 'image',
-				'title'       => __( 'Custom image', 'super-duper' ),
+				'title'       => __( 'Custom image', 'blockstrap' ),
 				'placeholder' => '',
 				'default'     => '',
 				'desc_tip'    => true,
-				'group'       => __( 'Background', 'super-duper' ),
+				'group'       => __( 'Background', 'blockstrap' ),
 				//          'element_require' => ' ![%' . $type . '_image_use_featured%] '
 			)
 		);
@@ -404,7 +404,7 @@ function sd_get_background_inputs( $type = 'bg', $overwrite = array(), $overwrit
 				'title'       => '',
 				'placeholder' => '',
 				'default'     => '',
-				'group'       => __( 'Background', 'super-duper' ),
+				'group'       => __( 'Background', 'blockstrap' ),
 			)
 		);
 
@@ -415,7 +415,7 @@ function sd_get_background_inputs( $type = 'bg', $overwrite = array(), $overwrit
 				'title'       => '',
 				'placeholder' => '',
 				'default'     => '',
-				'group'       => __( 'Background', 'super-duper' ),
+				'group'       => __( 'Background', 'blockstrap' ),
 			)
 		);
 	}
@@ -434,43 +434,43 @@ function sd_get_background_inputs( $type = 'bg', $overwrite = array(), $overwrit
 function sd_get_shape_divider_inputs( $type = 'sd', $overwrite = array(), $overwrite_color = array(), $overwrite_gradient = array(), $overwrite_image = array() ) {
 
 	$options = array(
-		''                      => __( 'None', 'super-duper' ),
-		'mountains'             => __( 'Mountains', 'super-duper' ),
-		'drops'                 => __( 'Drops', 'super-duper' ),
-		'clouds'                => __( 'Clouds', 'super-duper' ),
-		'zigzag'                => __( 'Zigzag', 'super-duper' ),
-		'pyramids'              => __( 'Pyramids', 'super-duper' ),
-		'triangle'              => __( 'Triangle', 'super-duper' ),
-		'triangle-asymmetrical' => __( 'Triangle Asymmetrical', 'super-duper' ),
-		'tilt'                  => __( 'Tilt', 'super-duper' ),
-		'opacity-tilt'          => __( 'Opacity Tilt', 'super-duper' ),
-		'opacity-fan'           => __( 'Opacity Fan', 'super-duper' ),
-		'curve'                 => __( 'Curve', 'super-duper' ),
-		'curve-asymmetrical'    => __( 'Curve Asymmetrical', 'super-duper' ),
-		'waves'                 => __( 'Waves', 'super-duper' ),
-		'wave-brush'            => __( 'Wave Brush', 'super-duper' ),
-		'waves-pattern'         => __( 'Waves Pattern', 'super-duper' ),
-		'arrow'                 => __( 'Arrow', 'super-duper' ),
-		'split'                 => __( 'Split', 'super-duper' ),
-		'book'                  => __( 'Book', 'super-duper' ),
+		''                      => __( 'None', 'blockstrap' ),
+		'mountains'             => __( 'Mountains', 'blockstrap' ),
+		'drops'                 => __( 'Drops', 'blockstrap' ),
+		'clouds'                => __( 'Clouds', 'blockstrap' ),
+		'zigzag'                => __( 'Zigzag', 'blockstrap' ),
+		'pyramids'              => __( 'Pyramids', 'blockstrap' ),
+		'triangle'              => __( 'Triangle', 'blockstrap' ),
+		'triangle-asymmetrical' => __( 'Triangle Asymmetrical', 'blockstrap' ),
+		'tilt'                  => __( 'Tilt', 'blockstrap' ),
+		'opacity-tilt'          => __( 'Opacity Tilt', 'blockstrap' ),
+		'opacity-fan'           => __( 'Opacity Fan', 'blockstrap' ),
+		'curve'                 => __( 'Curve', 'blockstrap' ),
+		'curve-asymmetrical'    => __( 'Curve Asymmetrical', 'blockstrap' ),
+		'waves'                 => __( 'Waves', 'blockstrap' ),
+		'wave-brush'            => __( 'Wave Brush', 'blockstrap' ),
+		'waves-pattern'         => __( 'Waves Pattern', 'blockstrap' ),
+		'arrow'                 => __( 'Arrow', 'blockstrap' ),
+		'split'                 => __( 'Split', 'blockstrap' ),
+		'book'                  => __( 'Book', 'blockstrap' ),
 	);
 
 	$defaults = array(
 		'type'     => 'select',
-		'title'    => __( 'Type', 'super-duper' ),
+		'title'    => __( 'Type', 'blockstrap' ),
 		'options'  => $options,
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Shape Divider', 'super-duper' ),
+		'group'    => __( 'Shape Divider', 'blockstrap' ),
 	);
 
 	$input[ $type ] = wp_parse_args( $overwrite, $defaults );
 
 	$input[ $type . '_notice' ] = array(
 		'type'            => 'notice',
-		'desc'            => __( 'Parent element must be position `relative`', 'super-duper' ),
+		'desc'            => __( 'Parent element must be position `relative`', 'blockstrap' ),
 		'status'          => 'warning',
-		'group'           => __( 'Shape Divider', 'super-duper' ),
+		'group'           => __( 'Shape Divider', 'blockstrap' ),
 		'element_require' => '[%' . $type . '%]!=""',
 	);
 
@@ -478,33 +478,33 @@ function sd_get_shape_divider_inputs( $type = 'sd', $overwrite = array(), $overw
 		$overwrite_color,
 		array(
 			'type'            => 'select',
-			'title'           => __( 'Position', 'super-duper' ),
+			'title'           => __( 'Position', 'blockstrap' ),
 			'options'         => array(
-				'top'    => __( 'Top', 'super-duper' ),
-				'bottom' => __( 'Bottom', 'super-duper' ),
+				'top'    => __( 'Top', 'blockstrap' ),
+				'bottom' => __( 'Bottom', 'blockstrap' ),
 			),
 			'desc_tip'        => true,
-			'group'           => __( 'Shape Divider', 'super-duper' ),
+			'group'           => __( 'Shape Divider', 'blockstrap' ),
 			'element_require' => '[%' . $type . '%]!=""',
 		)
 	);
 
 	$options = array(
-		           ''            => __( 'None', 'super-duper' ),
-		           'transparent' => __( 'Transparent', 'super-duper' ),
+		           ''            => __( 'None', 'blockstrap' ),
+		           'transparent' => __( 'Transparent', 'blockstrap' ),
 	           ) + sd_aui_colors()
 	           + array(
-		           'custom-color' => __( 'Custom Color', 'super-duper' ),
+		           'custom-color' => __( 'Custom Color', 'blockstrap' ),
 	           );
 
 	$input[ $type . '_color' ] = wp_parse_args(
 		$overwrite_color,
 		array(
 			'type'            => 'select',
-			'title'           => __( 'Color', 'super-duper' ),
+			'title'           => __( 'Color', 'blockstrap' ),
 			'options'         => $options,
 			'desc_tip'        => true,
-			'group'           => __( 'Shape Divider', 'super-duper' ),
+			'group'           => __( 'Shape Divider', 'blockstrap' ),
 			'element_require' => '[%' . $type . '%]!=""',
 		)
 	);
@@ -513,11 +513,11 @@ function sd_get_shape_divider_inputs( $type = 'sd', $overwrite = array(), $overw
 		$overwrite_color,
 		array(
 			'type'            => 'color',
-			'title'           => __( 'Custom color', 'super-duper' ),
+			'title'           => __( 'Custom color', 'blockstrap' ),
 			'placeholder'     => '',
 			'default'         => '#0073aa',
 			'desc_tip'        => true,
-			'group'           => __( 'Shape Divider', 'super-duper' ),
+			'group'           => __( 'Shape Divider', 'blockstrap' ),
 			'element_require' => '[%' . $type . '_color%]=="custom-color" && [%' . $type . '%]!=""',
 		)
 	);
@@ -526,7 +526,7 @@ function sd_get_shape_divider_inputs( $type = 'sd', $overwrite = array(), $overw
 		$overwrite_gradient,
 		array(
 			'type'              => 'range',
-			'title'             => __( 'Width', 'super-duper' ),
+			'title'             => __( 'Width', 'blockstrap' ),
 			'placeholder'       => '',
 			'default'           => '200',
 			'desc_tip'          => true,
@@ -534,21 +534,21 @@ function sd_get_shape_divider_inputs( $type = 'sd', $overwrite = array(), $overw
 				'min' => 100,
 				'max' => 300,
 			),
-			'group'             => __( 'Shape Divider', 'super-duper' ),
+			'group'             => __( 'Shape Divider', 'blockstrap' ),
 			'element_require'   => '[%' . $type . '%]!=""',
 		)
 	);
 
 	$input[ $type . '_height' ] = array(
 		'type'              => 'range',
-		'title'             => __( 'Height', 'super-duper' ),
+		'title'             => __( 'Height', 'blockstrap' ),
 		'default'           => '100',
 		'desc_tip'          => true,
 		'custom_attributes' => array(
 			'min' => 0,
 			'max' => 500,
 		),
-		'group'             => __( 'Shape Divider', 'super-duper' ),
+		'group'             => __( 'Shape Divider', 'blockstrap' ),
 		'element_require'   => '[%' . $type . '%]!=""',
 	);
 
@@ -575,28 +575,28 @@ function sd_get_shape_divider_inputs( $type = 'sd', $overwrite = array(), $overw
 
 	$input[ $type . '_flip' ] = array(
 		'type'            => 'checkbox',
-		'title'           => __( 'Flip', 'super-duper' ),
+		'title'           => __( 'Flip', 'blockstrap' ),
 		'default'         => '',
 		'desc_tip'        => true,
-		'group'           => __( 'Shape Divider', 'super-duper' ),
+		'group'           => __( 'Shape Divider', 'blockstrap' ),
 		'element_require' => sd_get_element_require_string( $requires, 'flip', 'sd' ),
 	);
 
 	$input[ $type . '_invert' ] = array(
 		'type'            => 'checkbox',
-		'title'           => __( 'Invert', 'super-duper' ),
+		'title'           => __( 'Invert', 'blockstrap' ),
 		'default'         => '',
 		'desc_tip'        => true,
-		'group'           => __( 'Shape Divider', 'super-duper' ),
+		'group'           => __( 'Shape Divider', 'blockstrap' ),
 		'element_require' => sd_get_element_require_string( $requires, 'invert', 'sd' ),
 	);
 
 	$input[ $type . '_btf' ] = array(
 		'type'            => 'checkbox',
-		'title'           => __( 'Bring to front', 'super-duper' ),
+		'title'           => __( 'Bring to front', 'blockstrap' ),
 		'default'         => '',
 		'desc_tip'        => true,
-		'group'           => __( 'Shape Divider', 'super-duper' ),
+		'group'           => __( 'Shape Divider', 'blockstrap' ),
 		'element_require' => '[%' . $type . '%]!=""',
 
 	);
@@ -642,20 +642,20 @@ function sd_get_element_require_string( $args, $key, $type ) {
  */
 function sd_get_text_color_input( $type = 'text_color', $overwrite = array(), $has_custom = false ) {
 	$options = array(
-		           '' => __( 'None', 'super-duper' ),
+		           '' => __( 'None', 'blockstrap' ),
 	           ) + sd_aui_colors();
 
 	if ( $has_custom ) {
-		$options['custom'] = __( 'Custom color', 'super-duper' );
+		$options['custom'] = __( 'Custom color', 'blockstrap' );
 	}
 
 	$defaults = array(
 		'type'     => 'select',
-		'title'    => __( 'Text color', 'super-duper' ),
+		'title'    => __( 'Text color', 'blockstrap' ),
 		'options'  => $options,
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Typography', 'super-duper' ),
+		'group'    => __( 'Typography', 'blockstrap' ),
 	);
 
 	$input = wp_parse_args( $overwrite, $defaults );
@@ -690,11 +690,11 @@ function sd_get_custom_color_input( $type = 'color_custom', $overwrite = array()
 
 	$defaults = array(
 		'type'        => 'color',
-		'title'       => __( 'Custom color', 'super-duper' ),
+		'title'       => __( 'Custom color', 'blockstrap' ),
 		'default'     => '',
 		'placeholder' => '',
 		'desc_tip'    => true,
-		'group'       => __( 'Typography', 'super-duper' ),
+		'group'       => __( 'Typography', 'blockstrap' ),
 	);
 
 	if ( $parent_type ) {
@@ -725,7 +725,7 @@ function sd_get_col_input( $type = 'col', $overwrite = array() ) {
 		}
 	}
 	$options = array(
-		''   => __( 'auto', 'super-duper' ),
+		''   => __( 'auto', 'blockstrap' ),
 		'1'  => '1/12',
 		'2'  => '2/12',
 		'3'  => '3/12',
@@ -742,11 +742,11 @@ function sd_get_col_input( $type = 'col', $overwrite = array() ) {
 
 	$defaults = array(
 		'type'            => 'select',
-		'title'           => __( 'Column width', 'super-duper' ),
+		'title'           => __( 'Column width', 'blockstrap' ),
 		'options'         => $options,
 		'default'         => '',
 		'desc_tip'        => true,
-		'group'           => __( 'Container', 'super-duper' ),
+		'group'           => __( 'Container', 'blockstrap' ),
 		'element_require' => '[%container%]=="col"',
 	);
 
@@ -774,7 +774,7 @@ function sd_get_row_cols_input( $type = 'row_cols', $overwrite = array() ) {
 		}
 	}
 	$options = array(
-		''  => __( 'auto', 'super-duper' ),
+		''  => __( 'auto', 'blockstrap' ),
 		'1' => '1',
 		'2' => '2',
 		'3' => '3',
@@ -785,11 +785,11 @@ function sd_get_row_cols_input( $type = 'row_cols', $overwrite = array() ) {
 
 	$defaults = array(
 		'type'            => 'select',
-		'title'           => __( 'Row columns', 'super-duper' ),
+		'title'           => __( 'Row columns', 'blockstrap' ),
 		'options'         => $options,
 		'default'         => '',
 		'desc_tip'        => true,
-		'group'           => __( 'Container', 'super-duper' ),
+		'group'           => __( 'Container', 'blockstrap' ),
 		'element_require' => '[%container%]=="row"',
 	);
 
@@ -817,19 +817,19 @@ function sd_get_text_align_input( $type = 'text_align', $overwrite = array() ) {
 		}
 	}
 	$options = array(
-		''                                => __( 'Default', 'super-duper' ),
-		'text' . $device_size . '-left'   => __( 'Left', 'super-duper' ),
-		'text' . $device_size . '-right'  => __( 'Right', 'super-duper' ),
-		'text' . $device_size . '-center' => __( 'Center', 'super-duper' ),
+		''                                => __( 'Default', 'blockstrap' ),
+		'text' . $device_size . '-left'   => __( 'Left', 'blockstrap' ),
+		'text' . $device_size . '-right'  => __( 'Right', 'blockstrap' ),
+		'text' . $device_size . '-center' => __( 'Center', 'blockstrap' ),
 	);
 
 	$defaults = array(
 		'type'     => 'select',
-		'title'    => __( 'Text align', 'super-duper' ),
+		'title'    => __( 'Text align', 'blockstrap' ),
 		'options'  => $options,
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Typography', 'super-duper' ),
+		'group'    => __( 'Typography', 'blockstrap' ),
 	);
 
 	$input = wp_parse_args( $overwrite, $defaults );
@@ -856,7 +856,7 @@ function sd_get_display_input( $type = 'display', $overwrite = array() ) {
 		}
 	}
 	$options = array(
-		''                                   => __( 'Default', 'super-duper' ),
+		''                                   => __( 'Default', 'blockstrap' ),
 		'd' . $device_size . '-none'         => 'none',
 		'd' . $device_size . '-inline'       => 'inline',
 		'd' . $device_size . '-inline-block' => 'inline-block',
@@ -870,11 +870,11 @@ function sd_get_display_input( $type = 'display', $overwrite = array() ) {
 
 	$defaults = array(
 		'type'     => 'select',
-		'title'    => __( 'Display', 'super-duper' ),
+		'title'    => __( 'Display', 'blockstrap' ),
 		'options'  => $options,
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Wrapper Styles', 'super-duper' ),
+		'group'    => __( 'Wrapper Styles', 'blockstrap' ),
 	);
 
 	$input = wp_parse_args( $overwrite, $defaults );
@@ -894,10 +894,10 @@ function sd_get_text_justify_input( $type = 'text_justify', $overwrite = array()
 
 	$defaults = array(
 		'type'     => 'checkbox',
-		'title'    => __( 'Text justify', 'super-duper' ),
+		'title'    => __( 'Text justify', 'blockstrap' ),
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Typography', 'super-duper' ),
+		'group'    => __( 'Typography', 'blockstrap' ),
 	);
 
 	$input = wp_parse_args( $overwrite, $defaults );
@@ -917,41 +917,41 @@ function sd_get_text_justify_input( $type = 'text_justify', $overwrite = array()
 function sd_aui_colors( $include_branding = false, $include_outlines = false, $outline_button_only_text = false ) {
 	$theme_colors = array();
 
-	$theme_colors['primary']   = __( 'Primary', 'super-duper' );
-	$theme_colors['secondary'] = __( 'Secondary', 'super-duper' );
-	$theme_colors['success']   = __( 'Success', 'super-duper' );
-	$theme_colors['danger']    = __( 'Danger', 'super-duper' );
-	$theme_colors['warning']   = __( 'Warning', 'super-duper' );
-	$theme_colors['info']      = __( 'Info', 'super-duper' );
-	$theme_colors['light']     = __( 'Light', 'super-duper' );
-	$theme_colors['dark']      = __( 'Dark', 'super-duper' );
-	$theme_colors['white']     = __( 'White', 'super-duper' );
-	$theme_colors['purple']    = __( 'Purple', 'super-duper' );
-	$theme_colors['salmon']    = __( 'Salmon', 'super-duper' );
-	$theme_colors['cyan']      = __( 'Cyan', 'super-duper' );
-	$theme_colors['gray']      = __( 'Gray', 'super-duper' );
-	$theme_colors['gray-dark'] = __( 'Gray dark', 'super-duper' );
-	$theme_colors['indigo']    = __( 'Indigo', 'super-duper' );
-	$theme_colors['orange']    = __( 'Orange', 'super-duper' );
+	$theme_colors['primary']   = __( 'Primary', 'blockstrap' );
+	$theme_colors['secondary'] = __( 'Secondary', 'blockstrap' );
+	$theme_colors['success']   = __( 'Success', 'blockstrap' );
+	$theme_colors['danger']    = __( 'Danger', 'blockstrap' );
+	$theme_colors['warning']   = __( 'Warning', 'blockstrap' );
+	$theme_colors['info']      = __( 'Info', 'blockstrap' );
+	$theme_colors['light']     = __( 'Light', 'blockstrap' );
+	$theme_colors['dark']      = __( 'Dark', 'blockstrap' );
+	$theme_colors['white']     = __( 'White', 'blockstrap' );
+	$theme_colors['purple']    = __( 'Purple', 'blockstrap' );
+	$theme_colors['salmon']    = __( 'Salmon', 'blockstrap' );
+	$theme_colors['cyan']      = __( 'Cyan', 'blockstrap' );
+	$theme_colors['gray']      = __( 'Gray', 'blockstrap' );
+	$theme_colors['gray-dark'] = __( 'Gray dark', 'blockstrap' );
+	$theme_colors['indigo']    = __( 'Indigo', 'blockstrap' );
+	$theme_colors['orange']    = __( 'Orange', 'blockstrap' );
 
 	if ( $include_outlines ) {
-		$button_only                       = $outline_button_only_text ? ' ' . __( '(button only)', 'super-duper' ) : '';
-		$theme_colors['outline-primary']   = __( 'Primary outline', 'super-duper' ) . $button_only;
-		$theme_colors['outline-secondary'] = __( 'Secondary outline', 'super-duper' ) . $button_only;
-		$theme_colors['outline-success']   = __( 'Success outline', 'super-duper' ) . $button_only;
-		$theme_colors['outline-danger']    = __( 'Danger outline', 'super-duper' ) . $button_only;
-		$theme_colors['outline-warning']   = __( 'Warning outline', 'super-duper' ) . $button_only;
-		$theme_colors['outline-info']      = __( 'Info outline', 'super-duper' ) . $button_only;
-		$theme_colors['outline-light']     = __( 'Light outline', 'super-duper' ) . $button_only;
-		$theme_colors['outline-dark']      = __( 'Dark outline', 'super-duper' ) . $button_only;
-		$theme_colors['outline-white']     = __( 'White outline', 'super-duper' ) . $button_only;
-		$theme_colors['outline-purple']    = __( 'Purple outline', 'super-duper' ) . $button_only;
-		$theme_colors['outline-salmon']    = __( 'Salmon outline', 'super-duper' ) . $button_only;
-		$theme_colors['outline-cyan']      = __( 'Cyan outline', 'super-duper' ) . $button_only;
-		$theme_colors['outline-gray']      = __( 'Gray outline', 'super-duper' ) . $button_only;
-		$theme_colors['outline-gray-dark'] = __( 'Gray dark outline', 'super-duper' ) . $button_only;
-		$theme_colors['outline-indigo']    = __( 'Indigo outline', 'super-duper' ) . $button_only;
-		$theme_colors['outline-orange']    = __( 'Orange outline', 'super-duper' ) . $button_only;
+		$button_only                       = $outline_button_only_text ? ' ' . __( '(button only)', 'blockstrap' ) : '';
+		$theme_colors['outline-primary']   = __( 'Primary outline', 'blockstrap' ) . $button_only;
+		$theme_colors['outline-secondary'] = __( 'Secondary outline', 'blockstrap' ) . $button_only;
+		$theme_colors['outline-success']   = __( 'Success outline', 'blockstrap' ) . $button_only;
+		$theme_colors['outline-danger']    = __( 'Danger outline', 'blockstrap' ) . $button_only;
+		$theme_colors['outline-warning']   = __( 'Warning outline', 'blockstrap' ) . $button_only;
+		$theme_colors['outline-info']      = __( 'Info outline', 'blockstrap' ) . $button_only;
+		$theme_colors['outline-light']     = __( 'Light outline', 'blockstrap' ) . $button_only;
+		$theme_colors['outline-dark']      = __( 'Dark outline', 'blockstrap' ) . $button_only;
+		$theme_colors['outline-white']     = __( 'White outline', 'blockstrap' ) . $button_only;
+		$theme_colors['outline-purple']    = __( 'Purple outline', 'blockstrap' ) . $button_only;
+		$theme_colors['outline-salmon']    = __( 'Salmon outline', 'blockstrap' ) . $button_only;
+		$theme_colors['outline-cyan']      = __( 'Cyan outline', 'blockstrap' ) . $button_only;
+		$theme_colors['outline-gray']      = __( 'Gray outline', 'blockstrap' ) . $button_only;
+		$theme_colors['outline-gray-dark'] = __( 'Gray dark outline', 'blockstrap' ) . $button_only;
+		$theme_colors['outline-indigo']    = __( 'Indigo outline', 'blockstrap' ) . $button_only;
+		$theme_colors['outline-orange']    = __( 'Orange outline', 'blockstrap' ) . $button_only;
 	}
 
 	if ( $include_branding ) {
@@ -968,17 +968,17 @@ function sd_aui_colors( $include_branding = false, $include_outlines = false, $o
  */
 function sd_aui_branding_colors() {
 	return array(
-		'facebook'  => __( 'Facebook', 'super-duper' ),
-		'twitter'   => __( 'Twitter', 'super-duper' ),
-		'instagram' => __( 'Instagram', 'super-duper' ),
-		'linkedin'  => __( 'Linkedin', 'super-duper' ),
-		'flickr'    => __( 'Flickr', 'super-duper' ),
-		'github'    => __( 'GitHub', 'super-duper' ),
-		'youtube'   => __( 'YouTube', 'super-duper' ),
-		'wordpress' => __( 'WordPress', 'super-duper' ),
-		'google'    => __( 'Google', 'super-duper' ),
-		'yahoo'     => __( 'Yahoo', 'super-duper' ),
-		'vkontakte' => __( 'Vkontakte', 'super-duper' ),
+		'facebook'  => __( 'Facebook', 'blockstrap' ),
+		'twitter'   => __( 'Twitter', 'blockstrap' ),
+		'instagram' => __( 'Instagram', 'blockstrap' ),
+		'linkedin'  => __( 'Linkedin', 'blockstrap' ),
+		'flickr'    => __( 'Flickr', 'blockstrap' ),
+		'github'    => __( 'GitHub', 'blockstrap' ),
+		'youtube'   => __( 'YouTube', 'blockstrap' ),
+		'wordpress' => __( 'WordPress', 'blockstrap' ),
+		'google'    => __( 'Google', 'blockstrap' ),
+		'yahoo'     => __( 'Yahoo', 'blockstrap' ),
+		'vkontakte' => __( 'Vkontakte', 'blockstrap' ),
 	);
 }
 
@@ -994,7 +994,7 @@ function sd_aui_branding_colors() {
 function sd_get_container_class_input( $type = 'container', $overwrite = array() ) {
 
 	$options = array(
-		'container'       => __( 'container (default)', 'super-duper' ),
+		'container'       => __( 'container (default)', 'blockstrap' ),
 		'container-sm'    => 'container-sm',
 		'container-md'    => 'container-md',
 		'container-lg'    => 'container-lg',
@@ -1013,11 +1013,11 @@ function sd_get_container_class_input( $type = 'container', $overwrite = array()
 
 	$defaults = array(
 		'type'     => 'select',
-		'title'    => __( 'Type', 'super-duper' ),
+		'title'    => __( 'Type', 'blockstrap' ),
 		'options'  => $options,
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Container', 'super-duper' ),
+		'group'    => __( 'Container', 'blockstrap' ),
 	);
 
 	$input = wp_parse_args( $overwrite, $defaults );
@@ -1036,7 +1036,7 @@ function sd_get_container_class_input( $type = 'container', $overwrite = array()
 function sd_get_position_class_input( $type = 'position', $overwrite = array() ) {
 
 	$options = array(
-		''                  => __( 'Default', 'super-duper' ),
+		''                  => __( 'Default', 'blockstrap' ),
 		'position-static'   => 'static',
 		'position-relative' => 'relative',
 		'position-absolute' => 'absolute',
@@ -1049,11 +1049,11 @@ function sd_get_position_class_input( $type = 'position', $overwrite = array() )
 
 	$defaults = array(
 		'type'     => 'select',
-		'title'    => __( 'Position', 'super-duper' ),
+		'title'    => __( 'Position', 'blockstrap' ),
 		'options'  => $options,
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Wrapper Styles', 'super-duper' ),
+		'group'    => __( 'Wrapper Styles', 'blockstrap' ),
 	);
 
 	$input = wp_parse_args( $overwrite, $defaults );
@@ -1073,26 +1073,26 @@ function sd_get_sticky_offset_input( $type = 'top', $overwrite = array() ) {
 
 	$defaults = array(
 		'type'            => 'number',
-		'title'           => __( 'Sticky offset', 'super-duper' ),
+		'title'           => __( 'Sticky offset', 'blockstrap' ),
 		//'desc' =>  __('Sticky offset'),
 		'default'         => '',
 		'desc_tip'        => true,
-		'group'           => __( 'Wrapper Styles', 'super-duper' ),
+		'group'           => __( 'Wrapper Styles', 'blockstrap' ),
 		'element_require' => '[%position%]=="sticky" || [%position%]=="sticky-top"',
 	);
 
 	// title
 	if ( $type == 'top' ) {
-		$defaults['title'] = __( 'Top offset', 'super-duper' );
+		$defaults['title'] = __( 'Top offset', 'blockstrap' );
 		$defaults['icon']  = 'box-top';
 		$defaults['row']   = array(
-			'title' => __( 'Sticky offset', 'super-duper' ),
+			'title' => __( 'Sticky offset', 'blockstrap' ),
 			'key'   => 'sticky-offset',
 			'open'  => true,
 			'class' => 'text-center',
 		);
 	} elseif ( $type == 'bottom' ) {
-		$defaults['title'] = __( 'Bottom offset', 'super-duper' );
+		$defaults['title'] = __( 'Bottom offset', 'blockstrap' );
 		$defaults['icon']  = 'box-bottom';
 		$defaults['row']   = array(
 			'key'   => 'sticky-offset',
@@ -1116,7 +1116,7 @@ function sd_get_sticky_offset_input( $type = 'top', $overwrite = array() ) {
 function sd_get_font_size_input( $type = 'font_size', $overwrite = array(), $has_custom = false ) {
 
 	$options = array(
-		''          => __( 'Inherit from parent', 'super-duper' ),
+		''          => __( 'Inherit from parent', 'blockstrap' ),
 		'h6'        => 'h6',
 		'h5'        => 'h5',
 		'h4'        => 'h4',
@@ -1130,16 +1130,16 @@ function sd_get_font_size_input( $type = 'font_size', $overwrite = array(), $has
 	);
 
 	if ( $has_custom ) {
-		$options['custom'] = __( 'Custom size', 'super-duper' );
+		$options['custom'] = __( 'Custom size', 'blockstrap' );
 	}
 
 	$defaults = array(
 		'type'     => 'select',
-		'title'    => __( 'Font size', 'super-duper' ),
+		'title'    => __( 'Font size', 'blockstrap' ),
 		'options'  => $options,
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Typography', 'super-duper' ),
+		'group'    => __( 'Typography', 'blockstrap' ),
 	);
 
 	$input = wp_parse_args( $overwrite, $defaults );
@@ -1159,7 +1159,7 @@ function sd_get_font_custom_size_input( $type = 'font_size_custom', $overwrite =
 
 	$defaults = array(
 		'type'              => 'number',
-		'title'             => __( 'Font size (rem)', 'super-duper' ),
+		'title'             => __( 'Font size (rem)', 'blockstrap' ),
 		'default'           => '',
 		'placeholder'       => '1.25',
 		'custom_attributes' => array(
@@ -1168,7 +1168,7 @@ function sd_get_font_custom_size_input( $type = 'font_size_custom', $overwrite =
 			'max'  => '100',
 		),
 		'desc_tip'          => true,
-		'group'             => __( 'Typography', 'super-duper' ),
+		'group'             => __( 'Typography', 'blockstrap' ),
 	);
 
 	if ( $parent_type ) {
@@ -1192,7 +1192,7 @@ function sd_get_font_line_height_input( $type = 'font_line_height', $overwrite =
 
 	$defaults = array(
 		'type'              => 'number',
-		'title'             => __( 'Font Line Height', 'super-duper' ),
+		'title'             => __( 'Font Line Height', 'blockstrap' ),
 		'default'           => '',
 		'placeholder'       => '1.75',
 		'custom_attributes' => array(
@@ -1201,7 +1201,7 @@ function sd_get_font_line_height_input( $type = 'font_line_height', $overwrite =
 			'max'  => '100',
 		),
 		'desc_tip'          => true,
-		'group'             => __( 'Typography', 'super-duper' ),
+		'group'             => __( 'Typography', 'blockstrap' ),
 	);
 
 	$input = wp_parse_args( $overwrite, $defaults );
@@ -1244,7 +1244,7 @@ function sd_get_font_size_input_group( $type = 'font_size', $overwrite = array()
 function sd_get_font_weight_input( $type = 'font_weight', $overwrite = array() ) {
 
 	$options = array(
-		''                                => __( 'Inherit', 'super-duper' ),
+		''                                => __( 'Inherit', 'blockstrap' ),
 		'font-weight-bold'                => 'bold',
 		'font-weight-bolder'              => 'bolder',
 		'font-weight-normal'              => 'normal',
@@ -1260,11 +1260,11 @@ function sd_get_font_weight_input( $type = 'font_weight', $overwrite = array() )
 
 	$defaults = array(
 		'type'     => 'select',
-		'title'    => __( 'Appearance', 'super-duper' ),
+		'title'    => __( 'Appearance', 'blockstrap' ),
 		'options'  => $options,
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Typography', 'super-duper' ),
+		'group'    => __( 'Typography', 'blockstrap' ),
 	);
 
 	$input = wp_parse_args( $overwrite, $defaults );
@@ -1283,19 +1283,19 @@ function sd_get_font_weight_input( $type = 'font_weight', $overwrite = array() )
 function sd_get_font_case_input( $type = 'font_weight', $overwrite = array() ) {
 
 	$options = array(
-		''                => __( 'Default', 'super-duper' ),
-		'text-lowercase'  => __( 'lowercase', 'super-duper' ),
-		'text-uppercase'  => __( 'UPPERCASE', 'super-duper' ),
-		'text-capitalize' => __( 'Capitalize', 'super-duper' ),
+		''                => __( 'Default', 'blockstrap' ),
+		'text-lowercase'  => __( 'lowercase', 'blockstrap' ),
+		'text-uppercase'  => __( 'UPPERCASE', 'blockstrap' ),
+		'text-capitalize' => __( 'Capitalize', 'blockstrap' ),
 	);
 
 	$defaults = array(
 		'type'     => 'select',
-		'title'    => __( 'Letter case', 'super-duper' ),
+		'title'    => __( 'Letter case', 'blockstrap' ),
 		'options'  => $options,
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Typography', 'super-duper' ),
+		'group'    => __( 'Typography', 'blockstrap' ),
 	);
 
 	$input = wp_parse_args( $overwrite, $defaults );
@@ -1315,17 +1315,17 @@ function sd_get_font_case_input( $type = 'font_weight', $overwrite = array() ) {
 function sd_get_font_italic_input( $type = 'font_italic', $overwrite = array() ) {
 
 	$options = array(
-		''            => __( 'No', 'super-duper' ),
-		'font-italic' => __( 'Yes', 'super-duper' ),
+		''            => __( 'No', 'blockstrap' ),
+		'font-italic' => __( 'Yes', 'blockstrap' ),
 	);
 
 	$defaults = array(
 		'type'     => 'select',
-		'title'    => __( 'Font italic', 'super-duper' ),
+		'title'    => __( 'Font italic', 'blockstrap' ),
 		'options'  => $options,
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Typography', 'super-duper' ),
+		'group'    => __( 'Typography', 'blockstrap' ),
 	);
 
 	$input = wp_parse_args( $overwrite, $defaults );
@@ -1345,11 +1345,11 @@ function sd_get_anchor_input( $type = 'anchor', $overwrite = array() ) {
 
 	$defaults = array(
 		'type'     => 'text',
-		'title'    => __( 'HTML anchor', 'super-duper' ),
+		'title'    => __( 'HTML anchor', 'blockstrap' ),
 		'desc'     => __( 'Enter a word or two — without spaces — to make a unique web address just for this block, called an “anchor.” Then, you’ll be able to link directly to this section of your page.' ),
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Advanced', 'super-duper' ),
+		'group'    => __( 'Advanced', 'blockstrap' ),
 	);
 
 	$input = wp_parse_args( $overwrite, $defaults );
@@ -1369,11 +1369,11 @@ function sd_get_class_input( $type = 'css_class', $overwrite = array() ) {
 
 	$defaults = array(
 		'type'     => 'text',
-		'title'    => __( 'Additional CSS class(es)', 'super-duper' ),
-		'desc'     => __( 'Separate multiple classes with spaces.', 'super-duper' ),
+		'title'    => __( 'Additional CSS class(es)', 'blockstrap' ),
+		'desc'     => __( 'Separate multiple classes with spaces.', 'blockstrap' ),
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Advanced', 'super-duper' ),
+		'group'    => __( 'Advanced', 'blockstrap' ),
 	);
 
 	$input = wp_parse_args( $overwrite, $defaults );
@@ -1392,22 +1392,22 @@ function sd_get_class_input( $type = 'css_class', $overwrite = array() ) {
 function sd_get_hover_animations_input( $type = 'hover_animations', $overwrite = array() ) {
 
 	$options = array(
-		'hover-zoom'       => __( 'Zoom', 'super-duper' ),
-		'hover-shadow'     => __( 'Shadow', 'super-duper' ),
-		'hover-move-up'    => __( 'Move up', 'super-duper' ),
-		'hover-move-down'  => __( 'Move down', 'super-duper' ),
-		'hover-move-left'  => __( 'Move left', 'super-duper' ),
-		'hover-move-right' => __( 'Move right', 'super-duper' ),
+		'hover-zoom'       => __( 'Zoom', 'blockstrap' ),
+		'hover-shadow'     => __( 'Shadow', 'blockstrap' ),
+		'hover-move-up'    => __( 'Move up', 'blockstrap' ),
+		'hover-move-down'  => __( 'Move down', 'blockstrap' ),
+		'hover-move-left'  => __( 'Move left', 'blockstrap' ),
+		'hover-move-right' => __( 'Move right', 'blockstrap' ),
 	);
 
 	$defaults = array(
 		'type'     => 'select',
 		'multiple' => true,
-		'title'    => __( 'Hover Animations', 'super-duper' ),
+		'title'    => __( 'Hover Animations', 'blockstrap' ),
 		'options'  => $options,
 		'default'  => '',
 		'desc_tip' => true,
-		'group'    => __( 'Hover Animations', 'super-duper' ),
+		'group'    => __( 'Hover Animations', 'blockstrap' ),
 	);
 
 	$input = wp_parse_args( $overwrite, $defaults );
@@ -1426,7 +1426,7 @@ function sd_get_flex_align_items_input( $type = 'align-items', $overwrite = arra
 		}
 	}
 	$options = array(
-		''                                         => __( 'Default', 'super-duper' ),
+		''                                         => __( 'Default', 'blockstrap' ),
 		'align-items' . $device_size . '-start'    => 'align-items-start',
 		'align-items' . $device_size . '-end'      => 'align-items-end',
 		'align-items' . $device_size . '-center'   => 'align-items-center',
@@ -1436,11 +1436,11 @@ function sd_get_flex_align_items_input( $type = 'align-items', $overwrite = arra
 
 	$defaults = array(
 		'type'            => 'select',
-		'title'           => __( 'Vertical Align Items', 'super-duper' ),
+		'title'           => __( 'Vertical Align Items', 'blockstrap' ),
 		'options'         => $options,
 		'default'         => '',
 		'desc_tip'        => true,
-		'group'           => __( 'Wrapper Styles', 'super-duper' ),
+		'group'           => __( 'Wrapper Styles', 'blockstrap' ),
 		'element_require' => ' ( ( [%container%]=="row" ) || ( [%display%]=="d-flex" || [%display_md%]=="d-md-flex" || [%display_lg%]=="d-lg-flex" ) ) ',
 
 	);
@@ -1479,7 +1479,7 @@ function sd_get_flex_justify_content_input( $type = 'flex_justify_content', $ove
 		}
 	}
 	$options = array(
-		''                                             => __( 'Default', 'super-duper' ),
+		''                                             => __( 'Default', 'blockstrap' ),
 		'justify-content' . $device_size . '-start'    => 'justify-content-start',
 		'justify-content' . $device_size . '-end'      => 'justify-content-end',
 		'justify-content' . $device_size . '-center'   => 'justify-content-center',
@@ -1493,7 +1493,7 @@ function sd_get_flex_justify_content_input( $type = 'flex_justify_content', $ove
 		'options'         => $options,
 		'default'         => '',
 		'desc_tip'        => true,
-		'group'           => __( 'Wrapper Styles', 'super-duper' ),
+		'group'           => __( 'Wrapper Styles', 'blockstrap' ),
 		'element_require' => '( ( [%container%]=="row" ) || ( [%display%]=="d-flex" || [%display_md%]=="d-md-flex" || [%display_lg%]=="d-lg-flex" ) ) ',
 
 	);
@@ -1533,7 +1533,7 @@ function sd_get_flex_align_self_input( $type = 'flex_align_self', $overwrite = a
 		}
 	}
 	$options = array(
-		''                                         => __( 'Default', 'super-duper' ),
+		''                                         => __( 'Default', 'blockstrap' ),
 		'align-items' . $device_size . '-start'    => 'align-items-start',
 		'align-items' . $device_size . '-end'      => 'align-items-end',
 		'align-items' . $device_size . '-center'   => 'align-items-center',
@@ -1543,11 +1543,11 @@ function sd_get_flex_align_self_input( $type = 'flex_align_self', $overwrite = a
 
 	$defaults = array(
 		'type'            => 'select',
-		'title'           => __( 'Align Self', 'super-duper' ),
+		'title'           => __( 'Align Self', 'blockstrap' ),
 		'options'         => $options,
 		'default'         => '',
 		'desc_tip'        => true,
-		'group'           => __( 'Wrapper Styles', 'super-duper' ),
+		'group'           => __( 'Wrapper Styles', 'blockstrap' ),
 		'element_require' => ' [%container%]=="col" ',
 
 	);
@@ -1586,7 +1586,7 @@ function sd_get_flex_order_input( $type = 'flex_order', $overwrite = array() ) {
 		}
 	}
 	$options = array(
-		'' => __( 'Default', 'super-duper' ),
+		'' => __( 'Default', 'blockstrap' ),
 	);
 
 	$i = 0;
@@ -1597,11 +1597,11 @@ function sd_get_flex_order_input( $type = 'flex_order', $overwrite = array() ) {
 
 	$defaults = array(
 		'type'            => 'select',
-		'title'           => __( 'Flex Order', 'super-duper' ),
+		'title'           => __( 'Flex Order', 'blockstrap' ),
 		'options'         => $options,
 		'default'         => '',
 		'desc_tip'        => true,
-		'group'           => __( 'Wrapper Styles', 'super-duper' ),
+		'group'           => __( 'Wrapper Styles', 'blockstrap' ),
 		'element_require' => ' [%container%]=="col" ',
 
 	);

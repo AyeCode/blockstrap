@@ -11,51 +11,32 @@ class BlockStrap_Widget_Map extends WP_Super_Duper {
 	public function __construct() {
 
 		$options = array(
-			'textdomain'                 => 'blockstrap',
-			'output_types'               => array( 'block', 'shortcode' ),
-			//          'nested-block'   => true,
-							'block-icon' => 'fas fa-map-marked-alt',
-			'block-category'             => 'layout',
-			'block-keywords'             => "['map','google','osm']",
-			'block-supports'             => array(
+			'textdomain'        => 'blockstrap',
+			'output_types'      => array( 'block', 'shortcode' ),
+			'block-icon'        => 'fas fa-map-marked-alt',
+			'block-category'    => 'layout',
+			'block-keywords'    => "['map','google','osm']",
+			'block-supports'    => array(
 				'customClassName' => false,
 			),
-			'block-edit-returnx'         => "el('figure', wp.blockEditor.useBlockProps({
-									//dangerouslySetInnerHTML: {__html: onChangeContent() },
-									style: sd_build_aui_styles(props.attributes),
-									className: 'figure ' + sd_build_aui_class(props.attributes),
-
-								}),
-                                    el('img',{src: props.attributes.img_image,className: 'mw-100 w-100'}),
-                                    el(wp.blockEditor.RichText, Object.assign(wp.blockEditor.useBlockProps({className: sd_build_aui_class(props.attributes)}), {
-                                        tagName: 'figcaption',
-                                        value: props.attributes.text,
-                                       // style: sd_build_aui_styles(props.attributes),
-                                      //  allowedFormats: ['core/bold', 'core/italic'], // Allow the content to be made bold or italic, but do not allow other formatting options
-                                        onChange: function (text) {
-                                            props.setAttributes({text: text}); // Store updated content as a block attribute
-                                        },
-                                        placeholder: __('Enter a caption here...'),
-                                    }))
-								)",
-			'block-edit-return'          => "el('span', wp.blockEditor.useBlockProps({
+			'block-edit-return' => "el('span', wp.blockEditor.useBlockProps({
 									dangerouslySetInnerHTML: {__html: onChangeContent()},
 									style: {'minHeight': '30px'}
 								}))",
-			'block-wrap'                 => '',
-			'class_name'                 => __CLASS__,
-			'base_id'                    => 'bs_map',
-			'name'                       => __( 'BS > Map', 'blockstrap' ),
-			'widget_ops'                 => array(
+			'block-wrap'        => '',
+			'class_name'        => __CLASS__,
+			'base_id'           => 'bs_map',
+			'name'              => __( 'BS > Map', 'blockstrap' ),
+			'widget_ops'        => array(
 				'classname'   => 'bs-map',
 				'description' => esc_html__( 'A simple lazy load iframe Google or OSM map.', 'blockstrap' ),
 			),
-			'no_wrap'                    => true,
-			'block_group_tabs'           => array(
+			'no_wrap'           => true,
+			'block_group_tabs'  => array(
 				'content'  => array(
-					'groups' => array( __( 'Map', 'geodirectory' ) ),
+					'groups' => array( __( 'Map', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Content', 'geodirectory' ),
+						'title'     => __( 'Content', 'blockstrap' ),
 						'key'       => 'bs_tab_content',
 						'tabs_open' => true,
 						'open'      => true,
@@ -63,9 +44,9 @@ class BlockStrap_Widget_Map extends WP_Super_Duper {
 					),
 				),
 				'styles'   => array(
-					'groups' => array( __( 'Map Styles', 'geodirectory' ) ),
+					'groups' => array( __( 'Map Styles', 'blockstrap' ) ),
 					'tab'    => array(
-						'title'     => __( 'Styles', 'geodirectory' ),
+						'title'     => __( 'Styles', 'blockstrap' ),
 						'key'       => 'bs_tab_styles',
 						'tabs_open' => true,
 						'open'      => true,
@@ -74,12 +55,12 @@ class BlockStrap_Widget_Map extends WP_Super_Duper {
 				),
 				'advanced' => array(
 					'groups' => array(
-						__( 'Wrapper Styles', 'geodirectory' ),
-						__( 'Image Mask', 'geodirectory' ),
-						__( 'Advanced', 'geodirectory' ),
+						__( 'Wrapper Styles', 'blockstrap' ),
+						__( 'Image Mask', 'blockstrap' ),
+						__( 'Advanced', 'blockstrap' ),
 					),
 					'tab'    => array(
-						'title'     => __( 'Advanced', 'geodirectory' ),
+						'title'     => __( 'Advanced', 'blockstrap' ),
 						'key'       => 'bs_tab_advanced',
 						'tabs_open' => true,
 						'open'      => true,
@@ -103,39 +84,39 @@ class BlockStrap_Widget_Map extends WP_Super_Duper {
 
 		$arguments['map_type'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Map source', 'geodirectory' ),
+			'title'    => __( 'Map source', 'blockstrap' ),
 			'options'  => array(
-				'google' => __( 'Google', 'geodirectory' ),
-				'osm'    => __( 'Open Street Maps', 'geodirectory' ),
+				'google' => __( 'Google', 'blockstrap' ),
+				'osm'    => __( 'Open Street Maps', 'blockstrap' ),
 			),
 			'default'  => 'upload',
 			'desc_tip' => true,
-			'group'    => __( 'Map', 'geodirectory' ),
+			'group'    => __( 'Map', 'blockstrap' ),
 		);
 
 		$arguments['address'] = array(
 			'type'            => 'text',
-			'title'           => __( 'Address', 'geodirectory' ),
-			'placeholder'     => __( 'Golden Gate Bridge', 'geodirectory' ),
+			'title'           => __( 'Address', 'blockstrap' ),
+			'placeholder'     => __( 'Golden Gate Bridge', 'blockstrap' ),
 			'default'         => '',
-			'group'           => __( 'Map', 'geodirectory' ),
+			'group'           => __( 'Map', 'blockstrap' ),
 			'element_require' => '[%map_type%]=="google"',
 		);
 
 		$arguments['gps'] = array(
 			'type'            => 'text',
-			'title'           => __( 'GPS', 'geodirectory' ),
+			'title'           => __( 'GPS', 'blockstrap' ),
 			'placeholder'     => '56.9808, -7.4628',
 			'default'         => '',
 			/* translators: 1: Link open, 2: Link close. */
-			'desc'            => sprintf( __( 'Right click anywhere on a %1$sGoogle map%2$s and then click the GPS and past here.', 'geodirectory' ), '<a href="https://www.google.com/maps" target="_blank">', '</a>' ),
-			'group'           => __( 'Map', 'geodirectory' ),
+			'desc'            => sprintf( __( 'Right click anywhere on a %1$sGoogle map%2$s and then click the GPS and past here.', 'blockstrap' ), '<a href="https://www.google.com/maps" target="_blank">', '</a>' ),
+			'group'           => __( 'Map', 'blockstrap' ),
 			'element_require' => '[%map_type%]=="osm"',
 		);
 
 		$arguments['map_zoom'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Map zoom', 'geodirectory' ),
+			'title'    => __( 'Map zoom', 'blockstrap' ),
 			'options'  => array(
 				'1'  => '1',
 				'2'  => '2',
@@ -159,45 +140,44 @@ class BlockStrap_Widget_Map extends WP_Super_Duper {
 			),
 			'default'  => '10',
 			'desc_tip' => true,
-			'group'    => __( 'Map', 'geodirectory' ),
-		//          'element_require' => '[%map_type%]=="google"',
+			'group'    => __( 'Map', 'blockstrap' ),
 		);
 
 		$arguments['map_view_google'] = array(
 			'type'            => 'select',
-			'title'           => __( 'Map view', 'geodirectory' ),
+			'title'           => __( 'Map view', 'blockstrap' ),
 			'options'         => array(
-				''  => __( 'Map', 'geodirectory' ),
-				'k' => __( 'Satellite', 'geodirectory' ),
-				'h' => __( 'Hybrid', 'geodirectory' ),
-				'p' => __( 'Terrain', 'geodirectory' ),
+				''  => __( 'Map', 'blockstrap' ),
+				'k' => __( 'Satellite', 'blockstrap' ),
+				'h' => __( 'Hybrid', 'blockstrap' ),
+				'p' => __( 'Terrain', 'blockstrap' ),
 			),
 			'default'         => '',
 			'desc_tip'        => true,
-			'group'           => __( 'Map', 'geodirectory' ),
+			'group'           => __( 'Map', 'blockstrap' ),
 			'element_require' => '[%map_type%]=="google"',
 		);
 
 		$arguments['map_view_osm'] = array(
 			'type'            => 'select',
-			'title'           => __( 'Map view', 'geodirectory' ),
+			'title'           => __( 'Map view', 'blockstrap' ),
 			'options'         => array(
-				'mapnik'       => __( 'Standard', 'geodirectory' ),
-				'cyclosm'      => __( 'CyclOSM', 'geodirectory' ),
-				'cyclemap'     => __( 'Cycle OSM', 'geodirectory' ),
-				'transportmap' => __( 'Transport Map', 'geodirectory' ),
-				'opnvkarte'    => __( 'ÖPNVKarte', 'geodirectory' ),
-				'hot'          => __( 'Humanitarian', 'geodirectory' ),
+				'mapnik'       => __( 'Standard', 'blockstrap' ),
+				'cyclosm'      => __( 'CyclOSM', 'blockstrap' ),
+				'cyclemap'     => __( 'Cycle OSM', 'blockstrap' ),
+				'transportmap' => __( 'Transport Map', 'blockstrap' ),
+				'opnvkarte'    => __( 'ÖPNVKarte', 'blockstrap' ),
+				'hot'          => __( 'Humanitarian', 'blockstrap' ),
 			),
 			'default'         => 'mapnik',
 			'desc_tip'        => true,
-			'group'           => __( 'Map', 'geodirectory' ),
+			'group'           => __( 'Map', 'blockstrap' ),
 			'element_require' => '[%map_type%]=="osm"',
 		);
 
 		$arguments['map_aspect'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Responsive ratios', 'geodirectory' ),
+			'title'    => __( 'Responsive ratios', 'blockstrap' ),
 			'options'  => array(
 				'4by3'  => '4x3',
 				'16by9' => '16x9',
@@ -206,7 +186,7 @@ class BlockStrap_Widget_Map extends WP_Super_Duper {
 			),
 			'default'  => '4by3',
 			'desc_tip' => true,
-			'group'    => __( 'Map', 'geodirectory' ),
+			'group'    => __( 'Map', 'blockstrap' ),
 		);
 
 		// columns
@@ -214,27 +194,27 @@ class BlockStrap_Widget_Map extends WP_Super_Duper {
 			'col',
 			array(
 				'device_type'     => 'Mobile',
-				'group'           => __( 'Map Styles', 'geodirectory' ),
+				'group'           => __( 'Map Styles', 'blockstrap' ),
 				'element_require' => '',
-				'title'           => __( 'Responsive width', 'geodirectory' ),
+				'title'           => __( 'Responsive width', 'blockstrap' ),
 			)
 		);
 		$arguments['col_md'] = sd_get_col_input(
 			'col',
 			array(
 				'device_type'     => 'Tablet',
-				'group'           => __( 'Map Styles', 'geodirectory' ),
+				'group'           => __( 'Map Styles', 'blockstrap' ),
 				'element_require' => '',
-				'title'           => __( 'Responsive width', 'geodirectory' ),
+				'title'           => __( 'Responsive width', 'blockstrap' ),
 			)
 		);
 		$arguments['col_lg'] = sd_get_col_input(
 			'col',
 			array(
 				'device_type'     => 'Desktop',
-				'group'           => __( 'Map Styles', 'geodirectory' ),
+				'group'           => __( 'Map Styles', 'blockstrap' ),
 				'element_require' => '',
-				'title'           => __( 'Responsive width', 'geodirectory' ),
+				'title'           => __( 'Responsive width', 'blockstrap' ),
 			)
 		);
 
@@ -300,52 +280,51 @@ class BlockStrap_Widget_Map extends WP_Super_Duper {
 
 		$arguments['mask'] = array(
 			'type'     => 'select',
-			'title'    => __( 'Mask', 'geodirectory' ),
+			'title'    => __( 'Mask', 'blockstrap' ),
 			'options'  => array(
-				''         => __( 'None', 'geodirectory' ),
+				''         => __( 'None', 'blockstrap' ),
 				'blob1'    => 'blob1',
 				'blob2'    => 'blob2',
 				'blob3'    => 'blob3',
-				'circle'   => __( 'circle', 'geodirectory' ),
-				'diamond'  => __( 'Diamond', 'geodirectory' ),
-				'flower'   => __( 'Flower', 'geodirectory' ),
-				'hexagon'  => __( 'Hexagon', 'geodirectory' ),
-				'rounded'  => __( 'Rounded', 'geodirectory' ),
-				'sketch'   => __( 'sketch', 'geodirectory' ),
-				'triangle' => __( 'triangle', 'geodirectory' ),
+				'circle'   => __( 'circle', 'blockstrap' ),
+				'diamond'  => __( 'Diamond', 'blockstrap' ),
+				'flower'   => __( 'Flower', 'blockstrap' ),
+				'hexagon'  => __( 'Hexagon', 'blockstrap' ),
+				'rounded'  => __( 'Rounded', 'blockstrap' ),
+				'sketch'   => __( 'sketch', 'blockstrap' ),
+				'triangle' => __( 'triangle', 'blockstrap' ),
 			),
 			'default'  => '',
 			'desc_tip' => true,
-			'group'    => __( 'Image Mask', 'geodirectory' ),
-		//          'element_require' => '[%img_link_to%]!=""',
+			'group'    => __( 'Image Mask', 'blockstrap' ),
 		);
 
 		$arguments['mask_position'] = array(
 			'type'            => 'select',
-			'title'           => __( 'Position', 'geodirectory' ),
+			'title'           => __( 'Position', 'blockstrap' ),
 			'options'         => array(
-				'center center' => __( 'Center Center', 'geodirectory' ),
-				'center left'   => __( 'Center Left', 'geodirectory' ),
-				'center right'  => __( 'Center Right', 'geodirectory' ),
-				'top center'    => __( 'Top Center', 'geodirectory' ),
-				'top left'      => __( 'Top Left', 'geodirectory' ),
-				'top right'     => __( 'Top Right', 'geodirectory' ),
-				'bottom center' => __( 'Bottom Center', 'geodirectory' ),
-				'bottom left'   => __( 'bottom left', 'geodirectory' ),
-				'bottom right'  => __( 'bottom right', 'geodirectory' ),
+				'center center' => __( 'Center Center', 'blockstrap' ),
+				'center left'   => __( 'Center Left', 'blockstrap' ),
+				'center right'  => __( 'Center Right', 'blockstrap' ),
+				'top center'    => __( 'Top Center', 'blockstrap' ),
+				'top left'      => __( 'Top Left', 'blockstrap' ),
+				'top right'     => __( 'Top Right', 'blockstrap' ),
+				'bottom center' => __( 'Bottom Center', 'blockstrap' ),
+				'bottom left'   => __( 'bottom left', 'blockstrap' ),
+				'bottom right'  => __( 'bottom right', 'blockstrap' ),
 			),
 			'default'         => 'center center',
 			'desc_tip'        => true,
-			'group'           => __( 'Image Mask', 'geodirectory' ),
+			'group'           => __( 'Image Mask', 'blockstrap' ),
 			'element_require' => '[%img_mask%]!=""',
 		);
 
 		$arguments['css_class'] = array(
 			'type'    => 'text',
-			'title'   => __( 'Additional CSS class(es)', 'geodirectory' ),
-			'desc'    => __( 'Separate multiple classes with spaces.', 'geodirectory' ),
+			'title'   => __( 'Additional CSS class(es)', 'blockstrap' ),
+			'desc'    => __( 'Separate multiple classes with spaces.', 'blockstrap' ),
 			'default' => '',
-			'group'   => __( 'Advanced', 'geodirectory' ),
+			'group'   => __( 'Advanced', 'blockstrap' ),
 		);
 
 		return $arguments;

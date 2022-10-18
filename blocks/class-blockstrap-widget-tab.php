@@ -20,25 +20,6 @@ class BlockStrap_Widget_Tab extends WP_Super_Duper {
 			'block-supports'     => array(
 				'anchor' => 'true',
 			),
-			'block-outputx'      => array(
-				array(
-					'element'    => 'innerBlocksProps',
-					'blockProps' => array(
-						'if_className'     => 'props.attributes.styleid + " tab-pane fade " [%WrapClass%]',
-						'style'            => '{[%WrapStyle%]}',
-						'if_id'            => 'props.attributes.id ? props.attributes.id : props.clientId',
-						'role'             => 'tabpanel',
-						'if_tab_name'      => 'props.attributes.text',
-
-						'innerBlocksProps' => array(
-							'orientation' => 'vertical',
-
-						),
-
-					),
-				),
-			),
-
 			'block-edit-return'  => "el( 'div', wp.blockEditor.useBlockProps( {
 										className: parentBlocks[parentBlocks.length - 1].innerBlocks[0].clientId === props.clientId ?  'tab-pane fade show active' : 'tab-pane fade'
 										} ),
@@ -78,30 +59,30 @@ class BlockStrap_Widget_Tab extends WP_Super_Duper {
 
 		$arguments['text'] = array(
 			'type'        => 'text',
-			'title'       => __( 'Name', 'geodirectory' ),
-			'placeholder' => __( 'Tab1', 'geodirectory' ),
+			'title'       => __( 'Name', 'blockstrap' ),
+			'placeholder' => __( 'Tab1', 'blockstrap' ),
 			'default'     => '',
 			'desc_tip'    => true,
-			'group'       => __( 'Tab Name', 'geodirectory' ),
+			'group'       => __( 'Tab Name', 'blockstrap' ),
 		);
 
 		$arguments['anchor'] = array(
 			'type'    => 'text',
-			'title'   => __( 'HTML anchor (required)', 'geodirectory' ),
+			'title'   => __( 'HTML anchor (required)', 'blockstrap' ),
 			'default' => '',
-			'group'   => __( 'Tab Name', 'geodirectory' ),
+			'group'   => __( 'Tab Name', 'blockstrap' ),
 		);
 
 		$arguments = $arguments + sd_get_background_inputs( 'bg' );
 
 		$arguments['bg_on_text'] = array(
 			'type'            => 'checkbox',
-			'title'           => __( 'Background on text', 'geodirectory' ),
+			'title'           => __( 'Background on text', 'blockstrap' ),
 			'default'         => '',
 			'value'           => '1',
 			'desc_tip'        => false,
-			'desc'            => __( 'This will show the background on the text.', 'geodirectory' ),
-			'group'           => __( 'Background', 'geodirectory' ),
+			'desc'            => __( 'This will show the background on the text.', 'blockstrap' ),
+			'group'           => __( 'Background', 'blockstrap' ),
 			'element_require' => '[%bg%]=="custom-gradient"',
 		);
 
