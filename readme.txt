@@ -16,6 +16,10 @@ Relying on the block editor as a page builder no further page builders are requi
 
 == Changelog ==
 
+= 0.0.2 =
+* Menu transparent until scroll has no background on responsive - FIXED
+* Nav item support added for UsersWP links - ADDED
+
 = 0.0.1 =
 * First public release - RELEASE
 

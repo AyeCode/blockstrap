@@ -98,6 +98,19 @@ class BlockStrap_Widget_Nav_Item extends WP_Super_Duper {
 			}
 		}
 
+		if ( defined( 'USERSWP_VERSION' ) ) {
+			// logged out
+			$links['uwp_login']    = __( 'UWP Login (logged out)', 'blockstrap' );
+			$links['uwp_register'] = __( 'UWP Register (logged out)', 'blockstrap' );
+			$links['uwp_forgot']   = __( 'UWP Forgot Password? (logged out)', 'blockstrap' );
+
+			// logged in
+			$links['uwp_account']         = __( 'Account (logged in)', 'blockstrap' );
+			$links['uwp_change_password'] = __( 'Change Password (logged in)', 'blockstrap' );
+			$links['uwp_profile']         = __( 'Profile (logged in)', 'blockstrap' );
+			$links['uwp_logout']          = __( 'Log out (logged in)', 'blockstrap' );
+		}
+
 		return $links;
 	}
 
@@ -322,8 +335,10 @@ class BlockStrap_Widget_Nav_Item extends WP_Super_Duper {
 
 		$content = '';
 
-		$link      = '#';
-		$link_text = '';
+		$link       = '#';
+		$link_text  = '';
+		$link_class = 'nav-link';
+		$wrap_class = sd_build_aui_class( $args );
 		if ( 'home' === $args['type'] ) {
 			$link      = get_home_url();
 			$link_text = __( 'Home', 'blockstrap' );
@@ -368,14 +383,47 @@ class BlockStrap_Widget_Nav_Item extends WP_Super_Duper {
 					}
 				}
 			}
+		} elseif ( 'uwp_login' === $args['type'] ) {
+			$link        = function_exists( 'uwp_get_login_page_url' ) ? uwp_get_login_page_url() : '';
+			$link_text   = __( 'Login', 'blockstrap' );
+			$wrap_class .= ' uwp-login-link';
+		} elseif ( 'uwp_register' === $args['type'] ) {
+			$link        = function_exists( 'uwp_get_register_page_url' ) ? uwp_get_register_page_url() : '';
+			$link_text   = __( 'Register', 'blockstrap' );
+			$wrap_class .= ' uwp-register-link';
+		} elseif ( 'uwp_forgot' === $args['type'] ) {
+			$link        = function_exists( 'uwp_get_forgot_page_url' ) ? uwp_get_forgot_page_url() : '';
+			$link_text   = __( 'Forgot Password', 'blockstrap' );
+			$wrap_class .= ' uwp-forgot-password-link';
+		} elseif ( 'uwp_account' === $args['type'] ) {
+			$link      = function_exists( 'uwp_get_account_page_url' ) ? uwp_get_account_page_url() : '';
+			$link_text = __( 'Account', 'blockstrap' );
+		} elseif ( 'uwp_change_password' === $args['type'] ) {
+			$link      = function_exists( 'uwp_get_change_page_url' ) ? uwp_get_change_page_url() : '';
+			$link_text = __( 'Change password', 'blockstrap' );
+		} elseif ( 'uwp_profile' === $args['type'] ) {
+			$link      = function_exists( 'uwp_get_profile_page_url' ) ? uwp_get_profile_page_url() : '';
+			$link_text = __( 'Profile', 'blockstrap' );
+		} elseif ( 'uwp_logout' === $args['type'] ) {
+			$link      = wp_logout_url( get_permalink() );
+			$link_text = __( 'Log out', 'blockstrap' );
+		}
+
+		// UWP maybe bail if logged in.
+		if ( in_array( $args['type'], array( 'uwp_login', 'uwp_register', 'uwp_forgot' ), true ) ) {
+			if ( ! $this->is_block_content_call() && get_current_user_id() ) {
+				return '';
+			}
+		} elseif ( in_array( $args['type'], array( 'uwp_account', 'uwp_change_password', 'uwp_profile', 'uwp_logout' ), true ) ) {
+			if ( ! $this->is_block_content_call() && ! get_current_user_id() ) {
+				return '';
+			}
 		}
 
 		// maybe set custom link text
 		$link_text = ! empty( $args['text'] ) ? esc_attr( $args['text'] ) : $link_text;
 
 		// link type
-		$link_class = 'nav-link';
-
 		if ( ! empty( $args['link_type'] ) ) {
 
 			if ( 'btn' === $args['link_type'] ) {
@@ -420,8 +468,6 @@ class BlockStrap_Widget_Nav_Item extends WP_Super_Duper {
 			$icon = ! empty( $link_text ) ? '<i class="' . esc_attr( $args['icon_class'] ) . ' mr-2"></i>' : '<i class="' . esc_attr( $args['icon_class'] ) . '"></i>';
 
 		}
-
-		$wrap_class = sd_build_aui_class( $args );
 
 		// if a button add form-inline
 		if ( ! empty( $args['link_type'] ) ) {

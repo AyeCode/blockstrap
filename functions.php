@@ -179,5 +179,12 @@ function bs_enqueue_block_editor_assets() {
 		BLOCKSTRAP_VERSION
 	);
 
+	wp_enqueue_style(
+		'blockstrap-style-admin',
+		get_theme_file_uri( 'assets/css/block-editor.css' ),
+		array( 'blockstrap-style' ),
+		BLOCKSTRAP_VERSION
+	);
+
 }
 add_action( 'enqueue_block_editor_assets', 'bs_enqueue_block_editor_assets', 1000 );

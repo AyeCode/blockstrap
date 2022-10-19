@@ -201,6 +201,6 @@ p:empty:before {
 	transform: translate(-50%, -150%);
 	transition: transform 0.3s;
 }
-.bs-skip-links:focus-within,.bs-skip-links.is-selected {
+.bs-skip-links:focus-within {
 	transform: translate(-50%, 0%);
 }
