@@ -26,7 +26,7 @@ if ( version_compare( $GLOBALS['wp_version'], '5.5', '<' ) || version_compare( P
 require_once 'vendor/autoload.php';
 
 // check for minimum Duper Duper version
-if ( ! defined( 'SUPER_DUPER_VER' ) || version_compare( SUPER_DUPER_VER, '1.1.4', '<' ) ) {
+if ( ! class_exists( 'WP_Super_Duper' ) || ! defined( 'SUPER_DUPER_VER' ) || version_compare( SUPER_DUPER_VER, '1.1.4', '<' ) ) {
 	function bs_super_duper_update_notice() {
 		$class   = 'notice notice-error';
 		$message = __( 'Please IMMEDIATELY update any AyeCode plugins, your site will not load correctly as an older CLASS is detected.', 'blockstrap' );

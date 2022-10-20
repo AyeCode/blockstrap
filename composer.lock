@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ae960b34b88d4d3e914a17856da98d42",
+    "content-hash": "7405ea9967bcf5a8abfef6378d2bb73b",
     "packages": [
         {
             "name": "ayecode/ayecode-connect-helper",
