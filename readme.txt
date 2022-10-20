@@ -16,6 +16,9 @@ Relying on the block editor as a page builder no further page builders are requi
 
 == Changelog ==
 
+= 0.0.3 =
+* Navbar transparent until scroll option hidden - FIXED
+
 = 0.0.2 =
 * Menu transparent until scroll has no background on responsive - FIXED
 * Nav item support added for UsersWP links - ADDED

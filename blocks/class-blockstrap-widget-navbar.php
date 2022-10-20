@@ -74,7 +74,7 @@ class BlockStrap_Widget_Navbar extends WP_Super_Duper {
 			'desc_tip' => false,
 			'desc'     => __( 'This may not show in block preview.', 'blockstrap' ),
 			'group'    => __( 'Background', 'blockstrap' ),
-			'element_require' => '[%bg_color%]!="" || [%bg_image%]!=""',
+			'element_require' => '([%bg%]!="" || [%bg_image%]!="")',
 		);
 
 		// container class
