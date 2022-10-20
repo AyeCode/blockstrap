@@ -61,7 +61,7 @@ class AyeCode_UI_Plugin {
 				'id'               => 'wpinv_discount_start',
 				'size'             => 'sm',
 				'name'             => 'wpinv_discount_start',
-				'label'            => __( 'Start Date', 'invoicing' ),
+				'label'            => __( 'Start Date', 'blockstrap' ),
 				'placeholder'      => 'YYYY-MM-DD 00:00',
 				'value'            => '',
 				'extra_attributes' => array(
@@ -78,7 +78,7 @@ class AyeCode_UI_Plugin {
 				'id'               => 'wpinv_discount_start',
 				//'size'             => 'smx',
 				'name'             => 'wpinv_discount_start',
-				'label'            => __( 'Start Date', 'invoicing' ),
+				'label'            => __( 'Start Date', 'blockstrap' ),
 				'placeholder'      => 'YYYY-MM-DD 00:00',
 				'value'            => '',
 				'extra_attributes' => array(
@@ -94,7 +94,7 @@ class AyeCode_UI_Plugin {
 				'id'               => 'wpinv_discount_start',
 				'size'             => 'lg',
 				'name'             => 'wpinv_discount_start',
-				'label'            => __( 'Start Date', 'invoicing' ),
+				'label'            => __( 'Start Date', 'blockstrap' ),
 				'placeholder'      => 'YYYY-MM-DD 00:00',
 				'value'            => '',
 				'extra_attributes' => array(

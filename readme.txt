@@ -3,7 +3,7 @@ Contributors: ayecode, stiofansisland
 Tested up to: 6.1
 Requires at least: 6.0
 Requires PHP: 7.2
-Version: 0.0.1
+Version: 0.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,6 +19,7 @@ Relying on the block editor as a page builder no further page builders are requi
 = 0.0.2 =
 * Menu transparent until scroll has no background on responsive - FIXED
 * Nav item support added for UsersWP links - ADDED
+* Composer packages updated - UPDATED
 
 = 0.0.1 =
 * First public release - RELEASE

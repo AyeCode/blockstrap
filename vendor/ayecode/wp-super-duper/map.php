@@ -11,7 +11,7 @@ class SD_Map extends WP_Super_Duper {
 	public function __construct() {
 
 		$options = array(
-			'textdomain'     => 'super-duper',
+			'textdomain'     => 'blockstrap',
 			// textdomain of the plugin/theme (used to prefix the Gutenberg block)
 			'block-icon'     => 'admin-site',
 			// Dash icon name for the block: https://developer.wordpress.org/resource/dashicons/#arrow-right
@@ -22,13 +22,13 @@ class SD_Map extends WP_Super_Duper {
 			'block-output'   => array( // the block visual output elements as an array
 				array(
 					'element' => 'p',
-					'content' => __('A Google API key is required to use this block, we recommend installing our plugin which makes it easy and sets it globally, or you can set a key in the block settings sidebar: ','super-duper'),
+					'content' => __('A Google API key is required to use this block, we recommend installing our plugin which makes it easy and sets it globally, or you can set a key in the block settings sidebar: ','blockstrap'),
 					//'element_require' => '"1"=='.get_option( 'rgmk_google_map_api_key', '"0"') ? '"0"' : '"1"',
 					'element_require' => get_option( 'rgmk_google_map_api_key', false) ? '1==0' : '1==1 && [%api_key%]==""',
 				),
 				array(
 					'element' => 'a',
-					'content' => __('API KEY for Google Maps','super-duper'),
+					'content' => __('API KEY for Google Maps','blockstrap'),
 					'element_require' => get_option( 'rgmk_google_map_api_key', false) ? '1==0' : '1==1 && [%api_key%]==""',
 					'href' => 'https://wordpress.org/plugins/api-key-for-google-maps/',
 				),
@@ -45,7 +45,7 @@ class SD_Map extends WP_Super_Duper {
 					'style'   => '{overflow:"hidden", position:"relative"}',
 					array(
 						'element' => 'iframe',
-						'title'   => __( 'Placeholderx', 'super-duper' ),
+						'title'   => __( 'Placeholderx', 'blockstrap' ),
 						'class'   => '[%className%]',
 						'width'   => '[%width%]',
 						'height'  => '[%height%]',
@@ -66,7 +66,7 @@ class SD_Map extends WP_Super_Duper {
 			// The calling class name
 			'base_id'        => 'sd_map',
 			// this is used as the widget id and the shortcode id.
-			'name'           => __( 'Map', 'super-duper' ),
+			'name'           => __( 'Map', 'blockstrap' ),
 			// the name of the widget/block
 			'widget_ops'     => array(
 				'classname'   => 'sd-map-class',
