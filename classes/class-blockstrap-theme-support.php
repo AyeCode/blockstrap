@@ -76,13 +76,6 @@ class BlockStrap_Theme_Support {
 		// Enqueue editor styles.
 		add_theme_support( 'editor-styles' );
 
-		// './vendor/ayecode/wp-ayecode-ui/assets/css/ayecode-ui-compatibility.css', // this seems to break the wp inline CSS worker @todo https://github.com/WordPress/gutenberg/issues/33212#issuecomment-878053508
-		add_editor_style(
-			array(
-				'./vendor/ayecode/wp-ayecode-ui/assets/css/ayecode-ui.css',
-			)
-		);
-
 		// Add support for responsive embedded content.
 		add_theme_support( 'responsive-embeds' );
 

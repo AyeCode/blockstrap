@@ -41,9 +41,9 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'bs_pattern_page_content_archive_default',
 				''
-			) : '<!-- wp:query-title {"type":"archive"} /-->
+			) : '<main class="site-main"><!-- wp:query-title {"type":"archive"} /-->
 
-<!-- wp:query {"queryId":0,"query":{"perPage":3,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false}} -->
+<!-- wp:query {"queryId":0,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false}} -->
 <div class="wp-block-query"><!-- wp:post-template -->
 <!-- wp:post-title {"isLink":true} /-->
 
@@ -63,7 +63,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 <p></p>
 <!-- /wp:paragraph -->
 <!-- /wp:query-no-results --></div>
-<!-- /wp:query -->',
+<!-- /wp:query --></main>',
 		)
 	);
 
@@ -75,11 +75,11 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'bs_pattern_page_content_page_default',
 				''
-			) : '<!-- wp:post-title /-->
+			) : '<main class="site-main"><!-- wp:post-title /-->
 
 <!-- wp:post-content /-->
 
-<!-- wp:template-part {"slug":"comments","theme":"blockstrap","area":"uncategorized"} /-->',
+<!-- wp:template-part {"slug":"comments","theme":"blockstrap","area":"uncategorized"} /--></main>',
 		)
 	);
 
@@ -91,11 +91,11 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'bs_pattern_page_content_post_default',
 				''
-			) : '<!-- wp:post-title /-->
+			) : '<main class="site-main"><!-- wp:post-title /-->
 
 <!-- wp:post-content /-->
 
-<!-- wp:template-part {"slug":"comments","theme":"blockstrap","area":"uncategorized"} /-->',
+<!-- wp:template-part {"slug":"comments","theme":"blockstrap","area":"uncategorized"} /--></main>',
 		)
 	);
 
@@ -107,11 +107,11 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'bs_pattern_page_content_search_default',
 				''
-			) : '<!-- wp:query-title {"type":"search"} /-->
+			) : '<main class="site-main"><!-- wp:query-title {"type":"search"} /-->
 
 <!-- wp:search {"label":"Search","buttonText":"Search"} /-->
 
-<!-- wp:query {"queryId":0,"query":{"perPage":3,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false}} -->
+<!-- wp:query {"queryId":0,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false}} -->
 <div class="wp-block-query"><!-- wp:post-template -->
 <!-- wp:post-title {"isLink":true} /-->
 
@@ -131,7 +131,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 <p></p>
 <!-- /wp:paragraph -->
 <!-- /wp:query-no-results --></div>
-<!-- /wp:query -->',
+<!-- /wp:query --></main>',
 		)
 	);
 
@@ -143,7 +143,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'bs_pattern_page_content_page_sidebar_left_default',
 				''
-			) : '<!-- wp:columns -->
+			) : '<main class="site-main"><!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column {"width":"33.33%"} -->
 <div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:template-part {"slug":"sidebar-left","theme":"blockstrap","area":"uncategorized"} /--></div>
 <!-- /wp:column -->
@@ -155,7 +155,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 
 <!-- wp:template-part {"slug":"comments","theme":"blockstrap","area":"uncategorized"} /--></div>
 <!-- /wp:column --></div>
-<!-- /wp:columns -->',
+<!-- /wp:columns --></main>',
 		)
 	);
 
@@ -167,7 +167,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'bs_pattern_page_content_page_sidebar_right_default',
 				''
-			) : '<!-- wp:columns -->
+			) : '<main class="site-main"><!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column {"width":"66.66%"} -->
 <div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:post-title /-->
 
@@ -179,7 +179,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 <!-- wp:column {"width":"33.33%"} -->
 <div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:template-part {"slug":"sidebar-right","theme":"blockstrap","area":"uncategorized"} /--></div>
 <!-- /wp:column --></div>
-<!-- /wp:columns -->',
+<!-- /wp:columns --></main>',
 		)
 	);
 
