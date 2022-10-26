@@ -22,20 +22,39 @@ if ( version_compare( $GLOBALS['wp_version'], '5.5', '<' ) || version_compare( P
 	return;
 }
 
-// composer autoloader
-require_once 'vendor/autoload.php';
+// TGM Class
+//require_once 'classes/class-tgm-plugin-activation.php';
 
-// check for minimum Duper Duper version
-if ( ! class_exists( 'WP_Super_Duper' ) || ! defined( 'SUPER_DUPER_VER' ) || version_compare( SUPER_DUPER_VER, '1.1.4', '<' ) ) {
-	function bs_super_duper_update_notice() {
-		$class   = 'notice notice-error';
-		$message = __( 'Please IMMEDIATELY update any AyeCode plugins, your site will not load correctly as an older CLASS is detected.', 'blockstrap' );
+/**
+ * Recommended plugins.
+ *
+ * @return void
+ */
+function blockstrap_register_required_plugins() {
+	// plugins
+	$plugins = array(
+		array(
+			'name'     => 'BlockStrap Page Builder',
+			'slug'     => 'blockstrap-page-builder-blocks',
+			'required' => true,
+		),
+	);
 
-		printf( '<div class="%1$s"><p><b>%2$s</b></p></div>', esc_attr( $class ), esc_html( $message ) );
-	}
-	add_action( 'admin_notices', 'bs_super_duper_update_notice' );
-	return; // bail if older class, so we don't error out.
+	// config
+	$config = array(
+		'id'           => 'blockstrap',                 // Unique ID for hashing notices for multiple instances of TGMPA.
+		'default_path' => '',                      // Default absolute path to bundled plugins.
+		'menu'         => 'tgmpa-install-plugins', // Menu slug.
+		'has_notices'  => true,                    // Show admin notices or not.
+		'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
+		'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
+		'is_automatic' => true,                   // Automatically activate plugins after installation or not.
+		'message'      => '',                      // Message to output right before the plugins table.
+	);
+
+	tgmpa( $plugins, $config );
 }
+//add_action( 'tgmpa_register', 'blockstrap_register_required_plugins' ); // chicken and egg, @todo uncomment this when plugin is approved.
 
 // Theme support.
 require_once 'classes/class-blockstrap-theme-support.php';
@@ -49,9 +68,6 @@ require_once 'classes/class-blockstrap-block-filters.php';
 // Block styles.
 require_once 'inc/block-styles.php';
 
-// Block patterns.
-require_once 'inc/block-patterns.php';
-
 // Header block patterns.
 require_once 'inc/header-block-patterns.php';
 
@@ -61,32 +77,22 @@ require_once 'inc/footer-block-patterns.php';
 // Hero block patterns.
 require_once 'inc/hero-block-patterns.php';
 
+// Section block patterns.
+require_once 'inc/section-block-patterns.php';
+
+// Content block patterns.
+require_once 'inc/content-block-patterns.php';
+
+// Content block patterns.
+require_once 'inc/template-part-block-patterns.php';
+
 // Page layout block patterns.
 require_once 'inc/page-layout-block-patterns.php';
 
 // Query block patterns.
 require_once 'inc/query-block-patterns.php';
 
-// Blocks
-require_once 'blocks/class-blockstrap-widget-container.php';
-require_once 'blocks/class-blockstrap-widget-navbar.php';
-require_once 'blocks/class-blockstrap-widget-navbar-brand.php';
-require_once 'blocks/class-blockstrap-widget-nav.php';
-require_once 'blocks/class-blockstrap-widget-nav-item.php';
-require_once 'blocks/class-blockstrap-widget-nav-dropdown.php';
-require_once 'blocks/class-blockstrap-widget-shape-divider.php';
-require_once 'blocks/class-blockstrap-widget-button.php';
-require_once 'blocks/class-blockstrap-widget-heading.php';
-require_once 'blocks/class-blockstrap-widget-post-title.php';
-require_once 'blocks/class-blockstrap-widget-archive-title.php';
-require_once 'blocks/class-blockstrap-widget-image.php';
-require_once 'blocks/class-blockstrap-widget-map.php';
-require_once 'blocks/class-blockstrap-widget-counter.php';
-require_once 'blocks/class-blockstrap-widget-gallery.php';
-require_once 'blocks/class-blockstrap-widget-tabs.php';
-require_once 'blocks/class-blockstrap-widget-tab.php';
-require_once 'blocks/class-blockstrap-widget-icon-box.php';
-require_once 'blocks/class-blockstrap-widget-skip-links.php';
+
 
 /**
  * Enqueue the style.css file.
@@ -140,7 +146,7 @@ add_filter(
  * @return mixed
  */
 function blockstrap_force_render_blocks_on_templates( $block_content, $block ) {
-	return do_shortcode( $block_content );
+	return strip_shortcodes( do_shortcode( $block_content ) );
 }
 add_filter( 'render_block', 'blockstrap_force_render_blocks_on_templates', 10, 2 );
 

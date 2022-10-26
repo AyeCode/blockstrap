@@ -34,7 +34,7 @@ add_action( 'after_switch_theme', 'blockstrap_switch_theme' );
 function blockstrap_upgrade_notice() {
 	/* translators: %1$s: WordPress version. %2$s PHP version.*/
 	$message = sprintf( esc_html__( 'This theme requires at least WordPress version 5.5 and PHP version 7.2. You are running WordPress version %1$s and PHP version %2$s. Please upgrade and try again.', 'blockstrap' ), $GLOBALS['wp_version'], PHP_VERSION );
-	printf( '<div class="error"><p>%s</p></div>', $message ); // phpcs:ignore WordPress.Security.EscapeOutput
+	printf( '<div class="error"><p>%s</p></div>', esc_attr( $message ) ); // phpcs:ignore WordPress.Security.EscapeOutput
 }
 
 /**

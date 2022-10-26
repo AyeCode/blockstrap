@@ -22,15 +22,23 @@ class BlockStrap_Theme_Support {
 	public function __construct() {
 		add_action( 'after_setup_theme', array( $this, 'action_setup' ) );
 		add_action( 'after_setup_theme', array( $this, 'action_content_width' ), 0 );
-		add_filter( 'get_block_templates', array( $this, 'default_template_types' ), 20000 );
+		add_filter( 'get_block_templates', array( $this, 'default_template_types' ), 20000, 3 );
 	}
 
-	public function default_template_types( $default_template_types ) {
+	public function default_template_types( $default_template_types, $query, $template_type ) {
 
 		foreach ( $default_template_types as $k => $t ) {
-			if ( 'gd-single' === $t->slug ) {
-				$default_template_types[ $k ]->title       = 'GD Single';
-				$default_template_types[ $k ]->description = __( 'The default template for displaying any GD single post. Use the `add new` feature to add a template per CPT.', 'blockstrap' );
+
+			if ( defined( 'GEODIRECTORY_VERSION' ) && defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) && 'wp_template' === $template_type ) {
+				if ( 'gd-single' === $t->slug ) {
+					$default_template_types[ $k ]->title       = 'GD Single';
+					$default_template_types[ $k ]->description = __( 'The default template for displaying any GD single post. Use the `add new` feature to add a template per CPT.', 'blockstrap' );
+				}
+			} else {
+				// hide template if required plugins not installed
+				if ( 'gd-single' === $t->slug || 'gd-archive' === $t->slug || 'gd-search' === $t->slug ) {
+					unset( $default_template_types[ $k ] );
+				}
 			}
 		}
 
