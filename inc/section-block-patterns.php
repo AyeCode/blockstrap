@@ -29,7 +29,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'bs_pattern_feature_home_default',
 				''
-			) : __( 'This theme word best with the BlockStrap Page Builder Plugin', 'blockstrap' ),
+			) : '<main class="site-main">' . __( 'This theme word best with the BlockStrap Page Builder Plugin', 'blockstrap' ) . '</main>',
 		)
 	);
 

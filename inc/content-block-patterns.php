@@ -29,7 +29,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'bs_pattern_page_content_404_default',
 				''
-			) : __( 'It looks like nothing was found at this location.', 'blockstrap' ),
+			) : '<main class="site-main">' . __( 'It looks like nothing was found at this location.', 'blockstrap' ) . '</main>',
 		)
 	);
 

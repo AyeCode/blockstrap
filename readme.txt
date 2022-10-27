@@ -3,7 +3,7 @@ Contributors: ayecode, stiofansisland
 Tested up to: 6.1
 Requires at least: 6.0
 Requires PHP: 7.2
-Version: 0.0.4
+Version: 0.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,6 +15,9 @@ Relying on the block editor as a page builder no further page builders are requi
 
 
 == Changelog ==
+
+= 0.0.5 =
+* Home and 404 skip links not working - FIXED
 
 = 0.0.4 =
 * Skip links broken - FIXED
@@ -56,6 +59,3 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 * Blockstrap.png : Created by "Paolo Tajani" of AyeCode Ltd https://ayecode.io/about/ (GPL v2 license)
 * Blockstrap-white.png : Created by "Paolo Tajani" of AyeCode Ltd https://ayecode.io/about/ (GPL v2 license)
 * placeholder-home.png : Copyright AyeCode Ltd https://ayecode.io ( CC0 Public Domain )
-* /assets/shapes/* : Elementor (free) https://github.com/elementor/elementor/tree/master/assets/shapes (GPL v3 license)
-* /assets/masks/ circle, flower, sketch, triangle : Elementor (free) https://github.com/elementor/elementor/tree/master/assets/mask-shapes (GPL v3 license)
-* /assets/masks/ blob1, blob2, blob3, rounded, hexagon : Kadence blocks https://github.com/kadencewp/kadence-blocks/tree/master/includes/assets/images/masks (GPL v2 license)
