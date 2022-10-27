@@ -3,18 +3,19 @@ Contributors: ayecode, stiofansisland
 Tested up to: 6.1
 Requires at least: 6.0
 Requires PHP: 7.2
-Version: 0.0.7
+Version: 0.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-BlocStrap is a mashup of the famous BootStrap UI and the new WordPress Block Theme technology. The answer to beautiful sites that load super fast.
+BlockStrap is a very blank starter theme.
 
 == Description ==
-BlockStrap aims to offer users a code free way to develop fast and beautiful sites with ease.  
-Relying on the block editor as a page builder no further page builders are required which means no bloat.
-
+BlockStrap is a very blank starter theme.
 
 == Changelog ==
+
+= 0.0.8 =
+* Theme clean up - CHANGED
 
 = 0.0.7 =
 * Translation files added - ADDED
@@ -61,7 +62,7 @@ GNU General Public License for more details.
 License: GNU General Public License v2.0 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-* block-image-placeholder.jpg : Photo by "PxHere" on PxHere https://pxhere.com/en/photo/356005 ( CC0 Public Domain )
-* Blockstrap.png : Created by "Paolo Tajani" of AyeCode Ltd https://ayecode.io/about/ (GPL v2 license)
-* Blockstrap-white.png : Created by "Paolo Tajani" of AyeCode Ltd https://ayecode.io/about/ (GPL v2 license)
-* placeholder-home.png : Copyright AyeCode Ltd https://ayecode.io ( CC0 Public Domain )
+* Image for theme screenshot, Copyright AyeCode Ltd
+  License: CC0 1.0 Universal (CC0 1.0)
+  Source: https://github.com/AyeCode/blockstrap/blob/main/screenshot.png
+

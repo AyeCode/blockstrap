@@ -11,7 +11,7 @@
  */
 if ( function_exists( 'register_block_pattern_category' ) ) {
 	register_block_pattern_category(
-		'site-header',
+		'blockstrap-site-header',
 		array( 'label' => esc_html__( 'Site headers', 'blockstrap' ) )
 	);
 }

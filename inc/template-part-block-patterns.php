@@ -11,7 +11,7 @@
  */
 if ( function_exists( 'register_block_pattern_category' ) ) {
 	register_block_pattern_category(
-		'template-parts',
+		'blockstrap-template-parts',
 		array( 'label' => esc_html__( 'Template Parts Default', 'blockstrap' ) )
 	);
 }

@@ -11,7 +11,7 @@
  */
 if ( function_exists( 'register_block_pattern_category' ) ) {
 	register_block_pattern_category(
-		'page-content',
+		'blockstrap-page-content',
 		array( 'label' => esc_html__( 'Page Content', 'blockstrap' ) )
 	);
 }
@@ -29,7 +29,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'bs_pattern_page_content_404_default',
 				''
-			) : '<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
+			) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group"><!-- wp:paragraph -->
 <p>' . __( 'It looks like nothing was found at this location.', 'blockstrap' ) . '</p>
 <!-- /wp:paragraph --></main>
@@ -45,7 +45,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'bs_pattern_page_content_archive_default',
 				''
-			) : '<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
+			) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group"><!-- wp:query-title {"type":"archive"} /-->
 
 <!-- wp:query {"queryId":0,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false}} -->
@@ -81,7 +81,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'bs_pattern_page_content_page_default',
 				''
-			) : '<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
+			) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group"><!-- wp:post-title /-->
 
 <!-- wp:post-content /-->
@@ -99,7 +99,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'bs_pattern_page_content_post_default',
 				''
-			) : '<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
+			) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group"><!-- wp:post-title /-->
 
 <!-- wp:post-content /-->
@@ -117,7 +117,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'bs_pattern_page_content_search_default',
 				''
-			) : '<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
+			) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group"><!-- wp:query-title {"type":"search"} /-->
 
 <!-- wp:search {"label":"Search","buttonText":"Search"} /-->
@@ -155,7 +155,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'bs_pattern_page_content_page_sidebar_left_default',
 				''
-			) : '<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
+			) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group"><!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column {"width":"33.33%"} -->
 <div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:template-part {"slug":"sidebar-left","theme":"blockstrap","area":"uncategorized"} /--></div>
@@ -181,7 +181,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'bs_pattern_page_content_page_sidebar_right_default',
 				''
-			) : '<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
+			) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group"><!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column {"width":"66.66%"} -->
 <div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:post-title /-->
@@ -208,7 +208,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 				'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 					'bs_pattern_page_content_gd_archive_default',
 					''
-				) : '<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
+				) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group"><!-- wp:paragraph -->
 <p>' . __( 'Thia template requires the GeoDirectory plugin to be installed', 'blockstrap' ) . '</p>
 <!-- /wp:paragraph --></main>
@@ -224,7 +224,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 				'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 					'bs_pattern_page_content_gd_search_default',
 					''
-				) : '<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
+				) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group"><!-- wp:paragraph -->
 <p>' . __( 'Thia template requires the GeoDirectory plugin to be installed', 'blockstrap' ) . '</p>
 <!-- /wp:paragraph --></main>
@@ -240,7 +240,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 				'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 					'bs_pattern_page_content_gd_single_default',
 					''
-				) : '<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
+				) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group"><!-- wp:paragraph -->
 <p>' . __( 'Thia template requires the GeoDirectory plugin to be installed', 'blockstrap' ) . '</p>
 <!-- /wp:paragraph --></main>

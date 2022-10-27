@@ -11,7 +11,7 @@
  */
 if ( function_exists( 'register_block_pattern_category' ) ) {
 	register_block_pattern_category(
-		'site-footer',
+		'blockstrap-site-footer',
 		array( 'label' => esc_html__( 'Site footers', 'blockstrap' ) )
 	);
 }

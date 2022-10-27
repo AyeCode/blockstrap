@@ -22,45 +22,8 @@ if ( version_compare( $GLOBALS['wp_version'], '5.5', '<' ) || version_compare( P
 	return;
 }
 
-// TGM Class
-//require_once 'classes/class-tgm-plugin-activation.php';
-
-/**
- * Recommended plugins.
- *
- * @return void
- */
-function blockstrap_register_required_plugins() {
-	// plugins
-	$plugins = array(
-		array(
-			'name'     => 'BlockStrap Page Builder',
-			'slug'     => 'blockstrap-page-builder-blocks',
-			'required' => true,
-		),
-	);
-
-	// config
-	$config = array(
-		'id'           => 'blockstrap',                 // Unique ID for hashing notices for multiple instances of TGMPA.
-		'default_path' => '',                      // Default absolute path to bundled plugins.
-		'menu'         => 'tgmpa-install-plugins', // Menu slug.
-		'has_notices'  => true,                    // Show admin notices or not.
-		'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
-		'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
-		'is_automatic' => true,                   // Automatically activate plugins after installation or not.
-		'message'      => '',                      // Message to output right before the plugins table.
-	);
-
-	tgmpa( $plugins, $config );
-}
-//add_action( 'tgmpa_register', 'blockstrap_register_required_plugins' ); // chicken and egg, @todo uncomment this when plugin is approved.
-
 // Theme support.
 require_once 'classes/class-blockstrap-theme-support.php';
-
-// Filter Comments.
-require_once 'classes/class-blockstrap-comments.php';
 
 // Block Filters.
 require_once 'classes/class-blockstrap-block-filters.php';
@@ -107,13 +70,12 @@ function blockstrap_styles() {
 		BLOCKSTRAP_VERSION
 	);
 	wp_enqueue_style(
-		'blockstrap-shared-stylez',
+		'blockstrap-shared-style',
 		get_theme_file_uri( 'assets/css/style-shared.css' ),
 		'',
 		BLOCKSTRAP_VERSION
 	);
 
-	wp_enqueue_script( 'blockstrap-block-filters' );
 }
 
 add_action( 'wp_enqueue_scripts', 'blockstrap_styles' );
@@ -170,13 +132,6 @@ add_filter( 'body_class', 'bs_body_class' );
  * @return void
  */
 function bs_enqueue_block_editor_assets() {
-
-	wp_enqueue_script(
-		'blockstrap-block-filters',
-		get_template_directory_uri() . '/assets/js/blockstrap-block-filters.js',
-		array( 'wp-block-library', 'wp-element', 'wp-i18n' ), // required dependencies for blocks
-		BLOCKSTRAP_VERSION
-	);
 
 	wp_enqueue_style(
 		'blockstrap-style',

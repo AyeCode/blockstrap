@@ -11,7 +11,7 @@
  */
 if ( function_exists( 'register_block_pattern_category' ) ) {
 	register_block_pattern_category(
-		'hero-sections',
+		'blockstrap-hero-sections',
 		array( 'label' => esc_html__( 'Hero Sections', 'blockstrap' ) )
 	);
 }

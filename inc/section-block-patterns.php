@@ -11,7 +11,7 @@
  */
 if ( function_exists( 'register_block_pattern_category' ) ) {
 	register_block_pattern_category(
-		'feature-sections',
+		'blockstrap-feature-sections',
 		array( 'label' => esc_html__( 'Feature Sections', 'blockstrap' ) )
 	);
 }
@@ -29,9 +29,9 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'bs_pattern_feature_home_default',
 				''
-			) : '<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
+			) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group"><!-- wp:paragraph -->
-<p>' . __( 'This theme word best with the BlockStrap Page Builder Plugin (coming soon).', 'blockstrap' ) . '</p>
+<p>' . __( 'This is the blankest of blank themes, add your content here...', 'blockstrap' ) . '</p>
 <!-- /wp:paragraph --></main>
 <!-- /wp:group -->',
 		)
