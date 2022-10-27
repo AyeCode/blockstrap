@@ -3,7 +3,7 @@ Contributors: ayecode, stiofansisland
 Tested up to: 6.1
 Requires at least: 6.0
 Requires PHP: 7.2
-Version: 0.0.5
+Version: 0.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,6 +15,9 @@ Relying on the block editor as a page builder no further page builders are requi
 
 
 == Changelog ==
+
+= 0.0.6 =
+* Some block patterns not showing in editor - FIXED
 
 = 0.0.5 =
 * Home and 404 skip links not working - FIXED

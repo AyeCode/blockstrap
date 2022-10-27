@@ -29,7 +29,11 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'bs_pattern_feature_home_default',
 				''
-			) : '<main class="site-main">' . __( 'This theme word best with the BlockStrap Page Builder Plugin', 'blockstrap' ) . '</main>',
+			) : '<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
+<main class="wp-block-group"><!-- wp:paragraph -->
+<p>' . __( 'This theme word best with the BlockStrap Page Builder Plugin (coming soon).', 'blockstrap' ) . '</p>
+<!-- /wp:paragraph --></main>
+<!-- /wp:group -->',
 		)
 	);
 
