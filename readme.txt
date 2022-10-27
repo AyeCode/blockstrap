@@ -3,7 +3,7 @@ Contributors: ayecode, stiofansisland
 Tested up to: 6.1
 Requires at least: 6.0
 Requires PHP: 7.2
-Version: 0.0.8
+Version: 0.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ BlockStrap is a very blank starter theme.
 
 == Changelog ==
 
-= 0.0.8 =
+= 0.0.9 =
 * Theme clean up - CHANGED
 
 = 0.0.7 =
@@ -65,4 +65,12 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 * Image for theme screenshot, Copyright AyeCode Ltd
   License: CC0 1.0 Universal (CC0 1.0)
   Source: https://github.com/AyeCode/blockstrap/blob/main/screenshot.png
+  
+* Image for theme screenshot illustration, Copyright AyeCode Ltd
+  License: CC0 1.0 Universal (CC0 1.0)
+  Source: https://github.com/AyeCode/blockstrap/blob/main/screenshot.png
+  
+* Image for theme screenshot , social icons, Copyright Font Awesome (Fonticons, Inc.)
+  License: CC BY 4.0 License
+  Source: https://fontawesome.com/v5/search?q=social&o=r&m=free
 
