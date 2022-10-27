@@ -20,11 +20,30 @@ class BlockStrap_Theme_Support {
 	 * @access public
 	 */
 	public function __construct() {
+		add_action( 'after_setup_theme', array( $this, 'load_translations' ) );
 		add_action( 'after_setup_theme', array( $this, 'action_setup' ) );
 		add_action( 'after_setup_theme', array( $this, 'action_content_width' ), 0 );
 		add_filter( 'get_block_templates', array( $this, 'default_template_types' ), 20000, 3 );
 	}
 
+	/**
+	 * Load the theme translation files.
+	 *
+	 * @return void
+	 */
+	public function load_translations() {
+		load_theme_textdomain( 'blockstrapr', get_template_directory() . '/languages' );
+	}
+
+	/**
+	 * Filter the theme FSE templates.
+	 *
+	 * @param $default_template_types
+	 * @param $query
+	 * @param $template_type
+	 *
+	 * @return mixed
+	 */
 	public function default_template_types( $default_template_types, $query, $template_type ) {
 
 		foreach ( $default_template_types as $k => $t ) {
