@@ -27,7 +27,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'title'      => esc_html__( 'Default Footer', 'blockstrap' ),
 			'categories' => array( 'site-footer' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
-				'bs_pattern_footer_default',
+				'blockstrap_pattern_footer_default',
 				''
 			) : '',
 		)

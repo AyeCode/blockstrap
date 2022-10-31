@@ -27,7 +27,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'title'      => esc_html__( 'Default Header', 'blockstrap' ),
 			'categories' => array( 'site-header' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
-				'bs_pattern_header_default',
+				'blockstrap_pattern_header_default',
 				''
 			) : '<!-- wp:site-title /-->',
 		)

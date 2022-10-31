@@ -119,19 +119,19 @@ add_filter( 'render_block', 'blockstrap_force_render_blocks_on_templates', 10, 2
  *
  * @return mixed
  */
-function bs_body_class( $classes ) {
+function blockstrap_body_class( $classes ) {
 	$classes[] = 'bsui';
 
 	return $classes;
 }
-add_filter( 'body_class', 'bs_body_class' );
+add_filter( 'body_class', 'blockstrap_body_class' );
 
 /**
  * Add our block filters.
  *
  * @return void
  */
-function bs_enqueue_block_editor_assets() {
+function blockstrap_enqueue_block_editor_assets() {
 
 	wp_enqueue_style(
 		'blockstrap-style',
@@ -148,4 +148,4 @@ function bs_enqueue_block_editor_assets() {
 	);
 
 }
-add_action( 'enqueue_block_editor_assets', 'bs_enqueue_block_editor_assets', 1000 );
+add_action( 'enqueue_block_editor_assets', 'blockstrap_enqueue_block_editor_assets', 1000 );

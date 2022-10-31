@@ -27,7 +27,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'title'      => esc_html__( 'Comments', 'blockstrap' ),
 			'categories' => array( 'template-parts' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
-				'bs_pattern_part_comments_default',
+				'blockstrap_pattern_part_comments_default',
 				''
 			) : '<!-- wp:comments -->
 <div class="wp-block-comments"><!-- wp:comments-title /-->
@@ -73,7 +73,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'title'      => esc_html__( 'Main', 'blockstrap' ),
 			'categories' => array( 'template-parts' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
-				'bs_pattern_part_main_default',
+				'blockstrap_pattern_part_main_default',
 				''
 			) : '',
 		)

@@ -27,7 +27,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'title'      => esc_html__( 'Hero home', 'blockstrap' ),
 			'categories' => array( 'feature-sections' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
-				'bs_pattern_feature_home_default',
+				'blockstrap_pattern_feature_home_default',
 				''
 			) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group"><!-- wp:paragraph -->

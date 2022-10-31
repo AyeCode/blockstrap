@@ -27,7 +27,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'title'      => esc_html__( 'Hero home', 'blockstrap' ),
 			'categories' => array( 'hero-sections' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
-				'bs_pattern_hero_home_default',
+				'blockstrap_pattern_hero_home_default',
 				''
 			) : '',
 		)
@@ -39,7 +39,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'title'      => esc_html__( 'Hero 404', 'blockstrap' ),
 			'categories' => array( 'hero-sections' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
-				'bs_pattern_hero_404_default',
+				'blockstrap_pattern_hero_404_default',
 				''
 			) : '',
 		)
@@ -51,7 +51,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'title'      => esc_html__( 'Hero Archive', 'blockstrap' ),
 			'categories' => array( 'hero-sections' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
-				'bs_pattern_hero_archive_default',
+				'blockstrap_pattern_hero_archive_default',
 				''
 			) : '',
 		)
@@ -63,7 +63,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'title'      => esc_html__( 'Hero Page', 'blockstrap' ),
 			'categories' => array( 'hero-sections' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
-				'bs_pattern_hero_page_default',
+				'blockstrap_pattern_hero_page_default',
 				''
 			) : '',
 		)
@@ -75,7 +75,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'title'      => esc_html__( 'Hero Post', 'blockstrap' ),
 			'categories' => array( 'hero-sections' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
-				'bs_pattern_hero_post_default',
+				'blockstrap_pattern_hero_post_default',
 				''
 			) : '',
 		)
