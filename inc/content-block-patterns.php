@@ -86,7 +86,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 
 <!-- wp:post-content /-->
 
-<!-- wp:template-part {"slug":"comments","theme":"blockstrap","area":"uncategorized"} /--></main>
+<!-- wp:template-part {"slug":"comments","area":"uncategorized"} /--></main>
 <!-- /wp:group -->',
 		)
 	);
@@ -104,7 +104,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 
 <!-- wp:post-content /-->
 
-<!-- wp:template-part {"slug":"comments","theme":"blockstrap","area":"uncategorized"} /--></main>
+<!-- wp:template-part {"slug":"comments","area":"uncategorized"} /--></main>
 <!-- /wp:group -->',
 		)
 	);
@@ -158,7 +158,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group"><!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column {"width":"33.33%"} -->
-<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:template-part {"slug":"sidebar-left","theme":"blockstrap","area":"uncategorized"} /--></div>
+<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:template-part {"slug":"sidebar-left","area":"uncategorized"} /--></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"width":"66.66%"} -->
@@ -166,7 +166,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 
 <!-- wp:post-content /-->
 
-<!-- wp:template-part {"slug":"comments","theme":"blockstrap","area":"uncategorized"} /--></div>
+<!-- wp:template-part {"slug":"comments","area":"uncategorized"} /--></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></main>
 <!-- /wp:group -->',
@@ -188,11 +188,11 @@ if ( function_exists( 'register_block_pattern' ) ) {
 
 <!-- wp:post-content /-->
 
-<!-- wp:template-part {"slug":"comments","theme":"blockstrap","area":"uncategorized"} /--></div>
+<!-- wp:template-part {"slug":"comments","area":"uncategorized"} /--></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"width":"33.33%"} -->
-<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:template-part {"slug":"sidebar-right","theme":"blockstrap","area":"uncategorized"} /--></div>
+<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:template-part {"slug":"sidebar-right","area":"uncategorized"} /--></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></main>
 <!-- /wp:group -->',

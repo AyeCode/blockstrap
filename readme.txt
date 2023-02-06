@@ -14,6 +14,9 @@ BlockStrap is a very blank starter theme.
 
 == Changelog ==
 
+= 0.0.11 =
+* Changes for upcoming BS5 option - CHANGED
+
 = 0.0.10 =
 * Made copyright/licensing of screenshot illustration more clear - UPDATED
 * Updated function/filter prefix of `bs_` to `bootstrap_` - UPDATED
@@ -78,3 +81,6 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
   License: CC BY 4.0 License
   Source: https://fontawesome.com/v5/search?q=social&o=r&m=free
 
+* Poppins font, Copyright (c) 2014, Indian Type Foundry (info@indiantypefoundry.com).
+  License: Open Font License.
+  Source: https://fonts.google.com/specimen/Poppins/

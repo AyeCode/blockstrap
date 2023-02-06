@@ -119,6 +119,27 @@
 			"customFontSize": true,
 			"fontFamilies": [
 				{
+					"fontFamily": "\"Poppins\", sans-serif",
+					"name": "Poppins (Google Font)",
+					"slug": "poppins",
+					"fontFace": [
+						{
+							"fontFamily": "Source Serif Pro",
+							"fontWeight": "400",
+							"fontStyle": "normal",
+							"fontStretch": "normal",
+							"src": [
+								"file:./assets/fonts/poppins-v20-latin-regular.woff2"
+							]
+						}
+					]
+				},
+				{
+					"fontFamily": "\"Montserrat\", sans-serif",
+					"name": "Montserrat",
+					"slug": "primary"
+				},
+				{
 					"fontFamily": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif",
 					"slug": "system-fonts",
 					"name": "System Fonts"
@@ -185,6 +206,8 @@
 			]
 		},
 		"layout": {
+			"contentSize": "840px",
+			"wideSize": null,
 			"units": [
 				"px",
 				"em",
@@ -388,9 +411,14 @@
 			"area": "footer"
 		},
 		{
+			"name": "main",
+			"area": "uncategorized"
+		},
+		{
 			"name": "hero",
 			"area": "hero"
 		}
+		
 	],
 	"customTemplates": [
 		{
