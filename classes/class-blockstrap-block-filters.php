@@ -25,7 +25,9 @@ class BlockStrap_Block_Filters {
 
 	public function post_template( $block_content, $block ) {
 
-		if ( 'core/post-template' === $block['blockName'] ) {
+		if ( 'core/post-templateZZZ' === $block['blockName'] ) {
+
+//			print_r( $block );
 			$block_content = str_replace(
 				array(
 					'wp-block-post-template',
@@ -33,6 +35,30 @@ class BlockStrap_Block_Filters {
 				),
 				array(
 					'row list-unstyled row-cols-1 row-cols-sm-2  row-cols-md-3',
+					'wp-block-post col mb-4 ',
+				),
+				$block_content
+			);
+		}
+		if ( 'core/query' === $block['blockName'] ) {
+//			print_r( $block );
+			$columns = isset($block['attrs']['displayLayout']['columns']) ? absint( $block['attrs']['displayLayout']['columns'] ) : 1;
+//			echo '###'.$columns;
+			$colCount = $block['attrs']['displayLayout']['type'] === 'flex' ? $columns : 1;
+			$colMd = ' row-cols-md-' . $colCount;
+			$colSm = ' row-cols-sm-' . $colCount > 1 ? ( $colCount - 1 ) : $colCount;
+			$rowClass = ' row list-unstyled row-cols-1 ' . $colSm . $colMd;
+			if ( 'list' === $block['attrs']['displayLayout'] ) {
+
+			}
+
+			$block_content = str_replace(
+				array(
+					'wp-block-post-template',
+					'wp-block-post ',
+				),
+				array(
+					'row list-unstyled row-cols-1' . $rowClass,
 					'wp-block-post col mb-4 ',
 				),
 				$block_content

@@ -76,6 +76,15 @@ function blockstrap_styles() {
 		BLOCKSTRAP_VERSION
 	);
 
+	//@todo add to editor
+	wp_enqueue_style(
+		'google-fonts',
+		'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap',
+//		wptt_get_webfont_url( 'https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&display=swap' ), @ todo make local
+		array(),
+		BLOCKSTRAP_VERSION
+	);
+
 }
 
 add_action( 'wp_enqueue_scripts', 'blockstrap_styles' );
@@ -93,24 +102,6 @@ add_filter(
 		return $title;
 	}
 );
-
-
-/**
- * Force blocks to render shortcodes.
- *
- * There is a bug where shortcodes are not renders in template files.
- *
- * @todo remove this or make it more specific once this bug is resolved https://github.com/WordPress/gutenberg/issues/35258
- *
- * @param string $block_content The HTML content of the block.
- * @param array  $block The full block, including name and attributes.
- *
- * @return mixed
- */
-function blockstrap_force_render_blocks_on_templates( $block_content, $block ) {
-	return strip_shortcodes( do_shortcode( $block_content ) );
-}
-add_filter( 'render_block', 'blockstrap_force_render_blocks_on_templates', 10, 2 );
 
 /**
  * Add our BSUI body class.
@@ -149,3 +140,4 @@ function blockstrap_enqueue_block_editor_assets() {
 
 }
 add_action( 'enqueue_block_editor_assets', 'blockstrap_enqueue_block_editor_assets', 1000 );
+
