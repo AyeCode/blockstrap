@@ -24,6 +24,22 @@ class BlockStrap_Theme_Support {
 		add_action( 'after_setup_theme', array( $this, 'action_setup' ) );
 		add_action( 'after_setup_theme', array( $this, 'action_content_width' ), 0 );
 		add_filter( 'get_block_templates', array( $this, 'default_template_types' ), 20000, 3 );
+		add_action( 'ayecode-ui-settings', array( $this, 'set_aui_settings' ), 10, 3 );
+	}
+
+	/**
+	 * @param $settings
+	 * @param $db_settings
+	 * @param $defaults
+	 *
+	 * @return mixed
+	 */
+	public function set_aui_settings( $settings, $db_settings, $defaults ) {
+
+		$settings['bs_ver'] = '5'; // set BS ver to 5
+		$settings['css']    = 'core'; // set CSS to full mode
+
+		return $settings;
 	}
 
 	/**

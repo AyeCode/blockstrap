@@ -25,7 +25,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 		'blockstrap/hero-home-default',
 		array(
 			'title'      => esc_html__( 'Hero home', 'blockstrap' ),
-			'categories' => array( 'hero-sections' ),
+			'categories' => array( 'blockstrap-hero-sections' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'blockstrap_pattern_hero_home_default',
 				''
@@ -37,7 +37,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 		'blockstrap/hero-404-default',
 		array(
 			'title'      => esc_html__( 'Hero 404', 'blockstrap' ),
-			'categories' => array( 'hero-sections' ),
+			'categories' => array( 'blockstrap-hero-sections' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'blockstrap_pattern_hero_404_default',
 				''
@@ -49,7 +49,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 		'blockstrap/hero-archive-default',
 		array(
 			'title'      => esc_html__( 'Hero Archive', 'blockstrap' ),
-			'categories' => array( 'hero-sections' ),
+			'categories' => array( 'blockstrap-hero-sections' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'blockstrap_pattern_hero_archive_default',
 				''
@@ -61,7 +61,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 		'blockstrap/hero-page-default',
 		array(
 			'title'      => esc_html__( 'Hero Page', 'blockstrap' ),
-			'categories' => array( 'hero-sections' ),
+			'categories' => array( 'blockstrap-hero-sections' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'blockstrap_pattern_hero_page_default',
 				''
@@ -73,7 +73,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 		'blockstrap/hero-post-default',
 		array(
 			'title'      => esc_html__( 'Hero Post', 'blockstrap' ),
-			'categories' => array( 'hero-sections' ),
+			'categories' => array( 'blockstrap-hero-sections' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'blockstrap_pattern_hero_post_default',
 				''

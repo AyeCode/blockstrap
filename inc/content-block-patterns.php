@@ -25,7 +25,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 		'blockstrap/page-content-404-default',
 		array(
 			'title'      => esc_html__( '404 Content', 'blockstrap' ),
-			'categories' => array( 'page-content' ),
+			'categories' => array( 'blockstrap-page-content' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'blockstrap_pattern_page_content_404_default',
 				''
@@ -41,7 +41,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 		'blockstrap/page-content-archive-default',
 		array(
 			'title'      => esc_html__( 'Archive Content', 'blockstrap' ),
-			'categories' => array( 'page-content' ),
+			'categories' => array( 'blockstrap-page-content' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'blockstrap_pattern_page_content_archive_default',
 				''
@@ -77,7 +77,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 		'blockstrap/page-content-page-default',
 		array(
 			'title'      => esc_html__( 'Page Content', 'blockstrap' ),
-			'categories' => array( 'page-content' ),
+			'categories' => array( 'blockstrap-page-content' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'blockstrap_pattern_page_content_page_default',
 				''
@@ -95,7 +95,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 		'blockstrap/page-content-post-default',
 		array(
 			'title'      => esc_html__( 'Post Content', 'blockstrap' ),
-			'categories' => array( 'page-content' ),
+			'categories' => array( 'blockstrap-page-content' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'blockstrap_pattern_page_content_post_default',
 				''
@@ -113,7 +113,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 		'blockstrap/page-content-search-default',
 		array(
 			'title'      => esc_html__( 'Search Content', 'blockstrap' ),
-			'categories' => array( 'page-content' ),
+			'categories' => array( 'blockstrap-page-content' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'blockstrap_pattern_page_content_search_default',
 				''
@@ -151,7 +151,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 		'blockstrap/page-content-page-sidebar-left-default',
 		array(
 			'title'      => esc_html__( 'Page Sidebar Left Content', 'blockstrap' ),
-			'categories' => array( 'page-content' ),
+			'categories' => array( 'blockstrap-page-content' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'blockstrap_pattern_page_content_page_sidebar_left_default',
 				''
@@ -177,7 +177,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 		'blockstrap/page-content-page-sidebar-right-default',
 		array(
 			'title'      => esc_html__( 'Page Sidebar Right Content', 'blockstrap' ),
-			'categories' => array( 'page-content' ),
+			'categories' => array( 'blockstrap-page-content' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'blockstrap_pattern_page_content_page_sidebar_right_default',
 				''
@@ -204,7 +204,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'blockstrap/page-content-gd-archive-default',
 			array(
 				'title'      => esc_html__( 'GD Archive Content', 'blockstrap' ),
-				'categories' => array( 'page-content' ),
+				'categories' => array( 'blockstrap-page-content' ),
 				'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 					'blockstrap_pattern_page_content_gd_archive_default',
 					''
@@ -220,7 +220,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'blockstrap/page-content-gd-search-default',
 			array(
 				'title'      => esc_html__( 'GD Search Content', 'blockstrap' ),
-				'categories' => array( 'page-content' ),
+				'categories' => array( 'blockstrap-page-content' ),
 				'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 					'blockstrap_pattern_page_content_gd_search_default',
 					''
@@ -236,9 +236,41 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'blockstrap/page-content-gd-single-default',
 			array(
 				'title'      => esc_html__( 'GD Single Content', 'blockstrap' ),
-				'categories' => array( 'page-content' ),
+				'categories' => array( 'blockstrap-page-content' ),
 				'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 					'blockstrap_pattern_page_content_gd_single_default',
+					''
+				) : '<!-- wp:group {"tagName":"main"} -->
+<main class="wp-block-group"><!-- wp:paragraph -->
+<p>' . __( 'Thia template requires the GeoDirectory plugin to be installed', 'blockstrap' ) . '</p>
+<!-- /wp:paragraph --></main>
+<!-- /wp:group -->',
+			)
+		);
+
+		register_block_pattern(
+			'blockstrap/page-content-gd-add-listing-default',
+			array(
+				'title'      => esc_html__( 'GD Add Listing', 'blockstrap' ),
+				'categories' => array( 'blockstrap-page-content' ),
+				'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
+					'blockstrap_pattern_page_content_gd_add_listing_default',
+					''
+				) : '<!-- wp:group {"tagName":"main"} -->
+<main class="wp-block-group"><!-- wp:paragraph -->
+<p>' . __( 'Thia template requires the GeoDirectory plugin to be installed', 'blockstrap' ) . '</p>
+<!-- /wp:paragraph --></main>
+<!-- /wp:group -->',
+			)
+		);
+
+		register_block_pattern(
+			'blockstrap/page-content-gd-location-default',
+			array(
+				'title'      => esc_html__( 'GD Location', 'blockstrap' ),
+				'categories' => array( 'blockstrap-page-content' ),
+				'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
+					'blockstrap_pattern_page_content_gd_location_default',
 					''
 				) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group"><!-- wp:paragraph -->
