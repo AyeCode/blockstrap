@@ -417,6 +417,11 @@
 		{
 			"name": "hero",
 			"area": "hero"
+		},
+		{
+			"name": "gd-archive-item",
+			"title": "GD Archive Item",
+			"area": "uncategorized"
 		}
 		
 	],
@@ -438,6 +443,20 @@
 		{
 			"name": "gd-single",
 			"title": "GD Single",
+			"postTypes": [
+				"gd_place"
+			]
+		},
+		{
+			"name": "gd-add-listing",
+			"title": "GD Add Listing",
+			"postTypes": [
+				"gd_place"
+			]
+		},
+		{
+			"name": "gd-location",
+			"title": "GD Location",
 			"postTypes": [
 				"gd_place"
 			]

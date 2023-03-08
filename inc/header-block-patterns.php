@@ -25,7 +25,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 		'blockstrap/header-default',
 		array(
 			'title'      => esc_html__( 'Default Header', 'blockstrap' ),
-			'categories' => array( 'site-header' ),
+			'categories' => array( 'blockstrap-site-header' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'blockstrap_pattern_header_default',
 				''

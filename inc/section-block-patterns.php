@@ -25,7 +25,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 		'blockstrap/feature-home-default',
 		array(
 			'title'      => esc_html__( 'Hero home', 'blockstrap' ),
-			'categories' => array( 'feature-sections' ),
+			'categories' => array( 'blockstrap-feature-sections' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'blockstrap_pattern_feature_home_default',
 				''

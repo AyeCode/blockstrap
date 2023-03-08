@@ -25,7 +25,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 		'blockstrap/part-comments-default',
 		array(
 			'title'      => esc_html__( 'Comments', 'blockstrap' ),
-			'categories' => array( 'template-parts' ),
+			'categories' => array( 'blockstrap-template-parts' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'blockstrap_pattern_part_comments_default',
 				''
@@ -71,7 +71,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 		'blockstrap/part-main-default',
 		array(
 			'title'      => esc_html__( 'Main', 'blockstrap' ),
-			'categories' => array( 'template-parts' ),
+			'categories' => array( 'blockstrap-template-parts' ),
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'blockstrap_pattern_part_main_default',
 				''

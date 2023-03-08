@@ -28,32 +28,13 @@ require_once 'classes/class-blockstrap-theme-support.php';
 // Block Filters.
 require_once 'classes/class-blockstrap-block-filters.php';
 
+// Block Patterns
+require_once 'classes/class-blockstrap-patterns.php';
+
 // Block styles.
 require_once 'inc/block-styles.php';
 
-// Header block patterns.
-require_once 'inc/header-block-patterns.php';
 
-// Footer block patterns.
-require_once 'inc/footer-block-patterns.php';
-
-// Hero block patterns.
-require_once 'inc/hero-block-patterns.php';
-
-// Section block patterns.
-require_once 'inc/section-block-patterns.php';
-
-// Content block patterns.
-require_once 'inc/content-block-patterns.php';
-
-// Content block patterns.
-require_once 'inc/template-part-block-patterns.php';
-
-// Page layout block patterns.
-require_once 'inc/page-layout-block-patterns.php';
-
-// Query block patterns.
-require_once 'inc/query-block-patterns.php';
 
 
 

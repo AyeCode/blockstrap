@@ -16,6 +16,7 @@ BlockStrap is a very blank starter theme.
 
 = 0.0.11 =
 * Changes for upcoming BS5 option - CHANGED
+* Now used Bootstrap v5 Only - CHANGED
 
 = 0.0.10 =
 * Made copyright/licensing of screenshot illustration more clear - UPDATED
