@@ -31,6 +31,12 @@ require_once 'classes/class-blockstrap-block-filters.php';
 // Block Patterns
 require_once 'classes/class-blockstrap-patterns.php';
 
+/*
+ * Download webfonts locally, ( modified to add .wp-block class so it is loaded into FSE ) https://github.com/WPTT/webfont-loader/
+ * @todo we should be able to remove this once the Fonts API is merged into core.
+ */
+require_once 'classes/wptt-webfont-loader.php';
+
 // Block styles.
 require_once 'inc/block-styles.php';
 
@@ -44,12 +50,18 @@ require_once 'inc/block-styles.php';
  * @since 1.0.0
  */
 function blockstrap_styles() {
-	wp_enqueue_style(
-		'blockstrap-style',
-		get_theme_file_uri( 'assets/css/style.css' ),
-		'',
-		BLOCKSTRAP_VERSION
-	);
+
+	$theme_settings = wp_get_global_styles();
+
+	if ( ! is_admin() ) {
+		wp_enqueue_style(
+			'blockstrap-style',
+			get_theme_file_uri( 'assets/css/style.css' ),
+			'',
+			BLOCKSTRAP_VERSION
+		);
+	}
+
 	wp_enqueue_style(
 		'blockstrap-shared-style',
 		get_theme_file_uri( 'assets/css/style-shared.css' ),
@@ -57,18 +69,23 @@ function blockstrap_styles() {
 		BLOCKSTRAP_VERSION
 	);
 
-	//@todo add to editor
-	wp_enqueue_style(
-		'google-fonts',
-		'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap',
-//		wptt_get_webfont_url( 'https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&display=swap' ), @ todo make local
-		array(),
-		BLOCKSTRAP_VERSION
-	);
+	//@todo once webfonts API gets added to core we can do this via theme.json only.
+	if ( is_admin() || ( ! empty( $theme_settings['typography']['fontFamily'] ) && ( 'var:preset|font-family|poppins' === $theme_settings['typography']['fontFamily'] || 'var(--wp--preset--font-family--poppins)' === $theme_settings['typography']['fontFamily'] ) ) ) {
+		wp_enqueue_style(
+			'google-fonts',
+			//          'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap',
+			wptt_get_webfont_url( 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap' ), // @ todo make local
+			array(),
+			BLOCKSTRAP_VERSION
+		);
+	}
+
+
 
 }
 
 add_action( 'wp_enqueue_scripts', 'blockstrap_styles' );
+add_action( 'admin_enqueue_scripts', 'blockstrap_styles' );
 
 /**
  * Show '(No title)' if post has no title.

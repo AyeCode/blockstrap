@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BlockStrap\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-27 11:47+0100\n"
-"PO-Revision-Date: 2022-10-27 11:47+0100\n"
+"POT-Creation-Date: 2023-03-16 16:33+0000\n"
+"PO-Revision-Date: 2023-03-16 16:33+0000\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -20,44 +20,27 @@ msgstr ""
 "X-Generator: Poedit 2.3\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: classes/class-blockstrap-comments.php:32
-#: classes/class-blockstrap-comments.php:33
-msgid "Enter your comment here..."
-msgstr ""
-
-#: classes/class-blockstrap-comments.php:39
-msgid "Name"
-msgstr ""
-
-#: classes/class-blockstrap-comments.php:40
-msgid "Name (required)"
-msgstr ""
-
-#: classes/class-blockstrap-comments.php:45
-msgid "Email"
-msgstr ""
-
-#: classes/class-blockstrap-comments.php:46
-msgid "Email (required)"
-msgstr ""
-
-#: classes/class-blockstrap-comments.php:51
-#: classes/class-blockstrap-comments.php:52
-msgid "Website"
-msgstr ""
-
-#: classes/class-blockstrap-comments.php:58
-msgid ""
-"Save my name, email, and website in this browser for the next time I comment."
-msgstr ""
-
 #: classes/class-blockstrap-theme-support.php:54
+msgid "Thanks for installing the BlockStrap Theme"
+msgstr ""
+
+#: classes/class-blockstrap-theme-support.php:55
+msgid ""
+"The BlockStrap theme works best with the BlockStrap Blocks plugin, please "
+"install it for full functionality."
+msgstr ""
+
+#: classes/class-blockstrap-theme-support.php:63
+msgid "Install BlockStrap Blocks Plugin"
+msgstr ""
+
+#: classes/class-blockstrap-theme-support.php:108
 msgid ""
 "The default template for displaying any GD single post. Use the `add new` "
 "feature to add a template per CPT."
 msgstr ""
 
-#: functions.php:128
+#: functions.php:97
 msgid "(No title)"
 msgstr ""
 
@@ -106,7 +89,8 @@ msgid "GD Archive Content"
 msgstr ""
 
 #: inc/content-block-patterns.php:213 inc/content-block-patterns.php:229
-#: inc/content-block-patterns.php:245
+#: inc/content-block-patterns.php:245 inc/content-block-patterns.php:261
+#: inc/content-block-patterns.php:277
 msgid "Thia template requires the GeoDirectory plugin to be installed"
 msgstr ""
 
@@ -116,6 +100,14 @@ msgstr ""
 
 #: inc/content-block-patterns.php:238
 msgid "GD Single Content"
+msgstr ""
+
+#: inc/content-block-patterns.php:254
+msgid "GD Add Listing"
+msgstr ""
+
+#: inc/content-block-patterns.php:270
+msgid "GD Location"
 msgstr ""
 
 #: inc/footer-block-patterns.php:15
@@ -171,8 +163,7 @@ msgid "Feature Sections"
 msgstr ""
 
 #: inc/section-block-patterns.php:34
-msgid ""
-"This theme word best with the BlockStrap Page Builder Plugin (coming soon)."
+msgid "This is the blankest of blank themes, add your content here..."
 msgstr ""
 
 #: inc/template-part-block-patterns.php:15
@@ -186,10 +177,6 @@ msgstr ""
 #: inc/template-part-block-patterns.php:73
 msgid "Main"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Location"
-#~ msgstr "'Lokácia"
 
 #, fuzzy
 #~ msgid "Enter Your Location"

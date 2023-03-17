@@ -27,7 +27,7 @@ class BlockStrap_Block_Filters {
 
 		if ( 'core/post-templateZZZ' === $block['blockName'] ) {
 
-//			print_r( $block );
+			//          print_r( $block );
 			$block_content = str_replace(
 				array(
 					'wp-block-post-template',
@@ -41,16 +41,16 @@ class BlockStrap_Block_Filters {
 			);
 		}
 		if ( 'core/query' === $block['blockName'] ) {
-//			print_r( $block );
-			$columns = isset($block['attrs']['displayLayout']['columns']) ? absint( $block['attrs']['displayLayout']['columns'] ) : 1;
-//			echo '###'.$columns;
+			//          print_r( $block );
+			$columns = isset( $block['attrs']['displayLayout']['columns'] ) ? absint( $block['attrs']['displayLayout']['columns'] ) : 1;
+			//          echo '###'.$columns;
 			$colCount = $block['attrs']['displayLayout']['type'] === 'flex' ? $columns : 1;
-			$colMd = ' row-cols-md-' . $colCount;
-			$colSm = ' row-cols-sm-' . $colCount > 1 ? ( $colCount - 1 ) : $colCount;
+			$colMd    = ' row-cols-md-' . $colCount;
+			$colSm    = ' row-cols-sm-' . $colCount > 1 ? ( $colCount - 1 ) : $colCount;
 			$rowClass = ' row list-unstyled row-cols-1 ' . $colSm . $colMd;
-			if ( 'list' === $block['attrs']['displayLayout'] ) {
-
-			}
+//			if ( 'list' === $block['attrs']['displayLayout'] ) {
+//
+//			}
 
 			$block_content = str_replace(
 				array(
