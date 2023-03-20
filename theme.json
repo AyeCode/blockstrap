@@ -89,6 +89,11 @@
 					"name": "White"
 				},
 				{
+					"slug": "dark-black",
+					"color": "#1f1b2d",
+					"name": "Dark Black"
+				},
+				{
 					"slug": "black",
 					"color": "#000",
 					"name": "Black"
@@ -230,7 +235,7 @@
 		},
 		"typography": {
 			"fontSize": "20px",
-			"fontFamily": "var(--wp--preset--font-family--system-fonts)",
+			"fontFamily": "var(--wp--preset--font-family--primary)",
 			"lineHeight": "1.7"
 		},
 		"spacing": {
@@ -249,7 +254,7 @@
 			},
 			"h1": {
 				"color": {
-					"text": "var(--wp--preset--color--dark-blue)"
+					"text": "var(--wp--preset--color--dark-black)"
 				},
 				"typography": {
 					"fontSize": "var(--wp--preset--font-size--extra-large)"
@@ -257,7 +262,7 @@
 			},
 			"h2": {
 				"color": {
-					"text": "var(--wp--preset--color--dark-blue)"
+					"text": "var(--wp--preset--color--dark-black)"
 				},
 				"typography": {
 					"fontSize": "var(--wp--preset--font-size--large)"
@@ -265,22 +270,22 @@
 			},
 			"h3": {
 				"color": {
-					"text": "var(--wp--preset--color--dark-blue)"
+					"text": "var(--wp--preset--color--dark-black)"
 				}
 			},
 			"h4": {
 				"color": {
-					"text": "var(--wp--preset--color--dark-blue)"
+					"text": "var(--wp--preset--color--dark-black)"
 				}
 			},
 			"h5": {
 				"color": {
-					"text": "var(--wp--preset--color--dark-blue)"
+					"text": "var(--wp--preset--color--dark-black)"
 				}
 			},
 			"h6": {
 				"color": {
-					"text": "var(--wp--preset--color--dark-blue)"
+					"text": "var(--wp--preset--color--dark-black)"
 				}
 			}
 		},
