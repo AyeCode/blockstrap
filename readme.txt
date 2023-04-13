@@ -1,9 +1,9 @@
 === BlockStrap ===
 Contributors: ayecode, stiofansisland
-Tested up to: 6.1
+Tested up to: 6.2
 Requires at least: 6.0
 Requires PHP: 7.2
-Version: 0.0.10
+Version: 0.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,9 +14,10 @@ BlockStrap is a very blank starter theme.
 
 == Changelog ==
 
-= 0.0.11 =
+= 0.1.1 =
 * Changes for upcoming BS5 option - CHANGED
 * Now used Bootstrap v5 Only - CHANGED
+* Page/Post edit screen container adjusted to contain all blocks - CHANGED
 
 = 0.0.10 =
 * Made copyright/licensing of screenshot illustration more clear - UPDATED
