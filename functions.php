@@ -40,6 +40,10 @@ require_once 'classes/wptt-webfont-loader.php';
 // Block styles.
 require_once 'inc/block-styles.php';
 
+// Plugin functions
+require_once 'inc/plugin-functions.php';
+
+
 
 
 
@@ -53,21 +57,23 @@ function blockstrap_styles() {
 
 	$theme_settings = wp_get_global_styles();
 
-	if ( ! is_admin() ) {
+	if ( ! defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ) {
+		if ( ! is_admin() ) {
+			wp_enqueue_style(
+				'blockstrap-style',
+				get_theme_file_uri( 'assets/css/style.css' ),
+				'',
+				BLOCKSTRAP_VERSION
+			);
+		}
+
 		wp_enqueue_style(
-			'blockstrap-style',
-			get_theme_file_uri( 'assets/css/style.css' ),
+			'blockstrap-shared-style',
+			get_theme_file_uri( 'assets/css/style-shared.css' ),
 			'',
 			BLOCKSTRAP_VERSION
 		);
 	}
-
-	wp_enqueue_style(
-		'blockstrap-shared-style',
-		get_theme_file_uri( 'assets/css/style-shared.css' ),
-		'',
-		BLOCKSTRAP_VERSION
-	);
 
 	//@todo once webfonts API gets added to core we can do this via theme.json only.
 	if ( is_admin() || ( ! empty( $theme_settings['typography']['fontFamily'] ) && ( 'var:preset|font-family|poppins' === $theme_settings['typography']['fontFamily'] || 'var(--wp--preset--font-family--poppins)' === $theme_settings['typography']['fontFamily'] ) ) ) {
@@ -79,8 +85,6 @@ function blockstrap_styles() {
 			BLOCKSTRAP_VERSION
 		);
 	}
-
-
 
 }
 
@@ -139,3 +143,36 @@ function blockstrap_enqueue_block_editor_assets() {
 }
 add_action( 'enqueue_block_editor_assets', 'blockstrap_enqueue_block_editor_assets', 1000 );
 
+/**
+ * Add a basic meta description if no SEO plugin present.
+ *
+ * @return void
+ */
+function blockstrap_default_meta_description() {
+	if (
+		! defined( 'WPSEO_FILE' ) &&
+		! defined( 'RANK_MATH_VERSION' ) &&
+		! defined( 'AIOSEO_PHP_VERSION_DIR' ) &&
+		! defined( 'SLIM_SEO_VER' ) &&
+		! defined( 'SEOPRESS_VERSION' ) &&
+		! defined( 'THE_SEO_FRAMEWORK_VERSION' )
+	) {
+		echo '<meta name="description" content="' . esc_attr( get_bloginfo( 'description', 'display' ) ) . '">';
+	}
+}
+add_action( 'wp_head', 'blockstrap_default_meta_description' );
+
+//function add_async_forscript($url)
+//{//echo '###'.$url;
+//	if (strpos($url, 'wpfas=true')!==false){
+////		echo '###'.$url;exit;
+//		$url = str_replace('wpfas=true', 'wpfas=true', $url)."' onload='this.media=\"all\"";
+//	}
+//		return $url;
+//
+////	else if (is_admin())
+////		return str_replace('#asyncload', '', $url);
+////	else
+////		return str_replace('#asyncload', '', $url)."' async='async";
+//}
+//add_filter('clean_url', 'add_async_forscript', 11, 1);
