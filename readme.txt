@@ -3,7 +3,7 @@ Contributors: ayecode, stiofansisland
 Tested up to: 6.2
 Requires at least: 6.0
 Requires PHP: 7.2
-Version: 0.1.1
+Version: 0.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,6 +13,9 @@ BlockStrap is a very blank starter theme.
 BlockStrap is a very blank starter theme.
 
 == Changelog ==
+
+= 0.1.2 =
+* New Theme Setup page added for quick setup - ADDED
 
 = 0.1.1 =
 * Changes for upcoming BS5 option - CHANGED
