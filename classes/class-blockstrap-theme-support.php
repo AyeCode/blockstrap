@@ -39,29 +39,61 @@ class BlockStrap_Theme_Support {
 	 */
 	public static function plugin_notice() {
 
-		$install_url     = wp_nonce_url(
-			add_query_arg(
-				array(
-					'action' => 'install-plugin',
-					'plugin'  => 'blockstrap-page-builder-blocks',
+		$pathpluginurl = WP_PLUGIN_DIR . '/blockstrap-page-builder-blocks/blockstrap-page-builder-blocks.php';
+
+		$installed = file_exists( $pathpluginurl );
+
+		if ( $installed ) {
+
+			$activate_url     = wp_nonce_url(
+				add_query_arg(
+					array(
+						'action' => 'activate',
+						'plugin'  => 'blockstrap-page-builder-blocks/blockstrap-page-builder-blocks.php',
+					),
+					admin_url( 'plugins.php' )
 				),
-				admin_url( 'update.php' )
-			),
-			'install-plugin_blockstrap-page-builder-blocks'
-		);
+				'activate-plugin_blockstrap-page-builder-blocks/blockstrap-page-builder-blocks.php'
+			);
 
-		$class           = 'notice notice-warning is-dismissible';
-		$name            = __( 'Thanks for installing the BlockStrap Theme', 'blockstrap' );
-		$install_message = __( 'The BlockStrap theme works best with the BlockStrap Blocks plugin, please install it for full functionality.', 'blockstrap' );
+			$class           = 'notice notice-warning is-dismissible';
+			$name            = __( 'Thanks for installing the BlockStrap Theme', 'blockstrap' );
+			$install_message = __( 'The BlockStrap theme works best with the BlockStrap Blocks plugin, please install it for full functionality.', 'blockstrap' );
 
-		printf(
-			'<div class="%1$s"><h3>%2$s</h3><p>%3$s</p><p><a href="%4$s" class="button button-primary">%5$s</a> </p></div>',
-			esc_attr( $class ),
-			esc_html( $name ),
-			esc_html( $install_message ),
-			esc_url_raw( $install_url ),
-			esc_html__( 'Install BlockStrap Blocks Plugin', 'blockstrap' )
-		);
+			printf(
+				'<div class="%1$s"><h3>%2$s</h3><p>%3$s</p><p><a href="%4$s" class="button button-primary">%5$s</a> </p></div>',
+				esc_attr( $class ),
+				esc_html( $name ),
+				esc_html( $install_message ),
+				esc_url_raw( $activate_url ),
+				esc_html__( 'Activate BlockStrap Blocks Plugin', 'blockstrap' )
+			);
+		}else{
+			$install_url     = wp_nonce_url(
+				add_query_arg(
+					array(
+						'action' => 'install-plugin',
+						'plugin'  => 'blockstrap-page-builder-blocks',
+					),
+					admin_url( 'update.php' )
+				),
+				'install-plugin_blockstrap-page-builder-blocks'
+			);
+
+			$class           = 'notice notice-warning is-dismissible';
+			$name            = __( 'Thanks for installing the BlockStrap Theme', 'blockstrap' );
+			$install_message = __( 'The BlockStrap theme works best with the BlockStrap Blocks plugin, please install it for full functionality.', 'blockstrap' );
+
+			printf(
+				'<div class="%1$s"><h3>%2$s</h3><p>%3$s</p><p><a href="%4$s" class="button button-primary">%5$s</a> </p></div>',
+				esc_attr( $class ),
+				esc_html( $name ),
+				esc_html( $install_message ),
+				esc_url_raw( $install_url ),
+				esc_html__( 'Install BlockStrap Blocks Plugin', 'blockstrap' )
+			);
+		}
+
 
 	}
 

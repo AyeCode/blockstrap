@@ -32,6 +32,31 @@ class BlockStrap_Admin {
 		add_action( 'blockstrap_admin_settings_sections', array( $this, 'get_required_plugins_html' ) );
 		add_action( 'blockstrap_admin_settings_sections', array( $this, 'get_recaptcha_html' ) );
 
+		// Page install on activation
+		add_action('admin_init', array( $this, 'maybe_add_pages' ) );
+
+	}
+
+	/**
+	 * Add demo pages on theme install.
+	 *
+	 * @return void
+	 */
+	public function maybe_add_pages(){
+		$pages = $this->get_demo_pages();
+
+		if ( ! empty( $pages ) ) {
+			$theme_slug = sanitize_title_with_dashes( $this->get_theme_title() );
+			if ( ! get_option( 'blockstrap_demo_pages_installed_' . $theme_slug ) ) {
+				foreach ( $pages as $page ) {
+					if(!$this->demo_page_exists( $page['slug'] )){
+						$page_id = $this->add_demo_page( $page );
+					}
+				}
+				update_option( 'blockstrap_demo_pages_installed_' . $theme_slug, true );
+			}
+
+		}
 	}
 
 	/**
@@ -428,13 +453,6 @@ class BlockStrap_Admin {
 	 */
 	public function get_demo_pages() {
 		return array();
-		return array(
-			'about' => array(
-				'title' => __( 'About', 'blockstrap' ),
-				'slug'  => 'about',
-				'desc'  => __( 'About content', 'blockstrap' ),
-			),
-		);
 	}
 
 	/**
@@ -575,29 +593,13 @@ class BlockStrap_Admin {
 
 			} else {
 				if ( ! $page_id ) {
-					$page_id = wp_insert_post(
-						array(
-							'post_title'   => $page['title'],
-							'post_name'    => $page['slug'],
-							'post_content' => $page['desc'],
-							'post_status'  => 'publish',
-							'post_type'    => 'page',
-						)
-					);
+					$page_id = $this-> add_demo_page( $page );
 
 					if ( is_wp_error( $page_id ) ) {
 						wp_send_json_error( __( 'Page failed to create', 'blockstrap' ) );
 						wp_die();
 					}
 
-					$page_status[ $theme_slug ][ $page_slug ] = $page_id;
-					update_option( $option_key, $page_status );
-
-					if ( ! empty( $page['is_blog'] ) ) {
-						update_option( 'page_for_posts', $page_id );
-					} elseif ( ! empty( $page['is_fron'] ) ) {
-						update_option( 'page_on_front', $page_id ); // this is probably not needed as the theme can set the front page anyway.
-					}
 					wp_send_json_success( __( 'Page Added', 'blockstrap' ) );
 					wp_die();
 				} else {
@@ -610,6 +612,54 @@ class BlockStrap_Admin {
 		}
 
 		wp_die();
+	}
+
+	/**
+	 * Add a demo page from arguments.
+	 *
+	 * @param $page
+	 *
+	 * @return false|int|WP_Error
+	 */
+	public function add_demo_page( $page ) {
+
+		$theme_slug  = get_template();
+		$option_key  = 'blockstrap_demo_pages';
+		$page_status = get_option( $option_key );
+		$page_slug   = esc_attr( $page['slug'] );
+
+		$page_id = wp_insert_post(
+			array(
+				'post_title'   => $page['title'],
+				'post_name'    => $page['slug'],
+				'post_content' => $page['desc'],
+				'post_status'  => 'publish',
+				'post_type'    => 'page',
+			)
+		);
+
+		if ( is_wp_error( $page_id ) ) {
+			return false;
+		}else{
+			$page_status[ $theme_slug ][ $page_slug ] = $page_id;
+			update_option( $option_key, $page_status );
+
+			if ( ! empty( $page['is_blog'] ) ) {
+				update_option( 'page_for_posts', $page_id );
+				update_option('show_on_front', 'page');
+
+				if ( ! get_option( 'page_on_front' ) ) {
+					update_option( 'page_on_front', 2 ); // if page on front not set then it will show blog page on front.
+				}
+			} elseif ( ! empty( $page['is_front'] ) ) {
+				update_option( 'page_on_front', $page_id ); // this is probably not needed as the theme can set the front page anyway.
+				update_option('show_on_front', 'page');
+			}
+		}
+
+		return $page_id;
+
+
 	}
 
 	/**
