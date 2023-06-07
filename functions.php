@@ -22,6 +22,26 @@ if ( version_compare( $GLOBALS['wp_version'], '5.5', '<' ) || version_compare( P
 	return;
 }
 
+if ( is_admin() ) {
+
+	// Theme admin stuff
+	require_once 'classes/class-blockstrap-admin.php';
+//	new BlockStrap_Admin();
+}
+
+add_action('after_setup_theme','blockstrap_load_admin');
+function blockstrap_load_admin(){
+	if ( is_admin() ) {
+//		new BlockStrap_Admin();
+		if(class_exists('BlockStrap_Admin_Child')){
+			new BlockStrap_Admin_Child();
+		}else{
+			new BlockStrap_Admin();
+		}
+	}
+}
+
+
 // Theme support.
 require_once 'classes/class-blockstrap-theme-support.php';
 
