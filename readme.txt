@@ -14,6 +14,9 @@ BlockStrap is a very blank starter theme built for the BlockStrap page builder p
 
 == Changelog ==
 
+= 0.1.4 =
+* PHP notice on Query Loop block - FIXED
+
 = 0.1.3 =
 * New Theme Setup page added for quick setup - ADDED
 * BlockStrap plugin install button fails if already installed but not active - FIXED
