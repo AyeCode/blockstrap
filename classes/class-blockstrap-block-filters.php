@@ -40,17 +40,13 @@ class BlockStrap_Block_Filters {
 				$block_content
 			);
 		}
+
 		if ( 'core/query' === $block['blockName'] ) {
-			//          print_r( $block );
-			$columns = isset( $block['attrs']['displayLayout']['columns'] ) ? absint( $block['attrs']['displayLayout']['columns'] ) : 1;
-			//          echo '###'.$columns;
-			$colCount = $block['attrs']['displayLayout']['type'] === 'flex' ? $columns : 1;
+			$columns  = isset( $block['attrs']['displayLayout']['columns'] ) ? absint( $block['attrs']['displayLayout']['columns'] ) : 1;
+			$colCount = isset( $block['attrs']['displayLayout']['type'] ) && $block['attrs']['displayLayout']['type'] === 'flex' ? $columns : 1;
 			$colMd    = ' row-cols-md-' . $colCount;
 			$colSm    = ' row-cols-sm-' . $colCount > 1 ? ( $colCount - 1 ) : $colCount;
 			$rowClass = ' row list-unstyled row-cols-1 ' . $colSm . $colMd;
-//			if ( 'list' === $block['attrs']['displayLayout'] ) {
-//
-//			}
 
 			$block_content = str_replace(
 				array(
