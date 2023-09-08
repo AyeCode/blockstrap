@@ -11,6 +11,7 @@
  *
  * @since 1.0.0
  */
+//echo '###1';exit;
 class BlockStrap_Admin {
 
 	/**
