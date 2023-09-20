@@ -22,7 +22,7 @@ if ( version_compare( $GLOBALS['wp_version'], '5.5', '<' ) || version_compare( P
 	return;
 }
 
-if ( is_admin() ) {
+if ( is_admin() && defined('BLOCKSTRAP_BLOCKS_VERSION') ) {
 
 	// Theme admin stuff
 	require_once 'classes/class-blockstrap-admin.php';

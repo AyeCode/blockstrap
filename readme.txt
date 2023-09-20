@@ -16,6 +16,10 @@ BlockStrap is a very blank starter theme built for the BlockStrap page builder p
 
 = 0.1.4 =
 * PHP notice on Query Loop block - FIXED
+* WP 6.3 breaks AUI query loop columns selection - FIXED
+
+= 0.1.4 =
+* PHP notice displayLayout not defined can sometimes show - FIXED
 
 = 0.1.3 =
 * New Theme Setup page added for quick setup - ADDED
