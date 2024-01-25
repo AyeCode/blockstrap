@@ -1,9 +1,9 @@
 === BlockStrap ===
 Contributors: ayecode, stiofansisland
-Tested up to: 6.2
+Tested up to: 6.4
 Requires at least: 6.0
 Requires PHP: 7.2
-Version: 0.1.3
+Version: 0.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,8 +17,7 @@ BlockStrap is a very blank starter theme built for the BlockStrap page builder p
 = 0.1.4 =
 * PHP notice on Query Loop block - FIXED
 * WP 6.3 breaks AUI query loop columns selection - FIXED
-
-= 0.1.4 =
+* WP Editor Styles can now style headings, links, typography - ADDED
 * PHP notice displayLayout not defined can sometimes show - FIXED
 
 = 0.1.3 =

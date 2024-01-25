@@ -188,7 +188,7 @@ class BlockStrap_Theme_Support {
 		add_theme_support( 'editor-color-palette' );
 
 		// Menus
-		add_theme_support( 'menus' );
+//		add_theme_support( 'menus' );
 
 		// remove wp-container-X inline CSS helpers
 		remove_filter( 'render_block', 'wp_render_layout_support_flag', 10, 2 );
