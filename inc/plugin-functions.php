@@ -1,9 +1,7 @@
 <?php
 
-// load only if theme is not blockstrap
-if ( defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) && ! defined( 'GEODIRECTORY_VERSION' ) ) {
-	add_action( 'admin_notices', 'blockstrap_theme_plugin_suggestions' );
-}
+// add admin notice if required plugins not active/installed
+add_action( 'admin_notices', 'blockstrap_theme_plugin_suggestions' );
 
 if ( ! function_exists( 'blockstrap_theme_plugin_suggestions' ) ) {
 	/**
@@ -12,52 +10,34 @@ if ( ! function_exists( 'blockstrap_theme_plugin_suggestions' ) ) {
 	 * @return void
 	 */
 	function blockstrap_theme_plugin_suggestions() {
+		global $blockstrap_admin;
 
-		if ( isset( $_REQUEST['blockstrap_geodirectory_dismiss'] ) && check_admin_referer( 'blockstrap_geodirectory_nonce' ) ) {
-			update_option( 'blockstrap_geodirectory_dismiss', time() );
-		}
-
-		$no_gd = get_option( 'blockstrap_geodirectory_dismiss' );
-
-		// if accepted v3 then bail
-		if ( $no_gd ) {
+		// Bail if not loaded
+		if ( empty( $blockstrap_admin ) ) {
 			return;
 		}
 
-		$install_url = wp_nonce_url(
-			add_query_arg(
+		$required_plugins_count = $blockstrap_admin->required_plugins_count();
+
+		if ( $required_plugins_count && (!isset($_REQUEST['page']) || ( isset($_REQUEST['page'])) && $_REQUEST['page'] !== 'blockstrap' ) ) {
+			$setup_url = add_query_arg(
 				array(
-					'action' => 'install-plugin',
-					'plugin' => 'geodirectory',
+					'page' => 'blockstrap',
 				),
-				admin_url( 'update.php' )
-			),
-			'install-plugin_geodirectory'
-		);
+				admin_url( 'themes.php' )
+			);
 
-		$dismiss_url = wp_nonce_url(
-			add_query_arg(
-				array(
-					'blockstrap_geodirectory_dismiss' => 1,
-				)
-			),
-			'blockstrap_geodirectory_nonce'
-		);
+			printf(
+				'<div class="%1$s"><h3 class="h5 font-bold mt-2">%2$s</h3><p>%3$s</p><p><a href="%4$s" class="button button-primary">%5$s</a></p></div>',
+				'notice notice-warning is-dismissible',
+				esc_attr( __( 'Required Plugins', 'blockstrap' ) ),
+				/* translators: The theme active theme name */
+				esc_html( sprintf( __( '%s theme requires some plugins for complete functionality', 'blockstrap' ), $blockstrap_admin->get_theme_title() ) ),
+				esc_url_raw( $setup_url ),
+				esc_html__( 'Setup Theme', 'blockstrap' )
+			);
+		}
 
-		$class           = 'notice notice-info is-dismissible';
-		$name            = __( 'GeoDirectory', 'blockstrap' );
-		$install_message = __( 'BlockStrap works great with GeoDirectory to create a fast and modern listing directory.', 'blockstrap' );
-
-		printf(
-			'<div class="%1$s"><h3>%2$s</h3><p>%3$s</p><p><a href="%4$s" class="button button-primary">%5$s</a> <a href="%6$s" class="button button-secondary">%7$s</a> </p></div>',
-			esc_attr( $class ),
-			esc_html( $name ),
-			esc_html( $install_message ),
-			esc_url_raw( $install_url ),
-			esc_html__( 'Install GeoDirectory', 'blockstrap' ),
-			esc_url_raw( $dismiss_url ),
-			esc_html__( 'No thanks', 'blockstrap' )
-		);
 	}
 }
 

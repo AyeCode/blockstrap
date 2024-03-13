@@ -27,7 +27,7 @@ class BlockStrap_Theme_Support {
 		add_action( 'ayecode-ui-settings', array( $this, 'set_aui_settings' ), 10, 3 );
 
 		// load only if theme is not blockstrap
-		if ( ! defined('BLOCKSTRAP_BLOCKS_VERSION' ) ) {
+		if ( ! defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ) {
 			add_action( 'admin_notices', array( __CLASS__, 'plugin_notice' ) );
 		}
 	}
@@ -39,17 +39,42 @@ class BlockStrap_Theme_Support {
 	 */
 	public static function plugin_notice() {
 
+		// bail if the user should not be here
+		if ( ! current_user_can( 'edit_theme_options' ) ) {
+			return;
+		}
+
+		// nonce check for dismiss action
+		if ( isset( $_REQUEST['blockstrap_plugin_notice_dismiss'] ) ) {
+			check_admin_referer( 'blockstrap_plugin_notice_dismiss' );
+			blockstrap_update_option( 'blockstrap_plugin_notice_dismiss', time() );
+		}
+
+		// bail if already dismissed
+		if ( blockstrap_get_option( 'blockstrap_plugin_notice_dismiss' ) ) {
+			return;
+		}
+
 		$pathpluginurl = WP_PLUGIN_DIR . '/blockstrap-page-builder-blocks/blockstrap-page-builder-blocks.php';
 
 		$installed = file_exists( $pathpluginurl );
 
+		$dismiss_url = wp_nonce_url(
+			add_query_arg(
+				array(
+					'blockstrap_plugin_notice_dismiss' => 'true',
+				)
+			),
+			'blockstrap_plugin_notice_dismiss'
+		);
+
 		if ( $installed ) {
 
-			$activate_url     = wp_nonce_url(
+			$activate_url = wp_nonce_url(
 				add_query_arg(
 					array(
 						'action' => 'activate',
-						'plugin'  => 'blockstrap-page-builder-blocks/blockstrap-page-builder-blocks.php',
+						'plugin' => 'blockstrap-page-builder-blocks/blockstrap-page-builder-blocks.php',
 					),
 					admin_url( 'plugins.php' )
 				),
@@ -61,19 +86,21 @@ class BlockStrap_Theme_Support {
 			$install_message = __( 'The BlockStrap theme works best with the BlockStrap Blocks plugin, please install it for full functionality.', 'blockstrap' );
 
 			printf(
-				'<div class="%1$s"><h3>%2$s</h3><p>%3$s</p><p><a href="%4$s" class="button button-primary">%5$s</a> </p></div>',
+				'<div class="%1$s"><h3>%2$s</h3><p>%3$s</p><p><a href="%4$s" class="button button-primary">%5$s</a>  <a href="%6$s" class="">%7$s</a> </p></div>',
 				esc_attr( $class ),
 				esc_html( $name ),
 				esc_html( $install_message ),
-				esc_url_raw( $activate_url ),
-				esc_html__( 'Activate BlockStrap Blocks Plugin', 'blockstrap' )
+				esc_url( $activate_url ),
+				esc_html__( 'Activate BlockStrap Blocks Plugin', 'blockstrap' ),
+				esc_url( $dismiss_url ),
+				esc_html__( 'Dismiss', 'blockstrap' )
 			);
-		}else{
-			$install_url     = wp_nonce_url(
+		} else {
+			$install_url = wp_nonce_url(
 				add_query_arg(
 					array(
 						'action' => 'install-plugin',
-						'plugin'  => 'blockstrap-page-builder-blocks',
+						'plugin' => 'blockstrap-page-builder-blocks',
 					),
 					admin_url( 'update.php' )
 				),
@@ -93,7 +120,6 @@ class BlockStrap_Theme_Support {
 				esc_html__( 'Install BlockStrap Blocks Plugin', 'blockstrap' )
 			);
 		}
-
 
 	}
 
@@ -188,7 +214,7 @@ class BlockStrap_Theme_Support {
 		add_theme_support( 'editor-color-palette' );
 
 		// Menus
-//		add_theme_support( 'menus' );
+		//      add_theme_support( 'menus' );
 
 		// remove wp-container-X inline CSS helpers
 		remove_filter( 'render_block', 'wp_render_layout_support_flag', 10, 2 );

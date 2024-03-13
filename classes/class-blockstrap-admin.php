@@ -15,6 +15,13 @@
 class BlockStrap_Admin {
 
 	/**
+	 * Variable declaration for the option slug.
+	 *
+	 * @var string $option_slug The slug used for the options.
+	 */
+	public $option_key = 'blockstrap_options';
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 1.0.0
@@ -34,8 +41,55 @@ class BlockStrap_Admin {
 		add_action( 'blockstrap_admin_settings_sections', array( $this, 'get_recaptcha_html' ) );
 
 		// Page install on activation
-		add_action('admin_init', array( $this, 'maybe_add_pages' ) );
+		add_action( 'admin_init', array( $this, 'maybe_add_pages' ) );
 
+		// GeoDirectory filters
+		if ( defined( 'GEODIRECTORY_VERSION' ) ) {
+			add_filter( 'geodir_default_dummy_data_type', array( $this, 'gd_set_default_dummy_data_type' ), 10, 2 );
+			add_filter( 'geodir_recommend_wp_plugins', array( $this, 'gd_recommend_wp_plugins' ) );
+		}
+
+		// maybe update option to single key
+		$this->maybe_convert_options();
+
+	}
+
+	/**
+	 * This can be set in child themes to set the GD dummy data default type.
+	 *
+	 * @param $type
+	 * @param $post_type
+	 *
+	 * @return mixed
+	 */
+	public function gd_set_default_dummy_data_type( $type, $post_type ) {
+
+		return $type;
+	}
+
+
+	/**
+	 * Removes the "ninjs-forms" plugin from the list of recommended WordPress plugins.
+	 *
+	 * @param array $plugins The array of recommended WordPress plugins.
+	 *
+	 * @return array The updated array of recommended WordPress plugins with "ninjs-forms" plugin removed.
+	 */
+	public function gd_recommend_wp_plugins( $plugins ) {
+
+		// remove ninja forms as we have our own built-in contact form.
+		unset( $plugins['ninja-forms'] );
+
+		$plugins['blockstrap-page-builder-blocks'] = array(
+			'url'      => 'https://wordpress.org/plugins/blockstrap-page-builder-blocks/',
+			'slug'     => 'blockstrap-page-builder-blocks',
+			'name'     => 'Blockstrap Page Builder',
+			'file'     => 'blockstrap-page-builder-blocks/blockstrap-page-builder-blocks.php',
+			'desc'     => __( 'Required to display page template blocks, the theme will be blank without this.', 'blockstrap' ),
+			'required' => true,
+		);
+
+		return $plugins;
 	}
 
 	/**
@@ -43,21 +97,101 @@ class BlockStrap_Admin {
 	 *
 	 * @return void
 	 */
-	public function maybe_add_pages(){
+	public function maybe_add_pages() {
 		$pages = $this->get_demo_pages();
 
 		if ( ! empty( $pages ) ) {
 			$theme_slug = sanitize_title_with_dashes( $this->get_theme_title() );
-			if ( ! get_option( 'blockstrap_demo_pages_installed_' . $theme_slug ) ) {
+			if ( ! blockstrap_get_option( 'blockstrap_demo_pages_installed_' . $theme_slug ) ) {
 				foreach ( $pages as $page ) {
-					if(!$this->demo_page_exists( $page['slug'] )){
+					if ( ! $this->demo_page_exists( $page['slug'] ) ) {
 						$page_id = $this->add_demo_page( $page );
 					}
 				}
-				update_option( 'blockstrap_demo_pages_installed_' . $theme_slug, true );
+				blockstrap_update_option( 'blockstrap_demo_pages_installed_' . $theme_slug, true );
 			}
-
 		}
+	}
+
+	/**
+	 * Get the array of demo pages.
+	 *
+	 * @return array[]
+	 */
+	public function get_demo_pages() {
+		return array();
+	}
+
+	/**
+	 * Get the theme title.
+	 *
+	 * @return string|null
+	 */
+	public function get_theme_title() {
+		return __( 'BlockStrap', 'blockstrap' );
+	}
+
+	/**
+	 * Check if demo page exists and return the ID if so.
+	 *
+	 * @param $page_slug
+	 *
+	 * @return int|string
+	 */
+	public function demo_page_exists( $page_slug ) {
+		$theme_slug  = get_template();
+		$option_key  = 'blockstrap_demo_pages';
+		$page_status = blockstrap_get_option( $option_key );
+
+		return isset( $page_status[ $theme_slug ][ $page_slug ] ) ? absint( $page_status[ $theme_slug ][ $page_slug ] ) : '';
+	}
+
+	/**
+	 * Add a demo page from arguments.
+	 *
+	 * @param $page
+	 *
+	 * @return false|int|WP_Error
+	 */
+	public function add_demo_page( $page ) {
+
+		$theme_slug  = get_template();
+		$option_key  = 'blockstrap_demo_pages';
+		$page_status = blockstrap_get_option( $option_key );
+		$page_status = empty( $page_status ) ? array() : $page_status;
+		$page_slug   = esc_attr( $page['slug'] );
+
+		$page_id = wp_insert_post(
+			array(
+				'post_title'   => $page['title'],
+				'post_name'    => $page['slug'],
+				'post_content' => $page['desc'],
+				'post_status'  => 'publish',
+				'post_type'    => 'page',
+			)
+		);
+
+		if ( is_wp_error( $page_id ) ) {
+			return false;
+		} else {
+			$page_status[ $theme_slug ][ $page_slug ] = $page_id;
+			blockstrap_update_option( $option_key, $page_status );
+
+			if ( ! empty( $page['is_blog'] ) ) {
+				update_option( 'page_for_posts', $page_id );
+				update_option( 'show_on_front', 'page' );
+
+				if ( ! get_option( 'page_on_front' ) ) {
+					update_option( 'page_on_front', 2 ); // if page on front not set then it will show blog page on front.
+				}
+			} elseif ( ! empty( $page['is_front'] ) ) {
+				update_option( 'page_on_front', $page_id ); // this is probably not needed as the theme can set the front page anyway.
+				update_option( 'show_on_front', 'page' );
+			}
+		}
+
+		return $page_id;
+
 	}
 
 	/**
@@ -75,14 +209,35 @@ class BlockStrap_Admin {
 	}
 
 	/**
+	 * Returns the count of required plugins that are not activated.
+	 *
+	 * @return int The count of required plugins that are not activated.
+	 */
+	public function required_plugins_count() {
+		$count            = 0;
+		$required_plugins = $this->get_required_plugins();
+
+		foreach ( $required_plugins as $slug => $name ) {
+			$active = is_plugin_active( $slug . '/' . $slug . '.php' );
+			if ( ! $active ) {
+				$count++;
+			}
+		}
+
+		return $count;
+	}
+
+	/**
 	 * Register the menu item.
 	 * @return void
 	 */
 	public function register_menu_page() {
+		$notifications_count = self::required_plugins_count();
+
 		add_submenu_page(
 			'themes.php',
 			__( 'BlockStrap Settings', 'blockstrap' ),
-			__( 'Theme Setup', 'blockstrap' ),
+			! empty( $notifications_count ) ? __( 'Theme Setup', 'blockstrap' ) . ' <span class="awaiting-mod">' . absint( $notifications_count ) . '</span>' : __( 'Theme Setup', 'blockstrap' ),
 			'manage_options',
 			'blockstrap',
 			array( $this, 'output_settings_page' ),
@@ -101,7 +256,8 @@ class BlockStrap_Admin {
 			<div class="bg-white me-3 p-3 mt-3 rounded shadow-sm vh-100">
 				<div class="d-flex align-items-center">
 					<h1 class="text-dark "><?php echo esc_html( $this->get_theme_title() ); ?></h1>
-					<span class="badge bg-faded-info fs-sm mb-2 ms-2">v<?php echo esc_html( $this->get_version() ); ?></span>
+					<span
+						class="badge bg-faded-info fs-sm mb-2 ms-2">v<?php echo esc_html( $this->get_version() ); ?></span>
 				</div>
 
 				<div class="row row-cols-1 row-cols-md-2">
@@ -127,15 +283,6 @@ class BlockStrap_Admin {
 	}
 
 	/**
-	 * Get the theme title.
-	 *
-	 * @return string|null
-	 */
-	public function get_theme_title() {
-		return __( 'BlockStrap', 'blockstrap' );
-	}
-
-	/**
 	 * Get the required pages HTML output.
 	 *
 	 * @return void
@@ -144,62 +291,63 @@ class BlockStrap_Admin {
 		$pages = $this->get_demo_pages();
 		?>
 		<div class="col">
-		<div class="card h-100 mw-100">
-		<h3 class="h4 text-dark"><?php _e( 'Optional Pages', 'blockstrap' ); ?></h3>
-			<ul class="list-group  list-group-flush">
+			<div class="card h-100 mw-100">
+				<h3 class="h4 text-dark"><?php _e( 'Optional Pages', 'blockstrap' ); ?></h3>
+				<ul class="list-group  list-group-flush">
 
-				<?php
+					<?php
 
-				if ( empty( $pages ) ) {
-					echo aui()->alert(
-						array(
-							'type'    => 'info',
-							'content' => __( 'No demo pages for this theme', 'blockstrap' ),
-							'class'   => 'mb-3 text-left text-start',
-						)
-					);
-				} else {
-					foreach ( $pages as $slug => $page ) {
-						$active = $this->demo_page_exists( $slug );
+					if ( empty( $pages ) ) {
+						echo aui()->alert(
+							array(
+								'type'    => 'info',
+								'content' => __( 'No demo pages for this theme', 'blockstrap' ),
+								'class'   => 'mb-3 text-left text-start',
+							)
+						);
+					} else {
+						foreach ( $pages as $slug => $page ) {
+							$active = $this->demo_page_exists( $slug );
 
-						$exists = false;// !$active ? get_page_by_path($slug) : false;
-						?>
-						<li class="list-group-item d-flex justify-content-between align-items-center">
-							<span class="mr-auto me-auto"><?php echo esc_html( $page['title'] ); ?></span>
-							<?php
-							if ( $exists ) {
-								echo '<i class="fas fa-exclamation-triangle mr-2 me-2 text-warning fa-lg c-pointer" data-bs-toggle="tooltip" data-bs-title="' . __( 'Page with same slug exists', 'blockstrap' ) . '"></i>';
-							}
-
-							if ( $active && false ) {
-								$link = get_permalink( $active );
-								echo '<a class="bs-demo-link" href="' . esc_url( $link ) . '" target="_blank" ><i class="fas fa-external-link-alt mr-2 me-2 text-muted fa-lg c-pointer" data-bs-toggle="tooltip" data-bs-title="' . __( 'Page with same slug exists', 'blockstrap' ) . '"></i></a>';
-							}
+							$exists = false;// !$active ? get_page_by_path($slug) : false;
 							?>
-							<div class="spinner-border spinner-border-sm mr-2 me-2 d-none text-muted" role="status">
-								<span class="visually-hidden">Loading...</span>
-							</div>
-							<div class="form-check form-switch mb-0">
-								<input class="form-check-input" type="checkbox" role="switch" id="blockstrap-req-plugin-<?php echo esc_attr( $slug ); ?>"
-									<?php
-									if ( $active ) {
-										echo 'checked';
-									}
+							<li class="list-group-item d-flex justify-content-between align-items-center">
+								<span class="mr-auto me-auto"><?php echo esc_html( $page['title'] ); ?></span>
+								<?php
+								if ( $exists ) {
+									echo '<i class="fas fa-exclamation-triangle mr-2 me-2 text-warning fa-lg c-pointer" data-bs-toggle="tooltip" data-bs-title="' . __( 'Page with same slug exists', 'blockstrap' ) . '"></i>';
+								}
 
-									if ( $exists ) {
-										echo ' disabled ';
-									}
-									?>
-									   onclick="blockstrap_admin_toggle_demo_page(this,'<?php echo esc_attr( $slug ); ?>',!jQuery(this).is(':checked'));">
-							</div>
-						</li>
-						<?php
+								if ( $active && false ) {
+									$link = get_permalink( $active );
+									echo '<a class="bs-demo-link" href="' . esc_url( $link ) . '" target="_blank" ><i class="fas fa-external-link-alt mr-2 me-2 text-muted fa-lg c-pointer" data-bs-toggle="tooltip" data-bs-title="' . __( 'Page with same slug exists', 'blockstrap' ) . '"></i></a>';
+								}
+								?>
+								<div class="spinner-border spinner-border-sm mr-2 me-2 d-none text-muted" role="status">
+									<span class="visually-hidden">Loading...</span>
+								</div>
+								<div class="form-check form-switch mb-0">
+									<input class="form-check-input" type="checkbox" role="switch"
+										   id="blockstrap-req-plugin-<?php echo esc_attr( $slug ); ?>"
+										<?php
+										if ( $active ) {
+											echo 'checked';
+										}
+
+										if ( $exists ) {
+											echo ' disabled ';
+										}
+										?>
+										   onclick="blockstrap_admin_toggle_demo_page(this,'<?php echo esc_attr( $slug ); ?>',!jQuery(this).is(':checked'));">
+								</div>
+							</li>
+							<?php
+						}
 					}
-				}
 
-				?>
-			</ul>
-		</div>
+					?>
+				</ul>
+			</div>
 		</div>
 		<?php
 	}
@@ -211,10 +359,12 @@ class BlockStrap_Admin {
 	 */
 	public function get_required_plugins_html() {
 		$required_plugins = $this->get_required_plugins();
+		$border_class     = self::required_plugins_count() ? 'border-danger' : '';
 		?>
 		<div class="col">
-			<div class="card h-100 mw-100">
-				<h3 class="h4 text-dark"><?php _e( 'Required Plugins', 'blockstrap' ); ?></h3>
+			<div class="card h-100 mw-100 p-0 bs-required-plugin-card <?php echo $border_class; ?>">
+				<h5 class="card-header h4 text-dark"><?php _e( 'Required Plugins', 'blockstrap' ); ?></h5>
+				<div class="card-body">
 				<ul class="list-group list-group-flush">
 
 					<?php
@@ -227,18 +377,21 @@ class BlockStrap_Admin {
 								<span class="visually-hidden">Loading...</span>
 							</div>
 							<div class="form-check form-switch mb-0">
-								<input class="form-check-input" type="checkbox" role="switch" id="blockstrap-req-plugin-<?php echo esc_attr( $slug ); ?>"
-																																   <?php
-																																	if ( $active ) {
-																																		echo 'checked';}
-																																	?>
-								 onclick="blockstrap_admin_toggle_plugin_activation(this,'<?php echo esc_attr( $slug ); ?>',!jQuery(this).is(':checked'));">
+								<input class="form-check-input" type="checkbox" role="switch"
+									   id="blockstrap-req-plugin-<?php echo esc_attr( $slug ); ?>"
+									<?php
+									if ( $active ) {
+										echo 'checked';
+									}
+									?>
+									   onclick="blockstrap_admin_toggle_plugin_activation(this,'<?php echo esc_attr( $slug ); ?>',!jQuery(this).is(':checked'));">
 							</div>
 						</li>
 						<?php
 					}
 					?>
 				</ul>
+				</div>
 			</div>
 		</div>
 		<?php
@@ -247,39 +400,14 @@ class BlockStrap_Admin {
 	}
 
 	/**
-	 * Get the required plugins HTML output.
+	 * Get the required plugins details array.
 	 *
-	 * @return void
+	 * @return array
 	 */
-	public function get_recaptcha_html() {
-		$keys = get_option('blockstrap_recaptcha_keys');
-		$site_key = isset($keys['site_key']) ? esc_attr($keys['site_key']) : '';
-		$site_secret = isset($keys['site_secret']) ? esc_attr($keys['site_secret']) : '';
-		?>
-		<div class="col mt-5">
-			<div class="card h-100 mw-100 p-0">
-				<h5 class="card-header h4 text-dark"><?php _e( 'Recaptcha Keys', 'blockstrap' ); ?></h5>
-				 <div class="card-body">
-						<div class="alert alert-info" role="alert">
-							<?php _e( 'Please enter your Google recaptcha <b>v2 Tickbox</b> keys. (this helps protect the contact form block)', 'blockstrap' ); ?>
-							<a href="https://www.google.com/recaptcha/admin" target="_blank"> <?php _e( 'Get Keys', 'blockstrap' ); ?> <i class="fas fa-external-link-alt"></i></a>
-						</div>
-						<form class="w-100" onsubmit="blockstrap_admin_save_recaptcha_keys(this);return false;">
-							<div class="mb-3">
-								<label for="gc-site-key" class="form-label"><?php _e( 'Site Key', 'blockstrap' ); ?></label>
-								<input type="text" class="form-control" name="site_key" id="gc-site-key" value="<?php echo esc_attr($site_key); ?>">
-							</div>
-							<div class="mb-3">
-								<label for="gc-secret-key" class="form-label"><?php _e( 'Secret Key', 'blockstrap' ); ?></label>
-								<input type="password" class="form-control" name="site_secret" id="gc-secret-key" value="<?php echo esc_attr($site_secret); ?>">
-							</div>
-							<button type="submit" class="btn btn-primary">  <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-								<?php _e( 'Save', 'blockstrap' ); ?></button>
-						</form>
-				</div>
-			</div>
-		</div>
-		<?php
+	public function get_required_plugins() {
+		return array(
+			'blockstrap-page-builder-blocks' => __( 'BlockStrap Builder', 'blockstrap' ),
+		);
 	}
 
 	/**
@@ -299,7 +427,7 @@ class BlockStrap_Admin {
 			 * @param $plugin
 			 * @param $deactivate
 			 */
-			function blockstrap_admin_save_recaptcha_keys($this){
+			function blockstrap_admin_save_recaptcha_keys($this) {
 
 				var data = {
 					action: 'blockstrap_save_recaptcha_keys',
@@ -312,13 +440,13 @@ class BlockStrap_Admin {
 					url: ajaxurl,
 					data: data,
 					// dataType: 'html'
-					beforeSend: function() {
+					beforeSend: function () {
 						jQuery($this).find('.btn-primary').prop('disabled', true).find('.spinner-border').removeClass('d-none');
 					},
-					success: function(data) {
+					success: function (data) {
 						if (data.success) {
 							jQuery($this).find('.btn-primary').prop('disabled', false).find('.spinner-border').addClass('d-none');
-							aui_toast('blockstrap_recaptcha_keys_success','success', data.data);
+							aui_toast('blockstrap_recaptcha_keys_success', 'success', data.data);
 
 						} else {
 							let $checked = !!data.deactivate;
@@ -326,10 +454,10 @@ class BlockStrap_Admin {
 							aui_toast('blockstrap_recaptcha_keys_error', data.data);
 						}
 					},
-					error: function(xhr) { // if error occured
+					error: function (xhr) { // if error occured
 						alert("Error occured.please try again");
 					},
-					complete: function() {
+					complete: function () {
 						jQuery($this).find('.btn-primary').prop('disabled', false).find('.spinner-border').addClass('d-none');
 
 					},
@@ -343,7 +471,7 @@ class BlockStrap_Admin {
 			 * @param $plugin
 			 * @param $deactivate
 			 */
-			function blockstrap_admin_toggle_plugin_activation($this,$plugin,$deactivate){
+			function blockstrap_admin_toggle_plugin_activation($this, $plugin, $deactivate) {
 
 				var data = {
 					action: 'blockstrap_plugin_management',
@@ -357,30 +485,50 @@ class BlockStrap_Admin {
 					url: ajaxurl,
 					data: data,
 					// dataType: 'html'
-					beforeSend: function() {
+					beforeSend: function () {
 						jQuery($this).prop('disabled', true).parent().parent().find('.spinner-border').removeClass('d-none');
 					},
-					success: function(data) {
+					success: function (data) {
 						if (data.success) {
 							jQuery($this).prop('disabled', false).parent().parent().find('.spinner-border').addClass('d-none');
 							if ($deactivate) {
-								aui_toast('blockstrap_plugin_deactivation_success','success', data.data);
-							}else{
-								aui_toast('blockstrap_plugin_activation_success','success', data.data);
+								aui_toast('blockstrap_plugin_deactivation_success', 'success', data.data);
+							} else {
+								aui_toast('blockstrap_plugin_activation_success', 'success', data.data);
 							}
 						} else {
 							let $checked = !!data.deactivate;
 							jQuery($this).prop('disabled', false).prop('checked', $checked).parent().parent().find('.spinner-border').addClass('d-none');
-							aui_toast('blockstrap_plugin_management_error_'+$plugin,'error', data.data);
+							aui_toast('blockstrap_plugin_management_error_' + $plugin, 'error', data.data);
 						}
 					},
-					error: function(xhr) { // if error occured
+					error: function (xhr) { // if error occured
 						alert("Error occured.please try again");
 					},
-					complete: function() {
+					complete: function () {
 						jQuery($this).prop('disabled', false).parent().parent().find('.spinner-border').addClass('d-none');
+						blockstrap_admin_toggle_required_plugins_border();
 					},
 				});
+			}
+
+			/**
+			 * Toggles the required plugins border class.
+			 *
+			 * @return {void}
+			 */
+			function blockstrap_admin_toggle_required_plugins_border() {
+				// Total number of checkboxes
+				var totalCheckboxes = jQuery('.bs-required-plugin-card .form-check-input').length;
+				// Number of checkboxes that are checked
+				var checkedCheckboxes = jQuery('.bs-required-plugin-card .form-check-input:checked').length;
+
+				// Check if all checkboxes are checked
+				if(totalCheckboxes === checkedCheckboxes) {
+					jQuery('.bs-required-plugin-card').removeClass('border-danger');
+				} else {
+					jQuery('.bs-required-plugin-card').addClass('border-danger');
+				}
 			}
 
 			/**
@@ -390,7 +538,7 @@ class BlockStrap_Admin {
 			 * @param $page_slug
 			 * @param $delete
 			 */
-			function blockstrap_admin_toggle_demo_page($this,$page_slug,$delete){
+			function blockstrap_admin_toggle_demo_page($this, $page_slug, $delete) {
 
 				var data = {
 					action: 'blockstrap_page_management',
@@ -404,29 +552,29 @@ class BlockStrap_Admin {
 					url: ajaxurl,
 					data: data,
 					// dataType: 'html'
-					beforeSend: function() {
+					beforeSend: function () {
 						jQuery($this).prop('disabled', true).parent().parent().find('.spinner-border').removeClass('d-none');
 					},
-					success: function(data) {
+					success: function (data) {
 						if (data.success) {
 							jQuery($this).prop('disabled', false).parent().parent().find('.spinner-border').addClass('d-none');
 							if ($delete) {
-								aui_toast('blockstrap_page_deactivation_success','success', data.data);
-							}else{
-								aui_toast('blockstrap_page_activation_success','success', data.data);
+								aui_toast('blockstrap_page_deactivation_success', 'success', data.data);
+							} else {
+								aui_toast('blockstrap_page_activation_success', 'success', data.data);
 							}
 						} else {
 							let $checked = !!data.delete;
 							jQuery($this).prop('disabled', false).prop('checked', $checked).parent().parent().find('.spinner-border').addClass('d-none');
-							aui_toast('blockstrap_page_management_error','error', data.data);
+							aui_toast('blockstrap_page_management_error', 'error', data.data);
 						}
 					},
-					error: function(xhr) { // if error occured
+					error: function (xhr) { // if error occured
 						let $checked = !!data.delete;
 						jQuery($this).prop('disabled', false).prop('checked', $checked).parent().parent().find('.spinner-border').addClass('d-none');
 						alert("Error occured.please try again");
 					},
-					complete: function() {
+					complete: function () {
 						jQuery($this).prop('disabled', false).parent().parent().find('.spinner-border').addClass('d-none');
 					},
 				});
@@ -437,23 +585,45 @@ class BlockStrap_Admin {
 	}
 
 	/**
-	 * Get the required plugins details array.
+	 * Get the required plugins HTML output.
 	 *
-	 * @return array
+	 * @return void
 	 */
-	public function get_required_plugins() {
-		return array(
-			'blockstrap-page-builder-blocks' => __( 'BlockStrap Builder', 'blockstrap' ),
-		);
-	}
-
-	/**
-	 * Get the array of demo pages.
-	 *
-	 * @return array[]
-	 */
-	public function get_demo_pages() {
-		return array();
+	public function get_recaptcha_html() {
+		$keys        = blockstrap_get_option( 'blockstrap_recaptcha_keys' );
+		$site_key    = isset( $keys['site_key'] ) ? esc_attr( $keys['site_key'] ) : '';
+		$site_secret = isset( $keys['site_secret'] ) ? esc_attr( $keys['site_secret'] ) : '';
+		?>
+		<div class="col mt-5">
+			<div class="card h-100 mw-100 p-0">
+				<h5 class="card-header h4 text-dark"><?php _e( 'Recaptcha Keys', 'blockstrap' ); ?></h5>
+				<div class="card-body">
+					<div class="alert alert-info" role="alert">
+						<?php _e( 'Please enter your Google recaptcha <b>v2 Tickbox</b> keys. (this helps protect the contact form block)', 'blockstrap' ); ?>
+						<a href="https://www.google.com/recaptcha/admin"
+						   target="_blank"> <?php _e( 'Get Keys', 'blockstrap' ); ?> <i
+								class="fas fa-external-link-alt"></i></a>
+					</div>
+					<form class="w-100" onsubmit="blockstrap_admin_save_recaptcha_keys(this);return false;">
+						<div class="mb-3">
+							<label for="gc-site-key" class="form-label"><?php _e( 'Site Key', 'blockstrap' ); ?></label>
+							<input type="text" class="form-control" name="site_key" id="gc-site-key"
+								   value="<?php echo esc_attr( $site_key ); ?>">
+						</div>
+						<div class="mb-3">
+							<label for="gc-secret-key"
+								   class="form-label"><?php _e( 'Secret Key', 'blockstrap' ); ?></label>
+							<input type="password" class="form-control" name="site_secret" id="gc-secret-key"
+								   value="<?php echo esc_attr( $site_secret ); ?>">
+						</div>
+						<button type="submit" class="btn btn-primary"><span
+								class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+							<?php _e( 'Save', 'blockstrap' ); ?></button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<?php
 	}
 
 	/**
@@ -466,6 +636,7 @@ class BlockStrap_Admin {
 	public function get_template_content( $path ) {
 		ob_start();
 		include $path;
+
 		return ob_get_clean();
 	}
 
@@ -539,20 +710,6 @@ class BlockStrap_Admin {
 	}
 
 	/**
-	 * Check if demo page exists and return the ID if so.
-	 *
-	 * @param $page_slug
-	 *
-	 * @return int|string
-	 */
-	public function demo_page_exists( $page_slug ) {
-		$theme_slug  = get_template();
-		$option_key  = 'blockstrap_demo_pages';
-		$page_status = get_option( $option_key );
-		return isset( $page_status[ $theme_slug ][ $page_slug ] ) ? absint( $page_status[ $theme_slug ][ $page_slug ] ) : '';
-	}
-
-	/**
 	 * The AJAX function that will add or remove the demo pages.
 	 *
 	 * @return void
@@ -578,7 +735,7 @@ class BlockStrap_Admin {
 
 			$theme_slug  = get_template();
 			$option_key  = 'blockstrap_demo_pages';
-			$page_status = get_option( $option_key );
+			$page_status = blockstrap_get_option( $option_key );
 			$page_id     = $this->demo_page_exists( $page_slug );
 
 			if ( $delete ) {
@@ -586,7 +743,7 @@ class BlockStrap_Admin {
 				if ( $page_id ) {
 					wp_trash_post( $page_id );
 					unset( $page_status[ $theme_slug ][ $page_slug ] );
-					update_option( $option_key, $page_status );
+					blockstrap_update_option( $option_key, $page_status );
 				}
 
 				wp_send_json_success( __( 'Page moved to trash', 'blockstrap' ) );
@@ -594,7 +751,7 @@ class BlockStrap_Admin {
 
 			} else {
 				if ( ! $page_id ) {
-					$page_id = $this-> add_demo_page( $page );
+					$page_id = $this->add_demo_page( $page );
 
 					if ( is_wp_error( $page_id ) ) {
 						wp_send_json_error( __( 'Page failed to create', 'blockstrap' ) );
@@ -616,54 +773,6 @@ class BlockStrap_Admin {
 	}
 
 	/**
-	 * Add a demo page from arguments.
-	 *
-	 * @param $page
-	 *
-	 * @return false|int|WP_Error
-	 */
-	public function add_demo_page( $page ) {
-
-		$theme_slug  = get_template();
-		$option_key  = 'blockstrap_demo_pages';
-		$page_status = get_option( $option_key );
-		$page_slug   = esc_attr( $page['slug'] );
-
-		$page_id = wp_insert_post(
-			array(
-				'post_title'   => $page['title'],
-				'post_name'    => $page['slug'],
-				'post_content' => $page['desc'],
-				'post_status'  => 'publish',
-				'post_type'    => 'page',
-			)
-		);
-
-		if ( is_wp_error( $page_id ) ) {
-			return false;
-		}else{
-			$page_status[ $theme_slug ][ $page_slug ] = $page_id;
-			update_option( $option_key, $page_status );
-
-			if ( ! empty( $page['is_blog'] ) ) {
-				update_option( 'page_for_posts', $page_id );
-				update_option('show_on_front', 'page');
-
-				if ( ! get_option( 'page_on_front' ) ) {
-					update_option( 'page_on_front', 2 ); // if page on front not set then it will show blog page on front.
-				}
-			} elseif ( ! empty( $page['is_front'] ) ) {
-				update_option( 'page_on_front', $page_id ); // this is probably not needed as the theme can set the front page anyway.
-				update_option('show_on_front', 'page');
-			}
-		}
-
-		return $page_id;
-
-
-	}
-
-	/**
 	 * The AJAX function that will save the recaptcha keys.
 	 *
 	 * @return void
@@ -676,25 +785,51 @@ class BlockStrap_Admin {
 				wp_die();
 			}
 
-
 			parse_str( $_POST['form_data'], $data );
-//			print_r($data );
 
-			if(isset($data['site_key']) && isset($data['site_secret'])) {
-				update_option('blockstrap_recaptcha_keys',array(
-					'site_key' => sanitize_html_class($data['site_key']),
-					'site_secret' => sanitize_html_class($data['site_secret']),
-				));
+			if ( isset( $data['site_key'] ) && isset( $data['site_secret'] ) ) {
+				blockstrap_update_option(
+					'blockstrap_recaptcha_keys',
+					array(
+						'site_key'    => sanitize_html_class( $data['site_key'] ),
+						'site_secret' => sanitize_html_class( $data['site_secret'] ),
+					)
+				);
 				wp_send_json_success( __( 'Keys Saved', 'blockstrap' ) );
-			}else{
+			} else {
 				wp_send_json_error( 'Something went wrong' );
 			}
-
 		} else {
 			wp_send_json_error( 'You do not have permission for this.' );
 		}
 
 		wp_die();
+	}
+
+
+	/**
+	 * Maybe update single options to our new one array of options.
+	 *
+	 * @return void
+	 */
+	public function maybe_convert_options() {
+			$options = blockstrap_get_options();
+
+		if ( empty( $options ) ) {
+			$theme_slug = sanitize_title_with_dashes( $this->get_theme_title() );
+
+			$keys = array(
+				'blockstrap_recaptcha_keys',
+				'blockstrap_demo_pages_installed_' . $theme_slug,
+				'directory_geodirectory_dismiss',
+				'directory_theme_v3',
+				'school_theme_v2',
+			);
+
+			foreach ( $keys as $key ) {
+				blockstrap_update_option( $key, get_option( $key ) );
+			}
+		}
 	}
 
 }

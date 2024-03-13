@@ -28,15 +28,19 @@ if ( is_admin() && defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ) {
 }
 
 function blockstrap_load_admin() {
+	global $blockstrap_admin;
 	if ( is_admin() ) {
 		if ( class_exists( 'BlockStrap_Admin_Child' ) ) {
-			new BlockStrap_Admin_Child();
-		} else if ( class_exists( 'BlockStrap_Admin' ) ) {
-			new BlockStrap_Admin();
+			$blockstrap_admin = new BlockStrap_Admin_Child();
+		} elseif ( class_exists( 'BlockStrap_Admin' ) ) {
+			$blockstrap_admin = new BlockStrap_Admin();
 		}
 	}
 }
 add_action( 'after_setup_theme', 'blockstrap_load_admin' );
+
+// Helper functions
+require_once 'inc/helper-functions.php';
 
 // Theme support.
 require_once 'classes/class-blockstrap-theme-support.php';
