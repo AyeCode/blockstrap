@@ -112,12 +112,14 @@ class BlockStrap_Theme_Support {
 			$install_message = __( 'The BlockStrap theme works best with the BlockStrap Blocks plugin, please install it for full functionality.', 'blockstrap' );
 
 			printf(
-				'<div class="%1$s"><h3>%2$s</h3><p>%3$s</p><p><a href="%4$s" class="button button-primary">%5$s</a> </p></div>',
+				'<div class="%1$s"><h3>%2$s</h3><p>%3$s</p><p><a href="%4$s" class="button button-primary">%5$s</a> <a href="%6$s" class="">%7$s</a> </p></div>',
 				esc_attr( $class ),
 				esc_html( $name ),
 				esc_html( $install_message ),
 				esc_url_raw( $install_url ),
-				esc_html__( 'Install BlockStrap Blocks Plugin', 'blockstrap' )
+				esc_html__( 'Install BlockStrap Blocks Plugin', 'blockstrap' ),
+				esc_url( $dismiss_url ),
+				esc_html__( 'Dismiss', 'blockstrap' )
 			);
 		}
 
