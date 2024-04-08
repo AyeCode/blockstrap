@@ -212,8 +212,8 @@
 			]
 		},
 		"layout": {
-			"contentSize": null,
-			"wideSize": null,
+			"contentSize": "100%",
+			"wideSize": "100%",
 			"units": [
 				"px",
 				"em",
