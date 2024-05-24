@@ -160,13 +160,22 @@ class BlockStrap_Theme_Support {
 	 */
 	public function default_template_types( $default_template_types, $query, $template_type ) {
 
+
+
 		foreach ( $default_template_types as $k => $t ) {
 
 			if ( defined( 'GEODIRECTORY_VERSION' ) && defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) && 'wp_template' === $template_type ) {
 				if ( 'gd-single' === $t->slug ) {
 					$default_template_types[ $k ]->title       = 'GD Single';
 					$default_template_types[ $k ]->description = __( 'The default template for displaying any GD single post. Use the `add new` feature to add a template per CPT.', 'blockstrap' );
+
+					// the current wayt o add wemplates to their own grouped by https://github.com/WordPress/gutenberg/issues/37401
+//					$default_template_types[ $k ]->origin       = 'plugin';
+//					$default_template_types[ $k ]->theme        = 'geodirectory//geodirectory';
+
+//					$default_template_types[ $k ]->author       = 'CCC';
 				}
+//				print_r($default_template_types);exit;
 			} else {
 				// hide template if required plugins not installed
 				if ( 'gd-single' === $t->slug || 'gd-archive' === $t->slug || 'gd-search' === $t->slug ) {
