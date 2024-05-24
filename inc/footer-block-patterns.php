@@ -29,7 +29,14 @@ if ( function_exists( 'register_block_pattern' ) ) {
 			'content'    => defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ? apply_filters(
 				'blockstrap_pattern_footer_default',
 				''
-			) : '',
+			) : '<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"}},"elements":{"link":{"color":{"text":"var:preset|color|light"}}}},"backgroundColor":"dark","textColor":"light","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-light-color has-dark-background-color has-text-color has-background has-link-color" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)"><!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"0"}}}} -->
+<div class="wp-block-group alignwide" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:0"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|contrast"}}}},"textColor":"contrast-2","fontSize":"small"} -->
+<p class="has-contrast-2-color has-text-color has-link-color has-small-font-size">
+		Designed with <a href="https://wordpress.org" rel="nofollow">WordPress</a>		</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->',
 		)
 	);
 

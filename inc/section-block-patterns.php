@@ -30,8 +30,8 @@ if ( function_exists( 'register_block_pattern' ) ) {
 				'blockstrap_pattern_feature_home_default',
 				''
 			) : '<!-- wp:group {"tagName":"main"} -->
-<main class="wp-block-group"><!-- wp:paragraph -->
-<p>' . __( 'This is the blankest of blank themes, add your content here...', 'blockstrap' ) . '</p>
+<main class="wp-block-group has-background"><!-- wp:paragraph -->
+<p>' . __( 'BlockStrap is a lightweight and minimalist WordPress theme that was built specifically to work seamlessly with the BlockStrap page builder plugin.', 'blockstrap' ) . '</p>
 <!-- /wp:paragraph --></main>
 <!-- /wp:group -->',
 		)

@@ -685,10 +685,11 @@ class BlockStrap_Admin {
 			} else {
 				if ( ! $plugin_installed ) {
 					// Install and activate the plugin.
-					$upgrader       = new Plugin_Upgrader();
-					$install_result = $upgrader->install( $plugin_info->download_link );
-					if ( is_wp_error( $install_result ) ) {
-						wp_send_json_error( 'Plugin installation failed: ' . $install_result->get_error_message() );
+					$skin = new Automatic_Upgrader_Skin();
+					$upgrader = new Plugin_Upgrader($skin);
+					$install_result = $upgrader->install($plugin_info->download_link);
+					if (is_wp_error($install_result)) {
+						wp_send_json_error('Plugin installation failed: ' . $install_result->get_error_message());
 						wp_die();
 					}
 				}
