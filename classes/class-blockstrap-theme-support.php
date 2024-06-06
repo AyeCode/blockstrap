@@ -24,7 +24,7 @@ class BlockStrap_Theme_Support {
 		add_action( 'after_setup_theme', array( $this, 'action_setup' ) );
 		add_action( 'after_setup_theme', array( $this, 'action_content_width' ), 0 );
 		add_filter( 'get_block_templates', array( $this, 'default_template_types' ), 20000, 3 );
-		add_action( 'ayecode-ui-settings', array( $this, 'set_aui_settings' ), 10, 3 );
+		add_filter( 'ayecode-ui-settings', array( $this, 'set_aui_settings' ), 10, 3 );
 
 		// load only if theme is not blockstrap
 		if ( ! defined( 'BLOCKSTRAP_BLOCKS_VERSION' ) ) {

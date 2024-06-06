@@ -30,11 +30,6 @@ pre {
   text-underline-offset: 2px;
 }
 
-/* Adjust underlines to improve accessibility. This is a temporary solution.*/
-.wp-site-blocks a:hover {
-  text-decoration: none;
-}
-
 /* Adjust when the menu button is shown */
 @media (max-width: 1000px) {
 
