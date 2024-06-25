@@ -3,7 +3,7 @@ Contributors: ayecode, stiofansisland
 Tested up to: 6.5
 Requires at least: 6.0
 Requires PHP: 7.2
-Version: 0.1.9
+Version: 0.1.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,6 +13,9 @@ BlockStrap is a very blank starter theme.
 BlockStrap is a very blank starter theme built for the BlockStrap page builder plugin. Together with the BlockStrap plugin you can create any type of site using the power of the block editor and our BootStrap page builder blocks.
 
 == Changelog ==
+
+= 0.1.10 =
+* Removed wptt-webfont-loader class to now use WP included font loader - CHANGED
 
 = 0.1.9 =
 * Base theme CSS to remove link underlines removed to comply with WP theme standards - REMOVED

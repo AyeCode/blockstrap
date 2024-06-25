@@ -51,12 +51,6 @@ require_once 'classes/class-blockstrap-block-filters.php';
 // Block Patterns
 require_once 'classes/class-blockstrap-patterns.php';
 
-/*
- * Download webfonts locally, ( modified to add .wp-block class so it is loaded into FSE ) https://github.com/WPTT/webfont-loader/
- * @todo we should be able to remove this once the Fonts API is merged into core.
- */
-require_once 'classes/wptt-webfont-loader.php';
-
 // Block styles.
 require_once 'inc/block-styles.php';
 
@@ -91,17 +85,6 @@ function blockstrap_styles() {
 			'blockstrap-shared-style',
 			get_theme_file_uri( 'assets/css/style-shared.css' ),
 			'',
-			BLOCKSTRAP_VERSION
-		);
-	}
-
-	//@todo once webfonts API gets added to core we can do this via theme.json only.
-	if ( is_admin() || ( ! empty( $theme_settings['typography']['fontFamily'] ) && ( 'var:preset|font-family|poppins' === $theme_settings['typography']['fontFamily'] || 'var(--wp--preset--font-family--poppins)' === $theme_settings['typography']['fontFamily'] ) ) ) {
-		wp_enqueue_style(
-			'google-fonts',
-			//          'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap',
-			wptt_get_webfont_url( 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap' ), // @ todo make local
-			array(),
 			BLOCKSTRAP_VERSION
 		);
 	}
@@ -181,18 +164,3 @@ function blockstrap_default_meta_description() {
 	}
 }
 add_action( 'wp_head', 'blockstrap_default_meta_description' );
-
-//function add_async_forscript($url)
-//{//echo '###'.$url;
-//	if (strpos($url, 'wpfas=true')!==false){
-////		echo '###'.$url;exit;
-//		$url = str_replace('wpfas=true', 'wpfas=true', $url)."' onload='this.media=\"all\"";
-//	}
-//		return $url;
-//
-////	else if (is_admin())
-////		return str_replace('#asyncload', '', $url);
-////	else
-////		return str_replace('#asyncload', '', $url)."' async='async";
-//}
-//add_filter('clean_url', 'add_async_forscript', 11, 1);
