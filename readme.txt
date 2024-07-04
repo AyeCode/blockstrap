@@ -14,6 +14,9 @@ BlockStrap is a very blank starter theme built for the BlockStrap page builder p
 
 == Changelog ==
 
+= 0.1.11 =
+* WP 6.6 changed site editor class which restricted content to 840px in editor - FIXED
+
 = 0.1.10 =
 * Removed wptt-webfont-loader class to now use WP included font loader - CHANGED
 
