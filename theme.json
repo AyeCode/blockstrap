@@ -231,8 +231,6 @@
 	},
 	"styles": {
 		"color": {
-			"background": "var(--wp--preset--color--white)",
-			"text": "var(--wp--preset--color--gray-dark)"
 		},
 		"typography": {
 			"fontSize": "var(--wp--preset--font-size--small)",
