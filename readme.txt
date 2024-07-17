@@ -1,9 +1,9 @@
 === BlockStrap ===
 Contributors: ayecode, stiofansisland
-Tested up to: 6.5
+Tested up to: 6.6
 Requires at least: 6.0
 Requires PHP: 7.2
-Version: 0.1.10
+Version: 0.1.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,6 +16,7 @@ BlockStrap is a very blank starter theme built for the BlockStrap page builder p
 
 = 0.1.11 =
 * WP 6.6 changed site editor class which restricted content to 840px in editor - FIXED
+* Templates adjusted for new block changes to help prevent broken blocks - CHANGED
 
 = 0.1.10 =
 * Removed wptt-webfont-loader class to now use WP included font loader - CHANGED
