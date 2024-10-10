@@ -210,7 +210,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 					''
 				) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group "><!-- wp:paragraph -->
-<p>' . __( 'Thia template requires the GeoDirectory plugin to be installed', 'blockstrap' ) . '</p>
+<p>' . __( 'This template requires the GeoDirectory plugin to be installed', 'blockstrap' ) . '</p>
 <!-- /wp:paragraph --></main>
 <!-- /wp:group -->',
 			)
@@ -226,7 +226,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 					''
 				) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group"><!-- wp:paragraph -->
-<p>' . __( 'Thia template requires the GeoDirectory plugin to be installed', 'blockstrap' ) . '</p>
+<p>' . __( 'This template requires the GeoDirectory plugin to be installed', 'blockstrap' ) . '</p>
 <!-- /wp:paragraph --></main>
 <!-- /wp:group -->',
 			)
@@ -242,7 +242,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 					''
 				) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group"><!-- wp:paragraph -->
-<p>' . __( 'Thia template requires the GeoDirectory plugin to be installed', 'blockstrap' ) . '</p>
+<p>' . __( 'This template requires the GeoDirectory plugin to be installed', 'blockstrap' ) . '</p>
 <!-- /wp:paragraph --></main>
 <!-- /wp:group -->',
 			)
@@ -258,7 +258,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 					''
 				) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group"><!-- wp:paragraph -->
-<p>' . __( 'Thia template requires the GeoDirectory plugin to be installed', 'blockstrap' ) . '</p>
+<p>' . __( 'This template requires the GeoDirectory plugin to be installed', 'blockstrap' ) . '</p>
 <!-- /wp:paragraph --></main>
 <!-- /wp:group -->',
 			)
@@ -274,7 +274,7 @@ if ( function_exists( 'register_block_pattern' ) ) {
 					''
 				) : '<!-- wp:group {"tagName":"main"} -->
 <main class="wp-block-group"><!-- wp:paragraph -->
-<p>' . __( 'Thia template requires the GeoDirectory plugin to be installed', 'blockstrap' ) . '</p>
+<p>' . __( 'This template requires the GeoDirectory plugin to be installed', 'blockstrap' ) . '</p>
 <!-- /wp:paragraph --></main>
 <!-- /wp:group -->',
 			)

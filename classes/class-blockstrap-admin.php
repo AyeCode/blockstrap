@@ -119,7 +119,14 @@ class BlockStrap_Admin {
 	 * @return array[]
 	 */
 	public function get_demo_pages() {
-		return array();
+		return array(
+			'blog'    => array(
+				'title'   => __( 'Our Blog', 'blockstrap' ),
+				'slug'    => 'blog',
+				'desc'    => $this->get_template_content( dirname( __FILE__ ) . '/../patterns/blog-page.php' ),
+				'is_blog' => true,
+			),
+		);
 	}
 
 	/**

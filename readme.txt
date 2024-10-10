@@ -1,9 +1,9 @@
 === BlockStrap ===
 Contributors: ayecode, stiofansisland
-Tested up to: 6.6
+Tested up to: 6.7
 Requires at least: 6.0
 Requires PHP: 7.2
-Version: 0.1.11
+Version: 0.1.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,6 +13,12 @@ BlockStrap is a very blank starter theme.
 BlockStrap is a very blank starter theme built for the BlockStrap page builder plugin. Together with the BlockStrap plugin you can create any type of site using the power of the block editor and our BootStrap page builder blocks.
 
 == Changelog ==
+
+= 0.1.12 =
+* Removed index.php as block themes can treat this as a blog template file - REMOVED
+* Blog page demo template added - ADDED
+* Post editor width CSS fix - FIXED
+* Spelling mistake in pattern template holder text - FIXED
 
 = 0.1.11 =
 * WP 6.6 changed site editor class which restricted content to 840px in editor - FIXED
