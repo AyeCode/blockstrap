@@ -92,7 +92,8 @@ function blockstrap_styles() {
 }
 
 add_action( 'wp_enqueue_scripts', 'blockstrap_styles' );
-add_action( 'admin_enqueue_scripts', 'blockstrap_styles' );
+add_action( 'enqueue_block_assets', 'blockstrap_styles' );
+//add_action( 'admin_enqueue_scripts', 'blockstrap_styles' );
 
 /**
  * Show '(No title)' if post has no title.
@@ -144,7 +145,8 @@ function blockstrap_enqueue_block_editor_assets() {
 	);
 
 }
-add_action( 'enqueue_block_editor_assets', 'blockstrap_enqueue_block_editor_assets', 1000 );
+add_action( 'enqueue_block_assets', 'blockstrap_enqueue_block_editor_assets', 1000 );
+//add_action( 'enqueue_block_editor_assets', 'blockstrap_enqueue_block_editor_assets', 1000 );
 
 /**
  * Add a basic meta description if no SEO plugin present.

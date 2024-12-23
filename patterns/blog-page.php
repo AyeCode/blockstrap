@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: School: Blog Page
+ * Title: Blog Page
  * Slug: blockstrap/blog-page
  * Block Types: core/post-content
  * Categories: blockstrap-page-content

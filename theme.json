@@ -202,7 +202,7 @@
 		"spacing": {
 			"customPadding": true,
 			"customMargin": true,
-			"blockGap": false,
+			"blockGap": true,
 			"units": [
 				"px",
 				"em",
@@ -241,7 +241,6 @@
 			"textDecoration": "none"
 		},
 		"spacing": {
-			"blockGap": "0",
 			"margin": {
 				"top": "0px",
 				"right": "0px",

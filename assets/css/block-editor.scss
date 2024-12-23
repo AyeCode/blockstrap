@@ -22,3 +22,13 @@
 
 
 
+:root .wp-site-blocks > * {
+	margin-block-start: 0;
+	margin-block-end: 0;
+}
+
+:root :where(.editor-styles-wrapper) .wp-block-gallery-is-layout-flex {
+	gap: var( --wp--style--block-gap );
+}
+
+
