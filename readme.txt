@@ -3,7 +3,7 @@ Contributors: ayecode, stiofansisland
 Tested up to: 6.7
 Requires at least: 6.0
 Requires PHP: 7.2
-Version: 0.1.12
+Version: 0.1.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ BlockStrap is a very blank starter theme built for the BlockStrap page builder p
 
 == Changelog ==
 
-= 0.1.13 =
+= 0.1.13 - 2025-01-28 =
 * WP Gallery block styles broken - FIXED
 * BlockGap theme.json changes to fix Gallery styles and prevent other blocks having gaps - CHANGED 
 
