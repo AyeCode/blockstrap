@@ -14,6 +14,9 @@ BlockStrap is a very blank starter theme built for the BlockStrap page builder p
 
 == Changelog ==
 
+= 0.1.14 - 2025-01-30 =
+* WP Gallery block styles broken on frontend - FIXED
+
 = 0.1.13 - 2025-01-28 =
 * WP Gallery block styles broken - FIXED
 * BlockGap theme.json changes to fix Gallery styles and prevent other blocks having gaps - CHANGED 

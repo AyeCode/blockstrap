@@ -26,6 +26,12 @@ class BlockStrap_Block_Filters {
 	public function post_template( $block_content, $block ) {
 		global $wp_version;
 
+		// add back flex class to gallery as we remove it via wp_render_layout_support_flag because that can affect our blocks.
+		if ( 'core/gallery' === $block['blockName'] ) {
+			$block_content = str_replace('wp-block-gallery has-nested-images', 'wp-block-gallery has-nested-images is-layout-flex', $block_content);
+		}
+
+		// Implement our own bootstrap column and row classes in the WP query loop
 		$block_name = version_compare($wp_version,'6.3','<') ? 'query' : 'post-template';
 		if ( 'core/'.$block_name === $block['blockName'] ) {
 
