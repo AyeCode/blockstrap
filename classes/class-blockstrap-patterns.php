@@ -48,6 +48,9 @@ class BlockStrap_Patterns {
 
 		// Query block patterns.
 		require_once __DIR__ . '/../inc/query-block-patterns.php';
+
+		// Main block patterns.
+		require_once __DIR__ . '/../inc/main-block-patterns.php';
 	}
 
 }

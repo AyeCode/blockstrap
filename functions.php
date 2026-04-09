@@ -16,7 +16,7 @@
 define( 'BLOCKSTRAP_VERSION', wp_get_theme()->get( 'Version' ) );
 
 /** Check if the WordPress version is 5.5 or higher, and if the PHP version is at least 7.2. If not, do not activate. */
-if ( version_compare( $GLOBALS['wp_version'], '5.5', '<' ) || version_compare( PHP_VERSION_ID, '70200', '<' ) ) {
+if ( version_compare( $GLOBALS['wp_version'], '6.5', '<' ) || version_compare( PHP_VERSION_ID, '70400', '<' ) ) {
 	require get_template_directory() . '/inc/back-compat.php';
 
 	return;
@@ -87,11 +87,24 @@ function blockstrap_styles() {
 			'',
 			BLOCKSTRAP_VERSION
 		);
+	}else{
+		// wierd block editor stuff
+		$css = "
+		:root .wp-site-blocks > * {
+			margin-block-start: 0;
+			margin-block-end: 0;
+		}
+
+		:root :where(.editor-styles-wrapper) .wp-block-gallery-is-layout-flex {
+			gap: var( --wp--style--block-gap );
+		}
+		";
+		wp_add_inline_style( 'ayecode-ui', $css  );
 	}
 
 }
 
-add_action( 'wp_enqueue_scripts', 'blockstrap_styles' );
+add_action( 'wp_enqueue_scripts', 'blockstrap_styles', 100 );
 add_action( 'enqueue_block_assets', 'blockstrap_styles' );
 //add_action( 'admin_enqueue_scripts', 'blockstrap_styles' );
 
@@ -145,24 +158,26 @@ function blockstrap_enqueue_block_editor_assets() {
 	);
 
 }
-add_action( 'enqueue_block_assets', 'blockstrap_enqueue_block_editor_assets', 1000 );
-//add_action( 'enqueue_block_editor_assets', 'blockstrap_enqueue_block_editor_assets', 1000 );
+//add_action( 'enqueue_block_assets', 'blockstrap_enqueue_block_editor_assets', 1000 );
+add_action( 'enqueue_block_editor_assets', 'blockstrap_enqueue_block_editor_assets', 1000 );
 
 /**
  * Add a basic meta description if no SEO plugin present.
  *
  * @return void
  */
-function blockstrap_default_meta_description() {
+function blockstrap_default_meta_description()
+{
 	if (
-		! defined( 'WPSEO_FILE' ) &&
-		! defined( 'RANK_MATH_VERSION' ) &&
-		! defined( 'AIOSEO_PHP_VERSION_DIR' ) &&
-		! defined( 'SLIM_SEO_VER' ) &&
-		! defined( 'SEOPRESS_VERSION' ) &&
-		! defined( 'THE_SEO_FRAMEWORK_VERSION' )
+		!defined('WPSEO_FILE') &&
+		!defined('RANK_MATH_VERSION') &&
+		!defined('AIOSEO_PHP_VERSION_DIR') &&
+		!defined('SLIM_SEO_VER') &&
+		!defined('SEOPRESS_VERSION') &&
+		!defined('THE_SEO_FRAMEWORK_VERSION') &&
+		!(function_exists('geodir_is_geodir_page') && geodir_is_geodir_page())
 	) {
-		echo '<meta name="description" content="' . esc_attr( get_bloginfo( 'description', 'display' ) ) . '">';
+		echo '<meta name="description" content="' . esc_attr(get_bloginfo('description', 'display')) . '">';
 	}
 }
 add_action( 'wp_head', 'blockstrap_default_meta_description' );
